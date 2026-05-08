@@ -7,7 +7,7 @@ from app.api.main import app
 from app.core.database import get_db
 from app.models.base import Base
 
-TEST_DATABASE_URL = "postgresql+asyncpg://postgres:postgres@localhost:5433/dclaw_finance_test"
+TEST_DATABASE_URL = "postgresql+asyncpg://postgres:postgres@localhost:5432/dclaw_finance_test"
 
 
 @pytest_asyncio.fixture
