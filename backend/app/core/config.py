@@ -1,8 +1,10 @@
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 from functools import lru_cache
 
 
 class Settings(BaseSettings):
+    model_config = SettingsConfigDict(env_file=".env", case_sensitive=False)
+
     app_name: str = "DClaw Finance"
     app_env: str = "dev"
     debug: bool = True
@@ -16,10 +18,6 @@ class Settings(BaseSettings):
     
     secret_key: str = "change-me-in-production"
     access_token_expire_minutes: int = 60
-    
-    class Config:
-        env_file = ".env"
-        case_sensitive = False
 
 
 @lru_cache()
