@@ -1,27 +1,31 @@
-# syntax=docker/dockerfile:1
-
-# Stage 1: Install dependencies
-FROM node:20-alpine AS deps
-RUN apk add --no-cache libc6-compat
-WORKDIR /app
-COPY package.json ./
-RUN npm install
-
-# Stage 2: Build the application
 FROM node:20-alpine AS builder
+
 WORKDIR /app
-COPY --from=deps /app/node_modules ./node_modules
+
+COPY package*.json ./
+RUN npm ci
+
 COPY . .
+
+ARG NEXT_PUBLIC_API_URL
+ENV NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
+
 RUN npm run build
 
-# Stage 3: Production runner
 FROM node:20-alpine AS runner
+
 WORKDIR /app
+
 ENV NODE_ENV=production
+ENV PORT=3007
+
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
-EXPOSE 3014
-ENV PORT=3014
-ENV HOSTNAME="0.0.0.0"
+
+EXPOSE 3007
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+    CMD wget -q --spider http://localhost:3007/ || exit 1
+
 CMD ["node", "server.js"]

@@ -1,155 +1,77 @@
-# DClaw Finance 💰
+# DClaw Scaffold
 
-> **Financial modeling and risk analysis**
->
-> Finance app in the DClaw Stack. Built with Next.js, FastAPI, PostgreSQL, and the DKube Design System.
+> **The single source of truth for new DClaw app development.**
+> Clone this repo, rename it, fill in your `PRODUCT-SPEC.md`, and hand it to your coding agents.
 
-[![Status](https://img.shields.io/badge/status-P4%20Planned-14B8A6)](https://github.com/dclawstack/dclaw-finance)
-[![Stack](https://img.shields.io/badge/stack-Next.js%2014%20%2B%20FastAPI%20%2B%20PostgreSQL-purple)](https://docs.dclawstack.io/apps/finance)
+## What This Is
 
----
+This scaffold contains the **complete boilerplate** for any DClaw vertical SaaS app:
+- ✅ FastAPI backend with correct SQLAlchemy 2.0 setup
+- ✅ Next.js 14 frontend with Tailwind + API client
+- ✅ Docker + docker-compose with working healthchecks
+- ✅ Helm chart for Kubernetes deployment
+- ✅ Alembic migrations setup
+- ✅ pytest test harness
+- ✅ GitHub Actions CI
+- ✅ `AGENTS.md` + `PLAN-v1.2.md` templates
 
-## Overview
-
-DClaw Finance is an AI-native finance application. It follows the standard DClaw architecture:
-
-- **Frontend:** Next.js 14 with App Router, Tailwind CSS, React Server Components
-- **Backend:** FastAPI with SQLAlchemy 2.0, Pydantic v2, asyncpg
-- **Database:** PostgreSQL via CloudNativePG
-- **AI:** Ollama (local) with OpenRouter fallback
-- **Auth:** Logto JWT with RBAC
-- **Design:** DKube Design System
-
----
-
-## Design System
-
-DClaw Finance uses the **DKube Design System** with its app-specific brand color.
-
-| Token | Value | Usage |
-|-------|-------|-------|
-| Brand Color | #14B8A6 | Primary actions, links |
-| Surface | `#0E0E10` | Page background |
-| Surface Raised | `#1F1F23` | Cards, panels |
-| Body Text | `#F4F2F8` | Primary text |
-| Muted | `#9E9AAB` | Secondary text |
-
-**Fonts:** Manrope (display), Inter (body), JetBrains Mono (code)
-
----
-
-## Quick Start
-
-### Prerequisites
-
-- Node.js 18+
-- Python 3.11+
-- PostgreSQL 15+ (or Docker)
-
-### 1. Clone
+## How to Use
 
 ```bash
-git clone https://github.com/dclawstack/dclaw-finance.git
-cd dclaw-finance
+# 1. Clone the scaffold
+git clone https://github.com/dclawstack/dclaw-scaffold.git dclaw-YOURAPP
+cd dclaw-YOURAPP
+
+# 2. Find/replace placeholders
+# Finance    -> Your app name (e.g., CRM)
+# {BACKEND_PORT}-> Next free port (see port registry below)
+# {FRONTEND_PORT}-> Next free port
+# {DB_NAME}     -> dclaw_yourapp
+
+# 3. Write your PRODUCT-SPEC.md
+# See PRODUCT-SPEC.md.template for the format
+
+# 4. Hand to your coding agents
+# See SCALING-PLAYBOOK.md for the parallel agent workflow
 ```
 
-### 2. Backend
+## Port Registry
 
-```bash
-cd backend
-uv venv && source .venv/bin/activate
-uv pip install -e ".[dev]"
-export DATABASE_URL="postgresql+asyncpg://postgres:postgres@localhost:5432/dclaw_finance"
-uvicorn app.main:app --reload --port 8000
-```
+| App | Backend Port | Frontend Port | Database |
+|-----|-------------|---------------|----------|
+| dclaw-chat | 8090 | 3000 | dclaw_chat |
+| dclaw-med | 8092 | 3004 | dclaw_med |
+| dclaw-learn | 8093 | 3003 | dclaw_learn |
+| dclaw-code | 8094 | 3005 | dclaw_code |
+| dclaw-legal | 8099 | 3013 | dclaw_legal |
+| **dclaw-crm** | **8095** | **3006** | **dclaw_crm** |
+| **dclaw-finance** | **8096** | **3007** | **dclaw_finance** |
+| **dclaw-hr** | **8097** | **3008** | **dclaw_hr** |
+| **dclaw-inventory** | **8098** | **3009** | **dclaw_inventory** |
+| **dclaw-project** | **8100** | **3010** | **dclaw_project** |
 
-### 3. Frontend
+> **Rule:** New apps take the next available port. Update this table when assigning.
 
-```bash
-cd frontend
-npm install
-npm run dev
-```
+## Files You Must Customize
 
-Open [http://localhost:3000](http://localhost:3000).
+| File | What to Change |
+|------|---------------|
+| `backend/app/core/config.py` | `app_name`, default database name |
+| `backend/app/api/main.py` | Wire v1 routers |
+| `frontend/package.json` | Package name |
+| `frontend/src/app/layout.tsx` | Title, description |
+| `frontend/src/app/page.tsx` | Dashboard content |
+| `docker-compose.yml` | Port mappings |
+| `helm/Chart.yaml` | Chart name |
+| `helm/values.yaml` | Image repository names |
+| `AGENTS.md` | App identity, port numbers |
+| `PLAN-v1.2.md` | Feature backlog |
+| `PRODUCT-SPEC.md` | (Create this) Domain models, business logic |
 
----
+## What You Should NOT Change
 
-## Development
-
-### Backend Structure
-
-```
-backend/
-├── app/
-│   ├── core/           # Config, database, auth, exceptions
-│   ├── models/         # SQLAlchemy ORM
-│   ├── schemas/        # Pydantic validation
-│   ├── repositories/   # Data access layer
-│   ├── services/       # Business logic
-│   ├── api/v1/         # HTTP routers
-│   └── main.py         # App factory
-└── tests/
-    ├── unit/           # Repository tests
-    └── integration/    # API endpoint tests
-```
-
-### Run Tests
-
-```bash
-cd backend
-source .venv/bin/activate
-pytest --cov=app --cov-report=term-missing
-```
-
----
-
-## Deployment
-
-### VPS (Recommended)
-
-```bash
-ssh root@your-vps
-git clone https://github.com/dclawstack/dclaw-finance.git /opt/dclaw-finance
-cd /opt/dclaw-finance
-docker compose up -d
-```
-
-The app will be available at `https://finance.dclawstack.io`.
-
-### Kubernetes
-
-```bash
-cd helm/dclaw-finance
-helm dependency build
-helm upgrade --install dclaw-finance . \
-  --namespace dclaw-finance \
-  --create-namespace
-```
-
----
-
-## Environment Variables
-
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `DATABASE_URL` | — | PostgreSQL connection string |
-| `OLLAMA_URL` | `http://localhost:11434` | Local LLM endpoint |
-| `OPENROUTER_API_KEY` | — | Cloud LLM API key |
-| `LOGTO_ENDPOINT` | — | Auth server URL |
-| `CORS_ORIGINS` | `http://localhost:3000` | Allowed frontend origins |
-
----
-
-## Links
-
-- [Docs](https://docs.dclawstack.io/apps/finance)
-- [DPanel](https://panel.dclawstack.io)
-- [DClaw Platform](https://github.com/dclawstack/dclaw-platform)
-- [Design System](https://github.com/dclawstack/dclaw-platform/tree/main/design-system)
-
----
-
-## License
-
-MIT
+- `app/models/base.py` — `DeclarativeBase` pattern
+- `app/core/database.py` — Engine/session factory
+- `docker-compose.yml` healthcheck commands
+- `frontend/Dockerfile` `ARG NEXT_PUBLIC_API_URL` pattern
+- `tests/conftest.py` — Test DB override pattern
