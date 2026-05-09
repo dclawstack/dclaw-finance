@@ -1,0 +1,83 @@
+/* ─────────────────────────────────────────────
+   DClaw Finance — Typography Scale
+   Usage: apply class names directly to elements
+   ───────────────────────────────────────────── */
+
+@layer components {
+
+  /* ── Display — hero numbers, KPI totals ── */
+  .type-display-lg {
+    @apply text-5xl font-bold tracking-tighter leading-none;
+  }
+  .type-display {
+    @apply text-4xl font-bold tracking-tight leading-none;
+  }
+
+  /* ── Heading ── */
+  .type-heading-xl {
+    @apply text-2xl font-semibold tracking-tight leading-tight;
+  }
+  .type-heading-lg {
+    @apply text-xl font-semibold tracking-tight leading-snug;
+  }
+  .type-heading {
+    @apply text-lg font-semibold leading-snug;
+  }
+  .type-heading-sm {
+    @apply text-base font-semibold leading-snug;
+  }
+
+  /* ── Label — section titles, table headers, tags ── */
+  .type-label-lg {
+    @apply text-sm font-semibold tracking-wide uppercase text-muted-foreground;
+  }
+  .type-label {
+    @apply text-xs font-semibold tracking-wider uppercase text-muted-foreground;
+  }
+
+  /* ── Body ── */
+  .type-body-lg {
+    @apply text-base font-normal leading-relaxed;
+  }
+  .type-body {
+    @apply text-sm font-normal leading-normal;
+  }
+  .type-body-sm {
+    @apply text-xs font-normal leading-normal text-muted-foreground;
+  }
+
+  /* ── Finance amounts — tabular-nums for column alignment ── */
+  .type-amount-xl {
+    @apply text-4xl font-bold leading-none;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+  .type-amount-lg {
+    @apply text-2xl font-bold leading-none;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+  .type-amount {
+    @apply text-lg font-semibold leading-tight;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+  .type-amount-sm {
+    @apply text-sm font-medium;
+    font-variant-numeric: tabular-nums lining-nums;
+  }
+
+  /* ── Semantic color helpers ── */
+  .text-profit  { color: hsl(var(--profit)); }
+  .text-loss    { color: hsl(var(--loss)); }
+  .text-success { color: hsl(var(--success)); }
+  .text-warning { color: hsl(var(--warning)); }
+  .text-info    { color: hsl(var(--info)); }
+
+  .bg-success-subtle { background-color: hsl(var(--success-subtle)); }
+  .bg-warning-subtle { background-color: hsl(var(--warning-subtle)); }
+  .bg-info-subtle    { background-color: hsl(var(--info-subtle)); }
+
+  /* ── Status badge variants (use with shadcn Badge) ── */
+  .badge-paid    { @apply bg-success-subtle text-success border-transparent; }
+  .badge-pending { @apply bg-warning-subtle text-warning border-transparent; }
+  .badge-overdue { @apply bg-destructive/10 text-destructive border-transparent; }
+  .badge-draft   { @apply bg-muted text-muted-foreground border-transparent; }
+}

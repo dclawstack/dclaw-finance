@@ -2,28 +2,72 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "./types.css";
+
+/* ─────────────────────────────────────────────
+   DClaw Finance — Light Mode Design System
+   Primary: Emerald (growth, wealth)
+   ───────────────────────────────────────────── */
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
+    /* ── Core surfaces ── */
+    --background:          0 0% 100%;
+    --foreground:          215 25% 12%;
+
+    /* ── Card / Popover ── */
+    --card:                0 0% 100%;
+    --card-foreground:     215 25% 12%;
+    --popover:             0 0% 100%;
+    --popover-foreground:  215 25% 12%;
+
+    /* ── Primary — Emerald-600 (#059669) ── */
+    --primary:             161 75% 31%;
+    --primary-foreground:  0 0% 100%;
+
+    /* ── Secondary — Slate-100 ── */
+    --secondary:           215 20% 96%;
+    --secondary-foreground: 215 25% 34%;
+
+    /* ── Muted — Slate-50 ── */
+    --muted:               210 20% 98%;
+    --muted-foreground:    215 16% 47%;
+
+    /* ── Accent — Emerald-50 ── */
+    --accent:              160 60% 96%;
+    --accent-foreground:   161 90% 13%;
+
+    /* ── Destructive — Red-500 ── */
+    --destructive:         0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* ── Border / Input / Ring ── */
+    --border:              215 25% 91%;
+    --input:               215 25% 91%;
+    --ring:                161 75% 31%;
+
+    /* ── Shape ── */
+    --radius:              0.625rem;
+
+    /* ── Finance semantic tokens ── */
+    --success:             160 84% 39%;   /* emerald-500 — paid, complete  */
+    --success-foreground:  0 0% 100%;
+    --success-subtle:      160 60% 96%;   /* emerald-50  — positive bg     */
+
+    --warning:             38 92% 50%;    /* amber-500   — pending, due    */
+    --warning-foreground:  0 0% 100%;
+    --warning-subtle:      48 96% 95%;    /* amber-50    — caution bg      */
+
+    --info:                217 91% 60%;   /* blue-500    — informational   */
+    --info-foreground:     0 0% 100%;
+    --info-subtle:         214 100% 97%;  /* blue-50     — info bg         */
+
+    --profit:              160 84% 39%;   /* positive P&L */
+    --loss:                0 84% 60%;     /* negative P&L */
+
+    /* ── Typography ── */
+    --font-sans:    "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+    --font-mono:    "JetBrains Mono", ui-monospace, "Cascadia Code", monospace;
+    --font-numeric: "Inter", ui-sans-serif, sans-serif;
   }
 
   * {
@@ -32,5 +76,16 @@
 
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Monetary / numeric values — tabular lining for column alignment */
+  .font-numeric,
+  [data-numeric] {
+    font-variant-numeric: tabular-nums lining-nums;
+    font-family: var(--font-numeric);
   }
 }

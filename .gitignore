@@ -12,3 +12,12 @@ frontend/next-env.d.ts
 # General
 .DS_Store
 .env
+
+# Obsidian auto-generated workspace files (vault root is outside this repo)
+/app.json
+/workspace.json
+/appearance.json
+/core-plugins.json
+
+# Local scratch files
+/prompts_*.txt
