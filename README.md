@@ -75,3 +75,9 @@ cd dclaw-YOURAPP
 - `docker-compose.yml` healthcheck commands
 - `frontend/Dockerfile` `ARG NEXT_PUBLIC_API_URL` pattern
 - `tests/conftest.py` — Test DB override pattern
+
+## Contributors
+
+| Name | Email | Contribution |
+|------|-------|--------------|
+| chandraja12345 | chandraja12345@users.noreply.github.com | Documentation (README edit) |
