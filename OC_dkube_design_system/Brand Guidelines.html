@@ -1,0 +1,2066 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>One Convergence — Brand Guidelines, Vol. 01 / 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ─────────────────────────────────────────────
+     One Convergence — Brand Guidelines
+     Vol. 01 / 2026
+     ───────────────────────────────────────────── */
+
+  :root {
+    /* Brand */
+    --oc-purple:        #7030A0;
+    --oc-purple-dark:   #4A1F6C;
+    --oc-purple-light:  #B180F8;
+    --oc-purple-50:     #F5EEFB;
+    --oc-purple-25:     #FAF6FD;
+
+    /* Neutrals */
+    --ink:              #141414;
+    --ink-2:            #2A2A2A;
+    --ink-3:            #5A5A5A;
+    --ink-4:            #8A8A8A;
+    --rule:             #E5E5E5;
+    --rule-strong:      #141414;
+    --paper:            #FFFFFF;
+    --paper-warm:       #FAF8F4;
+    --paper-cool:       #F6F5F7;
+
+    /* Accents (supporting only) */
+    --cobalt:           #1F3FBF;
+    --ember:            #C2410C;
+    --moss:             #2D6A4F;
+
+    /* Semantic */
+    --success:          #18A957;
+    --warning:          #C2870B;
+    --error:            #C2240C;
+    --info:             #1F3FBF;
+
+    /* Type */
+    --serif:    "Manrope", "Inter", -apple-system, sans-serif;
+    --sans:     "Inter", "Helvetica Neue", Arial, sans-serif;
+    --mono:     "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+    /* DKube product purples (from official logo) */
+    --dkube-dark:   #6E55A4;
+    --dkube-light:  #9783C0;
+    --dkube-floor:  #D5D5D5;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 15px;
+    line-height: 1.55;
+  }
+
+  /* ───────────────── Page chrome ───────────────── */
+  .topbar {
+    border-bottom: 1px solid var(--ink);
+    padding: 14px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    background: var(--paper);
+    position: sticky; top: 0; z-index: 10;
+  }
+  .topbar .mark {
+    font-family: var(--serif);
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: -0.01em;
+    font-size: 16px;
+  }
+  .topbar nav { display: flex; gap: 24px; color: var(--ink-3); }
+  .topbar nav a { color: inherit; text-decoration: none; }
+  .topbar nav a:hover { color: var(--oc-purple); }
+
+  /* Section wrapper */
+  section { padding: 96px 32px; border-bottom: 1px solid var(--ink); position: relative; }
+  section.tight { padding: 64px 32px; }
+  .container { max-width: 1320px; margin: 0 auto; }
+
+  /* Editorial section header */
+  .sec-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-3);
+    padding-bottom: 12px;
+    margin-bottom: 48px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .sec-meta .num { color: var(--ink); font-weight: 600; }
+
+  /* ───────────────── 1. Hero ───────────────── */
+  .hero {
+    padding: 80px 32px 120px;
+    border-bottom: 1px solid var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-grid {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 64px;
+    align-items: end;
+  }
+  .hero-meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding-bottom: 24px;
+  }
+  .hero-meta .row { display: flex; gap: 32px; }
+  .hero-meta .row span:first-child { color: var(--ink); font-weight: 600; }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 800;
+    font-size: clamp(72px, 11vw, 184px);
+    line-height: 0.9;
+    letter-spacing: -0.045em;
+    margin: 48px 0 0;
+    color: var(--ink);
+  }
+  .hero h1 em {
+    font-style: normal;
+    font-weight: 800;
+    color: var(--oc-purple);
+  }
+  .hero-tagline {
+    max-width: 540px;
+    font-family: var(--serif);
+    font-size: 22px;
+    line-height: 1.45;
+    color: var(--ink-2);
+    font-weight: 500;
+    margin-top: 32px;
+    text-wrap: balance;
+    letter-spacing: -0.005em;
+  }
+  .hero-foot {
+    max-width: 1320px;
+    margin: 96px auto 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--ink);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .hero-foot strong {
+    display: block;
+    color: var(--ink);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  /* ───────────────── 2. Brand architecture ───────────────── */
+  .arch {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--ink);
+    border-left: 1px solid var(--ink);
+    border-right: 1px solid var(--ink);
+  }
+  .arch-col {
+    padding: 56px 48px;
+    border-right: 1px solid var(--ink);
+    background: var(--paper);
+    position: relative;
+  }
+  .arch-col:last-child { border-right: none; background: var(--ink); color: var(--paper); }
+  .arch-col:last-child .arch-cap,
+  .arch-col:last-child .arch-fig { color: var(--paper-warm); }
+  .arch-col:last-child .arch-rule { background: rgba(255,255,255,0.2); }
+  .arch-col:last-child .arch-h { color: var(--paper); }
+
+  .arch-cap {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 24px;
+  }
+  .arch-fig {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--ink-3);
+    margin-top: 8px;
+  }
+  .arch-lockup {
+    margin: 32px 0 40px;
+    min-height: 92px;
+    display: flex;
+    align-items: center;
+  }
+  .arch-h {
+    font-family: var(--serif);
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -0.035em;
+    font-weight: 800;
+    margin: 0;
+    color: var(--ink);
+  }
+  .arch-col p {
+    max-width: 36em;
+    font-size: 15px;
+    line-height: 1.6;
+    color: inherit;
+  }
+  .arch-col:last-child p { color: rgba(255,255,255,0.78); }
+  .arch-rule {
+    height: 1px;
+    background: var(--rule);
+    margin: 32px 0;
+  }
+  .arch-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 12px;
+    font-size: 14px;
+  }
+  .arch-list li {
+    display: grid;
+    grid-template-columns: 24px 1fr;
+    gap: 8px;
+    align-items: baseline;
+    color: inherit;
+  }
+  .arch-list li::before {
+    content: "→";
+    color: var(--oc-purple);
+    font-family: var(--mono);
+  }
+  .arch-col:last-child .arch-list li::before { color: var(--oc-purple-light); }
+
+  /* OC lockup */
+  .lockup-oc {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .lockup-oc .glyph {
+    width: 64px; height: 46px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .lockup-oc .glyph svg { width: 100%; height: 100%; display: block; }
+  .lockup-oc .glyph svg { width: 100%; height: 100%; }
+  .lockup-oc .name {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 26px;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .lockup-oc .name b { font-weight: 800; }
+
+  /* DKube real logo lockup (isometric cube) */
+  .lockup-dk { display: flex; align-items: center; gap: 10px; }
+  .lockup-dk svg.icon { width: 44px; height: 44px; display: block; }
+  .lockup-dk .name {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 30px;
+    letter-spacing: -0.035em;
+    line-height: 1;
+    color: var(--dkube-dark);
+  }
+  .lockup-dk .tm {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 10px;
+    vertical-align: top;
+    margin-left: 2px;
+    color: var(--dkube-dark);
+    letter-spacing: 0;
+  }
+  .arch-col:last-child .lockup-dk .name,
+  .arch-col:last-child .lockup-dk .tm { color: #FFFFFF; }
+
+  /* ───────────────── 3. Logo system ───────────────── */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--ink);
+    border-left: 1px solid var(--ink);
+  }
+  .logo-cell {
+    border-right: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+    padding: 40px 32px;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    background: var(--paper);
+  }
+  .logo-cell.dark { background: var(--ink); color: var(--paper); }
+  .logo-cell.purple { background: var(--oc-purple); color: var(--paper); }
+  .logo-cell .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-3);
+  }
+  .logo-cell.dark .label, .logo-cell.purple .label { color: rgba(255,255,255,0.7); }
+  .logo-cell .display {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 24px 0;
+  }
+  .logo-cell .meta {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-4);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .logo-cell.dark .meta, .logo-cell.purple .meta { color: rgba(255,255,255,0.55); }
+
+  /* Clear space diagram */
+  .clear-space {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    border: 1px dashed var(--oc-purple);
+  }
+  .clear-space .x {
+    position: absolute;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--oc-purple);
+    background: var(--paper);
+    padding: 0 4px;
+  }
+  .clear-space .x.t { top: -7px; left: 50%; transform: translateX(-50%); }
+  .clear-space .x.b { bottom: -7px; left: 50%; transform: translateX(-50%); }
+  .clear-space .x.l { left: -10px; top: 50%; transform: translateY(-50%) rotate(-90deg); transform-origin: center; }
+  .clear-space .x.r { right: -10px; top: 50%; transform: translateY(-50%) rotate(90deg); }
+
+  /* Misuse grid */
+  .misuse {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid var(--ink);
+  }
+  .misuse-cell {
+    border-right: 1px solid var(--ink);
+    padding: 36px 28px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    background: var(--paper);
+  }
+  .misuse-cell:last-child { border-right: none; }
+  .misuse-cell .tag {
+    position: absolute;
+    top: 12px; right: 12px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border: 1px solid var(--error);
+    color: var(--error);
+  }
+  .misuse-cell .tag.ok {
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+  .misuse-cell .stage {
+    flex: 1;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .misuse-cell .desc {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--ink-3);
+  }
+  .misuse-cell.busy { background-image:
+    repeating-linear-gradient(45deg, #2a2a2a 0 8px, #1f1f1f 8px 16px);
+    color: white;
+  }
+  .misuse-cell.busy .desc { color: rgba(255,255,255,0.6); }
+
+  /* ───────────────── 4. Colors ───────────────── */
+  .color-block {
+    border: 1px solid var(--ink);
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 0;
+  }
+  .color-block + .color-block { margin-top: 32px; }
+  .swatch-row {
+    display: grid;
+  }
+  .swatch {
+    padding: 28px 24px;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid var(--ink);
+    position: relative;
+  }
+  .swatch:last-child { border-right: none; }
+  .swatch .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .swatch .name {
+    font-family: var(--serif);
+    font-size: 24px;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    font-weight: 700;
+    margin: 0;
+  }
+  .swatch .specs {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.02em;
+    line-height: 1.7;
+    display: grid;
+    gap: 1px;
+  }
+  .swatch .specs .k { color: inherit; opacity: 0.6; display: inline-block; width: 44px; }
+
+  .wcag {
+    padding: 24px;
+    background: var(--paper);
+    border-left: 1px solid var(--ink);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .wcag h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    margin: 0 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-3);
+    font-weight: 600;
+  }
+  .wcag-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px dotted var(--rule);
+    font-size: 13px;
+  }
+  .wcag-row:last-of-type { border-bottom: none; }
+  .wcag-row .pair { font-family: var(--mono); font-size: 11px; color: var(--ink-3); }
+  .wcag-row .ratio { font-family: var(--mono); font-size: 13px; font-weight: 600; }
+  .pass { color: var(--success); }
+  .warn { color: var(--warning); }
+  .fail { color: var(--error); }
+
+  /* Color category title */
+  .cat-title {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 24px;
+    align-items: baseline;
+    margin: 56px 0 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--ink);
+  }
+  .cat-title .num {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-3);
+    letter-spacing: 0.04em;
+  }
+  .cat-title h3 {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin: 0;
+  }
+  .cat-title .aside {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  /* ───────────────── 5. Typography ───────────────── */
+  .type-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    margin-bottom: 80px;
+    border: 1px solid var(--ink);
+    border-left: none;
+    border-right: none;
+    padding: 64px 0;
+  }
+  .specimen {
+    font-family: var(--serif);
+    font-size: 320px;
+    line-height: 0.85;
+    letter-spacing: -0.06em;
+    color: var(--ink);
+    margin: 0;
+    font-weight: 800;
+  }
+  .specimen em { color: var(--oc-purple); font-style: normal; font-weight: 800; }
+  .specimen-meta {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .specimen-meta .big {
+    font-family: var(--serif);
+    font-size: 56px;
+    line-height: 1;
+    letter-spacing: -0.035em;
+    color: var(--ink);
+    text-transform: none;
+    font-weight: 800;
+    margin-bottom: 32px;
+  }
+  .specimen-meta dl {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 8px 16px;
+    margin: 0;
+  }
+  .specimen-meta dt { color: var(--ink-3); text-transform: uppercase; }
+  .specimen-meta dd { margin: 0; color: var(--ink); }
+
+  .type-scale {
+    display: grid;
+    grid-template-columns: 140px 1fr 220px;
+    border-top: 1px solid var(--ink);
+  }
+  .type-scale .row {
+    display: contents;
+  }
+  .type-scale .cell {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: baseline;
+  }
+  .type-scale .label-cell {
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-3);
+  }
+  .type-scale .spec-cell {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    justify-content: flex-end;
+    text-align: right;
+    padding-right: 0;
+  }
+  .type-scale .sample-cell { color: var(--ink); }
+
+  .editorial {
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+  }
+  .editorial .pull {
+    font-family: var(--serif);
+    font-size: 40px;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0;
+  }
+  .editorial .pull em { color: var(--oc-purple); font-style: normal; font-weight: 700; }
+  .editorial .body p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-2);
+    margin: 0 0 16px;
+    max-width: 32em;
+  }
+  .editorial .body p .drop {
+    font-family: var(--serif);
+    float: left;
+    font-size: 60px;
+    line-height: 0.9;
+    padding: 8px 12px 0 0;
+    color: var(--oc-purple);
+    font-weight: 800;
+  }
+
+  /* ───────────────── 6. Spacing ───────────────── */
+  .spacing-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .scale-rule {
+    border: 1px solid var(--ink);
+  }
+  .scale-row {
+    display: grid;
+    grid-template-columns: 80px 1fr 80px;
+    align-items: center;
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .scale-row:last-child { border-bottom: none; }
+  .scale-row .token { padding: 14px 16px; color: var(--ink-3); }
+  .scale-row .vis { padding: 14px 0; }
+  .scale-row .vis span {
+    display: block;
+    height: 14px;
+    background: var(--oc-purple);
+  }
+  .scale-row .px { padding: 14px 16px; text-align: right; color: var(--ink); }
+
+  .grid-demo {
+    background: var(--paper-cool);
+    padding: 32px;
+    border: 1px solid var(--ink);
+    position: relative;
+  }
+  .grid-cols {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 8px;
+    height: 320px;
+  }
+  .grid-cols .col {
+    background: rgba(112,48,160,0.08);
+    border: 1px solid rgba(112,48,160,0.18);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 6px 0;
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--oc-purple);
+  }
+  .grid-caption {
+    margin-top: 12px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* ───────────────── 7. Components ───────────────── */
+  .comp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .comp-card {
+    border: 1px solid var(--ink);
+    padding: 32px;
+    background: var(--paper);
+  }
+  .comp-card.wide { grid-column: 1 / -1; }
+  .comp-card h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    margin: 0 0 24px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-3);
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+  }
+  .comp-card h4 .num { color: var(--ink); }
+
+  /* Buttons (sharp, brand book style — overrides app's pill style) */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    padding: 0 20px;
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+    transition: background-color 120ms ease, color 120ms ease, border-color 120ms ease;
+    border-radius: 2px;
+  }
+  .btn-primary { background: var(--oc-purple); color: white; border-color: var(--oc-purple); }
+  .btn-primary:hover { background: var(--oc-purple-dark); border-color: #2B0E45; }
+  .btn-secondary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .btn-secondary:hover { background: var(--ink-2); border-color: var(--ink-2); }
+  .btn-outline { background: transparent; color: var(--ink); border-color: var(--ink); }
+  .btn-outline:hover { background: var(--ink); color: var(--paper); }
+  .btn-ghost { background: transparent; color: var(--ink); border-color: transparent; }
+  .btn-ghost:hover { background: var(--paper-cool); color: var(--oc-purple); }
+  .btn-disabled { background: var(--paper-cool); color: var(--ink-4); border-color: var(--rule); cursor: not-allowed; }
+  .btn:focus-visible { outline: 2px solid var(--oc-purple); outline-offset: 2px; }
+  .btn-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .btn-row + .btn-row { margin-top: 16px; }
+
+  /* Inputs */
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field label {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-2);
+    letter-spacing: 0.01em;
+  }
+  .field .hint {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-4);
+    letter-spacing: 0.02em;
+  }
+  .input {
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid var(--rule-strong);
+    background: var(--paper);
+    font-family: var(--sans);
+    font-size: 14px;
+    color: var(--ink);
+    border-radius: 2px;
+    transition: border-color 120ms ease, box-shadow 120ms ease;
+  }
+  .input:focus {
+    outline: none;
+    border-color: var(--oc-purple);
+    box-shadow: 0 0 0 3px var(--oc-purple-50);
+  }
+  .input::placeholder { color: var(--ink-4); }
+  .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  /* Sample card */
+  .demo-card {
+    border: 1px solid var(--rule-strong);
+    padding: 28px;
+    background: var(--paper);
+    display: grid;
+    gap: 16px;
+  }
+  .demo-card .eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--oc-purple);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .demo-card h5 {
+    font-family: var(--serif);
+    font-size: 24px;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.15;
+  }
+  .demo-card p {
+    margin: 0;
+    color: var(--ink-3);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .demo-card .foot {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* Badges */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    font-family: var(--sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+  .badge::before {
+    content: "";
+    width: 6px; height: 6px;
+    background: currentColor;
+    display: inline-block;
+  }
+  .badge-default  { background: var(--oc-purple-50); color: #2B0E45; }
+  .badge-neutral  { background: var(--paper-cool); color: var(--ink-2); }
+  .badge-success  { background: #ECF8F0; color: #156B3A; }
+  .badge-warning  { background: #FBF3DE; color: #7A5300; }
+  .badge-error    { background: #FBEAE6; color: #8B1D0C; }
+  .badge-outline  { background: transparent; color: var(--ink); border-color: var(--ink); }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  /* Code block */
+  .codeblock {
+    background: var(--ink);
+    color: #E8E5EA;
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.7;
+    padding: 24px;
+    overflow-x: auto;
+    border-radius: 2px;
+  }
+  .codeblock .c-key { color: #B180F8; }
+  .codeblock .c-str { color: #F0C078; }
+  .codeblock .c-com { color: #6F6F6F; font-style: italic; }
+  .codeblock .c-fn  { color: #C5B6FF; }
+  .codeblock .c-num { color: #18C57F; }
+  .code-bar {
+    background: #1F1F1F;
+    color: #B0B0B0;
+    font-family: var(--mono);
+    font-size: 11px;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .code-bar .dots { display: inline-flex; gap: 6px; }
+  .code-bar .dots i { width: 8px; height: 8px; background: #3a3a3a; border-radius: 50%; display: inline-block; }
+
+  /* ───────────────── 8. Voice & tone ───────────────── */
+  .voice-table {
+    border: 1px solid var(--ink);
+    border-collapse: collapse;
+    width: 100%;
+  }
+  .voice-table th, .voice-table td {
+    padding: 20px 24px;
+    text-align: left;
+    vertical-align: top;
+    border-bottom: 1px solid var(--rule);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .voice-table tr:last-child td { border-bottom: none; }
+  .voice-table th {
+    width: 50%;
+    border-right: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-3);
+    font-weight: 600;
+    background: var(--paper);
+  }
+  .voice-table th + th { border-right: 1px solid var(--rule); }
+  .voice-table td { border-right: 1px solid var(--rule); }
+  .voice-table td:last-child { border-right: none; }
+  .voice-table .say { color: var(--ink); }
+  .voice-table .dont { color: var(--ink-3); text-decoration: line-through; text-decoration-color: var(--error); text-decoration-thickness: 1px; }
+  .voice-table .tag {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-4);
+    margin-top: 8px;
+  }
+
+  /* ───────────────── 9. Colophon ───────────────── */
+  .colophon {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 96px 32px 56px;
+    border-bottom: none;
+  }
+  .colophon .container { color: var(--paper-warm); }
+  .colophon .top {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    padding-bottom: 64px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+  .colophon h2 {
+    font-family: var(--serif);
+    font-size: 72px;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    font-weight: 800;
+    margin: 0;
+    color: var(--paper);
+  }
+  .colophon h2 em { color: var(--oc-purple-light); font-style: normal; font-weight: 800; }
+  .colophon .cta-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 32px;
+  }
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 24px;
+    background: var(--paper);
+    color: var(--ink);
+    border: 1px solid var(--paper);
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: background 120ms ease;
+  }
+  .cta:hover { background: var(--oc-purple-light); border-color: var(--oc-purple-light); }
+  .cta svg { width: 14px; height: 14px; }
+
+  .colophon-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    padding: 48px 0;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(255,255,255,0.55);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+  .colophon-meta strong { display: block; color: var(--paper); margin-bottom: 6px; font-weight: 600; }
+
+  .colophon-foot {
+    padding-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .colophon-foot .marks { display: flex; gap: 24px; }
+
+  /* Logo image styles — use the original logo files */
+  .oc-lockup {
+    height: 44px;
+    width: auto;
+    display: block;
+  }
+  .oc-lockup.reversed { filter: brightness(0) invert(1); }
+  .oc-lockup.mono     { filter: grayscale(1) brightness(0); }
+  .dk-mark {
+    height: 56px;
+    width: auto;
+    display: block;
+  }
+  .dk-mark.reversed { filter: brightness(0) invert(1); }
+  .dk-mark.mono     { filter: grayscale(1) brightness(0.15); }
+
+  /* Logo grid cell display tweaks */
+  .logo-cell .display img.oc-lockup,
+  .logo-cell .display img.dk-mark { height: 52px; }
+
+  /* Clear-space diagram needs a smaller mark */
+  .clear-space .oc-lockup { height: 36px; }
+
+  /* Misuse cell logos */
+  .misuse-cell .stage .oc-lockup { height: 32px; }
+
+  /* Responsive */
+  @media (max-width: 1000px) {
+    .hero-grid, .arch, .type-hero, .spacing-wrap, .comp-grid, .editorial, .colophon .top { grid-template-columns: 1fr; }
+    .specimen { font-size: 200px; }
+    .hero h1 { font-size: 96px; }
+    .logo-grid, .misuse, .swatch-row { grid-template-columns: 1fr 1fr; }
+    .colophon-meta { grid-template-columns: 1fr 1fr; }
+    .hero-foot { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    section { padding: 64px 20px; }
+    .hero { padding: 48px 20px 64px; }
+    .specimen { font-size: 140px; }
+    .logo-grid, .misuse, .swatch-row, .input-row, .colophon-meta, .hero-foot { grid-template-columns: 1fr; }
+    .topbar nav { display: none; }
+    .color-block { grid-template-columns: 1fr; }
+    .wcag { border-left: none; border-top: 1px solid var(--ink); }
+  }
+</style>
+</head>
+<body>
+
+<!-- ───────────────── Top bar ───────────────── -->
+<header class="topbar">
+  <div class="mark">One Convergence</div>
+  <nav>
+    <a href="#hero">Cover</a>
+    <a href="#architecture">Architecture</a>
+    <a href="#logo">Logo</a>
+    <a href="#color">Color</a>
+    <a href="#type">Type</a>
+    <a href="#grid">Grid</a>
+    <a href="#components">Components</a>
+    <a href="#voice">Voice</a>
+  </nav>
+  <div>VOL. 01 · 2026</div>
+</header>
+
+<!-- ───────────────── 1. Hero ───────────────── -->
+<section id="hero" class="hero" data-screen-label="01 Cover">
+  <div class="hero-grid">
+    <div class="hero-meta">
+      <div class="row"><span>Document</span><span>Brand Guidelines</span></div>
+      <div class="row"><span>Volume</span><span>01 · 2026 Edition</span></div>
+      <div class="row"><span>Issued</span><span>15 May 2026</span></div>
+      <div class="row"><span>Stewardship</span><span>Brand & Design, One Convergence</span></div>
+    </div>
+    <div></div>
+  </div>
+  <div style="max-width:1320px; margin: 0 auto;">
+    <h1>
+      One<br>
+      Conver<em style="font-style: normal; font-weight: 800;">gence.</em>
+    </h1>
+    <p class="hero-tagline">
+      The system of record for our identity — a parent brand, a flagship platform, and the visual language that holds them together across product, marketing, and enterprise communications.
+    </p>
+  </div>
+  <div class="hero-foot">
+    <div><strong>01 · Architecture</strong>Parent &nbsp;→&nbsp; Product</div>
+    <div><strong>02 · Logo</strong>Lockup, clear-space, misuse</div>
+    <div><strong>03 · Color &amp; Type</strong>Purple, ink, and editorial system</div>
+    <div><strong>04 · Voice</strong>Plainspoken, technically credible</div>
+  </div>
+</section>
+
+<!-- ───────────────── 2. Brand architecture ───────────────── -->
+<section id="architecture">
+  <div class="container">
+    <div class="sec-meta">
+      <span><span class="num">§ 01</span> &nbsp; Brand Architecture</span>
+      <span>One company. One platform. One visual system.</span>
+    </div>
+
+    <h2 style="font-family: var(--serif); font-size: 64px; font-weight: 800; letter-spacing: -0.035em; line-height: 1.02; margin: 0 0 24px; max-width: 24ch;">
+      A parent <em style="color: var(--oc-purple); font-style: normal; font-weight: inherit;">company</em>, a flagship product.
+    </h2>
+    <p style="font-size: 17px; line-height: 1.55; color: var(--ink-2); max-width: 56ch; margin: 0 0 56px;">
+      One Convergence is the parent brand. DKube is its flagship AI/MLOps platform.
+      The two marks operate on a clear hierarchy: One Convergence speaks to the
+      enterprise relationship; DKube speaks to the practitioner.
+    </p>
+
+    <div class="arch">
+      <!-- Parent -->
+      <div class="arch-col">
+        <div class="arch-cap">Fig. 01 — Parent brand</div>
+        <div class="arch-lockup">
+          <img src="assets/oc-logo-official.png" alt="One Convergence" class="oc-lockup">
+        </div>
+        <h3 class="arch-h" style="font-size: 28px; margin: 0 0 16px;">The company.</h3>
+        <p>
+          Use the One Convergence wordmark when speaking on behalf of the company —
+          corporate communications, partnerships, investor materials, and the
+          enterprise homepage. It carries authority and continuity.
+        </p>
+        <div class="arch-rule"></div>
+        <div class="arch-fig" style="margin-bottom: 12px;">Apply when</div>
+        <ul class="arch-list">
+          <li>Corporate site, careers, press releases</li>
+          <li>Customer agreements and contracts</li>
+          <li>Annual reports and investor decks</li>
+          <li>Multi-product or platform-wide announcements</li>
+        </ul>
+      </div>
+
+      <!-- Product -->
+      <div class="arch-col">
+        <div class="arch-cap">Fig. 02 — Flagship product</div>
+        <div class="arch-lockup">
+          <div class="lockup-dk">
+            <img src="assets/dkube-mark-official.avif" alt="DKube" class="dk-mark">
+            <div class="name">DKube<sup class="tm">TM</sup></div>
+          </div>
+        </div>
+        <h3 class="arch-h" style="font-size: 28px; margin: 0 0 16px;">The platform.</h3>
+        <p>
+          Use the DKube mark inside the product, on the product site, and in
+          technical materials addressed to ML engineers and platform teams.
+          DKube is positioned as a confident, practitioner-first MLOps platform.
+        </p>
+        <div class="arch-rule"></div>
+        <div class="arch-fig" style="margin-bottom: 12px;">Apply when</div>
+        <ul class="arch-list">
+          <li>Product UI, documentation, SDK</li>
+          <li>Developer marketing and DevRel</li>
+          <li>Pricing, technical white papers</li>
+          <li>Product-led launches and integrations</li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); margin: 24px 0 0;">
+      Endorsement formula &nbsp;·&nbsp; <span style="color: var(--ink);">DKube — an MLOps platform by One Convergence</span>
+    </p>
+  </div>
+</section>
+
+<!-- ───────────────── 3. Logo system ───────────────── -->
+<section id="logo">
+  <div class="container">
+    <div class="sec-meta">
+      <span><span class="num">§ 02</span> &nbsp; Logo System</span>
+      <span>Marks, clear-space, misuse</span>
+    </div>
+
+    <div class="cat-title">
+      <span class="num">02.1</span>
+      <h3>One Convergence — primary mark</h3>
+      <span class="aside">SVG · Vector master</span>
+    </div>
+
+    <div class="logo-grid">
+      <!-- Primary -->
+      <div class="logo-cell">
+        <span class="label">Fig. 03 · Primary</span>
+        <div class="display">
+          <img src="assets/oc-logo-official.png" alt="One Convergence" class="oc-lockup">
+        </div>
+        <div class="meta">On light · default</div>
+      </div>
+      <!-- Reversed -->
+      <div class="logo-cell dark">
+        <span class="label">Fig. 04 · Reversed</span>
+        <div class="display">
+          <img src="assets/oc-logo-official.png" alt="One Convergence" class="oc-lockup reversed">
+        </div>
+        <div class="meta">On ink · dark surfaces</div>
+      </div>
+      <!-- Monochrome -->
+      <div class="logo-cell">
+        <span class="label">Fig. 05 · Monochrome</span>
+        <div class="display">
+          <img src="assets/oc-logo-official.png" alt="One Convergence" class="oc-lockup">
+        </div>
+        <div class="meta">Single-color · print, fax, embroidery</div>
+      </div>
+      <!-- Glyph only -->
+      <div class="logo-cell purple">
+        <span class="label">Fig. 06 · Glyph only</span>
+        <div class="display">
+          <img src="assets/oc-logo-official.png" alt="OC" class="oc-lockup">
+        </div>
+        <div class="meta">Favicon · avatars · app icons</div>
+      </div>
+
+      <!-- Clear space -->
+      <div class="logo-cell" style="grid-column: span 2;">
+        <span class="label">Fig. 07 · Clear-space — minimum margin = ½ × glyph height</span>
+        <div class="display" style="justify-content: center;">
+          <div class="clear-space">
+            <span class="x t">½ x</span><span class="x r">½ x</span><span class="x b">½ x</span><span class="x l">½ x</span>
+            <img src="assets/oc-logo-official.png" alt="One Convergence" class="oc-lockup">
+          </div>
+        </div>
+        <div class="meta">No element — type, image, edge — may enter the clear-space.</div>
+      </div>
+
+      <!-- Min size -->
+      <div class="logo-cell" style="grid-column: span 2;">
+        <span class="label">Fig. 08 · Minimum size</span>
+        <div class="display" style="gap: 48px; justify-content: flex-start; align-items: flex-end; padding-bottom: 8px;">
+          <div style="display:flex; flex-direction: column; align-items: flex-start; gap: 8px;">
+            <div class="lockup-oc">
+              <div class="glyph" style="width: 18px; height: 18px;">
+                <img src="assets/oc-logo-official.png" alt="OC" class="oc-lockup">
+              </div>
+              <div class="name" style="font-size: 12px;"><b>One</b>&thinsp;Convergence</div>
+            </div>
+            <span style="font-family: var(--mono); font-size: 10px; color: var(--ink-3); letter-spacing: 0.04em;">DIGITAL · 18px MIN</span>
+          </div>
+          <div style="display:flex; flex-direction: column; align-items: flex-start; gap: 8px;">
+            <div class="lockup-oc">
+              <div class="glyph" style="width: 28px; height: 28px;">
+                <img src="assets/oc-logo-official.png" alt="OC" class="oc-lockup">
+              </div>
+              <div class="name" style="font-size: 18px;"><b>One</b>&thinsp;Convergence</div>
+            </div>
+            <span style="font-family: var(--mono); font-size: 10px; color: var(--ink-3); letter-spacing: 0.04em;">PRINT · 24pt MIN</span>
+          </div>
+        </div>
+        <div class="meta">Below these sizes the wordmark loses legibility — use the glyph only.</div>
+      </div>
+    </div>
+
+    <!-- DKube mark -->
+    <div class="cat-title">
+      <span class="num">02.2</span>
+      <h3>DKube — flagship product mark</h3>
+      <span class="aside">SVG · Vector master</span>
+    </div>
+
+    <div class="logo-grid">
+      <div class="logo-cell">
+        <span class="label">Fig. 09 · Primary</span>
+        <div class="display"><div class="lockup-dk"><img src="assets/dkube-mark-official.avif" alt="DKube" class="dk-mark"><div class="name">DKube<sup class="tm">TM</sup></div></div></div>
+        <div class="meta">On light · default</div>
+      </div>
+      <div class="logo-cell dark">
+        <span class="label">Fig. 10 · Reversed</span>
+        <div class="display"><div class="lockup-dk" style="color: white;"><img src="assets/dkube-mark-official.avif" alt="DKube" class="dk-mark"><div class="name">DKube<sup class="tm">TM</sup></div></div></div>
+        <div class="meta">On ink · dark surfaces</div>
+      </div>
+      <div class="logo-cell">
+        <span class="label">Fig. 11 · Monochrome</span>
+        <div class="display"><div class="lockup-dk"><img src="assets/dkube-mark-official.avif" alt="DKube" class="dk-mark mono"><div class="name" style="color: var(--ink);">DKube<sup class="tm" style="color: var(--ink);">TM</sup></div></div></div>
+        <div class="meta">Single-color · print &amp; technical</div>
+      </div>
+      <div class="logo-cell purple">
+        <span class="label">Fig. 12 · Glyph only</span>
+        <div class="display">
+          <img src="assets/dkube-mark-official.avif" alt="DKube" class="dk-mark reversed">
+        </div>
+        <div class="meta">Favicon · app icons</div>
+      </div>
+    </div>
+
+    <!-- Misuse -->
+    <div class="cat-title">
+      <span class="num">02.3</span>
+      <h3>Misuse — common errors</h3>
+      <span class="aside">Avoid in all media</span>
+    </div>
+
+    <div class="misuse">
+      <div class="misuse-cell">
+        <span class="tag">Don't</span>
+        <div class="stage">
+          <div class="lockup-oc" style="transform: scaleX(1.6); transform-origin: left center;">
+            <div class="glyph"><img src="assets/oc-logo-official.png" alt="OC" class="oc-lockup"></div>
+            <div class="name"><b>One</b>&thinsp;Convergence</div>
+          </div>
+        </div>
+        <div class="desc">01 · Don't stretch or distort</div>
+      </div>
+      <div class="misuse-cell">
+        <span class="tag">Don't</span>
+        <div class="stage">
+          <img src="assets/oc-logo-official.png" alt="One Convergence" class="oc-lockup">
+        </div>
+        <div class="desc">03 · Don't rotate</div>
+      </div>
+      <div class="misuse-cell busy">
+        <span class="tag">Don't</span>
+        <div class="stage">
+          <div class="lockup-oc" style="color: white;">
+            <div class="glyph"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="20" stroke="#ffffff" stroke-width="2" fill="none"/><circle cx="22" cy="22" r="10" fill="#7030A0"/></svg></div>
+            <div class="name" style="color: white;"><b>One</b>&thinsp;Convergence</div>
+          </div>
+        </div>
+        <div class="desc">04 · Don't place on busy backgrounds</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────── 4. Color ───────────────── -->
+<section id="color">
+  <div class="container">
+    <div class="sec-meta">
+      <span><span class="num">§ 03</span> &nbsp; Color Palette</span>
+      <span>Purple &amp; white dominant · neutrals primary · accents reserved</span>
+    </div>
+
+    <h2 style="font-family: var(--serif); font-size: 64px; font-weight: 800; letter-spacing: -0.035em; line-height: 1; margin: 0 0 24px; max-width: 18ch;">
+      <em style="color: var(--oc-purple); font-style: normal; font-weight: inherit;">Purple</em> on white.<br>The rest is restraint.
+    </h2>
+    <p style="font-size: 17px; line-height: 1.55; color: var(--ink-2); max-width: 56ch; margin: 0 0 56px;">
+      Purple #7030A0 carries the brand. White and ink hold the page together.
+      Every other hue earns its place — used only to signal state, never to decorate.
+    </p>
+
+    <!-- Primary -->
+    <div class="cat-title">
+      <span class="num">03.1</span>
+      <h3>Primary — Purple scale</h3>
+      <span class="aside">Brand-defining · dominant</span>
+    </div>
+    <div class="color-block">
+      <div class="swatch-row" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="swatch" style="background: var(--oc-purple-dark); color: white;">
+          <div class="top"><span>OC · Purple 700</span><span>Dark</span></div>
+          <div>
+            <h4 class="name">Purple Dark</h4>
+            <div class="specs" style="margin-top: 14px; color: rgba(255,255,255,0.85);">
+              <div><span class="k">HEX</span>#4A1F6C</div>
+              <div><span class="k">RGB</span>74 · 31 · 108</div>
+              <div><span class="k">HSL</span>275° 55% 27%</div>
+            </div>
+          </div>
+        </div>
+        <div class="swatch" style="background: var(--oc-purple); color: white;">
+          <div class="top"><span>OC · Purple 500 — Signature</span><span style="background: white; color: var(--oc-purple); padding: 2px 6px;">PRIMARY</span></div>
+          <div>
+            <h4 class="name">One Convergence Purple</h4>
+            <div class="specs" style="margin-top: 14px; color: rgba(255,255,255,0.9);">
+              <div><span class="k">HEX</span>#7030A0</div>
+              <div><span class="k">RGB</span>112 · 48 · 160</div>
+              <div><span class="k">HSL</span>275° 54% 41%</div>
+              <div><span class="k">CMYK</span>71 · 84 · 0 · 11</div>
+              <div><span class="k">PANTONE</span>2603 C</div>
+            </div>
+          </div>
+        </div>
+        <div class="swatch" style="background: var(--oc-purple-light); color: var(--ink);">
+          <div class="top"><span>OC · Purple 300</span><span>Light</span></div>
+          <div>
+            <h4 class="name">Purple Light</h4>
+            <div class="specs" style="margin-top: 14px;">
+              <div><span class="k">HEX</span>#B180F8</div>
+              <div><span class="k">RGB</span>177 · 128 · 248</div>
+              <div><span class="k">HSL</span>266° 88% 74%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wcag">
+        <h4>WCAG 2.1 · Contrast</h4>
+        <div class="wcag-row">
+          <span class="pair">Purple 500 / White</span>
+          <span class="ratio pass">8.78 : 1 &nbsp;AAA</span>
+        </div>
+        <div class="wcag-row">
+          <span class="pair">Purple 700 / White</span>
+          <span class="ratio pass">12.4 : 1 &nbsp;AAA</span>
+        </div>
+        <div class="wcag-row">
+          <span class="pair">Purple 300 / White</span>
+          <span class="ratio fail">2.65 : 1 &nbsp;Fail</span>
+        </div>
+        <div class="wcag-row">
+          <span class="pair">Purple 300 / Ink #141</span>
+          <span class="ratio pass">8.10 : 1 &nbsp;AAA</span>
+        </div>
+        <p style="font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin: 8px 0 0; line-height: 1.5;">
+          Purple 300 is a tint — use only on dark backgrounds, decorative fills, or as an accent. Never set body copy in Purple 300.
+        </p>
+      </div>
+    </div>
+
+    <!-- Neutrals -->
+    <div class="cat-title">
+      <span class="num">03.2</span>
+      <h3>Neutrals — the working palette</h3>
+      <span class="aside">Carries 80% of the surface area</span>
+    </div>
+    <div class="color-block">
+      <div class="swatch-row" style="grid-template-columns: repeat(5, 1fr);">
+        <div class="swatch" style="background: var(--ink); color: white;">
+          <div class="top"><span>Ink 900</span></div>
+          <div>
+            <h4 class="name" style="font-size: 18px;">Ink</h4>
+            <div class="specs" style="margin-top: 8px; color: rgba(255,255,255,0.85);">
+              <div><span class="k">HEX</span>#141414</div>
+              <div><span class="k">RGB</span>20·20·20</div>
+            </div>
+          </div>
+        </div>
+        <div class="swatch" style="background: var(--ink-2); color: white;">
+          <div class="top"><span>Graphite 700</span></div>
+          <div>
+            <h4 class="name" style="font-size: 18px;">Graphite</h4>
+            <div class="specs" style="margin-top: 8px; color: rgba(255,255,255,0.85);">
+              <div><span class="k">HEX</span>#2A2A2A</div>
+              <div><span class="k">RGB</span>42·42·42</div>
+            </div>
+          </div>
+        </div>
+        <div class="swatch" style="background: var(--ink-3); color: white;">
+          <div class="top"><span>Slate 500</span></div>
+          <div>
+            <h4 class="name" style="font-size: 18px;">Slate</h4>
+            <div class="specs" style="margin-top: 8px; color: rgba(255,255,255,0.85);">
+              <div><span class="k">HEX</span>#5A5A5A</div>
+              <div><span class="k">RGB</span>90·90·90</div>
+            </div>
+          </div>
+        </div>
+        <div class="swatch" style="background: var(--paper-cool); color: var(--ink);">
+          <div class="top"><span>Mist 100</span></div>
+          <div>
+            <h4 class="name" style="font-size: 18px;">Mist</h4>
+            <div class="specs" style="margin-top: 8px;">
+              <div><span class="k">HEX</span>#F6F5F7</div>
+              <div><span class="k">RGB</span>246·245·247</div>
+            </div>
+          </div>
+        </div>
+        <div class="swatch" style="background: var(--paper); color: var(--ink); border-right: 1px solid var(--ink);">
+          <div class="top"><span>Paper 000</span></div>
+          <div>
+            <h4 class="name" style="font-size: 18px;">Paper</h4>
+            <div class="specs" style="margin-top: 8px;">
+              <div><span class="k">HEX</span>#FFFFFF</div>
+              <div><span class="k">RGB</span>255·255·255</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wcag">
+        <h4>WCAG · Body text</h4>
+        <div class="wcag-row"><span class="pair">Ink 900 / Paper</span><span class="ratio pass">17.5 : 1 AAA</span></div>
+        <div class="wcag-row"><span class="pair">Graphite / Paper</span><span class="ratio pass">14.6 : 1 AAA</span></div>
+        <div class="wcag-row"><span class="pair">Slate 500 / Paper</span><span class="ratio pass">6.55 : 1 AA+</span></div>
+        <div class="wcag-row"><span class="pair">Ink 900 / Mist 100</span><span class="ratio pass">16.4 : 1 AAA</span></div>
+        <p style="font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin: 8px 0 0; line-height: 1.5;">
+          Slate is the lightest acceptable text color for body copy. Below Slate, restrict to captions and labels at ≥12px.
+        </p>
+      </div>
+    </div>
+
+    <!-- Accents -->
+    <div class="cat-title">
+      <span class="num">03.3</span>
+      <h3>Supporting accents</h3>
+      <span class="aside">Use sparingly · max one per surface</span>
+    </div>
+    <div class="color-block">
+      <div class="swatch-row" style="grid-template-columns: repeat(3, 1fr);">
+        <div class="swatch" style="background: var(--cobalt); color: white;">
+          <div class="top"><span>Cobalt 600</span><span>Editorial / data</span></div>
+          <div>
+            <h4 class="name">Cobalt</h4>
+            <div class="specs" style="margin-top: 14px; color: rgba(255,255,255,0.9);">
+              <div><span class="k">HEX</span>#1F3FBF</div>
+              <div><span class="k">RGB</span>31 · 63 · 191</div>
+            </div>
+          </div>
+        </div>
+        <div class="swatch" style="background: var(--ember); color: white;">
+          <div class="top"><span>Ember 600</span><span>Highlight / pull-quote</span></div>
+          <div>
+            <h4 class="name">Ember</h4>
+            <div class="specs" style="margin-top: 14px; color: rgba(255,255,255,0.9);">
+              <div><span class="k">HEX</span>#C2410C</div>
+              <div><span class="k">RGB</span>194 · 65 · 12</div>
+            </div>
+          </div>
+        </div>
+        <div class="swatch" style="background: var(--paper-warm); color: var(--ink);">
+          <div class="top"><span>Warm Paper</span><span>Editorial background</span></div>
+          <div>
+            <h4 class="name">Warm Paper</h4>
+            <div class="specs" style="margin-top: 14px;">
+              <div><span class="k">HEX</span>#FAF8F4</div>
+              <div><span class="k">RGB</span>250 · 248 · 244</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wcag">
+        <h4>Usage rules</h4>
+        <p style="font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin: 0; line-height: 1.6;">
+          Accent colors never exceed 5% of a surface. They mark editorial moments — pull-quotes, datapoints, callouts — not UI states. The white-and-purple identity must remain dominant.
+        </p>
+      </div>
+    </div>
+
+    <!-- Semantic -->
+    <div class="cat-title">
+      <span class="num">03.4</span>
+      <h3>Semantic — status &amp; state</h3>
+      <span class="aside">Product UI only</span>
+    </div>
+    <div class="color-block">
+      <div class="swatch-row" style="grid-template-columns: repeat(4, 1fr);">
+        <div class="swatch" style="background: var(--success); color: white;">
+          <div class="top"><span>Success</span><span>↑ training run passed</span></div>
+          <div>
+            <h4 class="name" style="font-size: 20px;">Success</h4>
+            <div class="specs" style="margin-top: 10px; color: rgba(255,255,255,0.9);">
+              <div><span class="k">HEX</span>#18A957</div>
+              <div><span class="k">RGB</span>24 · 169 · 87</div>
+            </div>
+          </div>
+        </div>
+        <div class="swatch" style="background: var(--warning); color: white;">
+          <div class="top"><span>Warning</span><span>⚠ quota at 80%</span></div>
+          <div>
+            <h4 class="name" style="font-size: 20px;">Warning</h4>
+            <div class="specs" style="margin-top: 10px; color: rgba(255,255,255,0.9);">
+              <div><span class="k">HEX</span>#C2870B</div>
+              <div><span class="k">RGB</span>194 · 135 · 11</div>
+            </div>
+          </div>
+        </div>
+        <div class="swatch" style="background: var(--error); color: white;">
+          <div class="top"><span>Error</span><span>× pod failed</span></div>
+          <div>
+            <h4 class="name" style="font-size: 20px;">Error</h4>
+            <div class="specs" style="margin-top: 10px; color: rgba(255,255,255,0.9);">
+              <div><span class="k">HEX</span>#C2240C</div>
+              <div><span class="k">RGB</span>194 · 36 · 12</div>
+            </div>
+          </div>
+        </div>
+        <div class="swatch" style="background: var(--info); color: white;">
+          <div class="top"><span>Info</span><span>ⓘ new release</span></div>
+          <div>
+            <h4 class="name" style="font-size: 20px;">Info</h4>
+            <div class="specs" style="margin-top: 10px; color: rgba(255,255,255,0.9);">
+              <div><span class="k">HEX</span>#1F3FBF</div>
+              <div><span class="k">RGB</span>31 · 63 · 191</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="wcag">
+        <h4>State colors</h4>
+        <p style="font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin: 0 0 8px; line-height: 1.6;">
+          Used only in product UI to communicate machine state. Never decorative. Always paired with an icon and a textual label for accessibility — color is the third signal, not the first.
+        </p>
+        <p style="font-family: var(--mono); font-size: 11px; color: var(--ink-3); margin: 0; line-height: 1.6;">
+          All four pass AA against Paper (4.5:1+).
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────── 5. Typography ───────────────── -->
+<section id="type">
+  <div class="container">
+    <div class="sec-meta">
+      <span><span class="num">§ 04</span> &nbsp; Typography</span>
+      <span>Manrope (display sans) · Inter (sans UI) · JetBrains Mono (code)</span>
+    </div>
+
+    <div class="type-hero">
+      <div>
+        <p class="specimen">A<em>a</em></p>
+      </div>
+      <div class="specimen-meta">
+        <div>
+          <div class="big">Manrope</div>
+          <p style="color: var(--ink-3); font-family: var(--sans); font-size: 14px; text-transform: none; letter-spacing: 0; line-height: 1.55; max-width: 36ch; margin-bottom: 32px;">
+            A modern, geometric sans-serif used for display, headlines, hero typography, and brand voice moments. Heavy weights (700/800) carry the brand at scale; lighter weights are reserved for sub-display copy. Pairs with Inter for body and JetBrains Mono for technical surfaces.
+          </p>
+        </div>
+        <dl>
+          <dt>Classification</dt><dd>Geometric sans-serif</dd>
+          <dt>Designer</dt><dd>Mikhail Sharanda</dd>
+          <dt>Weights in use</dt><dd>400 · 500 · 600 · 700 · 800</dd>
+          <dt>License</dt><dd>SIL Open Font · Google Fonts</dd>
+          <dt>Fallback</dt><dd>"Inter", system sans</dd>
+          <dt>Italic</dt><dd>Not used — emphasize via weight</dd>
+        </dl>
+      </div>
+    </div>
+
+    <div class="cat-title">
+      <span class="num">04.1</span>
+      <h3>Type scale</h3>
+      <span class="aside">8pt base · responsive</span>
+    </div>
+
+    <div class="type-scale">
+      <div class="row">
+        <div class="cell label-cell">Display</div>
+        <div class="cell sample-cell" style="font-family: var(--serif); font-size: 72px; line-height: 1; letter-spacing: -0.045em; font-weight: 800;">Converge.</div>
+        <div class="cell spec-cell">72 / 72 · -3% · serif 400</div>
+      </div>
+      <div class="row">
+        <div class="cell label-cell">H1</div>
+        <div class="cell sample-cell" style="font-family: var(--serif); font-size: 48px; line-height: 1.05; letter-spacing: -0.04em; font-weight: 700;">Built for ML engineers.</div>
+        <div class="cell spec-cell">48 / 50 · -2.5% · serif 400</div>
+      </div>
+      <div class="row">
+        <div class="cell label-cell">H2</div>
+        <div class="cell sample-cell" style="font-family: var(--serif); font-size: 36px; line-height: 1.1; letter-spacing: -0.035em; font-weight: 700;">A platform, not a checklist.</div>
+        <div class="cell spec-cell">36 / 40 · -2% · serif 500</div>
+      </div>
+      <div class="row">
+        <div class="cell label-cell">H3</div>
+        <div class="cell sample-cell" style="font-family: var(--sans); font-size: 24px; line-height: 1.25; letter-spacing: -0.015em; font-weight: 600;">Training jobs &amp; serving</div>
+        <div class="cell spec-cell">24 / 30 · -1.5% · sans 600</div>
+      </div>
+      <div class="row">
+        <div class="cell label-cell">H4</div>
+        <div class="cell sample-cell" style="font-family: var(--sans); font-size: 18px; line-height: 1.35; letter-spacing: -0.01em; font-weight: 600;">Section heading</div>
+        <div class="cell spec-cell">18 / 24 · -1% · sans 600</div>
+      </div>
+      <div class="row">
+        <div class="cell label-cell">Body Lg</div>
+        <div class="cell sample-cell" style="font-family: var(--sans); font-size: 17px; line-height: 1.55; font-weight: 400;">DKube manages the full MLOps lifecycle.</div>
+        <div class="cell spec-cell">17 / 26 · 0% · sans 400</div>
+      </div>
+      <div class="row">
+        <div class="cell label-cell">Body</div>
+        <div class="cell sample-cell" style="font-family: var(--sans); font-size: 15px; line-height: 1.6; font-weight: 400;">Default UI and prose. Used for everything from product copy to long-form documentation.</div>
+        <div class="cell spec-cell">15 / 24 · 0% · sans 400</div>
+      </div>
+      <div class="row">
+        <div class="cell label-cell">Caption</div>
+        <div class="cell sample-cell" style="font-family: var(--sans); font-size: 12px; line-height: 1.5; color: var(--ink-3); font-weight: 400;">Image caption, figure number, metadata.</div>
+        <div class="cell spec-cell">12 / 18 · 0% · sans 400</div>
+      </div>
+      <div class="row">
+        <div class="cell label-cell">Mono</div>
+        <div class="cell sample-cell" style="font-family: var(--mono); font-size: 13px; line-height: 1.6;">kubectl apply -f dkube-pipeline.yaml</div>
+        <div class="cell spec-cell">13 / 21 · +2% · mono 400</div>
+      </div>
+      <div class="row">
+        <div class="cell label-cell">Label</div>
+        <div class="cell sample-cell" style="font-family: var(--mono); font-size: 11px; line-height: 1.5; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3);">FIG. 14 · TYPE SCALE</div>
+        <div class="cell spec-cell">11 / 16 · +8% · mono 400</div>
+      </div>
+    </div>
+
+    <!-- Editorial paragraph -->
+    <div class="editorial">
+      <p class="pull">
+        DKube turns the messy middle of machine learning — data, training, serving, governance — into a <em>single, auditable pipeline.</em>
+      </p>
+      <div class="body">
+        <p>
+          <span class="drop">F</span>ounded in 2014 and headquartered in Santa Clara, One Convergence builds platforms for organizations whose models matter. Our flagship product, DKube, is an end-to-end MLOps platform used by data science teams in financial services, life sciences, and government to take models from notebook to production without rebuilding their stack every quarter.
+        </p>
+        <p>
+          DKube runs on Kubernetes, integrates with the open-source tools teams already use — Kubeflow, MLflow, JupyterHub, Ray — and adds the parts that enterprise platforms typically lack: a unified data catalog, role-based access, model lineage, and policy-aware serving. It is a platform built for the people who maintain it, not just the people who demo it.
+        </p>
+        <p>
+          The brand reflects that posture. Editorial where it earns the right to be. Precise where it has to be. And — across product, marketing, and the long tail of enterprise paperwork — recognizably One Convergence.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────── 6. Spacing & grid ───────────────── -->
+<section id="grid">
+  <div class="container">
+    <div class="sec-meta">
+      <span><span class="num">§ 05</span> &nbsp; Spacing &amp; Grid</span>
+      <span>4px base · 12-column macro grid</span>
+    </div>
+
+    <h2 style="font-family: var(--serif); font-size: 56px; font-weight: 800; letter-spacing: -0.035em; line-height: 1.02; margin: 0 0 24px; max-width: 22ch;">
+      Composition is a <em style="color: var(--oc-purple); font-style: normal; font-weight: inherit;">rhythm</em>, not a ruler.
+    </h2>
+    <p style="font-size: 17px; line-height: 1.55; color: var(--ink-2); max-width: 56ch; margin: 0 0 56px;">
+      All spacing derives from a 4px base — doubled at small steps, multiplied at larger ones. The 12-column macro grid governs page-level layout; the spacing scale governs everything inside.
+    </p>
+
+    <div class="spacing-wrap">
+      <div>
+        <div class="cat-title" style="margin-top: 0;">
+          <span class="num">05.1</span>
+          <h3 style="font-size: 22px;">Spacing scale</h3>
+          <span class="aside">Token · px</span>
+        </div>
+        <div class="scale-rule">
+          <div class="scale-row"><span class="token">space-1</span><span class="vis"><span style="width: 4px;"></span></span><span class="px">4 px</span></div>
+          <div class="scale-row"><span class="token">space-2</span><span class="vis"><span style="width: 8px;"></span></span><span class="px">8 px</span></div>
+          <div class="scale-row"><span class="token">space-3</span><span class="vis"><span style="width: 12px;"></span></span><span class="px">12 px</span></div>
+          <div class="scale-row"><span class="token">space-4</span><span class="vis"><span style="width: 16px;"></span></span><span class="px">16 px</span></div>
+          <div class="scale-row"><span class="token">space-6</span><span class="vis"><span style="width: 24px;"></span></span><span class="px">24 px</span></div>
+          <div class="scale-row"><span class="token">space-8</span><span class="vis"><span style="width: 32px;"></span></span><span class="px">32 px</span></div>
+          <div class="scale-row"><span class="token">space-12</span><span class="vis"><span style="width: 48px;"></span></span><span class="px">48 px</span></div>
+          <div class="scale-row"><span class="token">space-16</span><span class="vis"><span style="width: 64px;"></span></span><span class="px">64 px</span></div>
+          <div class="scale-row"><span class="token">space-24</span><span class="vis"><span style="width: 96px;"></span></span><span class="px">96 px</span></div>
+        </div>
+        <p style="font-family: var(--mono); font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 16px;">
+          Skip values keep the system legible — 5, 7, 9, 11 are out of system.
+        </p>
+      </div>
+
+      <div>
+        <div class="cat-title" style="margin-top: 0;">
+          <span class="num">05.2</span>
+          <h3 style="font-size: 22px;">12-column macro grid</h3>
+          <span class="aside">Max width 1320 · gutter 32</span>
+        </div>
+        <div class="grid-demo">
+          <div class="grid-cols">
+            <div class="col">01</div><div class="col">02</div><div class="col">03</div><div class="col">04</div>
+            <div class="col">05</div><div class="col">06</div><div class="col">07</div><div class="col">08</div>
+            <div class="col">09</div><div class="col">10</div><div class="col">11</div><div class="col">12</div>
+          </div>
+        </div>
+        <div class="grid-caption">
+          <span>← 1320 max-width →</span><span>32 gutter · 64 page padding</span>
+        </div>
+
+        <!-- Rhythm demo -->
+        <div style="margin-top: 32px; border: 1px solid var(--ink); padding: 24px; background: var(--paper);">
+          <div style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-3); margin-bottom: 16px;">Fig. 17 · Vertical rhythm</div>
+          <div style="font-family: var(--serif); font-size: 24px; line-height: 1.1; margin: 0 0 16px; letter-spacing: -0.02em;">A section heading sits on the rhythm.</div>
+          <div style="font-size: 14px; line-height: 1.6; color: var(--ink-2); margin: 0 0 24px;">Followed by body, with 16px between paragraphs and 24px before a new section. The 4px base creates predictable scroll, predictable scan.</div>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <span class="badge badge-default">space-4</span>
+            <span class="badge badge-neutral">space-6</span>
+            <span class="badge badge-outline">space-12</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────── 7. Components ───────────────── -->
+<section id="components">
+  <div class="container">
+    <div class="sec-meta">
+      <span><span class="num">§ 06</span> &nbsp; Component Samples</span>
+      <span>Sharp edges · thin rules · no shadow</span>
+    </div>
+
+    <h2 style="font-family: var(--serif); font-size: 56px; font-weight: 800; letter-spacing: -0.035em; line-height: 1.02; margin: 0 0 48px; max-width: 22ch;">
+      Quiet components. Loud information.
+    </h2>
+
+    <div class="comp-grid">
+      <!-- Buttons -->
+      <div class="comp-card wide">
+        <h4><span>06.1 — Buttons</span><span class="num">Default · Hover · Focus · Disabled</span></h4>
+        <div class="btn-row">
+          <button class="btn btn-primary">Start a free trial</button>
+          <button class="btn btn-secondary">View documentation</button>
+          <button class="btn btn-outline">Talk to sales</button>
+          <button class="btn btn-ghost">Read changelog</button>
+          <button class="btn btn-disabled" disabled>Disabled</button>
+        </div>
+        <div class="btn-row" style="margin-top: 24px;">
+          <button class="btn btn-primary" style="height: 32px; font-size: 13px;">Small</button>
+          <button class="btn btn-primary">Default</button>
+          <button class="btn btn-primary" style="height: 48px; padding: 0 28px; font-size: 15px;">Large</button>
+        </div>
+        <p style="font-family: var(--mono); font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.04em; margin: 24px 0 0;">
+          Radius 2px · 1px border · no shadow · transition 120ms ease
+        </p>
+      </div>
+
+      <!-- Inputs -->
+      <div class="comp-card">
+        <h4><span>06.2 — Form fields</span><span class="num">Default / Focus / Error</span></h4>
+        <div class="input-row">
+          <div class="field">
+            <label for="i1">Workspace name</label>
+            <input id="i1" class="input" placeholder="acme-research" />
+            <span class="hint">3–40 chars · lowercase, hyphens</span>
+          </div>
+          <div class="field">
+            <label for="i2">Region</label>
+            <input id="i2" class="input" value="us-east-1" />
+            <span class="hint">Inference latency &lt; 40ms</span>
+          </div>
+        </div>
+        <div class="field" style="margin-top: 16px;">
+          <label for="i3" style="color: var(--error);">API token</label>
+          <input id="i3" class="input" value="dk_live_••••" style="border-color: var(--error); box-shadow: 0 0 0 3px #FBEAE6;"/>
+          <span class="hint" style="color: var(--error);">Token has expired — rotate in Settings → Keys.</span>
+        </div>
+      </div>
+
+      <!-- Card -->
+      <div class="comp-card">
+        <h4><span>06.3 — Card</span><span class="num">Product / Pricing / Status</span></h4>
+        <div class="demo-card">
+          <div class="eyebrow">DKube · Pipelines</div>
+          <h5>Training run #2,418 completed</h5>
+          <p>Distributed across 8× A100s in 2 hr 14 min. Loss converged at epoch 38; validation accuracy 0.946. Lineage attached to model registry.</p>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <span class="badge badge-success">Passed</span>
+            <span class="badge badge-default">Production-ready</span>
+          </div>
+          <div class="foot">
+            <span>Pipeline · resnet-50 / fine-tune</span>
+            <span>15 May 2026 · 14:02 UTC</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <div class="comp-card">
+        <h4><span>06.4 — Badges</span><span class="num">Status indicators</span></h4>
+        <div class="badge-row">
+          <span class="badge badge-default">Brand</span>
+          <span class="badge badge-neutral">Neutral</span>
+          <span class="badge badge-success">Healthy</span>
+          <span class="badge badge-warning">At quota</span>
+          <span class="badge badge-error">Failed</span>
+          <span class="badge badge-outline">Beta</span>
+        </div>
+        <p style="font-family: var(--mono); font-size: 11px; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.04em; margin: 24px 0 0;">
+          Always paired with a label. Color is the third signal, not the first.
+        </p>
+      </div>
+
+      <!-- Code block -->
+      <div class="comp-card wide">
+        <h4><span>06.5 — Code block</span><span class="num">Developer surface</span></h4>
+        <div class="code-bar">
+          <span class="dots"><i></i><i></i><i></i></span>
+          <span>dkube-pipeline.py · Python 3.11</span>
+        </div>
+<pre class="codeblock"><code><span class="c-com"># Define a DKube pipeline that fine-tunes and serves a model</span>
+<span class="c-key">from</span> dkube <span class="c-key">import</span> Pipeline, Step
+
+pipe = Pipeline(<span class="c-str">"resnet-finetune"</span>, workspace=<span class="c-str">"acme-research"</span>)
+
+<span class="c-fn">@pipe.step</span>(gpu=<span class="c-num">8</span>, image=<span class="c-str">"dkube/pytorch:2.3"</span>)
+<span class="c-key">def</span> <span class="c-fn">train</span>(dataset, epochs=<span class="c-num">40</span>):
+    model = load_pretrained(<span class="c-str">"resnet-50"</span>)
+    <span class="c-key">return</span> model.fit(dataset, epochs=epochs)
+
+<span class="c-fn">@pipe.serve</span>(replicas=<span class="c-num">2</span>, autoscale=<span class="c-key">True</span>)
+<span class="c-key">def</span> <span class="c-fn">predict</span>(model, image):
+    <span class="c-key">return</span> model.infer(image)
+
+pipe.run()  <span class="c-com"># lineage, metrics, and lineage logged automatically</span></code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────── 8. Voice & tone ───────────────── -->
+<section id="voice">
+  <div class="container">
+    <div class="sec-meta">
+      <span><span class="num">§ 07</span> &nbsp; Voice &amp; Tone</span>
+      <span>Plainspoken · technically credible · enterprise-aware</span>
+    </div>
+
+    <h2 style="font-family: var(--serif); font-size: 56px; font-weight: 800; letter-spacing: -0.035em; line-height: 1.02; margin: 0 0 24px; max-width: 22ch;">
+      We respect the reader's <em style="color: var(--oc-purple); font-style: normal; font-weight: inherit;">time</em>, and their intelligence.
+    </h2>
+    <p style="font-size: 17px; line-height: 1.55; color: var(--ink-2); max-width: 56ch; margin: 0 0 56px;">
+      We speak the language of practitioners — data scientists, ML engineers, platform leads, CIOs. We are technically credible by default and avoid the rehearsed vocabulary of AI marketing.
+    </p>
+
+    <table class="voice-table">
+      <thead>
+        <tr>
+          <th>We say</th>
+          <th>We don't say</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <div class="say">DKube cuts training-job setup from days to minutes.</div>
+            <span class="tag">Specific · measurable</span>
+          </td>
+          <td>
+            <div class="dont">DKube supercharges your AI workflows and unleashes 10× productivity.</div>
+            <span class="tag">Hype · unverifiable</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="say">Run distributed training on Kubernetes without writing Helm charts.</div>
+            <span class="tag">Concrete · what it does</span>
+          </td>
+          <td>
+            <div class="dont">Revolutionize the way your team thinks about AI infrastructure.</div>
+            <span class="tag">Cliché · empty</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="say">Model lineage is automatic. Auditors get one URL.</div>
+            <span class="tag">Plain · ends with a benefit</span>
+          </td>
+          <td>
+            <div class="dont">Our game-changing compliance suite empowers stakeholders end-to-end.</div>
+            <span class="tag">Stuffed · five filler words</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="say">Bring your own cluster, or run on ours. Both work.</div>
+            <span class="tag">Direct · respects the choice</span>
+          </td>
+          <td>
+            <div class="dont">A best-in-class hybrid cloud-native platform for the modern AI enterprise.</div>
+            <span class="tag">Adjective soup</span>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="say">DKube ships every two weeks. Release notes are short on purpose.</div>
+            <span class="tag">Confident · self-aware</span>
+          </td>
+          <td>
+            <div class="dont">DKube is constantly evolving with cutting-edge features delivered seamlessly.</div>
+            <span class="tag">Vague · no actual claim</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top: 56px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px;">
+      <div>
+        <div style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); margin-bottom: 12px;">Always</div>
+        <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; font-size: 14px; color: var(--ink-2);">
+          <li>→ Lead with the verb</li>
+          <li>→ Use real numbers when you have them</li>
+          <li>→ Address the reader as <em>you</em></li>
+          <li>→ Sentence case in UI, headlines, buttons</li>
+          <li>→ One idea per sentence</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); margin-bottom: 12px;">Never</div>
+        <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; font-size: 14px; color: var(--ink-2);">
+          <li>× Revolutionize · supercharge · unleash · game-changing</li>
+          <li>× Synergy · leverage (as a verb)</li>
+          <li>× All-caps for emphasis in prose</li>
+          <li>× Three adjectives in a row</li>
+          <li>× Emoji in product copy</li>
+        </ul>
+      </div>
+      <div>
+        <div style="font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); margin-bottom: 12px;">Tone dial</div>
+        <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; font-size: 14px; color: var(--ink-2);">
+          <li>↗ Marketing — confident, declarative</li>
+          <li>↘ Product UI — neutral, instructional</li>
+          <li>↗ Docs — precise, complete</li>
+          <li>↘ Status &amp; errors — calm, actionable</li>
+          <li>↗ Customer comms — human, accountable</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────────── 9. Colophon / Footer ───────────────── -->
+<section class="colophon" id="colophon" data-screen-label="09 Colophon">
+  <div class="container">
+    <div class="top">
+      <h2>End of <em>document.</em><br>Make it yours.</h2>
+      <div class="cta-block">
+        <p style="font-family: var(--sans); font-size: 16px; line-height: 1.6; color: rgba(255,255,255,0.78); margin: 0; max-width: 38ch;">
+          The full brand asset pack — logos, fonts, swatches, and component code — is available to teams and partners under the standard One Convergence brand license.
+        </p>
+        <a class="cta" href="#download">
+          Download brand assets
+          <svg viewBox="0 0 16 16" fill="none"><path d="M8 2v10m0 0l-4-4m4 4l4-4M2 14h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="square"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="colophon-meta">
+      <div><strong>Version</strong>1.0.0 — May 2026</div>
+      <div><strong>Last updated</strong>15 May 2026</div>
+      <div><strong>Maintained by</strong>Brand &amp; Design, One Convergence</div>
+      <div><strong>Contact</strong>brand@oneconvergence.com</div>
+
+      <div><strong>Set in</strong>Manrope · Inter · JetBrains Mono</div>
+      <div><strong>Typography</strong>9 → 144 optical · 4 weights</div>
+      <div><strong>Primary mark</strong>Purple #7030A0 · brand-defining</div>
+      <div><strong>Print spec</strong>Pantone 2603 C · CMYK 71·84·0·11</div>
+    </div>
+
+    <div class="colophon-foot">
+      <div>© 2014–2026 One Convergence Devices Pvt. Ltd. &nbsp;·&nbsp; All marks held by their respective owners.</div>
+      <div class="marks">
+        <span>Vol. 01</span><span>2026 Edition</span><span>Designed in Santa Clara · Bengaluru</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

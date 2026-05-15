@@ -1,0 +1,90 @@
+/* DKube UI Kit · in-product brand system (legacy product look)
+   Mirrors frontend/src/app/globals.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=Raleway:wght@400;500;600;700;800&family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --purple:        #7030A0;
+  --purple-dark:   #682899;
+  --purple-light:  #B180F8;
+  --purple-50:     #F5EEFB;
+  /* DKube product-mark purples from official logo */
+  --dkube-dark:    #6E55A4;
+  --dkube-light:   #9783C0;
+  --bg:            #F7F7F7;
+  --paper:         #FFFFFF;
+  --ink:           #333333;
+  --ink-2:         #444444;
+  --ink-3:         #777777;
+  --rule:          #EDEDED;
+  --success:       #18D26E;
+  --warning:       #F59E0B;
+  --error:         #ED3C0D;
+  --info:          #3B82F6;
+
+  --display: 'Manrope', 'Inter', sans-serif;
+  --raleway: 'Raleway', sans-serif;
+  --poppins: 'Poppins', sans-serif;
+  --opensans: 'Open Sans', sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink-2); font-family: var(--opensans); font-size: 14px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4, h5 { font-family: var(--raleway); color: var(--ink); margin: 0; }
+button { font-family: inherit; cursor: pointer; }
+
+.card {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  box-shadow: 0 2px 15px rgba(0,0,0,0.06);
+}
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 38px; padding: 0 20px;
+  border-radius: 999px;
+  font-family: var(--poppins);
+  font-weight: 600;
+  font-size: 13px;
+  border: 1px solid transparent;
+  transition: all 200ms ease;
+}
+.btn-primary { background: var(--purple); color: white; }
+.btn-primary:hover { background: var(--purple-light); }
+.btn-outline { background: white; color: var(--purple); border-color: var(--purple); border-width: 2px; }
+.btn-outline:hover { background: var(--purple); color: white; }
+.btn-ghost { color: var(--purple); background: transparent; }
+.btn-ghost:hover { background: var(--purple-50); }
+.btn-sm { height: 30px; padding: 0 14px; font-size: 12px; }
+
+.badge {
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 2px 10px; border-radius: 999px;
+  font-family: var(--poppins);
+  font-size: 11px; font-weight: 600;
+  white-space: nowrap;
+}
+.badge-success { background: rgba(24,210,110,0.12); color: #0F9D58; }
+.badge-warning { background: rgba(245,158,11,0.12); color: #B45309; }
+.badge-error   { background: rgba(237,60,13,0.12); color: var(--error); }
+.badge-purple  { background: var(--purple-50); color: var(--purple); }
+.badge-neutral { background: var(--rule); color: var(--ink-2); }
+
+.input {
+  height: 38px; padding: 0 12px;
+  background: white;
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  font-family: var(--opensans);
+  font-size: 13px;
+  width: 100%;
+  color: var(--ink-2);
+}
+.input:focus { outline: none; border-color: var(--purple); box-shadow: 0 0 0 3px var(--purple-50); }
+
+.label-eyebrow { font-family: var(--poppins); font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+
+/* scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+::-webkit-scrollbar-track { background: transparent; }

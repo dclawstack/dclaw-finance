@@ -6,12 +6,18 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { createInvoice } from "@/lib/api";
+import { Badge } from "@/components/ui/badge";
+import { createInvoice, suggestLineItems } from "@/lib/api";
 
 interface LineItem {
   description: string;
   quantity: number;
   unit_price: number;
+}
+
+interface Suggestion {
+  description: string;
+  typical_unit_price: number;
 }
 
 export default function NewInvoicePage() {
@@ -25,6 +31,8 @@ export default function NewInvoicePage() {
   const [notes, setNotes] = useState("");
   const [items, setItems] = useState<LineItem[]>([{ description: "", quantity: 1, unit_price: 0 }]);
   const [saving, setSaving] = useState(false);
+  const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
+  const [suggestLoading, setSuggestLoading] = useState(false);
 
   const addItem = () => {
     setItems([...items, { description: "", quantity: 1, unit_price: 0 }]);
@@ -32,12 +40,27 @@ export default function NewInvoicePage() {
 
   const removeItem = (idx: number) => {
     setItems(items.filter((_, i) => i !== idx));
+    setSuggestions([]);
   };
 
   const updateItem = (idx: number, field: keyof LineItem, value: string | number) => {
     const next = [...items];
     next[idx] = { ...next[idx], [field]: value };
     setItems(next);
+
+    // Trigger suggestions when first item description is typed
+    if (idx === 0 && field === "description" && clientName && String(value).length > 3) {
+      setSuggestLoading(true);
+      suggestLineItems(clientName, String(value))
+        .then(setSuggestions)
+        .catch(() => setSuggestions([]))
+        .finally(() => setSuggestLoading(false));
+    }
+  };
+
+  const applySuggestion = (s: Suggestion) => {
+    setItems([...items, { description: s.description, quantity: 1, unit_price: s.typical_unit_price }]);
+    setSuggestions((prev) => prev.filter((x) => x.description !== s.description));
   };
 
   const subtotal = items.reduce((sum, it) => sum + it.quantity * it.unit_price, 0);
@@ -64,7 +87,7 @@ export default function NewInvoicePage() {
         })),
       });
       router.push("/invoices");
-    } catch (err) {
+    } catch {
       alert("Failed to create invoice.");
       setSaving(false);
     }
@@ -160,6 +183,28 @@ export default function NewInvoicePage() {
             <Button type="button" variant="outline" onClick={addItem}>
               + Add Item
             </Button>
+
+            {/* AI Suggested line items */}
+            {(suggestLoading || suggestions.length > 0) && (
+              <div className="mt-3 rounded-lg border border-emerald-200 bg-emerald-50 p-3">
+                <div className="mb-2 flex items-center gap-2 text-sm font-medium text-emerald-800">
+                  <span>AI Suggested Items</span>
+                  {suggestLoading && <span className="text-xs text-emerald-600">Loading…</span>}
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {suggestions.map((s, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => applySuggestion(s)}
+                      className="rounded-full border border-emerald-300 bg-white px-3 py-1 text-xs text-emerald-700 hover:bg-emerald-100 transition-colors"
+                    >
+                      + {s.description} (${s.typical_unit_price})
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
           </CardContent>
         </Card>
 

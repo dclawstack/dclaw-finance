@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  .input { height:36px; padding:0 12px; border:1px solid #141414; background:white; font-family:var(--sans); font-size:13px; color:#141414; border-radius:2px; width:100%; }
+  .input::placeholder { color:#8A8A8A; }
+  label { font-family:var(--sans); font-size:11px; font-weight:600; color:#2A2A2A; }
+  .hint { font-family:var(--mono); font-size:10px; color:#8A8A8A; }
+</style></head>
+<body style="padding:20px; width:700px;">
+<div style="border:1px solid var(--ink); padding:24px;">
+  <div style="font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:#5A5A5A; margin-bottom:18px;">Form fields · default / focus / error</div>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:16px;">
+    <div style="display:flex; flex-direction:column; gap:6px;">
+      <label>Workspace name</label>
+      <input class="input" placeholder="acme-research" />
+      <span class="hint">3–40 chars · lowercase, hyphens</span>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:6px;">
+      <label>Region — focused</label>
+      <input class="input" value="us-east-1" style="border-color:#7030A0; box-shadow: 0 0 0 3px #F5EEFB;" />
+      <span class="hint">Inference latency &lt; 40ms</span>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:6px; grid-column: span 2;">
+      <label style="color:#C2240C;">API token</label>
+      <input class="input" value="dk_live_••••" style="border-color:#C2240C; box-shadow: 0 0 0 3px #FBEAE6;" />
+      <span class="hint" style="color:#C2240C;">Token has expired — rotate in Settings → Keys.</span>
+    </div>
+  </div>
+</div>
+</body></html>

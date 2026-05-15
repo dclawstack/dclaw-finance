@@ -1,0 +1,20 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  .badge { display:inline-flex; align-items:center; gap:5px; padding:2px 8px; font-family:var(--sans); font-size:10px; font-weight:600; letter-spacing:0.02em; border-radius:2px; text-transform:uppercase; }
+  .badge::before { content:""; width:5px; height:5px; background:currentColor; display:inline-block; }
+</style></head>
+<body style="padding:20px; width:700px;">
+<div style="border:1px solid #141414; padding:24px; background:white;">
+  <div style="font-family:var(--mono); font-size:10px; color:#7030A0; text-transform:uppercase; letter-spacing:0.08em;">DKube · Pipelines</div>
+  <h5 style="font-family:var(--serif); font-size:24px; font-weight:500; letter-spacing:-0.015em; line-height:1.15; margin:14px 0 10px;">Training run #2,418 completed</h5>
+  <p style="font-family:var(--sans); font-size:13px; line-height:1.55; color:#5A5A5A; margin:0 0 14px;">Distributed across 8× A100s in 2 hr 14 min. Loss converged at epoch 38; validation accuracy 0.946. Lineage attached to model registry.</p>
+  <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px;">
+    <span class="badge" style="background:#ECF8F0; color:#156B3A;">Passed</span>
+    <span class="badge" style="background:#F5EEFB; color:#2B0E45;">Production-ready</span>
+  </div>
+  <div style="display:flex; justify-content:space-between; padding-top:14px; border-top:1px solid #E5E5E5; font-family:var(--mono); font-size:10px; text-transform:uppercase; color:#5A5A5A; letter-spacing:0.04em;">
+    <span>Pipeline · resnet-50 / fine-tune</span>
+    <span>15 May 2026 · 14:02 UTC</span>
+  </div>
+</div>
+</body></html>

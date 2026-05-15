@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>DClaw Finance · One Convergence · DKube</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+/* ── OC Design Tokens ─────────────────────────── */
+:root {
+  --oc-purple:       #7030A0;
+  --oc-purple-dark:  #4A1F6C;
+  --oc-purple-light: #B180F8;
+  --oc-purple-25:    #FAF6FD;
+  --oc-purple-50:    #F5EEFB;
+  --oc-purple-100:   #E7D8F4;
+  --ink:             #141414;
+  --ink-2:           #2A2A2A;
+  --ink-3:           #5A5A5A;
+  --ink-4:           #8A8A8A;
+  --rule:            #E5E5E5;
+  --paper:           #FFFFFF;
+  --paper-cool:      #F6F5F7;
+  --paper-warm:      #FAF8F4;
+  --success:         #18A957;
+  --warning:         #C2870B;
+  --error:           #C2240C;
+  --dkube-dark:      #6E55A4;
+  --dkube-light:     #9783C0;
+  --dkube-floor:     #D5D5D5;
+  --display:         "Manrope", "Inter", sans-serif;
+  --sans:            "Inter", sans-serif;
+  --mono:            "JetBrains Mono", monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+@page {
+  size: 1280px 720px;
+  margin: 0;
+}
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ── Slide shell ──────────────────────────────── */
+.slide {
+  width: 1280px;
+  height: 720px;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  break-after: page;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Shared header strip ──────────────────────── */
+.slide-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 48px;
+  border-bottom: 1px solid var(--rule);
+  flex-shrink: 0;
+}
+.slide-header.dark { border-bottom-color: rgba(255,255,255,0.15); }
+.wordmark {
+  font-family: var(--display);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--oc-purple);
+}
+.wordmark.light { color: rgba(255,255,255,0.6); }
+.slide-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-4);
+  letter-spacing: 0.06em;
+}
+.slide-num.light { color: rgba(255,255,255,0.4); }
+
+/* ── Eyebrow label ────────────────────────────── */
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink-3);
+  margin-bottom: 12px;
+}
+.eyebrow.purple { color: var(--oc-purple); }
+.eyebrow.light  { color: rgba(255,255,255,0.55); }
+
+/* ── Typography ───────────────────────────────── */
+h1 { font-family: var(--display); font-size: 52px; font-weight: 800; line-height: 1.0; letter-spacing: -0.04em; }
+h2 { font-family: var(--display); font-size: 36px; font-weight: 700; line-height: 1.1; letter-spacing: -0.03em; }
+h3 { font-family: var(--sans); font-size: 22px; font-weight: 600; line-height: 1.25; letter-spacing: -0.01em; }
+h4 { font-family: var(--sans); font-size: 15px; font-weight: 600; }
+p  { font-family: var(--sans); font-size: 15px; line-height: 1.6; color: var(--ink-2); }
+.body-lg { font-size: 18px; line-height: 1.55; }
+.caption  { font-size: 11px; color: var(--ink-4); font-family: var(--mono); letter-spacing: 0.04em; }
+
+/* ── Content area ─────────────────────────────── */
+.slide-body {
+  flex: 1;
+  padding: 40px 48px;
+  display: flex;
+  flex-direction: column;
+}
+.slide-body.row { flex-direction: row; gap: 48px; }
+.slide-body.center { align-items: center; justify-content: center; text-align: center; }
+
+/* ── Color themes ─────────────────────────────── */
+.bg-ink    { background: var(--ink); color: var(--paper); }
+.bg-purple { background: var(--oc-purple); color: var(--paper); }
+.bg-paper  { background: var(--paper); }
+.bg-cool   { background: var(--paper-cool); }
+.bg-warm   { background: var(--paper-warm); }
+.text-white { color: var(--paper) !important; }
+.text-purple { color: var(--oc-purple); }
+
+/* ── Ruled cell / card ────────────────────────── */
+.cell {
+  border: 1px solid var(--rule);
+  padding: 24px;
+  border-radius: 2px;
+}
+.cell.dark { border-color: rgba(255,255,255,0.12); }
+.cell-ink {
+  border: 1px solid var(--ink);
+  padding: 24px;
+}
+
+/* ── Stat block ───────────────────────────────── */
+.stat { display: flex; flex-direction: column; gap: 4px; }
+.stat-value {
+  font-family: var(--display);
+  font-size: 42px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--oc-purple);
+}
+.stat-value.white { color: var(--paper); }
+.stat-value.ink   { color: var(--ink); }
+.stat-label { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-4); }
+.stat-label.light { color: rgba(255,255,255,0.5); }
+
+/* ── Feature pill / tag ───────────────────────── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--oc-purple-50);
+  color: var(--oc-purple);
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--sans);
+  padding: 4px 10px;
+  border-radius: 2px;
+  border: 1px solid var(--oc-purple-100);
+}
+.tag.dark {
+  background: rgba(176,128,248,0.1);
+  color: var(--oc-purple-light);
+  border-color: rgba(176,128,248,0.25);
+}
+.tag.success { background: #ECF8F0; color: var(--success); border-color: #B7DFCB; }
+.tag.ink { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+/* ── Rule line ────────────────────────────────── */
+hr { border: none; border-top: 1px solid var(--rule); }
+hr.strong { border-top: 1px solid var(--ink); }
+hr.light  { border-top: 1px solid rgba(255,255,255,0.12); }
+
+/* ── Grid helpers ─────────────────────────────── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+.col-half { flex: 0 0 50%; }
+.col-60   { flex: 0 0 60%; }
+.col-40   { flex: 0 0 40%; }
+
+/* ── Left accent bar ──────────────────────────── */
+.accent-bar { border-left: 3px solid var(--oc-purple); padding-left: 16px; }
+
+/* ── Progress bar ─────────────────────────────── */
+.progress-track { height: 4px; background: var(--rule); border-radius: 0; }
+.progress-fill  { height: 4px; background: var(--oc-purple); }
+
+/* ── Footer strip ─────────────────────────────── */
+.slide-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 48px;
+  border-top: 1px solid var(--rule);
+  flex-shrink: 0;
+}
+.slide-footer.dark { border-top-color: rgba(255,255,255,0.1); }
+
+/* ── DKube cube mark (inline SVG) ─────────────── */
+.cube-mark { width: 36px; height: 36px; }
+
+/* ── Full-width purple accent strip ───────────── */
+.purple-strip {
+  background: var(--oc-purple);
+  color: var(--paper);
+  padding: 10px 48px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── Feature list ─────────────────────────────── */
+.feature-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.feature-row:last-child { border-bottom: none; }
+.feature-icon {
+  width: 28px;
+  height: 28px;
+  background: var(--oc-purple-50);
+  border: 1px solid var(--oc-purple-100);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+  border-radius: 2px;
+}
+.feature-text h4 { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+.feature-text p  { font-size: 12px; color: var(--ink-3); line-height: 1.4; }
+
+/* ── Table ────────────────────────────────────── */
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+thead th { font-family: var(--mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-4); padding: 8px 12px; text-align: left; border-bottom: 1px solid var(--ink); font-weight: 500; }
+tbody td { padding: 9px 12px; border-bottom: 1px solid var(--rule); vertical-align: middle; }
+tbody tr:last-child td { border-bottom: none; }
+.mono { font-family: var(--mono); }
+
+/* ── Divider number ───────────────────────────── */
+.big-num {
+  font-family: var(--display);
+  font-size: 120px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  color: var(--oc-purple-100);
+  position: absolute;
+  right: 48px;
+  bottom: 60px;
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 01 — COVER
+══════════════════════════════════════════════ -->
+<div class="slide bg-ink">
+  <div class="slide-header dark">
+    <span class="wordmark light">One Convergence · DKube</span>
+    <span class="slide-num light">01 / 15</span>
+  </div>
+
+  <div class="slide-body" style="justify-content:center; padding: 48px 64px;">
+    <!-- DKube cube SVG -->
+    <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:24px;">
+      <polygon points="32,4 60,20 60,44 32,60 4,44 4,20" fill="#6E55A4"/>
+      <polygon points="32,4 60,20 32,36 4,20" fill="#9783C0"/>
+      <polygon points="4,20 32,36 32,60 4,44" fill="#D5D5D5" opacity="0.7"/>
+    </svg>
+
+    <div class="eyebrow light" style="margin-bottom:16px;">Enterprise Finance Intelligence</div>
+    <h1 class="text-white" style="font-size:64px; margin-bottom:16px;">DClaw Finance</h1>
+    <div style="width:64px; height:2px; background:var(--oc-purple-light); margin-bottom:24px;"></div>
+    <p class="body-lg text-white" style="opacity:0.7; max-width:520px; line-height:1.5;">
+      AI-powered financial management for enterprise teams — built on the
+      One Convergence design system, powered by DKube private AI infrastructure.
+    </p>
+
+    <div style="margin-top:48px; display:flex; gap:16px; flex-wrap:wrap;">
+      <span class="tag dark">v1.2 · May 2026</span>
+      <span class="tag dark">11 AI Features</span>
+      <span class="tag dark">FastAPI · Next.js · PostgreSQL</span>
+    </div>
+  </div>
+
+  <div class="slide-footer dark">
+    <span class="caption" style="color:rgba(255,255,255,0.35);">Confidential · One Convergence · 2026</span>
+    <span class="caption" style="color:rgba(255,255,255,0.35);">dclaw.finance</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 02 — AGENDA
+══════════════════════════════════════════════ -->
+<div class="slide bg-paper">
+  <div class="slide-header">
+    <span class="wordmark">DClaw Finance</span>
+    <span class="slide-num">02 / 15</span>
+  </div>
+
+  <div class="slide-body row" style="padding-top:32px;">
+    <div style="flex:0 0 38%;">
+      <div class="eyebrow purple">Today's session</div>
+      <h2 style="margin-bottom:20px;">What we'll cover</h2>
+      <p style="color:var(--ink-3); font-size:14px; line-height:1.7;">
+        A walkthrough of the DClaw Finance platform — from product vision
+        to technical architecture, AI capabilities, live financial data,
+        and deployment.
+      </p>
+    </div>
+    <div style="flex:1; display:flex; flex-direction:column; gap:0;">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--rule);">
+        <div style="background:var(--paper); padding:18px 20px; border-left:3px solid var(--oc-purple);">
+          <div class="caption" style="color:var(--oc-purple); margin-bottom:4px;">01 → 03</div>
+          <div style="font-weight:600; font-size:14px;">Problem &amp; Solution</div>
+        </div>
+        <div style="background:var(--paper); padding:18px 20px;">
+          <div class="caption" style="color:var(--ink-4); margin-bottom:4px;">04 → 05</div>
+          <div style="font-weight:600; font-size:14px;">Architecture &amp; Stack</div>
+        </div>
+        <div style="background:var(--paper); padding:18px 20px;">
+          <div class="caption" style="color:var(--ink-4); margin-bottom:4px;">06 → 07</div>
+          <div style="font-weight:600; font-size:14px;">AI Feature Set</div>
+        </div>
+        <div style="background:var(--paper); padding:18px 20px;">
+          <div class="caption" style="color:var(--ink-4); margin-bottom:4px;">08 → 09</div>
+          <div style="font-weight:600; font-size:14px;">Live Financial Data</div>
+        </div>
+        <div style="background:var(--paper); padding:18px 20px;">
+          <div class="caption" style="color:var(--ink-4); margin-bottom:4px;">10 → 11</div>
+          <div style="font-weight:600; font-size:14px;">Client Portfolio</div>
+        </div>
+        <div style="background:var(--paper); padding:18px 20px;">
+          <div class="caption" style="color:var(--ink-4); margin-bottom:4px;">12 → 15</div>
+          <div style="font-weight:600; font-size:14px;">Deployment &amp; Roadmap</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="caption">One Convergence · DKube</span>
+    <span class="caption">Confidential 2026</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 03 — PROBLEM
+══════════════════════════════════════════════ -->
+<div class="slide bg-paper">
+  <div class="slide-header">
+    <span class="wordmark">DClaw Finance</span>
+    <span class="slide-num">03 / 15</span>
+  </div>
+
+  <div class="slide-body">
+    <div class="eyebrow purple">The problem</div>
+    <h2 style="margin-bottom:32px; max-width:600px;">Enterprise finance teams operate blind.</h2>
+    <div class="grid-3" style="flex:1;">
+      <div class="cell-ink" style="display:flex;flex-direction:column;gap:12px;">
+        <div style="font-family:var(--mono);font-size:28px;font-weight:700;color:var(--oc-purple);">01</div>
+        <h4>No AI in the workflow</h4>
+        <p style="font-size:13px;color:var(--ink-3);">Expense categorisation, receipt parsing, and anomaly detection are done manually — slow and error-prone.</p>
+      </div>
+      <div class="cell" style="display:flex;flex-direction:column;gap:12px;">
+        <div style="font-family:var(--mono);font-size:28px;font-weight:700;color:var(--ink-3);">02</div>
+        <h4>Fragmented tools</h4>
+        <p style="font-size:13px;color:var(--ink-3);">Invoices in one tool, expenses in another, forecasts in spreadsheets. No single source of truth.</p>
+      </div>
+      <div class="cell" style="display:flex;flex-direction:column;gap:12px;">
+        <div style="font-family:var(--mono);font-size:28px;font-weight:700;color:var(--ink-3);">03</div>
+        <h4>Reactive, not predictive</h4>
+        <p style="font-size:13px;color:var(--ink-3);">Leaders see last month's P&amp;L two weeks late. Cash flow crises arrive without warning.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="purple-strip">
+    DClaw Finance puts AI at every decision point — from the first expense entry to the quarterly board report.
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 04 — SOLUTION OVERVIEW
+══════════════════════════════════════════════ -->
+<div class="slide bg-purple">
+  <div class="slide-header dark">
+    <span class="wordmark light">DClaw Finance</span>
+    <span class="slide-num light">04 / 15</span>
+  </div>
+
+  <div class="slide-body row" style="padding-top:36px;">
+    <div style="flex:0 0 42%; display:flex; flex-direction:column; justify-content:center;">
+      <div class="eyebrow light">The solution</div>
+      <h2 class="text-white" style="margin-bottom:20px; font-size:40px;">One platform.<br/>All your finance data.</h2>
+      <p style="color:rgba(255,255,255,0.75); font-size:15px; line-height:1.65; margin-bottom:24px;">
+        DClaw Finance is a full-stack enterprise financial management
+        platform with AI built into every workflow. It runs on your
+        infrastructure — private, compliant, and fully controlled.
+      </p>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <span class="tag dark">Invoice management</span>
+        <span class="tag dark">Expense tracking</span>
+        <span class="tag dark">AI categorisation</span>
+        <span class="tag dark">Cash flow forecast</span>
+        <span class="tag dark">Monthly reports</span>
+        <span class="tag dark">NL Chat</span>
+      </div>
+    </div>
+
+    <div style="flex:1; display:flex; flex-direction:column; gap:12px; justify-content:center;">
+      <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:2px; padding:20px 24px;">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:8px;">P0 — Must have</div>
+        <p style="color:var(--paper);font-size:13px;">AI expense auto-categorisation · Monthly trend chart · Invoice reminder drafts · Receipt OCR</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:2px; padding:20px 24px;">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:8px;">P1 — Should have</div>
+        <p style="color:var(--paper);font-size:13px;">Cash flow forecast · Anomaly detection · Monthly summary report · Line-item suggestions</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); border-radius:2px; padding:20px 24px;">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:8px;">P2 — Differentiators</div>
+        <p style="color:var(--paper);font-size:13px;">Natural language Q&amp;A · Budget AI guardrails · Client profitability scoring</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer dark">
+    <span class="caption" style="color:rgba(255,255,255,0.35);">One Convergence · DKube</span>
+    <span class="caption" style="color:rgba(255,255,255,0.35);">Confidential 2026</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 05 — ARCHITECTURE
+══════════════════════════════════════════════ -->
+<div class="slide bg-paper">
+  <div class="slide-header">
+    <span class="wordmark">DClaw Finance</span>
+    <span class="slide-num">05 / 15</span>
+  </div>
+
+  <div class="slide-body row" style="padding-top:28px; gap:36px;">
+    <div style="flex:0 0 32%;">
+      <div class="eyebrow purple">Technical architecture</div>
+      <h2 style="font-size:32px; margin-bottom:16px;">Built to run anywhere.</h2>
+      <p style="font-size:14px; color:var(--ink-3); line-height:1.65; margin-bottom:20px;">
+        A clean three-tier architecture with async Python backend, server-rendered
+        React frontend, and PostgreSQL — deployable on Docker Compose, Kubernetes,
+        or bare-metal.
+      </p>
+      <div style="display:flex;flex-direction:column;gap:6px;">
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;"><span style="width:8px;height:8px;background:var(--oc-purple);border-radius:0;flex-shrink:0;"></span>Backend port 8096</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;"><span style="width:8px;height:8px;background:var(--oc-purple-light);flex-shrink:0;"></span>Frontend port 3007</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:13px;"><span style="width:8px;height:8px;background:var(--ink-3);flex-shrink:0;"></span>PostgreSQL (dclaw_finance)</div>
+      </div>
+    </div>
+
+    <div style="flex:1; display:flex; flex-direction:column; gap:12px;">
+      <div class="grid-2" style="gap:12px;">
+        <div class="cell" style="background:var(--oc-purple-25);">
+          <div class="caption" style="color:var(--oc-purple);margin-bottom:8px;">FRONTEND</div>
+          <h4 style="margin-bottom:6px;">Next.js 14 · App Router</h4>
+          <p style="font-size:12px;color:var(--ink-3);">Tailwind CSS · shadcn/ui · Recharts<br/>TypeScript · Server-side rendering</p>
+        </div>
+        <div class="cell" style="background:var(--oc-purple-25);">
+          <div class="caption" style="color:var(--oc-purple);margin-bottom:8px;">BACKEND</div>
+          <h4 style="margin-bottom:6px;">FastAPI · Python 3.11</h4>
+          <p style="font-size:12px;color:var(--ink-3);">SQLAlchemy 2.0 async · Pydantic v2<br/>Repository pattern · Alembic migrations</p>
+        </div>
+        <div class="cell">
+          <div class="caption" style="color:var(--ink-4);margin-bottom:8px;">DATABASE</div>
+          <h4 style="margin-bottom:6px;">PostgreSQL 16</h4>
+          <p style="font-size:12px;color:var(--ink-3);">async pg driver · UUID PKs<br/>Alembic versioned migrations</p>
+        </div>
+        <div class="cell">
+          <div class="caption" style="color:var(--ink-4);margin-bottom:8px;">AI PROVIDER</div>
+          <h4 style="margin-bottom:6px;">OpenRouter · Anthropic</h4>
+          <p style="font-size:12px;color:var(--ink-3);">claude-haiku-4-5 · claude-sonnet-4-6<br/>Pluggable via single client factory</p>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;padding:12px 16px;border:1px solid var(--rule);border-radius:2px;background:var(--paper-cool);">
+        <span class="caption">DEPLOY →</span>
+        <span class="tag ink">Docker Compose</span>
+        <span class="tag">Kubernetes</span>
+        <span class="tag">Helm Chart</span>
+        <span class="tag">python:3.11-slim</span>
+        <span class="tag">node:20-alpine</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="caption">One Convergence · DKube</span>
+    <span class="caption">Confidential 2026</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 06 — AI FEATURES (P0)
+══════════════════════════════════════════════ -->
+<div class="slide bg-paper">
+  <div class="slide-header">
+    <span class="wordmark">DClaw Finance</span>
+    <span class="slide-num">06 / 15</span>
+  </div>
+
+  <div class="slide-body row" style="padding-top:28px; gap:40px;">
+    <div style="flex:0 0 34%;">
+      <div class="eyebrow purple">AI feature set · v1.2</div>
+      <h2 style="font-size:32px; margin-bottom:16px;">11 AI capabilities.<br/>All in production.</h2>
+      <p style="font-size:14px;color:var(--ink-3);line-height:1.65;margin-bottom:20px;">
+        Every AI endpoint accepts <span class="mono" style="background:var(--paper-cool);padding:1px 6px;border-radius:2px;">?dry_run=true</span> for safe
+        UI development without token spend. LLM costs cut 80%+ via caching.
+      </p>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-bottom:1px solid var(--rule);">
+          <span>P0 tasks</span><span style="font-weight:600;color:var(--oc-purple);">claude-haiku-4-5</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;border-bottom:1px solid var(--rule);">
+          <span>P1–P2 tasks</span><span style="font-weight:600;color:var(--oc-purple);">claude-sonnet-4-6</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;padding:6px 0;">
+          <span>Provider</span><span style="font-weight:600;">OpenRouter / Anthropic</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex:1;display:flex;flex-direction:column;">
+      <div class="feature-row">
+        <div class="feature-icon">🏷</div>
+        <div class="feature-text">
+          <h4>Expense auto-categorisation</h4>
+          <p>600ms debounce on description + vendor input → suggested category + confidence badge.</p>
+        </div>
+        <span class="tag success" style="flex-shrink:0;font-size:10px;">P0</span>
+      </div>
+      <div class="feature-row">
+        <div class="feature-icon">📷</div>
+        <div class="feature-text">
+          <h4>Receipt OCR</h4>
+          <p>Drag-and-drop receipt image → claude vision extracts vendor, amount, date, category.</p>
+        </div>
+        <span class="tag success" style="flex-shrink:0;font-size:10px;">P0</span>
+      </div>
+      <div class="feature-row">
+        <div class="feature-icon">✉</div>
+        <div class="feature-text">
+          <h4>Invoice reminder drafts</h4>
+          <p>One click on a sent/overdue invoice → AI-written email with editable subject + body.</p>
+        </div>
+        <span class="tag success" style="flex-shrink:0;font-size:10px;">P0</span>
+      </div>
+      <div class="feature-row">
+        <div class="feature-icon">📊</div>
+        <div class="feature-text">
+          <h4>Cash flow forecast</h4>
+          <p>6-month exponential smoothing (α=0.3) → 3-month projection with confidence bands.</p>
+        </div>
+        <span class="tag" style="flex-shrink:0;font-size:10px;background:var(--oc-purple-50);color:var(--oc-purple);border-color:var(--oc-purple-100);">P1</span>
+      </div>
+      <div class="feature-row">
+        <div class="feature-icon">⚠</div>
+        <div class="feature-text">
+          <h4>Anomaly detection</h4>
+          <p>z-score &gt; 2 flagging per category. Batch LLM explanation. 1h in-memory cache.</p>
+        </div>
+        <span class="tag" style="flex-shrink:0;font-size:10px;background:var(--oc-purple-50);color:var(--oc-purple);border-color:var(--oc-purple-100);">P1</span>
+      </div>
+      <div class="feature-row">
+        <div class="feature-icon">💬</div>
+        <div class="feature-text">
+          <h4>Natural language Q&amp;A</h4>
+          <p>Agentic tool-use loop with 4 DB query tools. "What did we spend on AWS last quarter?"</p>
+        </div>
+        <span class="tag dark" style="flex-shrink:0;font-size:10px;">P2</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="caption">One Convergence · DKube</span>
+    <span class="caption">Confidential 2026</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 07 — AI FEATURES (CONTINUED)
+══════════════════════════════════════════════ -->
+<div class="slide bg-ink">
+  <div class="slide-header dark">
+    <span class="wordmark light">DClaw Finance</span>
+    <span class="slide-num light">07 / 15</span>
+  </div>
+
+  <div class="slide-body row" style="padding-top:28px;gap:40px;">
+    <div style="flex:0 0 38%;display:flex;flex-direction:column;justify-content:center;">
+      <div class="eyebrow light">More AI capabilities</div>
+      <h2 class="text-white" style="font-size:34px;margin-bottom:16px;">Every page is AI-augmented.</h2>
+      <p style="color:rgba(255,255,255,0.65);font-size:14px;line-height:1.7;margin-bottom:24px;">
+        Beyond the core features, AI is woven into discovery flows —
+        suggesting line items as you type, scoring clients before you
+        ask, and flagging budget breaches the moment they cross 80%.
+      </p>
+      <div style="padding:16px 20px;border:1px solid rgba(255,255,255,0.12);border-radius:2px;background:rgba(176,128,248,0.08);">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--oc-purple-light);margin-bottom:6px;">LLM client factory</div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.7);">Single <span style="font-family:var(--mono);color:var(--oc-purple-light);">llm_client.py</span> abstraction — swaps Anthropic SDK ↔ OpenAI SDK for OpenRouter transparently. No service-level changes required.</p>
+      </div>
+    </div>
+
+    <div style="flex:1;display:flex;flex-direction:column;gap:10px;justify-content:center;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <div style="padding:16px 18px;border:1px solid rgba(255,255,255,0.1);border-radius:2px;background:rgba(255,255,255,0.04);">
+          <div style="font-size:20px;margin-bottom:8px;">💡</div>
+          <h4 style="color:var(--paper);font-size:13px;margin-bottom:4px;">Line-item suggestions</h4>
+          <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.5;">After first line item → 3 suggested additions based on client history.</p>
+        </div>
+        <div style="padding:16px 18px;border:1px solid rgba(255,255,255,0.1);border-radius:2px;background:rgba(255,255,255,0.04);">
+          <div style="font-size:20px;margin-bottom:8px;">📋</div>
+          <h4 style="color:var(--paper);font-size:13px;margin-bottom:4px;">Monthly summary report</h4>
+          <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.5;">Revenue, top cost drivers, 3 actionable recommendations. claude-sonnet.</p>
+        </div>
+        <div style="padding:16px 18px;border:1px solid rgba(255,255,255,0.1);border-radius:2px;background:rgba(255,255,255,0.04);">
+          <div style="font-size:20px;margin-bottom:8px;">🎯</div>
+          <h4 style="color:var(--paper);font-size:13px;margin-bottom:4px;">Budget AI guardrails</h4>
+          <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.5;">Triggers only on breach ≥ 80%. One specific cut action per category.</p>
+        </div>
+        <div style="padding:16px 18px;border:1px solid rgba(255,255,255,0.1);border-radius:2px;background:rgba(255,255,255,0.04);">
+          <div style="font-size:20px;margin-bottom:8px;">🏆</div>
+          <h4 style="color:var(--paper);font-size:13px;margin-bottom:4px;">Client profitability score</h4>
+          <p style="font-size:12px;color:rgba(255,255,255,0.5);line-height:1.5;">Composite score (revenue 70% · outstanding 30%). 24h batched insights.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer dark">
+    <span class="caption" style="color:rgba(255,255,255,0.35);">One Convergence · DKube</span>
+    <span class="caption" style="color:rgba(255,255,255,0.35);">Confidential 2026</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 08 — FINANCIAL DASHBOARD KPIs
+══════════════════════════════════════════════ -->
+<div class="slide bg-paper">
+  <div class="slide-header">
+    <span class="wordmark">DClaw Finance</span>
+    <span class="slide-num">08 / 15</span>
+  </div>
+
+  <div class="slide-body" style="padding-top:28px;">
+    <div class="eyebrow purple">Live demo data · Meridian AI Technologies FY 2025–26</div>
+    <h2 style="margin-bottom:28px;">Financial performance at a glance.</h2>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);margin-bottom:24px;">
+      <div style="background:var(--paper);padding:24px 20px;">
+        <div class="stat">
+          <div class="stat-value">₹39.1 Cr</div>
+          <div class="stat-label">Annual Revenue · Paid</div>
+        </div>
+      </div>
+      <div style="background:var(--paper);padding:24px 20px;">
+        <div class="stat">
+          <div class="stat-value" style="color:var(--ink-2);">₹29.4 Cr</div>
+          <div class="stat-label">Total Expenses · 12 mo</div>
+        </div>
+      </div>
+      <div style="background:var(--oc-purple-25);padding:24px 20px;">
+        <div class="stat">
+          <div class="stat-value">₹9.6 Cr</div>
+          <div class="stat-label">Net Profit · 12 mo</div>
+        </div>
+      </div>
+      <div style="background:var(--paper);padding:24px 20px;">
+        <div class="stat">
+          <div class="stat-value ink">24.7%</div>
+          <div class="stat-label">Net Margin</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2" style="flex:1;gap:20px;">
+      <div>
+        <div class="caption" style="margin-bottom:12px;">EXPENSE MIX · 12-MONTH</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px;"><span>Salary</span><span class="mono" style="font-weight:600;">₹19.4 Cr · 66%</span></div>
+            <div class="progress-track"><div class="progress-fill" style="width:66%;"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px;"><span>Marketing</span><span class="mono" style="font-weight:600;">₹2.6 Cr · 9%</span></div>
+            <div class="progress-track"><div class="progress-fill" style="width:9%;background:var(--oc-purple-light);"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px;"><span>Travel</span><span class="mono" style="font-weight:600;">₹2.2 Cr · 7%</span></div>
+            <div class="progress-track"><div class="progress-fill" style="width:7%;background:var(--ink-3);"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px;"><span>Office</span><span class="mono" style="font-weight:600;">₹2.1 Cr · 7%</span></div>
+            <div class="progress-track"><div class="progress-fill" style="width:7%;background:var(--ink-3);"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px;"><span>Software</span><span class="mono" style="font-weight:600;">₹1.9 Cr · 7%</span></div>
+            <div class="progress-track"><div class="progress-fill" style="width:7%;background:var(--ink-4);"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:3px;"><span>Other (legal, insurance)</span><span class="mono" style="font-weight:600;">₹1.3 Cr · 4%</span></div>
+            <div class="progress-track"><div class="progress-fill" style="width:4%;background:var(--ink-4);"></div></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="caption" style="margin-bottom:12px;">HEADCOUNT COST STRUCTURE · MONTHLY</div>
+        <table>
+          <thead><tr><th>Team</th><th>Location</th><th>Staff</th><th>Monthly payroll</th></tr></thead>
+          <tbody>
+            <tr><td>Engineering</td><td>Hyderabad</td><td>20</td><td class="mono">₹20 L  (avg ₹12 LPA)</td></tr>
+            <tr><td>Engineering + Product</td><td>San Jose</td><td>12</td><td class="mono">₹80 L  (avg ₹80 LPA)</td></tr>
+            <tr><td>Sales, Ops, Executive</td><td>San Jose</td><td>8</td><td class="mono">₹43 L  (avg ₹65 LPA)</td></tr>
+            <tr style="background:var(--oc-purple-25);font-weight:600;"><td>Total</td><td></td><td>40</td><td class="mono">₹1.43 Cr / month</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="caption">One Convergence · DKube</span>
+    <span class="caption">Confidential 2026</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 09 — INVOICE PIPELINE
+══════════════════════════════════════════════ -->
+<div class="slide bg-paper">
+  <div class="slide-header">
+    <span class="wordmark">DClaw Finance</span>
+    <span class="slide-num">09 / 15</span>
+  </div>
+
+  <div class="slide-body" style="padding-top:24px;">
+    <div class="eyebrow purple">Invoice pipeline · FY 2025–26</div>
+    <h2 style="margin-bottom:24px;">50 invoices · ₹39+ Cr total value.</h2>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);margin-bottom:20px;">
+      <div style="background:var(--paper);padding:16px 20px;">
+        <div style="font-family:var(--display);font-size:32px;font-weight:800;color:var(--success);">42</div>
+        <div class="caption">Paid</div>
+      </div>
+      <div style="background:var(--paper);padding:16px 20px;">
+        <div style="font-family:var(--display);font-size:32px;font-weight:800;color:var(--oc-purple);">4</div>
+        <div class="caption">Sent — awaiting payment</div>
+      </div>
+      <div style="background:var(--paper);padding:16px 20px;">
+        <div style="font-family:var(--display);font-size:32px;font-weight:800;color:var(--warning);">2</div>
+        <div class="caption">Overdue (TIAA ₹2.5Cr · VMware ₹75L)</div>
+      </div>
+      <div style="background:var(--paper);padding:16px 20px;">
+        <div style="font-family:var(--display);font-size:32px;font-weight:800;color:var(--ink-3);">2</div>
+        <div class="caption">Draft — current month</div>
+      </div>
+    </div>
+
+    <div class="caption" style="margin-bottom:10px;">SAMPLE INVOICES — ENTERPRISE PRICING</div>
+    <table>
+      <thead><tr><th>Invoice</th><th>Client</th><th>Service</th><th>Amount</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">INV-2025-001</td><td>Apollo Global Management</td><td>DKubeX Annual + SLA</td><td class="mono" style="color:var(--oc-purple);font-weight:600;">₹2.75 Cr</td><td><span class="tag success" style="font-size:10px;">Paid</span></td></tr>
+        <tr><td class="mono">INV-2025-015</td><td>JPMorgan Chase</td><td>DKubeX Annual + SLA</td><td class="mono" style="color:var(--oc-purple);font-weight:600;">₹2.75 Cr</td><td><span class="tag success" style="font-size:10px;">Paid</span></td></tr>
+        <tr><td class="mono">INV-2025-009</td><td>MetLife Group</td><td>MLOps Annual + SLA</td><td class="mono" style="font-weight:600;">₹1.75 Cr</td><td><span class="tag success" style="font-size:10px;">Paid</span></td></tr>
+        <tr><td class="mono">INV-2026-035</td><td>TIAA Financial Services</td><td>DKubeX Annual</td><td class="mono" style="color:var(--warning);font-weight:600;">₹2.50 Cr</td><td><span class="tag" style="font-size:10px;background:var(--warning-subtle);color:var(--warning);border-color:#E8C97B;">Overdue</span></td></tr>
+        <tr><td class="mono">INV-2026-048</td><td>JPMorgan Chase</td><td>QueriLynx Blueprint</td><td class="mono" style="font-weight:600;">₹75 L</td><td><span class="tag" style="font-size:10px;background:var(--info-subtle);color:var(--info);border-color:#A8B9E8;">Sent</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="slide-footer">
+    <span class="caption">One Convergence · DKube</span>
+    <span class="caption">Confidential 2026</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 10 — CLIENT PORTFOLIO
+══════════════════════════════════════════════ -->
+<div class="slide bg-ink">
+  <div class="slide-header dark">
+    <span class="wordmark light">DClaw Finance</span>
+    <span class="slide-num light">10 / 15</span>
+  </div>
+
+  <div class="slide-body" style="padding-top:24px;">
+    <div class="eyebrow light">Client portfolio · 12 enterprise accounts</div>
+    <h2 class="text-white" style="font-size:32px;margin-bottom:20px;">Financial services, life sciences, tech, legal.</h2>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;flex:1;">
+      <div style="padding:14px 16px;border:1px solid rgba(255,255,255,0.1);border-radius:2px;">
+        <div style="font-size:11px;font-weight:700;color:var(--paper);margin-bottom:3px;">JPMorgan Chase</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-bottom:6px;">Investment banking</div>
+        <div style="font-family:var(--mono);font-size:14px;color:var(--oc-purple-light);font-weight:700;">₹7.35 Cr</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.35);">Score 89.8</div>
+      </div>
+      <div style="padding:14px 16px;border:1px solid rgba(255,255,255,0.1);border-radius:2px;">
+        <div style="font-size:11px;font-weight:700;color:var(--paper);margin-bottom:3px;">TIAA Financial</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-bottom:6px;">Financial services</div>
+        <div style="font-family:var(--mono);font-size:14px;color:var(--oc-purple-light);font-weight:700;">₹7.05 Cr</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.35);">Score 67.1</div>
+      </div>
+      <div style="padding:14px 16px;border:1px solid rgba(255,255,255,0.1);border-radius:2px;">
+        <div style="font-size:11px;font-weight:700;color:var(--paper);margin-bottom:3px;">Apollo Global</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-bottom:6px;">Private equity</div>
+        <div style="font-family:var(--mono);font-size:14px;color:var(--oc-purple-light);font-weight:700;">₹5.75 Cr</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.35);">Score 84.8</div>
+      </div>
+      <div style="padding:14px 16px;border:1px solid rgba(255,255,255,0.1);border-radius:2px;">
+        <div style="font-size:11px;font-weight:700;color:var(--paper);margin-bottom:3px;">Altos Labs</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-bottom:6px;">Life sciences</div>
+        <div style="font-family:var(--mono);font-size:14px;color:var(--oc-purple-light);font-weight:700;">₹5.45 Cr</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.35);">Score 81.9</div>
+      </div>
+      <div style="padding:14px 16px;border:1px solid rgba(255,255,255,0.08);border-radius:2px;">
+        <div style="font-size:11px;font-weight:700;color:var(--paper);margin-bottom:3px;">Allianz Life Sciences</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-bottom:6px;">Insurance · Life sci</div>
+        <div style="font-family:var(--mono);font-size:14px;color:rgba(176,128,248,0.7);font-weight:700;">₹4.35 Cr</div>
+      </div>
+      <div style="padding:14px 16px;border:1px solid rgba(255,255,255,0.08);border-radius:2px;">
+        <div style="font-size:11px;font-weight:700;color:var(--paper);margin-bottom:3px;">MetLife Group</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-bottom:6px;">Insurance</div>
+        <div style="font-family:var(--mono);font-size:14px;color:rgba(176,128,248,0.7);font-weight:700;">₹3.90 Cr</div>
+      </div>
+      <div style="padding:14px 16px;border:1px solid rgba(255,255,255,0.08);border-radius:2px;">
+        <div style="font-size:11px;font-weight:700;color:var(--paper);margin-bottom:3px;">VMware by Broadcom</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-bottom:6px;">Cloud infrastructure</div>
+        <div style="font-family:var(--mono);font-size:14px;color:rgba(176,128,248,0.7);font-weight:700;">₹3.65 Cr</div>
+      </div>
+      <div style="padding:14px 16px;border:1px solid rgba(255,255,255,0.08);border-radius:2px;">
+        <div style="font-size:11px;font-weight:700;color:var(--paper);margin-bottom:3px;">Cisco Systems</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.45);margin-bottom:6px;">Enterprise technology</div>
+        <div style="font-family:var(--mono);font-size:14px;color:rgba(176,128,248,0.7);font-weight:700;">₹2.80 Cr</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:12px;margin-top:12px;align-items:center;">
+      <span style="font-size:12px;color:rgba(255,255,255,0.5);">Also:</span>
+      <span class="tag dark" style="font-size:11px;">BuildFirst Construction</span>
+      <span class="tag dark" style="font-size:11px;">StackPath Technologies</span>
+      <span class="tag dark" style="font-size:11px;">Sequoia Legal Partners</span>
+      <span class="tag dark" style="font-size:11px;">Pacific University System</span>
+    </div>
+  </div>
+
+  <div class="slide-footer dark">
+    <span class="caption" style="color:rgba(255,255,255,0.35);">One Convergence · DKube</span>
+    <span class="caption" style="color:rgba(255,255,255,0.35);">Confidential 2026</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 11 — DESIGN SYSTEM
+══════════════════════════════════════════════ -->
+<div class="slide bg-paper">
+  <div class="slide-header">
+    <span class="wordmark">DClaw Finance</span>
+    <span class="slide-num">11 / 15</span>
+  </div>
+
+  <div class="slide-body row" style="padding-top:28px;gap:40px;">
+    <div style="flex:0 0 36%;">
+      <div class="eyebrow purple">Design system</div>
+      <h2 style="font-size:32px;margin-bottom:16px;">Built on One Convergence Vol. 01.</h2>
+      <p style="font-size:14px;color:var(--ink-3);line-height:1.65;margin-bottom:20px;">
+        The UI implements the OC design token system directly — purple `#7030A0`,
+        paper `#FFFFFF`, Manrope display face, Inter for body, JetBrains Mono for
+        labels and code. Sharp 2–4px radius, thin 1px rules, no decorative shadows.
+      </p>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="width:32px;height:32px;background:#7030A0;border-radius:2px;"></div>
+          <div><div style="font-size:13px;font-weight:600;">Purple 500</div><div class="caption">#7030A0 · primary brand</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="width:32px;height:32px;background:#B180F8;border-radius:2px;"></div>
+          <div><div style="font-size:13px;font-weight:600;">Purple 300</div><div class="caption">#B180F8 · accent, hover</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="width:32px;height:32px;background:#141414;border-radius:2px;"></div>
+          <div><div style="font-size:13px;font-weight:600;">Ink</div><div class="caption">#141414 · primary text</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="width:32px;height:32px;background:#FFFFFF;border-radius:2px;border:1px solid #E5E5E5;"></div>
+          <div><div style="font-size:13px;font-weight:600;">Paper</div><div class="caption">#FFFFFF · backgrounds</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex:1;display:flex;flex-direction:column;gap:16px;">
+      <div>
+        <div class="caption" style="margin-bottom:8px;">TYPOGRAPHY SCALE</div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;align-items:baseline;gap:12px;padding:6px 0;border-bottom:1px solid var(--rule);">
+            <span style="font-family:var(--display);font-size:28px;font-weight:800;letter-spacing:-0.04em;">Display</span>
+            <span class="caption">Manrope 800 · headlines</span>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:12px;padding:6px 0;border-bottom:1px solid var(--rule);">
+            <span style="font-family:var(--sans);font-size:18px;font-weight:600;">H2 Heading</span>
+            <span class="caption">Inter 600</span>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:12px;padding:6px 0;border-bottom:1px solid var(--rule);">
+            <span style="font-family:var(--sans);font-size:15px;">Body text — clear, direct, no jargon.</span>
+            <span class="caption">Inter 400</span>
+          </div>
+          <div style="display:flex;align-items:baseline;gap:12px;padding:6px 0;">
+            <span style="font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--ink-4);">LABEL / EYEBROW</span>
+            <span class="caption">JetBrains Mono 400</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="caption" style="margin-bottom:8px;">COMPONENT TOKENS</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button style="background:var(--oc-purple);color:white;border:none;padding:8px 18px;border-radius:2px;font-size:13px;font-weight:600;">Primary button</button>
+          <button style="background:transparent;color:var(--oc-purple);border:1px solid var(--oc-purple);padding:8px 18px;border-radius:2px;font-size:13px;font-weight:600;">Outline</button>
+          <span class="tag">Feature tag</span>
+          <span class="tag success">Active</span>
+          <span class="tag ink">Status</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="caption">One Convergence · DKube</span>
+    <span class="caption">Confidential 2026</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 12 — DEPLOYMENT
+══════════════════════════════════════════════ -->
+<div class="slide bg-paper">
+  <div class="slide-header">
+    <span class="wordmark">DClaw Finance</span>
+    <span class="slide-num">12 / 15</span>
+  </div>
+
+  <div class="slide-body row" style="padding-top:28px;gap:40px;">
+    <div style="flex:0 0 36%;">
+      <div class="eyebrow purple">Deployment</div>
+      <h2 style="font-size:32px;margin-bottom:16px;">Runs on Docker.<br/>Scales on Kubernetes.</h2>
+      <p style="font-size:14px;color:var(--ink-3);line-height:1.65;margin-bottom:20px;">
+        Three-container Docker Compose for local and staging. Production on
+        Kubernetes with a packaged Helm chart. Non-root containers, health
+        checks, and full environment variable injection from <span class="mono">.env</span>.
+      </p>
+      <div style="padding:14px 16px;background:var(--paper-cool);border:1px solid var(--rule);border-radius:2px;">
+        <div class="caption" style="margin-bottom:8px;">QUICK START</div>
+        <div style="font-family:var(--mono);font-size:12px;color:var(--ink-2);line-height:1.8;">
+          docker compose up -d --build<br/>
+          docker compose exec backend \<br/>
+          &nbsp;&nbsp;alembic upgrade head
+        </div>
+      </div>
+    </div>
+
+    <div style="flex:1;display:flex;flex-direction:column;gap:16px;">
+      <div class="grid-2" style="gap:14px;">
+        <div class="cell" style="background:var(--oc-purple-25);">
+          <div class="caption" style="color:var(--oc-purple);margin-bottom:8px;">BACKEND CONTAINER</div>
+          <div style="font-size:13px;line-height:1.7;"><span class="mono">python:3.11-slim</span><br/>Non-root appuser<br/>Health check via urllib<br/>Port 8096</div>
+        </div>
+        <div class="cell" style="background:var(--oc-purple-25);">
+          <div class="caption" style="color:var(--oc-purple);margin-bottom:8px;">FRONTEND CONTAINER</div>
+          <div style="font-size:13px;line-height:1.7;"><span class="mono">node:20-alpine</span><br/>Multi-stage build<br/><span class="mono">ARG NEXT_PUBLIC_API_URL</span><br/>Port 3007</div>
+        </div>
+        <div class="cell">
+          <div class="caption" style="color:var(--ink-4);margin-bottom:8px;">DATABASE</div>
+          <div style="font-size:13px;line-height:1.7;"><span class="mono">postgres:16-alpine</span><br/>Named volume persistence<br/>Alembic migrations<br/>Port 5434 (host)</div>
+        </div>
+        <div class="cell">
+          <div class="caption" style="color:var(--ink-4);margin-bottom:8px;">KUBERNETES / HELM</div>
+          <div style="font-size:13px;line-height:1.7;">Chart in <span class="mono">helm/dclaw-finance/</span><br/>Secrets via K8s secrets<br/>Namespace-isolated<br/>Rollout status checks</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="caption">One Convergence · DKube</span>
+    <span class="caption">Confidential 2026</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 13 — COMPANY PROFILE (DEMO DATA)
+══════════════════════════════════════════════ -->
+<div class="slide bg-purple">
+  <div class="slide-header dark">
+    <span class="wordmark light">DClaw Finance</span>
+    <span class="slide-num light">13 / 15</span>
+  </div>
+
+  <div class="slide-body row" style="padding-top:32px;gap:40px;">
+    <div style="flex:0 0 42%;display:flex;flex-direction:column;justify-content:center;">
+      <div class="eyebrow light">Demo data profile</div>
+      <h2 class="text-white" style="font-size:34px;margin-bottom:16px;">Meridian AI Technologies</h2>
+      <p style="color:rgba(255,255,255,0.75);font-size:14px;line-height:1.7;margin-bottom:20px;">
+        A fictional enterprise private AI company modeled on <strong style="color:white;">DKube</strong> — 40
+        employees across San Jose CA and Hyderabad India. The demo
+        data tells a realistic growth story: near-breakeven in Q2 2025,
+        growing to 25% margin by Q1 2026.
+      </p>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15);">
+          <span style="color:rgba(255,255,255,0.6);">Founded</span><span class="text-white" style="font-weight:600;">2019 · Series A</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15);">
+          <span style="color:rgba(255,255,255,0.6);">Offices</span><span class="text-white" style="font-weight:600;">San Jose CA · Hyderabad IN</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.15);">
+          <span style="color:rgba(255,255,255,0.6);">Revenue model</span><span class="text-white" style="font-weight:600;">Platform license + services</span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;padding:8px 0;">
+          <span style="color:rgba(255,255,255,0.6);">Peer companies</span><span class="text-white" style="font-weight:600;">Weights &amp; Biases · Arize AI · Valohai</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex:1;display:flex;flex-direction:column;gap:10px;justify-content:center;">
+      <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);padding:16px 20px;border-radius:2px;">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:6px;">Seed script · 207 expense entries</div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.8);">Salary · Software (AWS, Salesforce, Datadog) · Office (SJ + Hyderabad) · Marketing (re:Invent, NeurIPS, Gartner) · Travel · Legal</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);padding:16px 20px;border-radius:2px;">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:6px;">Pricing · INR enterprise market</div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.8);">DKubeX annual ₹2.5 Cr · MLOps annual ₹1.5 Cr · Prof. services ₹25 L/mo · Blueprints ₹50–80 L</p>
+      </div>
+      <div style="background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.15);padding:16px 20px;border-radius:2px;">
+        <div style="font-family:var(--mono);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:6px;">Reset · re-seed any time</div>
+        <p style="font-size:13px;font-family:var(--mono);color:rgba(255,255,255,0.8);">python scripts/seed_data.py --reset</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer dark">
+    <span class="caption" style="color:rgba(255,255,255,0.35);">One Convergence · DKube</span>
+    <span class="caption" style="color:rgba(255,255,255,0.35);">Confidential 2026</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 14 — ROADMAP
+══════════════════════════════════════════════ -->
+<div class="slide bg-paper">
+  <div class="slide-header">
+    <span class="wordmark">DClaw Finance</span>
+    <span class="slide-num">14 / 15</span>
+  </div>
+
+  <div class="slide-body" style="padding-top:28px;">
+    <div class="eyebrow purple">v1.2 delivered · what's next</div>
+    <h2 style="font-size:32px;margin-bottom:24px;">All 11 features shipped. Roadmap ahead.</h2>
+
+    <div class="grid-2" style="flex:1;gap:24px;">
+      <div>
+        <div class="caption" style="margin-bottom:12px;">V1.2 — DELIVERED ✓</div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;padding:6px 0;border-bottom:1px solid var(--rule);">
+            <span style="color:var(--success);font-weight:700;">✓</span> AI expense auto-categorisation
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;padding:6px 0;border-bottom:1px solid var(--rule);">
+            <span style="color:var(--success);font-weight:700;">✓</span> Receipt OCR (vision API)
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;padding:6px 0;border-bottom:1px solid var(--rule);">
+            <span style="color:var(--success);font-weight:700;">✓</span> Invoice reminder drafts
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;padding:6px 0;border-bottom:1px solid var(--rule);">
+            <span style="color:var(--success);font-weight:700;">✓</span> 12-month trend chart
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;padding:6px 0;border-bottom:1px solid var(--rule);">
+            <span style="color:var(--success);font-weight:700;">✓</span> Statistical cash flow forecast
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;padding:6px 0;border-bottom:1px solid var(--rule);">
+            <span style="color:var(--success);font-weight:700;">✓</span> Anomaly detection + LLM explanation
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;padding:6px 0;border-bottom:1px solid var(--rule);">
+            <span style="color:var(--success);font-weight:700;">✓</span> AI monthly executive report
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;padding:6px 0;border-bottom:1px solid var(--rule);">
+            <span style="color:var(--success);font-weight:700;">✓</span> Line-item suggestions
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;padding:6px 0;border-bottom:1px solid var(--rule);">
+            <span style="color:var(--success);font-weight:700;">✓</span> NL financial Q&amp;A (tool-use chat)
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;padding:6px 0;border-bottom:1px solid var(--rule);">
+            <span style="color:var(--success);font-weight:700;">✓</span> Budget planning + AI guardrails
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;padding:6px 0;">
+            <span style="color:var(--success);font-weight:700;">✓</span> Client profitability scoring
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="caption" style="margin-bottom:12px;">V2.0 — CANDIDATE BACKLOG</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="cell" style="display:flex;align-items:flex-start;gap:10px;padding:12px 14px;">
+            <span style="color:var(--oc-purple);font-size:16px;margin-top:1px;">→</span>
+            <div><div style="font-size:13px;font-weight:600;margin-bottom:2px;">Streaming SSE chat</div><div style="font-size:12px;color:var(--ink-3);">Replace synchronous tool-use with server-sent events for real-time responses.</div></div>
+          </div>
+          <div class="cell" style="display:flex;align-items:flex-start;gap:10px;padding:12px 14px;">
+            <span style="color:var(--oc-purple);font-size:16px;margin-top:1px;">→</span>
+            <div><div style="font-size:13px;font-weight:600;margin-bottom:2px;">Multi-currency support</div><div style="font-size:12px;color:var(--ink-3);">USD/EUR/INR with real-time FX rates and currency-aware P&amp;L.</div></div>
+          </div>
+          <div class="cell" style="display:flex;align-items:flex-start;gap:10px;padding:12px 14px;">
+            <span style="color:var(--oc-purple);font-size:16px;margin-top:1px;">→</span>
+            <div><div style="font-size:13px;font-weight:600;margin-bottom:2px;">Tally / QuickBooks export</div><div style="font-size:12px;color:var(--ink-3);">One-click export to Indian and global accounting software.</div></div>
+          </div>
+          <div class="cell" style="display:flex;align-items:flex-start;gap:10px;padding:12px 14px;">
+            <span style="color:var(--oc-purple);font-size:16px;margin-top:1px;">→</span>
+            <div><div style="font-size:13px;font-weight:600;margin-bottom:2px;">Investor-grade board pack</div><div style="font-size:12px;color:var(--ink-3);">Auto-generated monthly PDF board report with variance analysis.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span class="caption">One Convergence · DKube</span>
+    <span class="caption">Confidential 2026</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SLIDE 15 — CLOSE
+══════════════════════════════════════════════ -->
+<div class="slide bg-ink">
+  <div class="slide-header dark">
+    <span class="wordmark light">One Convergence · DKube</span>
+    <span class="slide-num light">15 / 15</span>
+  </div>
+
+  <div class="slide-body center" style="gap:0;">
+    <svg width="56" height="56" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:28px;opacity:0.9;">
+      <polygon points="32,4 60,20 60,44 32,60 4,44 4,20" fill="#6E55A4"/>
+      <polygon points="32,4 60,20 32,36 4,20" fill="#9783C0"/>
+      <polygon points="4,20 32,36 32,60 4,44" fill="#D5D5D5" opacity="0.6"/>
+    </svg>
+
+    <div style="width:48px;height:2px;background:var(--oc-purple-light);margin-bottom:24px;"></div>
+    <h1 class="text-white" style="font-size:52px;margin-bottom:12px;">DClaw Finance</h1>
+    <p style="color:rgba(255,255,255,0.6);font-size:16px;margin-bottom:40px;">
+      Financial intelligence, built on One Convergence design.<br/>Powered by DKube private AI.
+    </p>
+
+    <div style="display:flex;gap:48px;margin-bottom:48px;">
+      <div style="text-align:center;">
+        <div style="font-family:var(--display);font-size:36px;font-weight:800;color:var(--oc-purple-light);">₹39 Cr</div>
+        <div class="caption" style="color:rgba(255,255,255,0.4);">Annual revenue (demo)</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:var(--display);font-size:36px;font-weight:800;color:var(--oc-purple-light);">11</div>
+        <div class="caption" style="color:rgba(255,255,255,0.4);">AI features shipped</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:var(--display);font-size:36px;font-weight:800;color:var(--oc-purple-light);">24.7%</div>
+        <div class="caption" style="color:rgba(255,255,255,0.4);">Net margin</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:var(--display);font-size:36px;font-weight:800;color:var(--oc-purple-light);">12</div>
+        <div class="caption" style="color:rgba(255,255,255,0.4);">Enterprise clients</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:12px;">
+      <span class="tag dark">localhost:3007</span>
+      <span class="tag dark">github.com · dclaw/dclaw-finance</span>
+      <span class="tag dark">Docker · Kubernetes · Helm</span>
+    </div>
+  </div>
+
+  <div class="slide-footer dark">
+    <span class="caption" style="color:rgba(255,255,255,0.35);">© 2026 One Convergence · All rights reserved · Confidential</span>
+    <span class="caption" style="color:rgba(255,255,255,0.35);">DKube — an MLOps platform by One Convergence</span>
+  </div>
+</div>
+
+</body>
+</html>

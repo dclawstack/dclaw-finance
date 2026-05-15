@@ -1,0 +1,40 @@
+/* Shared preview-card styles. Used by the small HTML cards in preview/. */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  --oc-purple: #7030A0;
+  --oc-purple-dark: #2B0E45;
+  --oc-purple-light: #B180F8;
+  --oc-purple-50: #F5EEFB;
+  --ink: #141414;
+  --ink-2: #2A2A2A;
+  --ink-3: #5A5A5A;
+  --ink-4: #8A8A8A;
+  --rule: #E5E5E5;
+  --paper: #FFFFFF;
+  --paper-cool: #F6F5F7;
+  --paper-warm: #FAF8F4;
+  --cobalt: #1F3FBF;
+  --ember: #C2410C;
+  --success: #18A957;
+  --warning: #C2870B;
+  --error: #C2240C;
+  --info: #1F3FBF;
+  --serif: "Manrope", "Inter", -apple-system, sans-serif;
+  --sans: "Inter", "Helvetica Neue", Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; font-family: var(--sans); color: var(--ink); background: var(--paper); }
+body {
+  width: 700px;
+  padding: 20px;
+  -webkit-font-smoothing: antialiased;
+}
+.label {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+}

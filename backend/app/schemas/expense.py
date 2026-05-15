@@ -28,6 +28,7 @@ class ExpenseUpdate(BaseModel):
 
 class ExpenseResponse(ExpenseBase):
     id: UUID
+    ai_suggested_category: str | None = None
     created_at: datetime
     updated_at: datetime
 

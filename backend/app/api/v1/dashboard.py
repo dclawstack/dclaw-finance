@@ -12,19 +12,16 @@ router = APIRouter(prefix="/dashboard", tags=["dashboard"])
 
 @router.get("")
 async def get_dashboard(db: AsyncSession = Depends(get_db)) -> dict:
-    # Total revenue: sum of totals for paid invoices
     revenue_result = await db.execute(
         select(func.coalesce(func.sum(Invoice.total), 0.0)).where(Invoice.status == "paid")
     )
     total_revenue = revenue_result.scalar_one()
 
-    # Outstanding invoices: count of sent or overdue invoices
     outstanding_result = await db.execute(
         select(func.count(Invoice.id)).where(Invoice.status.in_(["sent", "overdue"]))
     )
     outstanding_invoices = outstanding_result.scalar_one()
 
-    # Total expenses
     expenses_result = await db.execute(
         select(func.coalesce(func.sum(Expense.amount), 0.0))
     )
@@ -32,7 +29,6 @@ async def get_dashboard(db: AsyncSession = Depends(get_db)) -> dict:
 
     net_profit = round(total_revenue - total_expenses, 2)
 
-    # Overdue invoices
     today = date.today()
     overdue_result = await db.execute(
         select(Invoice)
@@ -42,7 +38,6 @@ async def get_dashboard(db: AsyncSession = Depends(get_db)) -> dict:
     )
     overdue_invoices = overdue_result.scalars().all()
 
-    # Expenses by category
     category_result = await db.execute(
         select(Expense.category, func.coalesce(func.sum(Expense.amount), 0.0)).group_by(
             Expense.category
@@ -50,7 +45,6 @@ async def get_dashboard(db: AsyncSession = Depends(get_db)) -> dict:
     )
     expenses_by_category = {row[0]: float(row[1]) for row in category_result.all()}
 
-    # Ensure all categories exist with 0.0
     all_categories = ["office", "travel", "software", "marketing", "salary", "other"]
     for cat in all_categories:
         if cat not in expenses_by_category:
@@ -73,3 +67,40 @@ async def get_dashboard(db: AsyncSession = Depends(get_db)) -> dict:
         ],
         "expenses_by_category": expenses_by_category,
     }
+
+
+@router.get("/trends")
+async def get_trends(db: AsyncSession = Depends(get_db)) -> dict:
+    today = date.today()
+    months: list[tuple[int, int]] = []
+    for i in range(11, -1, -1):
+        m = today.month - i
+        y = today.year
+        while m <= 0:
+            m += 12
+            y -= 1
+        months.append((y, m))
+
+    trends = []
+    for year, month in months:
+        rev = await db.execute(
+            select(func.coalesce(func.sum(Invoice.total), 0.0)).where(
+                Invoice.status == "paid",
+                extract("year", Invoice.issue_date) == year,
+                extract("month", Invoice.issue_date) == month,
+            )
+        )
+        exp = await db.execute(
+            select(func.coalesce(func.sum(Expense.amount), 0.0)).where(
+                extract("year", Expense.date) == year,
+                extract("month", Expense.date) == month,
+            )
+        )
+        month_label = date(year, month, 1).strftime("%b %Y")
+        trends.append({
+            "month": month_label,
+            "revenue": float(rev.scalar_one()),
+            "expenses": float(exp.scalar_one()),
+        })
+
+    return {"trends": trends}

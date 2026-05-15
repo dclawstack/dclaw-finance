@@ -11,6 +11,8 @@ class Settings(BaseSettings):
 
     database_url: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/dclaw_finance"
     
+    anthropic_api_key: str = ""
+
     ollama_url: str = "http://localhost:11434"
     ollama_model: str = "llama3.1"
     openrouter_api_key: str = ""

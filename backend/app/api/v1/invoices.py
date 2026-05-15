@@ -1,7 +1,8 @@
 from uuid import UUID
 from fastapi import APIRouter, Depends, HTTPException, Query
+from pydantic import BaseModel
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select, func
 from app.core.database import get_db
 from app.models.invoice import Invoice
 from app.models.invoice_item import InvoiceItem
@@ -9,8 +10,14 @@ from app.repositories.invoice_repo import InvoiceRepository
 from app.repositories.invoice_item_repo import InvoiceItemRepository
 from app.schemas.invoice import InvoiceCreate, InvoiceUpdate, InvoiceResponse
 from app.schemas.invoice_item import InvoiceItemCreate, InvoiceItemUpdate, InvoiceItemResponse
+from app.services.ai_writer import draft_reminder, suggest_line_items
 
 router = APIRouter(prefix="/invoices", tags=["invoices"])
+
+
+class SuggestItemsRequest(BaseModel):
+    client_name: str
+    first_item: str
 
 
 def _recalc_invoice(invoice: Invoice) -> None:
@@ -19,6 +26,29 @@ def _recalc_invoice(invoice: Invoice) -> None:
     invoice.subtotal = subtotal
     invoice.tax_amount = tax_amount
     invoice.total = round(subtotal + tax_amount, 2)
+
+
+@router.post("/suggest-items")
+async def suggest_items(
+    data: SuggestItemsRequest,
+    dry_run: bool = Query(False),
+    db: AsyncSession = Depends(get_db),
+) -> list[dict]:
+    if dry_run:
+        return [
+            {"description": "Consulting — Additional Hours", "typical_unit_price": 150.0},
+            {"description": "Project Management", "typical_unit_price": 120.0},
+            {"description": "Documentation", "typical_unit_price": 80.0},
+        ]
+    result = await db.execute(
+        select(InvoiceItem.description)
+        .join(Invoice, InvoiceItem.invoice_id == Invoice.id)
+        .where(Invoice.client_name == data.client_name)
+        .order_by(Invoice.issue_date.desc())
+        .limit(20)
+    )
+    history = [row[0] for row in result.all()]
+    return await suggest_line_items(data.client_name, data.first_item, history)
 
 
 @router.post("", response_model=InvoiceResponse, status_code=201)
@@ -90,14 +120,11 @@ async def update_invoice(
         raise HTTPException(status_code=404, detail="Invoice not found")
 
     update_data = data.model_dump(exclude_unset=True)
-    # Handle items separately
     update_data.pop("items", None)
-
     for field, value in update_data.items():
         setattr(invoice, field, value)
 
     if data.items is not None:
-        # Remove existing items and recreate
         existing = await item_repo.list_by_invoice(invoice.id)
         for ex in existing:
             await item_repo.delete(ex)
@@ -125,6 +152,31 @@ async def delete_invoice(invoice_id: UUID, db: AsyncSession = Depends(get_db)) -
     if not invoice:
         raise HTTPException(status_code=404, detail="Invoice not found")
     await repo.delete(invoice)
+
+
+@router.post("/{invoice_id}/reminder-draft")
+async def reminder_draft(
+    invoice_id: UUID,
+    dry_run: bool = Query(False),
+    db: AsyncSession = Depends(get_db),
+) -> dict:
+    repo = InvoiceRepository(db)
+    invoice = await repo.get(invoice_id)
+    if not invoice:
+        raise HTTPException(status_code=404, detail="Invoice not found")
+    if invoice.status not in ("overdue", "sent"):
+        raise HTTPException(status_code=400, detail="Invoice must be in 'sent' or 'overdue' status")
+    if dry_run:
+        return {
+            "subject": f"Payment Reminder: Invoice #{invoice.invoice_number} — ${invoice.total:.2f} Due",
+            "body": f"Dear {invoice.client_name},\n\nThis is a friendly reminder that invoice #{invoice.invoice_number} for ${invoice.total:.2f} was due on {invoice.due_date}. Please arrange payment at your earliest convenience.\n\nThank you.",
+        }
+    return await draft_reminder(
+        invoice.invoice_number,
+        invoice.client_name,
+        str(invoice.due_date),
+        invoice.total,
+    )
 
 
 @router.post("/{invoice_id}/items", response_model=InvoiceItemResponse, status_code=201)
@@ -173,7 +225,6 @@ async def update_invoice_item(
     for field, value in update_data.items():
         setattr(item, field, value)
 
-    # Recalculate amount if quantity or unit_price changed
     if data.quantity is not None or data.unit_price is not None:
         item.amount = round(item.quantity * item.unit_price, 2)
 

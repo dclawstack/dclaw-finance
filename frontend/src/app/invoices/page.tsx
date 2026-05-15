@@ -22,6 +22,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { listInvoices, type Invoice } from "@/lib/api";
+import { formatINR } from "@/lib/utils";
 
 const statusColors: Record<string, string> = {
   draft: "bg-slate-100 text-slate-700",
@@ -125,8 +126,8 @@ export default function InvoicesPage() {
                           {inv.status}
                         </Badge>
                       </TableCell>
-                      <TableCell className="text-right">
-                        ${inv.total.toFixed(2)}
+                      <TableCell className="text-right tabular-nums">
+                        {formatINR(inv.total)}
                       </TableCell>
                     </TableRow>
                   ))}

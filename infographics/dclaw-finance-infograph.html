@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<title>DClaw Finance — Infographic · One Convergence × DKube</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+/* ── OC Design Tokens ─────────────────────────── */
+:root {
+  --p25:   #FAF6FD;
+  --p50:   #F5EEFB;
+  --p100:  #E7D8F4;
+  --p300:  #B180F8;
+  --p500:  #7030A0;
+  --p700:  #4A1F6C;
+  --p900:  #2B0E45;
+  --dk:    #6E55A4;   /* DKube cube dark face */
+  --dl:    #9783C0;   /* DKube cube light face */
+  --dfl:   #D5D5D5;   /* DKube cube floor */
+  --ink:   #141414;
+  --ink2:  #2A2A2A;
+  --ink3:  #5A5A5A;
+  --ink4:  #8A8A8A;
+  --rule:  #E5E5E5;
+  --paper: #FFFFFF;
+  --cool:  #F6F5F7;
+  --warm:  #FAF8F4;
+  --ok:    #18A957;
+  --warn:  #C2870B;
+  --err:   #C2240C;
+  --display: "Manrope", "Inter", sans-serif;
+  --sans:    "Inter", sans-serif;
+  --mono:    "JetBrains Mono", monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+@page {
+  size: 1200px 5200px;
+  margin: 0;
+}
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--paper);
+  width: 1200px;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ── Section wrapper ──────────────────────────── */
+.sec {
+  width: 1200px;
+  padding: 0 64px;
+}
+.sec-inner {
+  padding: 56px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.sec-inner.no-border { border-bottom: none; }
+
+/* ── Eyebrow ──────────────────────────────────── */
+.ey {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink4);
+  margin-bottom: 10px;
+}
+.ey.purple { color: var(--p500); }
+.ey.light  { color: rgba(255,255,255,0.5); }
+
+/* ── Typography ───────────────────────────────── */
+h1 { font-family: var(--display); font-size: 80px; font-weight: 800; line-height: 0.9; letter-spacing: -0.05em; }
+h2 { font-family: var(--display); font-size: 40px; font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; }
+h3 { font-family: var(--sans); font-size: 22px; font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
+h4 { font-family: var(--sans); font-size: 15px; font-weight: 600; line-height: 1.3; }
+p  { font-family: var(--sans); font-size: 14px; line-height: 1.65; color: var(--ink3); }
+
+/* ── Big stat ─────────────────────────────────── */
+.stat-num {
+  font-family: var(--display);
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: var(--p500);
+}
+.stat-num.white { color: var(--paper); }
+.stat-num.ink   { color: var(--ink); }
+.stat-lbl {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink4);
+  margin-top: 4px;
+}
+.stat-lbl.light { color: rgba(255,255,255,0.45); }
+
+/* ── Tag / badge ──────────────────────────────── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  background: var(--p50);
+  color: var(--p500);
+  border: 1px solid var(--p100);
+  font-size: 11px;
+  font-weight: 600;
+  font-family: var(--sans);
+  padding: 3px 9px;
+  border-radius: 2px;
+}
+.tag.dark    { background: rgba(177,128,248,.1); color: var(--p300); border-color: rgba(177,128,248,.25); }
+.tag.ok      { background: #ECF8F0; color: var(--ok); border-color: #B7DFCB; }
+.tag.ink     { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.tag.neutral { background: var(--cool); color: var(--ink3); border-color: var(--rule); }
+
+/* ── Horizontal rule ──────────────────────────── */
+hr { border: none; border-top: 1px solid var(--rule); }
+hr.ink-rule { border-top: 1px solid var(--ink); }
+hr.light    { border-top: 1px solid rgba(255,255,255,0.12); }
+
+/* ── Grid helpers ─────────────────────────────── */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+.g4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+.row { display: flex; align-items: flex-start; gap: 40px; }
+
+/* ── Cell / card ──────────────────────────────── */
+.cell {
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  padding: 20px 22px;
+  background: var(--paper);
+}
+.cell.ink-border { border-color: var(--ink); }
+.cell.purple-bg  { background: var(--p25); border-color: var(--p100); }
+.cell.dark       { border-color: rgba(255,255,255,0.12); background: rgba(255,255,255,0.05); }
+
+/* ── Progress / bar ───────────────────────────── */
+.bar-track { height: 6px; background: var(--rule); border-radius: 0; margin-top: 6px; }
+.bar-fill  { height: 6px; background: var(--p500); }
+
+/* ── Accent left bar ──────────────────────────── */
+.accent { border-left: 3px solid var(--p500); padding-left: 14px; }
+
+/* ── Tables ───────────────────────────────────── */
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+thead th {
+  font-family: var(--mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ink4);
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--ink);
+}
+tbody td { padding: 10px 12px; border-bottom: 1px solid var(--rule); vertical-align: middle; }
+tbody tr:last-child td { border-bottom: none; }
+.mono { font-family: var(--mono); }
+
+/* ── Feature icon box ─────────────────────────── */
+.feat-icon {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--p50);
+  border: 1px solid var(--p100);
+  border-radius: 2px;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.feat-icon.dark {
+  background: rgba(177,128,248,.12);
+  border-color: rgba(177,128,248,.2);
+}
+
+/* ── Divider label ────────────────────────────── */
+.div-label {
+  font-family: var(--mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--ink4);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.div-label::before, .div-label::after {
+  content: '';
+  flex: 1;
+  border-top: 1px solid var(--rule);
+}
+
+/* ── Stacked segment bar ──────────────────────── */
+.seg-bar { display: flex; height: 10px; border-radius: 0; overflow: hidden; gap: 2px; margin: 10px 0 6px; }
+.seg { height: 10px; }
+
+/* ── Inline dot ───────────────────────────────── */
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 0; flex-shrink: 0; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 1 — HERO (FULL-BLEED INK)
+══════════════════════════════════════════════ -->
+<div style="background:var(--ink);width:1200px;padding:0 64px;">
+  <div style="padding:56px 0 40px;">
+
+    <!-- Top bar -->
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:48px;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.1);">
+      <!-- DKube cube mark -->
+      <div style="display:flex;align-items:center;gap:14px;">
+        <svg width="40" height="40" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="32,4 60,20 60,44 32,60 4,44 4,20" fill="#6E55A4"/>
+          <polygon points="32,4 60,20 32,36 4,20" fill="#9783C0"/>
+          <polygon points="4,20 32,36 32,60 4,44" fill="#D5D5D5" opacity="0.6"/>
+        </svg>
+        <div>
+          <div style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:0.15em;color:rgba(255,255,255,0.4);margin-bottom:2px;">One Convergence · DKube</div>
+          <div style="font-family:var(--display);font-size:14px;font-weight:700;color:rgba(255,255,255,0.9);letter-spacing:-0.01em;">Product Intelligence Report</div>
+        </div>
+      </div>
+      <div style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:0.08em;">MAY 2026 · v1.2 · CONFIDENTIAL</div>
+    </div>
+
+    <!-- Hero text -->
+    <div style="display:flex;align-items:flex-end;gap:60px;">
+      <div style="flex:1;">
+        <div class="ey light" style="margin-bottom:16px;">Enterprise financial intelligence platform</div>
+        <h1 style="color:var(--paper);margin-bottom:8px;">DClaw<br/>Finance</h1>
+        <div style="width:56px;height:2px;background:var(--p300);margin:24px 0;"></div>
+        <p style="font-size:17px;line-height:1.6;color:rgba(255,255,255,0.65);max-width:480px;">
+          AI-augmented financial management for enterprise teams. Every workflow —
+          from expense entry to board report — is intelligent, predictive, and grounded
+          in real data.
+        </p>
+      </div>
+
+      <!-- Hero stats column -->
+      <div style="flex:0 0 340px;display:flex;flex-direction:column;gap:1px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,0.06);">
+          <div style="background:var(--p500);padding:24px 20px;">
+            <div class="stat-num white" style="font-size:48px;">₹39 Cr</div>
+            <div class="stat-lbl light">Annual revenue</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);padding:24px 20px;">
+            <div class="stat-num" style="font-size:48px;color:var(--p300);">24.7%</div>
+            <div class="stat-lbl light">Net margin</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);padding:24px 20px;">
+            <div class="stat-num" style="font-size:48px;color:var(--p300);">11</div>
+            <div class="stat-lbl light">AI features shipped</div>
+          </div>
+          <div style="background:rgba(255,255,255,0.04);padding:24px 20px;">
+            <div class="stat-num" style="font-size:48px;color:var(--p300);">12</div>
+            <div class="stat-lbl light">Enterprise clients</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tag row -->
+    <div style="display:flex;gap:8px;margin-top:40px;padding-top:28px;border-top:1px solid rgba(255,255,255,0.08);flex-wrap:wrap;">
+      <span class="tag dark">FastAPI · Python 3.11</span>
+      <span class="tag dark">Next.js 14 App Router</span>
+      <span class="tag dark">PostgreSQL 16</span>
+      <span class="tag dark">Docker · Kubernetes · Helm</span>
+      <span class="tag dark">OpenRouter · Anthropic Claude</span>
+      <span class="tag dark">Tailwind CSS · shadcn/ui</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 2 — WHAT IS DCLAW FINANCE
+══════════════════════════════════════════════ -->
+<div class="sec" style="background:var(--warm);">
+  <div class="sec-inner">
+    <div class="row" style="gap:56px;align-items:center;">
+      <div style="flex:0 0 420px;">
+        <div class="ey purple">The platform</div>
+        <h2 style="margin-bottom:16px;">One platform.<br/>All your finance data.</h2>
+        <p style="margin-bottom:20px;">
+          DClaw Finance is a full-stack enterprise financial management platform
+          built on the One Convergence design system and powered by DKube's private
+          AI infrastructure philosophy — your data, your infrastructure, full control.
+        </p>
+        <p>
+          It replaces fragmented spreadsheets, disconnected invoice tools, and
+          reactive reporting with a single, AI-augmented system that knows your
+          numbers as well as you do.
+        </p>
+      </div>
+      <div style="flex:1;display:flex;flex-direction:column;gap:10px;">
+        <div style="display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--paper);border:1px solid var(--rule);border-radius:2px;">
+          <span style="font-size:22px;">📊</span>
+          <div><h4>Invoice &amp; expense management</h4><p style="font-size:12px;margin:0;">Full CRUD for invoices, line items, expenses, vendors. Category filters, status tracking, tax handling.</p></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--paper);border:1px solid var(--p100);border-left:3px solid var(--p500);border-radius:2px;">
+          <span style="font-size:22px;">🤖</span>
+          <div><h4 style="color:var(--p500);">AI at every decision point</h4><p style="font-size:12px;margin:0;">Auto-categorise, OCR receipts, draft reminders, detect anomalies, forecast cash flow, answer questions in plain English.</p></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--paper);border:1px solid var(--rule);border-radius:2px;">
+          <span style="font-size:22px;">📈</span>
+          <div><h4>Predictive financial intelligence</h4><p style="font-size:12px;margin:0;">12-month trend charts, 3-month exponential smoothing forecast, client profitability scoring, budget guardrails.</p></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--paper);border:1px solid var(--rule);border-radius:2px;">
+          <span style="font-size:22px;">🔒</span>
+          <div><h4>Private, compliant, on-premise</h4><p style="font-size:12px;margin:0;">Runs entirely on your infrastructure via Docker Compose or Kubernetes. No data leaves your environment.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 3 — 11 AI FEATURES
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-inner">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px;">
+      <div>
+        <div class="ey purple">AI feature set · v1.2 · All in production</div>
+        <h2>11 AI capabilities, zero manual steps.</h2>
+      </div>
+      <div style="display:flex;gap:8px;">
+        <span class="tag ok" style="font-size:10px;">4 × P0 core</span>
+        <span class="tag" style="font-size:10px;">4 × P1 intelligent</span>
+        <span class="tag neutral" style="font-size:10px;">3 × P2 differentiating</span>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+      <!-- P0 features - purple left border -->
+      <div class="cell" style="border-left:3px solid var(--p500);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div class="feat-icon">🏷</div>
+          <span class="tag ok" style="font-size:9px;">P0</span>
+        </div>
+        <h4 style="margin-bottom:4px;">Expense auto-categorisation</h4>
+        <p style="font-size:12px;">600ms debounce → AI suggests category + confidence from vendor &amp; description.</p>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--p500);margin-top:8px;">claude-haiku-4-5 · ~50 tokens</div>
+      </div>
+      <div class="cell" style="border-left:3px solid var(--p500);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div class="feat-icon">📷</div>
+          <span class="tag ok" style="font-size:9px;">P0</span>
+        </div>
+        <h4 style="margin-bottom:4px;">Receipt OCR</h4>
+        <p style="font-size:12px;">Drag-and-drop receipt image → vision API extracts vendor, amount, date, category.</p>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--p500);margin-top:8px;">claude-haiku-4-5 · vision</div>
+      </div>
+      <div class="cell" style="border-left:3px solid var(--p500);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div class="feat-icon">✉</div>
+          <span class="tag ok" style="font-size:9px;">P0</span>
+        </div>
+        <h4 style="margin-bottom:4px;">Reminder drafts</h4>
+        <p style="font-size:12px;">One click on overdue invoice → professional email draft with editable subject + body.</p>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--p500);margin-top:8px;">claude-sonnet-4-6 · ~250 tok</div>
+      </div>
+      <div class="cell" style="border-left:3px solid var(--p500);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div class="feat-icon">📊</div>
+          <span class="tag ok" style="font-size:9px;">P0</span>
+        </div>
+        <h4 style="margin-bottom:4px;">12-month trend chart</h4>
+        <p style="font-size:12px;">Real DB-backed monthly aggregation. Revenue vs expenses LineChart on dashboard.</p>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--ink4);margin-top:8px;">No LLM · pure DB query</div>
+      </div>
+
+      <!-- P1 features -->
+      <div class="cell">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div class="feat-icon">🔮</div>
+          <span class="tag" style="font-size:9px;">P1</span>
+        </div>
+        <h4 style="margin-bottom:4px;">Cash flow forecast</h4>
+        <p style="font-size:12px;">6-month trailing data, exponential smoothing α=0.3, 3-month projection with confidence bands.</p>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--ink4);margin-top:8px;">No LLM · statistics stdlib</div>
+      </div>
+      <div class="cell">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div class="feat-icon">⚠</div>
+          <span class="tag" style="font-size:9px;">P1</span>
+        </div>
+        <h4 style="margin-bottom:4px;">Anomaly detection</h4>
+        <p style="font-size:12px;">z-score &gt; 2 per category flags outliers. Batched LLM explanation. 1h in-memory cache.</p>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--p500);margin-top:8px;">claude-haiku-4-5 · batched</div>
+      </div>
+      <div class="cell">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div class="feat-icon">📋</div>
+          <span class="tag" style="font-size:9px;">P1</span>
+        </div>
+        <h4 style="margin-bottom:4px;">Monthly executive report</h4>
+        <p style="font-size:12px;">Revenue vs expenses, top cost drivers, 3 actionable recommendations. Plain-text output.</p>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--p500);margin-top:8px;">claude-sonnet-4-6 · ~1k tok</div>
+      </div>
+      <div class="cell">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div class="feat-icon">💡</div>
+          <span class="tag" style="font-size:9px;">P1</span>
+        </div>
+        <h4 style="margin-bottom:4px;">Line-item suggestions</h4>
+        <p style="font-size:12px;">After first invoice line item → 3 AI-suggested additions based on client history.</p>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--p500);margin-top:8px;">claude-haiku-4-5 · ~200 tok</div>
+      </div>
+
+      <!-- P2 features -->
+      <div class="cell" style="background:var(--cool);border-color:var(--rule);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div class="feat-icon">💬</div>
+          <span class="tag neutral" style="font-size:9px;">P2</span>
+        </div>
+        <h4 style="margin-bottom:4px;">Natural language Q&amp;A</h4>
+        <p style="font-size:12px;">Agentic tool-use loop with 4 DB query tools. "What did we spend on AWS last quarter?"</p>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--p500);margin-top:8px;">claude-sonnet-4-6 · tool use</div>
+      </div>
+      <div class="cell" style="background:var(--cool);border-color:var(--rule);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div class="feat-icon">🎯</div>
+          <span class="tag neutral" style="font-size:9px;">P2</span>
+        </div>
+        <h4 style="margin-bottom:4px;">Budget AI guardrails</h4>
+        <p style="font-size:12px;">≥80% utilisation triggers. One specific cost-cutting action per breached category.</p>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--p500);margin-top:8px;">claude-haiku-4-5 · conditional</div>
+      </div>
+      <div class="cell" style="background:var(--cool);border-color:var(--rule);">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+          <div class="feat-icon">🏆</div>
+          <span class="tag neutral" style="font-size:9px;">P2</span>
+        </div>
+        <h4 style="margin-bottom:4px;">Client profitability scoring</h4>
+        <p style="font-size:12px;">Composite score: revenue 70% + outstanding balance 30%. Batched insights, 24h cache.</p>
+        <div style="font-family:var(--mono);font-size:10px;color:var(--p500);margin-top:8px;">claude-haiku-4-5 · 24h cache</div>
+      </div>
+      <!-- Cost note cell -->
+      <div style="border:1px solid var(--p100);background:var(--p25);padding:20px 22px;border-radius:2px;">
+        <div class="ey purple" style="margin-bottom:8px;">AI cost strategy</div>
+        <p style="font-size:12px;line-height:1.7;">
+          <span style="font-weight:600;color:var(--p500);">haiku</span> for fast, cheap tasks.<br/>
+          <span style="font-weight:600;color:var(--p500);">sonnet</span> for reasoning tasks.<br/>
+          <span style="font-weight:600;color:var(--ink);">?dry_run=true</span> on all AI endpoints.<br/>
+          Column caching cuts costs <span style="font-weight:700;">80%+</span>.<br/>
+          OpenRouter or Anthropic — swappable via one factory.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 4 — FINANCIAL PERFORMANCE
+══════════════════════════════════════════════ -->
+<div class="sec" style="background:var(--ink);">
+  <div class="sec-inner no-border">
+    <div class="ey light" style="margin-bottom:8px;">Financial performance · Demo data · FY 2025–26</div>
+    <h2 class="" style="color:var(--paper);margin-bottom:32px;">Meridian AI Technologies — 12-month snapshot.</h2>
+
+    <!-- Big 4 stats -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,0.06);margin-bottom:32px;">
+      <div style="background:var(--p500);padding:28px 24px;">
+        <div class="stat-num white" style="font-size:44px;">₹39.1 Cr</div>
+        <div class="stat-lbl light">Paid revenue · 12 mo</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);padding:28px 24px;">
+        <div class="stat-num" style="color:var(--p300);font-size:44px;">₹29.4 Cr</div>
+        <div class="stat-lbl light">Total expenses · 12 mo</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);padding:28px 24px;">
+        <div class="stat-num" style="color:var(--paper);font-size:44px;">₹9.6 Cr</div>
+        <div class="stat-lbl light">Net profit</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.04);padding:28px 24px;">
+        <div class="stat-num" style="color:var(--p300);font-size:44px;">24.7%</div>
+        <div class="stat-lbl light">Net margin</div>
+      </div>
+    </div>
+
+    <div class="g2" style="gap:32px;">
+
+      <!-- Monthly revenue chart -->
+      <div>
+        <div style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.4);margin-bottom:16px;">Monthly paid revenue · May 2025 – Apr 2026</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;align-items:center;gap:8px;"><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.5);width:36px;">May</span><div style="flex:1;background:rgba(255,255,255,0.06);height:18px;"><div style="height:18px;background:var(--p500);width:72%;"></div></div><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.6);width:52px;text-align:right;">₹4.55 Cr</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.5);width:36px;">Jun</span><div style="flex:1;background:rgba(255,255,255,0.06);height:18px;"><div style="height:18px;background:var(--p500);width:74%;"></div></div><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.6);width:52px;text-align:right;">₹4.60 Cr</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.5);width:36px;">Jul</span><div style="flex:1;background:rgba(255,255,255,0.06);height:18px;"><div style="height:18px;background:var(--p300);width:41%;"></div></div><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.6);width:52px;text-align:right;">₹2.55 Cr</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.5);width:36px;">Aug</span><div style="flex:1;background:rgba(255,255,255,0.06);height:18px;"><div style="height:18px;background:var(--p300);width:29%;"></div></div><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.6);width:52px;text-align:right;">₹1.80 Cr</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.5);width:36px;">Sep</span><div style="flex:1;background:rgba(255,255,255,0.06);height:18px;"><div style="height:18px;background:var(--p500);width:75%;"></div></div><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.6);width:52px;text-align:right;">₹4.70 Cr</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.5);width:36px;">Oct</span><div style="flex:1;background:rgba(255,255,255,0.06);height:18px;"><div style="height:18px;background:var(--p300);width:35%;"></div></div><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.6);width:52px;text-align:right;">₹2.20 Cr</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.5);width:36px;">Nov</span><div style="flex:1;background:rgba(255,255,255,0.06);height:18px;"><div style="height:18px;background:var(--p500);width:85%;"></div></div><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.6);width:52px;text-align:right;">₹5.25 Cr</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.5);width:36px;">Dec</span><div style="flex:1;background:rgba(255,255,255,0.06);height:18px;"><div style="height:18px;background:rgba(177,128,248,0.4);width:19%;"></div></div><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.4);width:52px;text-align:right;">₹1.20 Cr</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.5);width:36px;">Jan</span><div style="flex:1;background:rgba(255,255,255,0.06);height:18px;"><div style="height:18px;background:var(--p500);width:63%;"></div></div><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.6);width:52px;text-align:right;">₹3.90 Cr</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.5);width:36px;">Feb</span><div style="flex:1;background:rgba(255,255,255,0.06);height:18px;"><div style="height:18px;background:var(--p300);width:37%;"></div></div><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.6);width:52px;text-align:right;">₹2.30 Cr</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.5);width:36px;">Mar</span><div style="flex:1;background:rgba(255,255,255,0.06);height:18px;"><div style="height:18px;background:var(--p300);width:32%;"></div></div><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.6);width:52px;text-align:right;">₹2.00 Cr</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.5);width:36px;">Apr</span><div style="flex:1;background:rgba(255,255,255,0.06);height:18px;"><div style="height:18px;background:var(--p500);width:57%;"></div></div><span style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.6);width:52px;text-align:right;">₹3.55 Cr</span></div>
+        </div>
+        <div style="font-family:var(--mono);font-size:9px;color:rgba(255,255,255,0.25);margin-top:8px;">Dec dip = holiday procurement freeze · seasonal pattern</div>
+      </div>
+
+      <!-- Expense breakdown -->
+      <div>
+        <div style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.4);margin-bottom:16px;">Expense breakdown · 12-month total ₹29.4 Cr</div>
+
+        <!-- Stacked bar visual -->
+        <div style="display:flex;height:24px;gap:1px;margin-bottom:16px;border:1px solid rgba(255,255,255,0.06);">
+          <div style="background:var(--p500);width:66%;"></div>
+          <div style="background:var(--p300);width:9%;"></div>
+          <div style="background:var(--dl);width:7%;"></div>
+          <div style="background:var(--dfl);width:7%;opacity:0.8;"></div>
+          <div style="background:rgba(255,255,255,0.15);width:7%;"></div>
+          <div style="background:rgba(255,255,255,0.08);width:4%;"></div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:8px;"><span class="dot" style="background:var(--p500);"></span><span style="font-size:12px;color:rgba(255,255,255,0.7);">Salary (40 staff · SJ + Hyderabad)</span></div>
+            <span style="font-family:var(--mono);font-size:12px;font-weight:600;color:var(--p300);">₹19.4 Cr · 66%</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:8px;"><span class="dot" style="background:var(--p300);"></span><span style="font-size:12px;color:rgba(255,255,255,0.7);">Marketing (re:Invent, NeurIPS, Gartner)</span></div>
+            <span style="font-family:var(--mono);font-size:12px;color:rgba(255,255,255,0.6);">₹2.6 Cr · 9%</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:8px;"><span class="dot" style="background:var(--dl);"></span><span style="font-size:12px;color:rgba(255,255,255,0.7);">Travel (client visits, all-hands, syncs)</span></div>
+            <span style="font-family:var(--mono);font-size:12px;color:rgba(255,255,255,0.6);">₹2.2 Cr · 7%</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:8px;"><span class="dot" style="background:var(--dfl);"></span><span style="font-size:12px;color:rgba(255,255,255,0.7);">Office (SJ ₹12L/mo · Hyderabad ₹2.5L/mo)</span></div>
+            <span style="font-family:var(--mono);font-size:12px;color:rgba(255,255,255,0.6);">₹2.1 Cr · 7%</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:8px;"><span class="dot" style="background:rgba(255,255,255,0.15);"></span><span style="font-size:12px;color:rgba(255,255,255,0.7);">Software (AWS, Salesforce, Datadog, SaaS)</span></div>
+            <span style="font-family:var(--mono);font-size:12px;color:rgba(255,255,255,0.6);">₹1.9 Cr · 7%</span>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;">
+            <div style="display:flex;align-items:center;gap:8px;"><span class="dot" style="background:rgba(255,255,255,0.08);"></span><span style="font-size:12px;color:rgba(255,255,255,0.7);">Other (legal, D&amp;O insurance, pen-testing)</span></div>
+            <span style="font-family:var(--mono);font-size:12px;color:rgba(255,255,255,0.6);">₹1.3 Cr · 4%</span>
+          </div>
+        </div>
+
+        <!-- Salary breakdown -->
+        <div style="margin-top:20px;padding:16px 18px;border:1px solid rgba(255,255,255,0.08);border-radius:2px;background:rgba(255,255,255,0.03);">
+          <div style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.35);margin-bottom:10px;">Salary structure · monthly</div>
+          <div style="display:flex;flex-direction:column;gap:6px;">
+            <div style="display:flex;justify-content:space-between;font-size:12px;"><span style="color:rgba(255,255,255,0.6);">Hyderabad · 20 engineers · avg ₹12 LPA</span><span style="font-family:var(--mono);color:var(--p300);">₹20 L/mo</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;"><span style="color:rgba(255,255,255,0.6);">San Jose · 12 eng+product · avg ₹80 LPA</span><span style="font-family:var(--mono);color:var(--p300);">₹80 L/mo</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;"><span style="color:rgba(255,255,255,0.6);">San Jose · 8 sales+exec · avg ₹65 LPA</span><span style="font-family:var(--mono);color:var(--p300);">₹43 L/mo</span></div>
+            <div style="height:1px;background:rgba(255,255,255,0.08);margin:4px 0;"></div>
+            <div style="display:flex;justify-content:space-between;font-size:12px;font-weight:600;"><span style="color:rgba(255,255,255,0.8);">Total · 40 staff</span><span style="font-family:var(--mono);color:var(--paper);">₹1.43 Cr/mo</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 5 — CLIENT PORTFOLIO
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-inner">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:28px;">
+      <div>
+        <div class="ey purple">Client portfolio · 50 invoices · ₹42.6 Cr total invoiced</div>
+        <h2>12 enterprise accounts across 5 industries.</h2>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;max-width:300px;justify-content:flex-end;">
+        <span class="tag" style="font-size:10px;">Finance</span>
+        <span class="tag" style="font-size:10px;">Life Sciences</span>
+        <span class="tag" style="font-size:10px;">Technology</span>
+        <span class="tag" style="font-size:10px;">Legal</span>
+        <span class="tag" style="font-size:10px;">Construction</span>
+        <span class="tag" style="font-size:10px;">Education</span>
+      </div>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Client</th>
+          <th>Industry</th>
+          <th>Total invoiced</th>
+          <th>Profile score</th>
+          <th>Key service</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="background:var(--p25);">
+          <td class="mono" style="color:var(--ink4);">01</td>
+          <td style="font-weight:700;">JPMorgan Chase</td>
+          <td style="color:var(--ink3);font-size:12px;">Investment banking</td>
+          <td class="mono" style="font-weight:700;color:var(--p500);">₹7.35 Cr</td>
+          <td><div style="display:flex;align-items:center;gap:6px;"><div style="height:6px;width:80px;background:var(--rule);"><div style="height:6px;width:89.8%;background:var(--p500);"></div></div><span class="mono" style="font-size:11px;">89.8</span></div></td>
+          <td style="font-size:12px;color:var(--ink3);">DKubeX Annual + QueriLynx</td>
+        </tr>
+        <tr>
+          <td class="mono" style="color:var(--ink4);">02</td>
+          <td style="font-weight:700;">TIAA Financial Services</td>
+          <td style="color:var(--ink3);font-size:12px;">Financial services</td>
+          <td class="mono" style="font-weight:700;color:var(--p500);">₹7.05 Cr</td>
+          <td><div style="display:flex;align-items:center;gap:6px;"><div style="height:6px;width:80px;background:var(--rule);"><div style="height:6px;width:67.1%;background:var(--warn);"></div></div><span class="mono" style="font-size:11px;">67.1</span></div></td>
+          <td style="font-size:12px;color:var(--ink3);">DKubeX Annual + QueriLynx finance AI</td>
+        </tr>
+        <tr style="background:var(--p25);">
+          <td class="mono" style="color:var(--ink4);">03</td>
+          <td style="font-weight:700;">Apollo Global Management</td>
+          <td style="color:var(--ink3);font-size:12px;">Private equity</td>
+          <td class="mono" style="font-weight:700;color:var(--p500);">₹5.75 Cr</td>
+          <td><div style="display:flex;align-items:center;gap:6px;"><div style="height:6px;width:80px;background:var(--rule);"><div style="height:6px;width:84.8%;background:var(--p500);"></div></div><span class="mono" style="font-size:11px;">84.8</span></div></td>
+          <td style="font-size:12px;color:var(--ink3);">DKubeX + SLA + ongoing services</td>
+        </tr>
+        <tr>
+          <td class="mono" style="color:var(--ink4);">04</td>
+          <td style="font-weight:700;">Altos Labs</td>
+          <td style="color:var(--ink3);font-size:12px;">Life sciences / biotech</td>
+          <td class="mono" style="font-weight:700;">₹5.45 Cr</td>
+          <td><div style="display:flex;align-items:center;gap:6px;"><div style="height:6px;width:80px;background:var(--rule);"><div style="height:6px;width:81.9%;background:var(--p500);"></div></div><span class="mono" style="font-size:11px;">81.9</span></div></td>
+          <td style="font-size:12px;color:var(--ink3);">MLOps Annual + RAG pipeline</td>
+        </tr>
+        <tr style="background:var(--p25);">
+          <td class="mono" style="color:var(--ink4);">05</td>
+          <td style="font-weight:700;">Allianz Life Sciences</td>
+          <td style="color:var(--ink3);font-size:12px;">Insurance · life sciences</td>
+          <td class="mono" style="font-weight:700;">₹4.35 Cr</td>
+          <td><div style="display:flex;align-items:center;gap:6px;"><div style="height:6px;width:80px;background:var(--rule);"><div style="height:6px;width:77%;background:var(--p500);"></div></div><span class="mono" style="font-size:11px;">77.0</span></div></td>
+          <td style="font-size:12px;color:var(--ink3);">DKubeX Annual + DocMind</td>
+        </tr>
+        <tr>
+          <td class="mono" style="color:var(--ink4);">06</td>
+          <td style="font-weight:700;">MetLife Group</td>
+          <td style="color:var(--ink3);font-size:12px;">Insurance</td>
+          <td class="mono" style="font-weight:700;">₹3.90 Cr</td>
+          <td><div style="display:flex;align-items:center;gap:6px;"><div style="height:6px;width:80px;background:var(--rule);"><div style="height:6px;width:73%;background:var(--p300);"></div></div><span class="mono" style="font-size:11px;">73.0</span></div></td>
+          <td style="font-size:12px;color:var(--ink3);">Custom RAG + compliance audit</td>
+        </tr>
+        <tr style="background:var(--p25);">
+          <td class="mono" style="color:var(--ink4);">07</td>
+          <td style="font-weight:700;">VMware by Broadcom</td>
+          <td style="color:var(--ink3);font-size:12px;">Cloud infrastructure</td>
+          <td class="mono" style="font-weight:700;">₹3.65 Cr</td>
+          <td><div style="display:flex;align-items:center;gap:6px;"><div style="height:6px;width:80px;background:var(--rule);"><div style="height:6px;width:65%;background:var(--warn);"></div></div><span class="mono" style="font-size:11px;">65.0</span></div></td>
+          <td style="font-size:12px;color:var(--ink3);">DKubeX Quarterly + GPU config</td>
+        </tr>
+        <tr>
+          <td class="mono" style="color:var(--ink4);">08</td>
+          <td style="font-weight:700;">Cisco Systems</td>
+          <td style="color:var(--ink3);font-size:12px;">Enterprise technology</td>
+          <td class="mono" style="font-weight:700;">₹2.80 Cr</td>
+          <td><div style="display:flex;align-items:center;gap:6px;"><div style="height:6px;width:80px;background:var(--rule);"><div style="height:6px;width:70%;background:var(--p500);"></div></div><span class="mono" style="font-size:11px;">70.0</span></div></td>
+          <td style="font-size:12px;color:var(--ink3);">Infrastructure assessment + training</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Remaining 4 clients as small chips -->
+    <div style="margin-top:16px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+      <span style="font-family:var(--mono);font-size:10px;color:var(--ink4);letter-spacing:0.06em;">+ 4 more →</span>
+      <span class="tag neutral" style="font-size:11px;">BuildFirst Construction · ₹2.1 Cr</span>
+      <span class="tag neutral" style="font-size:11px;">StackPath Technologies · ₹1.9 Cr</span>
+      <span class="tag neutral" style="font-size:11px;">Sequoia Legal Partners · ₹1.6 Cr</span>
+      <span class="tag neutral" style="font-size:11px;">Pacific University System · ₹1.2 Cr</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 6 — TECH STACK + ARCHITECTURE
+══════════════════════════════════════════════ -->
+<div class="sec" style="background:var(--cool);">
+  <div class="sec-inner">
+    <div class="ey purple" style="margin-bottom:8px;">Technology stack · Architecture lock</div>
+    <h2 style="margin-bottom:28px;">Every layer, specified.</h2>
+
+    <div class="g4" style="gap:14px;margin-bottom:20px;">
+      <!-- Frontend -->
+      <div class="cell" style="background:var(--p25);border-color:var(--p100);">
+        <div style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:0.12em;color:var(--p500);margin-bottom:10px;">Frontend · Port 3007</div>
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <div style="font-size:12px;font-weight:600;">Next.js 14 App Router</div>
+          <div style="font-size:11px;color:var(--ink3);">Tailwind CSS</div>
+          <div style="font-size:11px;color:var(--ink3);">shadcn/ui components</div>
+          <div style="font-size:11px;color:var(--ink3);">Recharts (LineChart, AreaChart, BarChart)</div>
+          <div style="font-size:11px;color:var(--ink3);">TypeScript · strict mode</div>
+          <div style="font-size:11px;color:var(--ink3);">node:20-alpine Docker image</div>
+        </div>
+      </div>
+      <!-- Backend -->
+      <div class="cell" style="background:var(--p25);border-color:var(--p100);">
+        <div style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:0.12em;color:var(--p500);margin-bottom:10px;">Backend · Port 8096</div>
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <div style="font-size:12px;font-weight:600;">FastAPI · Python 3.11</div>
+          <div style="font-size:11px;color:var(--ink3);">SQLAlchemy 2.0 async</div>
+          <div style="font-size:11px;color:var(--ink3);">Pydantic v2 · ConfigDict</div>
+          <div style="font-size:11px;color:var(--ink3);">Repository pattern</div>
+          <div style="font-size:11px;color:var(--ink3);">Alembic migrations</div>
+          <div style="font-size:11px;color:var(--ink3);">python:3.11-slim · non-root</div>
+        </div>
+      </div>
+      <!-- AI -->
+      <div class="cell">
+        <div style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink4);margin-bottom:10px;">AI layer · services/</div>
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <div style="font-size:12px;font-weight:600;">anthropic · openai SDKs</div>
+          <div style="font-size:11px;color:var(--ink3);">Unified llm_client.py factory</div>
+          <div style="font-size:11px;color:var(--ink3);">OpenRouter ↔ Anthropic swap</div>
+          <div style="font-size:11px;color:var(--ink3);">claude-haiku-4-5 (fast/cheap)</div>
+          <div style="font-size:11px;color:var(--ink3);">claude-sonnet-4-6 (reasoning)</div>
+          <div style="font-size:11px;color:var(--ink3);">Vision · tool-use · streaming-ready</div>
+        </div>
+      </div>
+      <!-- Data + Deploy -->
+      <div class="cell">
+        <div style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink4);margin-bottom:10px;">Data &amp; Deploy</div>
+        <div style="display:flex;flex-direction:column;gap:5px;">
+          <div style="font-size:12px;font-weight:600;">PostgreSQL 16 · asyncpg</div>
+          <div style="font-size:11px;color:var(--ink3);">Docker Compose (3 containers)</div>
+          <div style="font-size:11px;color:var(--ink3);">Helm chart · helm/dclaw-finance/</div>
+          <div style="font-size:11px;color:var(--ink3);">Kubernetes namespace-isolated</div>
+          <div style="font-size:11px;color:var(--ink3);">Health checks · env-var config</div>
+          <div style="font-size:11px;color:var(--ink3);">CORS · non-root containers</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- API surface -->
+    <div style="background:var(--ink);border-radius:2px;padding:20px 24px;">
+      <div style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.3);margin-bottom:12px;">REST API surface · /api/v1</div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;">
+        <span class="tag dark" style="font-size:10px;">GET /dashboard</span>
+        <span class="tag dark" style="font-size:10px;">GET /dashboard/trends</span>
+        <span class="tag dark" style="font-size:10px;">POST /expenses/categorize</span>
+        <span class="tag dark" style="font-size:10px;">POST /expenses/ocr</span>
+        <span class="tag dark" style="font-size:10px;">GET /expenses/anomalies</span>
+        <span class="tag dark" style="font-size:10px;">POST /invoices/suggest-items</span>
+        <span class="tag dark" style="font-size:10px;">POST /invoices/{id}/reminder-draft</span>
+        <span class="tag dark" style="font-size:10px;">GET /forecast</span>
+        <span class="tag dark" style="font-size:10px;">POST /reports/monthly-summary</span>
+        <span class="tag dark" style="font-size:10px;">GET /clients/profitability</span>
+        <span class="tag dark" style="font-size:10px;">GET /budgets/status</span>
+        <span class="tag dark" style="font-size:10px;">POST /chat</span>
+        <span class="tag dark" style="font-size:10px;">GET /chat/history</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 7 — DESIGN SYSTEM
+══════════════════════════════════════════════ -->
+<div class="sec">
+  <div class="sec-inner">
+    <div class="row" style="gap:56px;align-items:flex-start;">
+      <div style="flex:0 0 360px;">
+        <div class="ey purple">Design system · One Convergence Vol. 01</div>
+        <h2 style="font-size:32px;margin-bottom:16px;">Purple on white.<br/>Editorial restraint.</h2>
+        <p style="margin-bottom:20px;">
+          The UI implements OC design tokens directly. The brand aesthetic:
+          confident, declarative headlines in Manrope 800, neutral Inter body,
+          JetBrains Mono for labels. Sharp 2px corners, 1px rules, no decorative
+          shadows on marketing surfaces.
+        </p>
+
+        <!-- Color swatches -->
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="display:flex;gap:0;">
+            <div style="width:48px;height:48px;background:#7030A0;"></div>
+            <div style="width:48px;height:48px;background:#B180F8;"></div>
+            <div style="width:48px;height:48px;background:#4A1F6C;"></div>
+            <div style="width:48px;height:48px;background:#E7D8F4;"></div>
+            <div style="width:48px;height:48px;background:#FAF6FD;border:1px solid #E5E5E5;"></div>
+            <div style="width:48px;height:48px;background:#141414;"></div>
+            <div style="width:48px;height:48px;background:#5A5A5A;"></div>
+            <div style="width:48px;height:48px;background:#FFFFFF;border:1px solid #E5E5E5;"></div>
+          </div>
+          <div style="display:flex;gap:0;">
+            <div style="font-family:var(--mono);font-size:8px;color:var(--ink4);width:48px;text-align:center;padding-top:3px;">P500</div>
+            <div style="font-family:var(--mono);font-size:8px;color:var(--ink4);width:48px;text-align:center;padding-top:3px;">P300</div>
+            <div style="font-family:var(--mono);font-size:8px;color:var(--ink4);width:48px;text-align:center;padding-top:3px;">P700</div>
+            <div style="font-family:var(--mono);font-size:8px;color:var(--ink4);width:48px;text-align:center;padding-top:3px;">P100</div>
+            <div style="font-family:var(--mono);font-size:8px;color:var(--ink4);width:48px;text-align:center;padding-top:3px;">P25</div>
+            <div style="font-family:var(--mono);font-size:8px;color:var(--ink4);width:48px;text-align:center;padding-top:3px;">Ink</div>
+            <div style="font-family:var(--mono);font-size:8px;color:var(--ink4);width:48px;text-align:center;padding-top:3px;">Ink3</div>
+            <div style="font-family:var(--mono);font-size:8px;color:var(--ink4);width:48px;text-align:center;padding-top:3px;">Paper</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="flex:1;display:flex;flex-direction:column;gap:20px;">
+        <!-- Type scale -->
+        <div>
+          <hr class="ink-rule" style="margin-bottom:12px;"/>
+          <div style="display:flex;flex-direction:column;gap:8px;">
+            <div style="display:flex;align-items:baseline;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--rule);">
+              <span style="font-family:var(--display);font-size:36px;font-weight:800;letter-spacing:-0.04em;line-height:1;">Display / H1</span>
+              <span class="mono" style="font-size:10px;color:var(--ink4);">Manrope 800 · 36–80px · -0.04em</span>
+            </div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--rule);">
+              <span style="font-family:var(--display);font-size:24px;font-weight:700;letter-spacing:-0.03em;">Heading H2</span>
+              <span class="mono" style="font-size:10px;color:var(--ink4);">Manrope 700 · 24–40px · -0.03em</span>
+            </div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--rule);">
+              <span style="font-family:var(--sans);font-size:17px;font-weight:400;line-height:1.55;">Body text — clear, direct. One idea per sentence.</span>
+              <span class="mono" style="font-size:10px;color:var(--ink4);">Inter 400 · 15–17px</span>
+            </div>
+            <div style="display:flex;align-items:baseline;justify-content:space-between;padding:8px 0;">
+              <span style="font-family:var(--mono);font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:var(--ink4);">EYEBROW · LABEL · METADATA</span>
+              <span class="mono" style="font-size:10px;color:var(--ink4);">JetBrains Mono · 9–11px · uppercase</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Component tokens -->
+        <div>
+          <div class="ey" style="margin-bottom:10px;">Component tokens</div>
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+            <button style="background:var(--p500);color:white;border:none;padding:9px 20px;border-radius:2px;font-size:13px;font-weight:600;font-family:var(--sans);">Primary button</button>
+            <button style="background:transparent;color:var(--p500);border:1px solid var(--p500);padding:9px 20px;border-radius:2px;font-size:13px;font-weight:600;font-family:var(--sans);">Outline</button>
+            <div style="background:var(--paper);border:1px solid var(--rule);border-radius:2px;padding:9px 16px;font-size:13px;">Card · 1px rule · 2px radius</div>
+            <span class="tag">Tag</span>
+            <span class="tag ok">Active</span>
+            <span class="tag ink">Status</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════
+     SECTION 8 — FOOTER
+══════════════════════════════════════════════ -->
+<div style="background:var(--ink);width:1200px;padding:0 64px;">
+  <div style="padding:40px 0;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.08);">
+    <div style="display:flex;align-items:center;gap:16px;">
+      <svg width="32" height="32" viewBox="0 0 64 64" fill="none">
+        <polygon points="32,4 60,20 60,44 32,60 4,44 4,20" fill="#6E55A4"/>
+        <polygon points="32,4 60,20 32,36 4,20" fill="#9783C0"/>
+        <polygon points="4,20 32,36 32,60 4,44" fill="#D5D5D5" opacity="0.6"/>
+      </svg>
+      <div>
+        <div style="font-family:var(--display);font-size:15px;font-weight:700;color:var(--paper);">DClaw Finance</div>
+        <div style="font-family:var(--mono);font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.35);margin-top:2px;">DKube — an MLOps platform by One Convergence</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:40px;">
+      <div style="text-align:center;">
+        <div style="font-family:var(--display);font-size:28px;font-weight:800;color:var(--p300);letter-spacing:-0.04em;">₹39 Cr</div>
+        <div style="font-family:var(--mono);font-size:9px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px;">Revenue</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:var(--display);font-size:28px;font-weight:800;color:var(--p300);letter-spacing:-0.04em;">24.7%</div>
+        <div style="font-family:var(--mono);font-size:9px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px;">Margin</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:var(--display);font-size:28px;font-weight:800;color:var(--p300);letter-spacing:-0.04em;">11</div>
+        <div style="font-family:var(--mono);font-size:9px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px;">AI Features</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-family:var(--display);font-size:28px;font-weight:800;color:var(--p300);letter-spacing:-0.04em;">12</div>
+        <div style="font-family:var(--mono);font-size:9px;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:0.08em;margin-top:2px;">Clients</div>
+      </div>
+    </div>
+
+    <div style="text-align:right;">
+      <div style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.4);">localhost:3007</div>
+      <div style="font-family:var(--mono);font-size:10px;color:rgba(255,255,255,0.25);margin-top:3px;">© 2026 One Convergence · Confidential</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

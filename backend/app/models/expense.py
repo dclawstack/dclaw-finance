@@ -27,5 +27,6 @@ class Expense(Base):
     date: Mapped[Date] = mapped_column(nullable=False)
     vendor: Mapped[str | None] = mapped_column(String(255), nullable=True)
     receipt_url: Mapped[str | None] = mapped_column(String(500), nullable=True)
+    ai_suggested_category: Mapped[str | None] = mapped_column(String(50), nullable=True)
     created_at: Mapped[datetime] = mapped_column(server_default=func.now())
     updated_at: Mapped[datetime] = mapped_column(server_default=func.now(), onupdate=func.now())

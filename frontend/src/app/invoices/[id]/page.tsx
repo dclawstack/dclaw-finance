@@ -7,6 +7,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
   Table,
   TableBody,
   TableCell,
@@ -14,7 +22,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { getInvoice, updateInvoice, deleteInvoice, type Invoice } from "@/lib/api";
+import { getInvoice, updateInvoice, deleteInvoice, draftReminder, type Invoice } from "@/lib/api";
+import { formatINR } from "@/lib/utils";
 
 const statusColors: Record<string, string> = {
   draft: "bg-slate-100 text-slate-700",
@@ -29,6 +38,11 @@ export default function InvoiceDetailPage() {
   const router = useRouter();
   const [invoice, setInvoice] = useState<Invoice | null>(null);
   const [loading, setLoading] = useState(true);
+  const [reminderOpen, setReminderOpen] = useState(false);
+  const [reminderLoading, setReminderLoading] = useState(false);
+  const [reminderSubject, setReminderSubject] = useState("");
+  const [reminderBody, setReminderBody] = useState("");
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     if (!id) return;
@@ -59,8 +73,32 @@ export default function InvoiceDetailPage() {
     }
   };
 
+  const handleDraftReminder = async () => {
+    if (!invoice) return;
+    setReminderLoading(true);
+    setReminderOpen(true);
+    try {
+      const draft = await draftReminder(invoice.id);
+      setReminderSubject(draft.subject);
+      setReminderBody(draft.body);
+    } catch {
+      alert("Failed to generate reminder draft.");
+      setReminderOpen(false);
+    } finally {
+      setReminderLoading(false);
+    }
+  };
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(`Subject: ${reminderSubject}\n\n${reminderBody}`);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   if (loading) return <div className="text-slate-500">Loading...</div>;
   if (!invoice) return <div className="text-red-500">Invoice not found.</div>;
+
+  const canDraftReminder = invoice.status === "overdue" || invoice.status === "sent";
 
   return (
     <div className="space-y-4">
@@ -78,6 +116,11 @@ export default function InvoiceDetailPage() {
           {invoice.status === "sent" && (
             <Button variant="outline" onClick={() => changeStatus("paid")}>
               Mark Paid
+            </Button>
+          )}
+          {canDraftReminder && (
+            <Button variant="outline" onClick={handleDraftReminder}>
+              Draft Reminder
             </Button>
           )}
           <Button variant="destructive" onClick={handleDelete}>
@@ -121,16 +164,18 @@ export default function InvoiceDetailPage() {
                 <TableRow key={item.id}>
                   <TableCell>{item.description}</TableCell>
                   <TableCell className="text-right">{item.quantity}</TableCell>
-                  <TableCell className="text-right">${item.unit_price.toFixed(2)}</TableCell>
-                  <TableCell className="text-right">${item.amount.toFixed(2)}</TableCell>
+                  <TableCell className="text-right tabular-nums">{formatINR(item.unit_price)}</TableCell>
+                  <TableCell className="text-right tabular-nums">{formatINR(item.amount)}</TableCell>
                 </TableRow>
               ))}
             </TableBody>
           </Table>
-          <div className="mt-4 space-y-1 text-right text-sm text-slate-600">
-            <div>Subtotal: ${invoice.subtotal.toFixed(2)}</div>
-            <div>Tax ({invoice.tax_rate}%): ${invoice.tax_amount.toFixed(2)}</div>
-            <div className="text-lg font-bold text-slate-900">Total: ${invoice.total.toFixed(2)}</div>
+          <div className="mt-4 space-y-1 text-right text-sm text-[#777] tabular-nums">
+            <div>Subtotal: {formatINR(invoice.subtotal)}</div>
+            <div>Tax ({invoice.tax_rate}%): {formatINR(invoice.tax_amount)}</div>
+            <div className="text-lg font-bold text-[#333]">
+              Total: {formatINR(invoice.total)}
+            </div>
           </div>
         </CardContent>
       </Card>
@@ -151,6 +196,45 @@ export default function InvoiceDetailPage() {
           ← Back to invoices
         </Link>
       </div>
+
+      {/* Reminder Draft Dialog */}
+      <Dialog open={reminderOpen} onOpenChange={setReminderOpen}>
+        <DialogContent className="max-w-lg">
+          <DialogHeader>
+            <DialogTitle>Payment Reminder Draft</DialogTitle>
+          </DialogHeader>
+          {reminderLoading ? (
+            <div className="py-8 text-center text-slate-500">Drafting reminder…</div>
+          ) : (
+            <div className="space-y-4">
+              <div>
+                <Label>Subject</Label>
+                <Input
+                  value={reminderSubject}
+                  onChange={(e) => setReminderSubject(e.target.value)}
+                />
+              </div>
+              <div>
+                <Label>Body</Label>
+                <textarea
+                  className="mt-1 w-full rounded-md border border-input bg-background px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+                  rows={8}
+                  value={reminderBody}
+                  onChange={(e) => setReminderBody(e.target.value)}
+                />
+              </div>
+              <div className="flex justify-end gap-2">
+                <Button variant="outline" onClick={() => setReminderOpen(false)}>
+                  Close
+                </Button>
+                <Button onClick={copyToClipboard}>
+                  {copied ? "Copied!" : "Copy to clipboard"}
+                </Button>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

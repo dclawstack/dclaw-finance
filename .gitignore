@@ -21,3 +21,4 @@ frontend/next-env.d.ts
 
 # Local scratch files
 /prompts_*.txt
+.env

@@ -1,0 +1,27 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="_card.css">
+<style>
+  .btn { display:inline-flex; align-items:center; justify-content:center; height:34px; padding:0 16px; font-family:var(--sans); font-size:13px; font-weight:600; border:1px solid transparent; border-radius:2px; cursor:pointer; }
+  .btn-primary { background:#7030A0; color:white; }
+  .btn-secondary { background:#141414; color:white; }
+  .btn-outline { border-color:#141414; color:#141414; background:transparent; }
+  .btn-ghost { color:#141414; background:transparent; }
+  .btn-disabled { background:#F6F5F7; color:#8A8A8A; border-color:#E5E5E5; }
+</style></head>
+<body style="padding:20px; width:700px;">
+<div style="border:1px solid var(--ink); padding:24px;">
+  <div style="font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:0.08em; color:#5A5A5A; margin-bottom:18px;">Buttons · 5 variants</div>
+  <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+    <button class="btn btn-primary">Start a free trial</button>
+    <button class="btn btn-secondary">View docs</button>
+    <button class="btn btn-outline">Talk to sales</button>
+    <button class="btn btn-ghost">Read changelog</button>
+    <button class="btn btn-disabled" disabled>Disabled</button>
+  </div>
+  <div style="margin-top:18px; display:flex; gap:10px; align-items:center;">
+    <button class="btn btn-primary" style="height:28px; font-size:12px; padding:0 12px;">Small</button>
+    <button class="btn btn-primary">Default</button>
+    <button class="btn btn-primary" style="height:42px; padding:0 22px; font-size:14px;">Large</button>
+  </div>
+  <div style="font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:0.04em; color:#5A5A5A; margin-top:18px;">Radius 2px · 1px border · no shadow · 120ms ease</div>
+</div>
+</body></html>

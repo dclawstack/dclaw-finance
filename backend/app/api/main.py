@@ -4,7 +4,16 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.routes import health
-from app.api.v1 import invoices_router, expenses_router, dashboard_router
+from app.api.v1 import (
+    invoices_router,
+    expenses_router,
+    dashboard_router,
+    forecast_router,
+    reports_router,
+    clients_router,
+    budgets_router,
+    chat_router,
+)
 from app.core.config import settings
 from app.core.database import init_db
 
@@ -18,7 +27,7 @@ async def lifespan(app: FastAPI):
 def create_app() -> FastAPI:
     app = FastAPI(
         title="DClaw Finance",
-        version="0.1.0",
+        version="1.2.0",
         lifespan=lifespan,
     )
 
@@ -38,6 +47,11 @@ def create_app() -> FastAPI:
     app.include_router(invoices_router, prefix="/api/v1")
     app.include_router(expenses_router, prefix="/api/v1")
     app.include_router(dashboard_router, prefix="/api/v1")
+    app.include_router(forecast_router, prefix="/api/v1")
+    app.include_router(reports_router, prefix="/api/v1")
+    app.include_router(clients_router, prefix="/api/v1")
+    app.include_router(budgets_router, prefix="/api/v1")
+    app.include_router(chat_router, prefix="/api/v1")
 
     return app
 
