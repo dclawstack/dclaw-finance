@@ -53,3 +53,22 @@ docker compose ps
 | Frontend | http://localhost:3007  |
 | Backend  | http://localhost:8096  |
 | Postgres | localhost:5434         |
+
+---
+
+## Vercel Deployment
+
+The frontend is also deployed on Vercel at:
+
+**https://dclaw-finance-6oytpmhux-chandraja-s-projects.vercel.app**
+
+Source: `web/` directory (Vercel-native Next.js, no Docker).
+
+To redeploy:
+
+```bash
+cd web
+npx vercel --prod --yes
+```
+
+Set `BACKEND_URL` in [Vercel Environment Variables](https://vercel.com/chandraja-s-projects/dclaw-finance/settings/environment-variables) to point at the deployed FastAPI backend.
