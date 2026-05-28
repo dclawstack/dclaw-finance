@@ -22,6 +22,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Fragment } from "react";
 import { listExpenses, getAnomalies, type Expense, type AnomalyItem } from "@/lib/api";
 import { formatINR } from "@/lib/utils";
 
@@ -42,6 +43,7 @@ export default function ExpensesPage() {
   const [loading, setLoading] = useState(true);
   const [anomalyLoading, setAnomalyLoading] = useState(false);
   const [activeTab, setActiveTab] = useState("all");
+  const [expandedAnomaly, setExpandedAnomaly] = useState<string | null>(null);
 
   useEffect(() => {
     setLoading(true);
@@ -184,26 +186,48 @@ export default function ExpensesPage() {
                     </TableHeader>
                     <TableBody>
                       {anomalies.map((item) => (
-                        <TableRow key={item.expense.id}>
-                          <TableCell>{item.expense.date}</TableCell>
-                          <TableCell>
-                            <Badge className={categoryColors[item.expense.category] || ""}>
-                              {item.expense.category}
-                            </Badge>
-                          </TableCell>
-                          <TableCell>{item.expense.vendor || "—"}</TableCell>
-                          <TableCell className="text-right tabular-nums">
-                            {formatINR(item.expense.amount)}
-                          </TableCell>
-                          <TableCell>
-                            <Badge className="bg-amber-100 text-amber-800">
-                              {item.zscore.toFixed(1)}σ
-                            </Badge>
-                          </TableCell>
-                          <TableCell className="text-sm text-slate-600 max-w-xs">
-                            {item.llm_explanation}
-                          </TableCell>
-                        </TableRow>
+                        <Fragment key={item.expense.id}>
+                          <TableRow
+                            className="cursor-pointer hover:bg-amber-50"
+                            onClick={() =>
+                              setExpandedAnomaly(
+                                expandedAnomaly === item.expense.id ? null : item.expense.id
+                              )
+                            }
+                          >
+                            <TableCell>{item.expense.date}</TableCell>
+                            <TableCell>
+                              <Badge className={categoryColors[item.expense.category] || ""}>
+                                {item.expense.category}
+                              </Badge>
+                            </TableCell>
+                            <TableCell>{item.expense.vendor || "—"}</TableCell>
+                            <TableCell className="text-right tabular-nums">
+                              {formatINR(item.expense.amount)}
+                            </TableCell>
+                            <TableCell>
+                              <Badge className="bg-amber-100 text-amber-800">
+                                {item.zscore.toFixed(1)}σ
+                              </Badge>
+                            </TableCell>
+                            <TableCell className="text-sm text-slate-500">
+                              {expandedAnomaly === item.expense.id ? "▲ hide" : "▼ details"}
+                            </TableCell>
+                          </TableRow>
+                          {expandedAnomaly === item.expense.id && (
+                            <TableRow className="bg-amber-50">
+                              <TableCell colSpan={6} className="py-3 px-4">
+                                <p className="text-xs font-semibold text-amber-700 mb-1">AI Explanation</p>
+                                <p className="text-sm text-slate-700">{item.llm_explanation}</p>
+                                {item.expense.description && (
+                                  <p className="mt-1 text-xs text-slate-500">
+                                    Description: {item.expense.description}
+                                  </p>
+                                )}
+                              </TableCell>
+                            </TableRow>
+                          )}
+                        </Fragment>
                       ))}
                     </TableBody>
                   </Table>

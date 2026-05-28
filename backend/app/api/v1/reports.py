@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, Query
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from sqlalchemy.ext.asyncio import AsyncSession
 from app.core.database import get_db
 from app.services.report_generator import generate_monthly_summary
@@ -9,8 +9,8 @@ router = APIRouter(prefix="/reports", tags=["reports"])
 
 
 class MonthlySummaryRequest(BaseModel):
-    year: int
-    month: int
+    year: int = Field(ge=2000, le=2099)
+    month: int = Field(ge=1, le=12)
 
 
 @router.post("/monthly-summary")

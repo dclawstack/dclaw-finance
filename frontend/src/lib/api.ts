@@ -133,6 +133,7 @@ async function api<T>(path: string, options?: RequestInit): Promise<T> {
     const err = await res.text();
     throw new Error(`API error ${res.status}: ${err}`);
   }
+  if (res.status === 204 || res.headers.get("content-length") === "0") return undefined as T;
   return (await res.json()) as T;
 }
 
@@ -364,4 +365,70 @@ export async function sendChatMessage(message: string): Promise<{ reply: string 
 
 export async function getChatHistory(): Promise<ChatMessage[]> {
   return api<ChatMessage[]>("/chat/history");
+}
+
+// ── TestSprite ─────────────────────────────────────────────────────────────
+
+export interface TestSpriteGenerateRequest {
+  url: string;
+  description: string;
+  framework?: string;
+}
+
+export interface TestSpriteGenerateResponse {
+  success: boolean;
+  data: Record<string, unknown>;
+}
+
+export interface TestSpriteRunRequest {
+  url: string;
+  test_ids?: string[];
+  configurations?: Record<string, unknown>[];
+}
+
+export interface TestSpriteRunResponse {
+  run_id: string;
+  status: string;
+  url: string;
+}
+
+export interface TestSpriteRunStatus {
+  run_id: string;
+  status: string;
+  results?: Record<string, unknown> | null;
+}
+
+export interface TestSpriteRunsList {
+  runs: Record<string, unknown>[];
+  total: number;
+}
+
+export async function generateTestspriteTests(
+  payload: TestSpriteGenerateRequest
+): Promise<TestSpriteGenerateResponse> {
+  return api<TestSpriteGenerateResponse>("/testsprite/generate", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function createTestspriteRun(
+  payload: TestSpriteRunRequest
+): Promise<TestSpriteRunResponse> {
+  return api<TestSpriteRunResponse>("/testsprite/run", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function getTestspriteRunStatus(runId: string): Promise<TestSpriteRunStatus> {
+  return api<TestSpriteRunStatus>(`/testsprite/status/${runId}`);
+}
+
+export async function listTestspriteRuns(limit = 20, offset = 0): Promise<TestSpriteRunsList> {
+  return api<TestSpriteRunsList>(`/testsprite/runs?limit=${limit}&offset=${offset}`);
+}
+
+export async function checkTestspriteHealth(): Promise<{ connected: boolean; detail: unknown }> {
+  return api<{ connected: boolean; detail: unknown }>("/testsprite/health");
 }

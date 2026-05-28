@@ -1,0 +1,257 @@
+PLAN-v1.4.md — Implemented Changes
+Date: 2026-05-28
+Source: TestSprite audit 2026-05-23 (46 tests: 10 backend, 36 frontend)
+===========================================================================
+
+git diff --stat HEAD (changes in this session):
+  backend/app/api/v1/reports.py          |  6 +--
+  frontend/src/app/budgets/page.tsx      | 12 ++++--
+  frontend/src/app/clients/page.tsx      |  9 ++---
+  frontend/src/app/dashboard/page.tsx    | 15 ++++++++
+  frontend/src/app/expenses/new/page.tsx |  8 ++++
+  frontend/src/app/expenses/page.tsx     | 64 ++++++++++++++++++++++----------
+  frontend/src/app/invoices/new/page.tsx | 15 +++++---
+  frontend/src/app/reports/page.tsx      |  8 ++++
+  frontend/src/lib/api.ts                |  1 +
+  + new: frontend/src/app/clients/profitability/page.tsx (4 lines)
+
+===========================================================================
+BUG SPRINT — B1 through B6
+===========================================================================
+
+B1 — api() silently swallows 204 responses [CRITICAL]
+  TestSprite test: TC025 (Delete a budget and confirm removal)
+  Root cause: api() always called res.json() even on 204 No Content, throwing
+              SyntaxError on empty body. No try/catch in delete handlers meant
+              the error was swallowed silently by React. Budget appeared undeleted.
+  Affected: all three DELETE flows — budget, invoice, expense.
+
+  Fix 1 — frontend/src/lib/api.ts (line ~136):
+    + if (res.status === 204 || res.headers.get("content-length") === "0") return undefined as T;
+      return (await res.json()) as T;
+
+  Fix 2 — frontend/src/app/budgets/page.tsx — handleDelete:
+    - await deleteBudget(id);
+    - setEditingId(null);
+    - await load();
+    - await loadStatus();
+    + try {
+    +   await deleteBudget(id);
+    +   setEditingId(null);
+    +   await load();
+    +   await loadStatus();
+    + } catch (e: unknown) {
+    +   alert(`Failed to remove budget: ${e instanceof Error ? e.message : "error"}`);
+    + }
+
+---------------------------------------------------------------------------
+
+B2 — Invoice form submits with empty line item description → 422 [HIGH]
+  TestSprite test: TC001 (Create and view an invoice)
+  Root cause: Form initialised with blank line item. Button onClick bypasses
+              native HTML required validation. Backend returns 422. Also: line
+              item amounts and totals displayed $ instead of ₹.
+
+  Fix 1 — frontend/src/app/invoices/new/page.tsx — handleSubmit guard:
+    + if (items.some((it) => !it.description.trim())) {
+    +   alert("All line items must have a description.");
+    +   return;
+    + }
+
+  Fix 2 — frontend/src/app/invoices/new/page.tsx — INR currency:
+    - ${(item.quantity * item.unit_price).toFixed(2)}
+    + {formatINR(item.quantity * item.unit_price)}
+
+    - + {s.description} (${s.typical_unit_price})
+    + + {s.description} ({formatINR(s.typical_unit_price)})
+
+    - Subtotal: ${subtotal.toFixed(2)}
+    - Tax: ${taxAmount.toFixed(2)}
+    - Total: ${total.toFixed(2)}
+    + Subtotal: {formatINR(subtotal)}
+    + Tax: {formatINR(taxAmount)}
+    + Total: {formatINR(total)}
+
+    + import { formatINR } from "@/lib/utils";  (added import)
+
+---------------------------------------------------------------------------
+
+B3 — Report month=13 hits backend, returns 500 [MEDIUM]
+  TestSprite test: TC034 (Recover from an invalid report month)
+  Root cause: Button onClick bypasses min/max on Input. month=13 reached the
+              backend which had no Field constraints; Python date arithmetic
+              threw unhandled exception → 500.
+
+  Fix 1 — frontend/src/app/reports/page.tsx — handleGenerate:
+    + if (year < 2000 || year > 2099) {
+    +   alert("Year must be between 2000 and 2099.");
+    +   return;
+    + }
+    + if (month < 1 || month > 12) {
+    +   alert("Month must be between 1 and 12.");
+    +   return;
+    + }
+
+  Fix 2 — backend/app/api/v1/reports.py — MonthlySummaryRequest:
+    - from pydantic import BaseModel
+    + from pydantic import BaseModel, Field
+
+    - year: int
+    - month: int
+    + year: int = Field(ge=2000, le=2099)
+    + month: int = Field(ge=1, le=12)
+
+---------------------------------------------------------------------------
+
+B4 — /clients/profitability returns Next.js 404 [HIGH]
+  TestSprite tests: TC018 (View client profitability ranking),
+                   TC029 (Handle an empty client profitability view)
+  Root cause: No page.tsx at clients/profitability/. Tests navigated to the
+              backend API path directly; Next.js returned 404.
+
+  Fix — NEW FILE frontend/src/app/clients/profitability/page.tsx:
+    import { redirect } from "next/navigation";
+    export default function ClientProfitabilityPage() {
+      redirect("/clients");
+    }
+
+---------------------------------------------------------------------------
+
+B5 — Dashboard Net Profit card missing MoM % change indicator [MEDIUM]
+  TestSprite test: TC005 (View dashboard summary metrics)
+  Root cause: KPI cards had no delta fields. Trend data was already fetched
+              but previous-month profit was never computed.
+
+  Fix — frontend/src/app/dashboard/page.tsx:
+    + const profitDelta = (() => {
+    +   if (trends.length < 2) return null;
+    +   const last = trends[trends.length - 1];
+    +   const prev = trends[trends.length - 2];
+    +   const lastProfit = last.revenue - last.expenses;
+    +   const prevProfit = prev.revenue - prev.expenses;
+    +   if (prevProfit === 0) return null;
+    +   return ((lastProfit - prevProfit) / Math.abs(prevProfit)) * 100;
+    + })();
+
+    In Net Profit card render:
+    + {key === "net_profit" && profitDelta !== null && (
+    +   <p className={`mt-1 text-xs font-semibold ${profitDelta >= 0 ? "text-emerald-600" : "text-red-600"}`}>
+    +     {profitDelta >= 0 ? "+" : ""}{profitDelta.toFixed(1)}% vs prev month
+    +   </p>
+    + )}
+
+---------------------------------------------------------------------------
+
+B6 — Expense anomaly rows not interactive — no drill-down [MEDIUM]
+  TestSprite test: TC016 (Categorize and review an expense anomaly)
+  Root cause: Anomaly TableRow had no onClick, no cursor-pointer, and the
+              AI explanation was not accessible without row expansion.
+
+  Fix — frontend/src/app/expenses/page.tsx:
+    + import { Fragment } from "react";
+    + const [expandedAnomaly, setExpandedAnomaly] = useState<string | null>(null);
+
+    Each anomaly row:
+    + <Fragment key={item.expense.id}>
+    +   <TableRow
+    +     className="cursor-pointer hover:bg-amber-50"
+    +     onClick={() => setExpandedAnomaly(
+    +       expandedAnomaly === item.expense.id ? null : item.expense.id
+    +     )}
+    +   >
+          ... existing cells ...
+    +     <TableCell className="text-sm text-slate-500">
+    +       {expandedAnomaly === item.expense.id ? "▲ hide" : "▼ details"}
+    +     </TableCell>
+    +   </TableRow>
+    +   {expandedAnomaly === item.expense.id && (
+    +     <TableRow className="bg-amber-50">
+    +       <TableCell colSpan={6} className="py-3 px-4">
+    +         <p className="text-xs font-semibold text-amber-700 mb-1">AI Explanation</p>
+    +         <p className="text-sm text-slate-700">{item.llm_explanation}</p>
+    +         {item.expense.description && (
+    +           <p className="mt-1 text-xs text-slate-500">Description: {item.expense.description}</p>
+    +         )}
+    +       </TableCell>
+    +     </TableRow>
+    +   )}
+    + </Fragment>
+
+===========================================================================
+SYSTEMIC ENGINEERING GAPS
+===========================================================================
+
+GAP 1 — React Fragment missing key prop
+  File: frontend/src/app/clients/page.tsx (line 69)
+  Root cause: clients.map() wrapped rows in bare <> Fragment — React warning,
+              potential reconciliation bugs on re-render.
+
+  Fix:
+    - import { useEffect, useState } from "react";
+    + import { Fragment, useEffect, useState } from "react";
+
+    - {clients.map((c, i) => (<>
+    -   <TableRow key={c.client_name} ...>
+    -   <TableRow key={`${c.client_name}-insight`}>
+    + {clients.map((c, i) => (
+    +   <Fragment key={c.client_name}>
+    +     <TableRow ...>       (key removed — Fragment holds it)
+    +     <TableRow ...>       (key removed — Fragment holds it)
+    +   </Fragment>
+
+---------------------------------------------------------------------------
+
+GAP 2 — Button onClick bypasses HTML form validation
+  Files: frontend/src/app/reports/page.tsx (year range — was missing),
+         frontend/src/app/expenses/new/page.tsx (shadcn Select required ignored)
+
+  Fix — reports/page.tsx:
+    Year guard added (month guard was already present from B3):
+    + if (year < 2000 || year > 2099) {
+    +   alert("Year must be between 2000 and 2099.");
+    +   return;
+    + }
+
+  Fix — backend/app/api/v1/reports.py:
+    + year: int = Field(ge=2000, le=2099)   (was plain int)
+
+  Fix — expenses/new/page.tsx:
+    Shadcn Select renders a custom element — native HTML `required` is silently
+    ignored. Added explicit guards in handleSubmit:
+    + if (!category) {
+    +   alert("Please select a category.");
+    +   return;
+    + }
+    + if (!amount || Number(amount) <= 0) {
+    +   alert("Amount must be greater than 0.");
+    +   return;
+    + }
+
+---------------------------------------------------------------------------
+
+GAP 3 — Async onClick handlers lack try/catch
+  Status: ALREADY HANDLED
+  - invoices/[id]/page.tsx: handleDelete, changeStatus, handleDraftReminder all
+    had try/catch before this session.
+  - budgets/page.tsx: handleSet and handleInlineSave had try/catch; handleDelete
+    was missing it — fixed in B1 above.
+  - expenses/new/page.tsx: handleSubmit and handleFile both had try/catch.
+  - invoices/new/page.tsx: handleSubmit had try/catch.
+  No additional changes required.
+
+---------------------------------------------------------------------------
+
+GAP 4 — AI endpoints only tested via dry_run=true
+  Status: OUT OF SCOPE for this session
+  This requires authoring new pytest integration tests gated behind
+  @pytest.mark.live with real API keys. No app code changes needed.
+  Tracked for next test engineering session.
+
+===========================================================================
+VERIFICATION
+===========================================================================
+
+TypeScript check: npx tsc --noEmit → 0 errors, 0 warnings
+New file created: frontend/src/app/clients/profitability/page.tsx
+All B1–B6 items: complete
+All systemic gaps addressable in app code: complete

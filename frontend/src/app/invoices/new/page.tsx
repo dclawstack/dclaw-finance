@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { createInvoice, suggestLineItems } from "@/lib/api";
+import { formatINR } from "@/lib/utils";
 
 interface LineItem {
   description: string;
@@ -69,6 +70,10 @@ export default function NewInvoicePage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (items.some((it) => !it.description.trim())) {
+      alert("All line items must have a description.");
+      return;
+    }
     setSaving(true);
     try {
       await createInvoice({
@@ -171,7 +176,7 @@ export default function NewInvoicePage() {
                   />
                 </div>
                 <div className="w-24 pb-2 text-right text-sm text-slate-600">
-                  ${(item.quantity * item.unit_price).toFixed(2)}
+                  {formatINR(item.quantity * item.unit_price)}
                 </div>
                 {items.length > 1 && (
                   <Button type="button" variant="outline" onClick={() => removeItem(idx)}>
@@ -199,7 +204,7 @@ export default function NewInvoicePage() {
                       onClick={() => applySuggestion(s)}
                       className="rounded-full border border-emerald-300 bg-white px-3 py-1 text-xs text-emerald-700 hover:bg-emerald-100 transition-colors"
                     >
-                      + {s.description} (${s.typical_unit_price})
+                      + {s.description} ({formatINR(s.typical_unit_price)})
                     </button>
                   ))}
                 </div>
@@ -211,10 +216,10 @@ export default function NewInvoicePage() {
         <Card>
           <CardContent className="flex items-center justify-between py-4">
             <div className="space-y-1 text-sm text-slate-600">
-              <div>Subtotal: ${subtotal.toFixed(2)}</div>
-              <div>Tax: ${taxAmount.toFixed(2)}</div>
+              <div>Subtotal: {formatINR(subtotal)}</div>
+              <div>Tax: {formatINR(taxAmount)}</div>
             </div>
-            <div className="text-xl font-bold">Total: ${total.toFixed(2)}</div>
+            <div className="text-xl font-bold">Total: {formatINR(total)}</div>
           </CardContent>
         </Card>
 

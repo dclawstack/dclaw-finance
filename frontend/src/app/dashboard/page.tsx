@@ -22,6 +22,16 @@ export default function DashboardPage() {
   const [trends, setTrends] = useState<TrendPoint[]>([]);
   const [loading, setLoading] = useState(true);
 
+  const profitDelta = (() => {
+    if (trends.length < 2) return null;
+    const last = trends[trends.length - 1];
+    const prev = trends[trends.length - 2];
+    const lastProfit = last.revenue - last.expenses;
+    const prevProfit = prev.revenue - prev.expenses;
+    if (prevProfit === 0) return null;
+    return ((lastProfit - prevProfit) / Math.abs(prevProfit)) * 100;
+  })();
+
   useEffect(() => {
     Promise.all([getDashboard(), getDashboardTrends()])
       .then(([dash, trend]) => { setData(dash); setTrends(trend.trends); })
@@ -59,6 +69,11 @@ export default function DashboardPage() {
                 <p className="mt-2 text-2xl font-bold text-[#333] tabular-nums">
                   {isCount ? raw : formatINR(raw)}
                 </p>
+                {key === "net_profit" && profitDelta !== null && (
+                  <p className={`mt-1 text-xs font-semibold ${profitDelta >= 0 ? "text-emerald-600" : "text-red-600"}`}>
+                    {profitDelta >= 0 ? "+" : ""}{profitDelta.toFixed(1)}% vs prev month
+                  </p>
+                )}
               </CardContent>
             </Card>
           );

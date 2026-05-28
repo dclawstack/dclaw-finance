@@ -23,6 +23,14 @@ export default function ReportsPage() {
   } | null>(null);
 
   const handleGenerate = async () => {
+    if (year < 2000 || year > 2099) {
+      alert("Year must be between 2000 and 2099.");
+      return;
+    }
+    if (month < 1 || month > 12) {
+      alert("Month must be between 1 and 12.");
+      return;
+    }
     setLoading(true);
     try {
       const result = await generateMonthlyReport(year, month);

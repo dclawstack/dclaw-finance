@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -66,9 +66,8 @@ export default function ClientsPage() {
               </TableHeader>
               <TableBody>
                 {clients.map((c, i) => (
-                  <>
+                  <Fragment key={c.client_name}>
                     <TableRow
-                      key={c.client_name}
                       className="cursor-pointer hover:bg-slate-50"
                       onClick={() => setExpanded(expanded === c.client_name ? null : c.client_name)}
                     >
@@ -88,13 +87,13 @@ export default function ClientsPage() {
                       </TableCell>
                     </TableRow>
                     {expanded === c.client_name && c.ai_insight && (
-                      <TableRow key={`${c.client_name}-insight`}>
+                      <TableRow>
                         <TableCell colSpan={6} className="bg-slate-50 text-sm text-slate-600 italic">
                           {c.ai_insight}
                         </TableCell>
                       </TableRow>
                     )}
-                  </>
+                  </Fragment>
                 ))}
               </TableBody>
             </Table>

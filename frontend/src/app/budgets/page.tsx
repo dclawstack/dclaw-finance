@@ -96,10 +96,14 @@ export default function BudgetsPage() {
   };
 
   const handleDelete = async (id: string) => {
-    await deleteBudget(id);
-    setEditingId(null);
-    await load();
-    await loadStatus();
+    try {
+      await deleteBudget(id);
+      setEditingId(null);
+      await load();
+      await loadStatus();
+    } catch (e: unknown) {
+      alert(`Failed to remove budget: ${e instanceof Error ? e.message : "error"}`);
+    }
   };
 
   const monthName = new Date(year, month - 1).toLocaleString("default", {

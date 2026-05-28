@@ -89,6 +89,14 @@ export default function NewExpensePage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!category) {
+      alert("Please select a category.");
+      return;
+    }
+    if (!amount || Number(amount) <= 0) {
+      alert("Amount must be greater than 0.");
+      return;
+    }
     setSaving(true);
     try {
       await createExpense({
