@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import DemoControls from "@/components/DemoControls";
 
 /* ─── Data ─────────────────────────────────────────────────────────── */
 
@@ -102,14 +103,14 @@ const footerLinks = {
     { label: "PLAN v1.3", href: "https://github.com/dclawstack/dclaw-finance/blob/main/PLAN-v1.3.md" },
   ],
   "Docs": [
-    { label: "Quick Start", href: "/docs/getting-started/quickstart" },
-    { label: "Architecture", href: "/docs/reference/architecture" },
-    { label: "API Reference", href: "/docs/reference/api" },
-    { label: "Tech Stack", href: "/docs/reference/stack" },
-    { label: "Deployment", href: "/docs/getting-started/installation" },
-    { label: "Best Practices", href: "/docs/guides/best-practices" },
-    { label: "Changelog", href: "/docs/releases/changelog" },
-    { label: "Roadmap", href: "/docs/releases/roadmap" },
+    { label: "README", href: "https://github.com/dclawstack/dclaw-finance/blob/main/README.md" },
+    { label: "Product Spec", href: "https://github.com/dclawstack/dclaw-finance/blob/main/PRODUCT-SPEC.md" },
+    { label: "Run Locally", href: "https://github.com/dclawstack/dclaw-finance/blob/main/RUN.md" },
+    { label: "Deployment", href: "https://github.com/dclawstack/dclaw-finance/blob/main/DEPLOY.md" },
+    { label: "Changelog", href: "https://github.com/dclawstack/dclaw-finance/blob/main/CHANGES-v1.2.md" },
+    { label: "Roadmap (v1.3)", href: "https://github.com/dclawstack/dclaw-finance/blob/main/PLAN-v1.3.md" },
+    { label: "Roadmap (v1.4)", href: "https://github.com/dclawstack/dclaw-finance/blob/main/PLAN-v1.4.md" },
+    { label: "Demo Data", href: "https://github.com/dclawstack/dclaw-finance/blob/main/DEMO-DATA.md" },
   ],
 };
 
@@ -363,6 +364,10 @@ export default function LandingPage() {
             </svg>
           </div>
         </section>
+
+        {/* DEMO CONTROLS — remove this block + the import to drop the demo feature */}
+        <DemoControls />
+        {/* END DEMO CONTROLS */}
 
         {/* ── MARQUEE ─────────────────────────────────────────────────── */}
         <section className="py-6 border-y border-[#f0e8fa] bg-[#faf6ff] overflow-hidden">

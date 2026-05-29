@@ -13,6 +13,7 @@ from app.api.v1 import (
     clients_router,
     budgets_router,
     chat_router,
+    demo_router,
 )
 from app.core.config import settings
 from app.core.database import init_db
@@ -52,6 +53,7 @@ def create_app() -> FastAPI:
     app.include_router(clients_router, prefix="/api/v1")
     app.include_router(budgets_router, prefix="/api/v1")
     app.include_router(chat_router, prefix="/api/v1")
+    app.include_router(demo_router, prefix="/api/v1")
 
     return app
 

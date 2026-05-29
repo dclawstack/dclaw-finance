@@ -21,6 +21,8 @@ class Settings(BaseSettings):
     secret_key: str = "change-me-in-production"
     access_token_expire_minutes: int = 60
 
+    enable_demo_mode: bool = False
+
 
 @lru_cache()
 def get_settings() -> Settings:
