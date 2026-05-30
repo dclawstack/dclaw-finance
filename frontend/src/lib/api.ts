@@ -74,6 +74,48 @@ export interface ForecastPoint {
   confidence_band_high: number;
 }
 
+export interface HistoricalPoint {
+  month: string;
+  actual_revenue: number;
+  actual_expenses: number;
+  actual_profit: number;
+}
+
+export interface ForecastResponse {
+  projected: ForecastPoint[];
+  historical: HistoricalPoint[];
+}
+
+export interface CashFlowWeek {
+  week: number;
+  week_start: string;
+  week_end: string;
+  projected_inflow: number;
+  projected_outflow: number;
+  net_cash_flow: number;
+  running_balance: number;
+}
+
+export interface CashFlowForecast {
+  weeks: CashFlowWeek[];
+  summary: {
+    total_inflow: number;
+    total_outflow: number;
+    net_13_week: number;
+    weeks_positive: number;
+    weeks_negative: number;
+  };
+}
+
+export interface CashFlowLever {
+  category: string;
+  total_3_months: number;
+  percentage_of_spend: number;
+  monthly_avg: number;
+  potential_saving_10pct: number;
+  suggestion: string;
+}
+
 export interface AnomalyItem {
   expense: {
     id: string;
@@ -278,8 +320,18 @@ export async function getAnomalies(): Promise<AnomalyItem[]> {
 
 // ── Forecast ───────────────────────────────────────────────────────────────
 
-export async function getForecast(): Promise<ForecastPoint[]> {
-  return api<ForecastPoint[]>("/forecast");
+export async function getForecast(): Promise<ForecastResponse> {
+  return api<ForecastResponse>("/forecast");
+}
+
+// ── Cash Flow ──────────────────────────────────────────────────────────────
+
+export async function get13WeekForecast(): Promise<CashFlowForecast> {
+  return api<CashFlowForecast>("/cash-flow/13-week");
+}
+
+export async function getCashFlowOptimization(): Promise<CashFlowLever[]> {
+  return api<CashFlowLever[]>("/cash-flow/optimization");
 }
 
 // ── Reports ────────────────────────────────────────────────────────────────

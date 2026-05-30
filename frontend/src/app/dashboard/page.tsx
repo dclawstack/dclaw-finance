@@ -41,9 +41,47 @@ export default function DashboardPage() {
   if (loading) return <div className="py-12 text-center text-[#777]">Loading…</div>;
   if (!data)   return <div className="py-12 text-center text-red-500">Failed to load dashboard.</div>;
 
+  const isEmpty =
+    data.total_revenue === 0 &&
+    data.total_expenses === 0 &&
+    data.outstanding_invoices === 0 &&
+    data.overdue_invoices.length === 0;
+
   const expenseChartData = Object.entries(data.expenses_by_category).map(
     ([name, value]) => ({ name, value })
   );
+
+  if (isEmpty) {
+    return (
+      <div className="space-y-8">
+        <div className="border-b border-[#ededed] pb-4">
+          <h1 className="text-3xl font-extrabold text-[#333]" style={{ fontFamily: "'Raleway', sans-serif" }}>
+            Dashboard
+          </h1>
+        </div>
+        <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-[#d4b8f0] bg-[#faf5ff] py-20 text-center">
+          <div className="mb-4 text-5xl">📊</div>
+          <h2 className="text-xl font-bold text-[#7030A0]" style={{ fontFamily: "'Raleway', sans-serif" }}>
+            No financial data yet
+          </h2>
+          <p className="mt-2 max-w-sm text-sm text-[#777]">
+            Create your first invoice or log an expense to see your dashboard come to life.
+          </p>
+          <div className="mt-6 flex gap-3">
+            <a href="/invoices/new"
+               className="rounded-full px-5 py-2 text-sm font-semibold text-white"
+               style={{ background: "#7030A0" }}>
+              New Invoice
+            </a>
+            <a href="/expenses/new"
+               className="rounded-full border border-[#7030A0] px-5 py-2 text-sm font-semibold text-[#7030A0]">
+              Add Expense
+            </a>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-8">

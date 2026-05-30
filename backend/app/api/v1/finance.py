@@ -83,7 +83,7 @@ async def get_forecast(db: AsyncSession = Depends(get_db)) -> list[dict]:
     except statistics.StatisticsError:
         rev_std = exp_std = 0.0
 
-    results: list[dict] = []
+    projected: list[dict] = []
     for i in range(1, 4):
         m = today.month + i
         y = today.year
@@ -94,7 +94,7 @@ async def get_forecast(db: AsyncSession = Depends(get_db)) -> list[dict]:
         proj_rev = max(0.0, last_rev * (1 + rev_growth * i))
         proj_exp = max(0.0, last_exp * (1 + exp_growth * i))
         proj_profit = proj_rev - proj_exp
-        results.append({
+        projected.append({
             "month": month_label,
             "projected_revenue": round(proj_rev, 2),
             "projected_expenses": round(proj_exp, 2),
@@ -103,4 +103,15 @@ async def get_forecast(db: AsyncSession = Depends(get_db)) -> list[dict]:
             "confidence_band_high": round(proj_profit + rev_std + exp_std, 2),
         })
 
-    return results
+    # Include last 3 months of actuals for current vs projected comparison
+    historical = []
+    for idx, (hy, hm) in enumerate(hist_months[-3:]):
+        month_label = date(hy, hm, 1).strftime("%b %Y")
+        historical.append({
+            "month": month_label,
+            "actual_revenue": round(hist_rev[-(3 - idx)], 2),
+            "actual_expenses": round(hist_exp[-(3 - idx)], 2),
+            "actual_profit": round(hist_rev[-(3 - idx)] - hist_exp[-(3 - idx)], 2),
+        })
+
+    return {"projected": projected, "historical": historical}

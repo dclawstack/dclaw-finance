@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Link from "next/link";
+import FloatingCopilot from "@/components/FloatingCopilot";
 
 export const metadata: Metadata = {
   title: "DClaw Finance",
@@ -8,13 +9,14 @@ export const metadata: Metadata = {
 };
 
 const navLinks = [
-  { href: "/dashboard", label: "Dashboard" },
-  { href: "/invoices", label: "Invoices" },
-  { href: "/expenses", label: "Expenses" },
-  { href: "/forecast", label: "Forecast" },
-  { href: "/reports", label: "Reports" },
-  { href: "/budgets", label: "Budgets" },
-  { href: "/clients", label: "Clients" },
+  { href: "/dashboard",  label: "Dashboard" },
+  { href: "/invoices",   label: "Invoices" },
+  { href: "/expenses",   label: "Expenses" },
+  { href: "/cash-flow",  label: "Cash Flow" },
+  { href: "/forecast",   label: "Forecast" },
+  { href: "/reports",    label: "Reports" },
+  { href: "/budgets",    label: "Budgets" },
+  { href: "/clients",    label: "Clients" },
 ];
 
 export default function RootLayout({
@@ -82,6 +84,9 @@ export default function RootLayout({
 
         {/* ── Page content ── */}
         <main className="mx-auto max-w-7xl px-6 py-8">{children}</main>
+
+        {/* ── Floating AI Copilot ── */}
+        <FloatingCopilot />
 
       </body>
     </html>

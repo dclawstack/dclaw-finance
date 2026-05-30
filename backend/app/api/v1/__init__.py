@@ -7,6 +7,8 @@ from app.api.v1.clients import router as clients_router
 from app.api.v1.budgets import router as budgets_router
 from app.api.v1.chat import router as chat_router
 from app.api.v1.demo import router as demo_router
+from app.api.v1.cash_flow import router as cash_flow_router
+from app.api.v1.testsprite import router as testsprite_router
 
 __all__ = [
     "invoices_router",
@@ -18,4 +20,6 @@ __all__ = [
     "budgets_router",
     "chat_router",
     "demo_router",
+    "cash_flow_router",
+    "testsprite_router",
 ]

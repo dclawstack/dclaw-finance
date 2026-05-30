@@ -1,0 +1,28 @@
+{
+  "app_id": "finance",
+  "name": "DClaw Finance",
+  "category": "Finance",
+  "tagline": "Financial modeling",
+  "color": "#10B981",
+  "phase": "Future",
+  "maturity_tier": "Tier 2 — Partial",
+  "port_frontend": 3011,
+  "port_backend": 18081,
+  "health_endpoint": "/health",
+  "api_prefix": "/api/v1",
+  "description": "AI-powered financial modeling, forecasting, budgeting, and cash flow analysis platform for modern finance teams.",
+  "features": [
+    "AI Finance Copilot",
+    "Budget & Forecasting",
+    "Expense Tracking with OCR",
+    "Cash Flow Management",
+    "Client Profitability",
+    "Financial Reports"
+  ],
+  "tech_stack": {
+    "frontend": "Next.js 14",
+    "backend": "FastAPI",
+    "database": "PostgreSQL 16",
+    "auth": "Logto"
+  }
+}

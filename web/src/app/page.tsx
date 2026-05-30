@@ -61,13 +61,23 @@ const aiFeatures = [
     desc: "12-month Revenue vs Expenses line chart backed by real DB aggregation. Watch your trajectory at a glance every time you open the dashboard.",
     tag: "Statistical · no LLM", trigger: "Real-time",
   },
+  {
+    n: "12", icon: "🏦", title: "13-Week Cash Flow",
+    desc: "Week-by-week inflow vs outflow projection built from 3 months of trailing actuals. Running balance chart plus top 3 spend categories with 10% saving estimates.",
+    tag: "Statistical · no LLM", trigger: "Real-time",
+  },
+  {
+    n: "13", icon: "🤖", title: "Floating AI Copilot",
+    desc: "A persistent chat bubble in the bottom-right corner of every screen. Ask about cash flow, budgets or anomalies — answers come from your live DB, not a demo.",
+    tag: "claude-sonnet-4-6 · tool-use", trigger: "Always on",
+  },
 ];
 
 const stack = [
   "Next.js 14", "FastAPI", "PostgreSQL 16", "SQLAlchemy 2.0",
   "Claude Haiku-4-5", "Claude Sonnet-4-6", "OpenRouter", "Anthropic SDK",
   "Tailwind CSS", "Recharts", "Alembic", "Docker", "Helm / Kubernetes",
-  "Pydantic v2", "pytest-asyncio", "shadcn/ui",
+  "Pydantic v2", "pytest-asyncio", "shadcn/ui", "Logto",
 ];
 
 const footerLinks = {
@@ -75,6 +85,7 @@ const footerLinks = {
     { label: "Dashboard", href: "/dashboard" },
     { label: "Invoices", href: "/invoices" },
     { label: "Expenses", href: "/expenses" },
+    { label: "Cash Flow", href: "/cash-flow" },
     { label: "Forecast", href: "/forecast" },
     { label: "Reports", href: "/reports" },
     { label: "Budgets", href: "/budgets" },
@@ -84,9 +95,10 @@ const footerLinks = {
   "Features": [
     { label: "Expense Categorisation", href: "/expenses/new" },
     { label: "Receipt OCR", href: "/expenses/new" },
+    { label: "13-Week Cash Flow", href: "/cash-flow" },
+    { label: "Optimization Levers", href: "/cash-flow" },
     { label: "Anomaly Detection", href: "/expenses" },
     { label: "AI Reports", href: "/reports" },
-    { label: "Cash Flow Forecast", href: "/forecast" },
     { label: "Budget Guardrails", href: "/budgets" },
     { label: "Client Scoring", href: "/clients" },
     { label: "NL Chat", href: "/chat" },
@@ -99,7 +111,7 @@ const footerLinks = {
     { label: "Issues", href: "https://github.com/dclawstack/dclaw-finance/issues" },
     { label: "Pull Requests", href: "https://github.com/dclawstack/dclaw-finance/pulls" },
     { label: "Releases", href: "https://github.com/dclawstack/dclaw-finance/releases" },
-    { label: "PLAN v1.3", href: "https://github.com/dclawstack/dclaw-finance/blob/main/PLAN-v1.3.md" },
+    { label: "PLAN v1.4", href: "https://github.com/dclawstack/dclaw-finance/blob/main/PLAN-v1.4.md" },
   ],
   "Docs": [
     { label: "Quick Start", href: "/docs/getting-started/quickstart" },
@@ -254,7 +266,7 @@ export default function LandingPage() {
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-[#c084fc]" />
                 </span>
                 <span className="text-xs text-white/70 font-medium" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                  v1.2 · 11 AI features · Open source
+                  v1.4 · 13 AI features · Open source
                 </span>
               </div>
 
@@ -304,7 +316,7 @@ export default function LandingPage() {
               </div>
 
               <div className="flex flex-wrap gap-6 mt-12 pt-8 border-t border-white/10">
-                {[["11", "AI Features"], ["9", "Screens"], ["₹ INR", "Native"], ["100%", "Open Source"]].map(([val, label]) => (
+                {[["13", "AI Features"], ["10", "Screens"], ["₹ INR", "Native"], ["100%", "Open Source"]].map(([val, label]) => (
                   <div key={label}>
                     <div className="text-2xl font-black text-white" style={{ fontFamily: "'Raleway', sans-serif" }}>{val}</div>
                     <div className="text-xs text-white/40 mt-0.5" style={{ fontFamily: "'Poppins', sans-serif" }}>{label}</div>
@@ -385,7 +397,7 @@ export default function LandingPage() {
             className="absolute top-8 right-0 text-[20rem] font-black text-[#f3e8ff] select-none leading-none pointer-events-none"
             style={{ fontFamily: "'Raleway', sans-serif" }}
           >
-            11
+            13
           </div>
           <div className="relative mx-auto max-w-7xl">
             <FadeUp className="text-center mb-20">
@@ -398,7 +410,7 @@ export default function LandingPage() {
               </h2>
               <p className="text-[#666] text-lg max-w-2xl mx-auto" style={{ fontFamily: "'Poppins', sans-serif" }}>
                 Not bolted on. Not a chatbot wrapper. Claude Haiku-4-5 and Sonnet-4-6 are woven into
-                every workflow — categorisation, OCR, drafting, anomaly detection, forecasting, Q&A.
+                every workflow — categorisation, OCR, drafting, anomaly detection, cash flow, Q&A — plus a floating copilot on every page.
               </p>
             </FadeUp>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -445,13 +457,13 @@ export default function LandingPage() {
           <div className="mx-auto max-w-7xl">
             <FadeUp className="text-center mb-20">
               <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#7030A0] bg-[#f3e8ff] px-4 py-2 rounded-full" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                9 Screens
+                10 Screens
               </span>
               <h2 className="text-5xl md:text-6xl font-black mt-6 mb-4" style={{ fontFamily: "'Raleway', sans-serif" }}>
                 A complete <span className="shimmer-text">finance OS.</span>
               </h2>
               <p className="text-[#666] text-lg max-w-xl mx-auto" style={{ fontFamily: "'Poppins', sans-serif" }}>
-                Every screen your finance team needs — invoicing to forecasting, budgets to NL chat.
+                Every screen your finance team needs — invoicing to 13-week cash flow, budgets to NL chat. Plus a floating copilot on every page.
               </p>
             </FadeUp>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -459,7 +471,8 @@ export default function LandingPage() {
                 { href: "/dashboard", icon: "🏠", title: "Dashboard", desc: "KPI cards, 12-month trend chart, overdue invoices — your full financial picture at a glance." },
                 { href: "/invoices", icon: "🧾", title: "Invoices", desc: "Create, track and search invoices. AI suggests line items and drafts payment reminders automatically." },
                 { href: "/expenses", icon: "💳", title: "Expenses", desc: "Receipt OCR, AI categorisation, and a dedicated Anomalies tab for statistical outlier detection." },
-                { href: "/forecast", icon: "🔮", title: "Forecast", desc: "3-month cash flow projection with exponential smoothing and a shaded confidence band." },
+                { href: "/cash-flow", icon: "🏦", title: "Cash Flow", desc: "13-week rolling forecast with running balance chart, weekly detail table and top 3 cost optimisation levers." },
+                { href: "/forecast", icon: "🔮", title: "Forecast", desc: "3-month projection with actual vs projected overlay, exponential smoothing and confidence band." },
                 { href: "/reports", icon: "📄", title: "Reports", desc: "One-click AI executive summary: revenue, cost drivers, profit trend, and 3 actionable recommendations." },
                 { href: "/budgets", icon: "🎯", title: "Budgets", desc: "Set category limits. Get AI suggestions the moment spend hits 80 % — not after it's too late." },
                 { href: "/clients", icon: "🤝", title: "Clients", desc: "Ranked profitability table. Expand any row for an AI insight on that client relationship." },
@@ -564,12 +577,12 @@ export default function LandingPage() {
                 View on GitHub
               </a>
               <a
-                href="https://github.com/dclawstack/dclaw-finance/blob/main/PLAN-v1.3.md"
+                href="https://github.com/dclawstack/dclaw-finance/blob/main/PLAN-v1.4.md"
                 target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-full text-white font-bold text-sm border border-white/20 hover:bg-white/10 transition-all"
                 style={{ fontFamily: "'Poppins', sans-serif" }}
               >
-                Read the v1.3 Roadmap →
+                Read the v1.4 Roadmap →
               </a>
             </div>
           </FadeUp>
@@ -628,7 +641,7 @@ export default function LandingPage() {
               </p>
               <div className="flex gap-6">
                 {[
-                  { label: "v1.3 Roadmap", href: "https://github.com/dclawstack/dclaw-finance/blob/main/PLAN-v1.3.md" },
+                  { label: "v1.4 Roadmap", href: "https://github.com/dclawstack/dclaw-finance/blob/main/PLAN-v1.4.md" },
                   { label: "Product Spec", href: "https://github.com/dclawstack/dclaw-finance/blob/main/PRODUCT-SPEC.md" },
                   { label: "Issues", href: "https://github.com/dclawstack/dclaw-finance/issues" },
                 ].map(l => (

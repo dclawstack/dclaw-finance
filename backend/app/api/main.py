@@ -1,6 +1,6 @@
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
+from fastapi import Depends, FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.api.routes import health
@@ -14,7 +14,10 @@ from app.api.v1 import (
     budgets_router,
     chat_router,
     demo_router,
+    cash_flow_router,
+    testsprite_router,
 )
+from app.core.auth import require_auth
 from app.core.config import settings
 from app.core.database import init_db
 
@@ -44,16 +47,20 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
 
+    _auth = [Depends(require_auth)]
+
     app.include_router(health.router)
-    app.include_router(invoices_router, prefix="/api/v1")
-    app.include_router(expenses_router, prefix="/api/v1")
-    app.include_router(dashboard_router, prefix="/api/v1")
-    app.include_router(forecast_router, prefix="/api/v1")
-    app.include_router(reports_router, prefix="/api/v1")
-    app.include_router(clients_router, prefix="/api/v1")
-    app.include_router(budgets_router, prefix="/api/v1")
-    app.include_router(chat_router, prefix="/api/v1")
-    app.include_router(demo_router, prefix="/api/v1")
+    app.include_router(invoices_router,   prefix="/api/v1", dependencies=_auth)
+    app.include_router(expenses_router,   prefix="/api/v1", dependencies=_auth)
+    app.include_router(dashboard_router,  prefix="/api/v1", dependencies=_auth)
+    app.include_router(forecast_router,   prefix="/api/v1", dependencies=_auth)
+    app.include_router(reports_router,    prefix="/api/v1", dependencies=_auth)
+    app.include_router(clients_router,    prefix="/api/v1", dependencies=_auth)
+    app.include_router(budgets_router,    prefix="/api/v1", dependencies=_auth)
+    app.include_router(chat_router,       prefix="/api/v1", dependencies=_auth)
+    app.include_router(cash_flow_router,  prefix="/api/v1", dependencies=_auth)
+    app.include_router(demo_router,       prefix="/api/v1")
+    app.include_router(testsprite_router, prefix="/api/v1")
 
     return app
 

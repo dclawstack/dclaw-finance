@@ -34,60 +34,6 @@ class BudgetResponse(BaseModel):
     model_config = {"from_attributes": True}
 
 
-@router.post("", response_model=BudgetResponse)
-async def create_or_update_budget(
-    data: BudgetCreate, db: AsyncSession = Depends(get_db)
-) -> Budget:
-    """Create a budget, or update the limit if one already exists for this category/month."""
-    repo = BudgetRepository(db)
-    existing = await repo.get_by_category_month(data.category, data.year, data.month)
-    if existing:
-        existing.monthly_limit = data.monthly_limit
-        return await repo.update(existing)
-    budget = Budget(
-        category=data.category,
-        monthly_limit=data.monthly_limit,
-        year=data.year,
-        month=data.month,
-    )
-    return await repo.create(budget)
-
-
-@router.get("", response_model=list[BudgetResponse])
-async def list_budgets(
-    year: int = Query(default=None),
-    month: int = Query(default=None),
-    db: AsyncSession = Depends(get_db),
-) -> list[Budget]:
-    repo = BudgetRepository(db)
-    today = date.today()
-    y = year or today.year
-    m = month or today.month
-    return await repo.list_by_month(y, m)
-
-
-@router.put("/{budget_id}", response_model=BudgetResponse)
-async def update_budget(
-    budget_id: UUID, data: BudgetUpdate, db: AsyncSession = Depends(get_db)
-) -> Budget:
-    repo = BudgetRepository(db)
-    budget = await repo.get(budget_id)
-    if not budget:
-        raise HTTPException(status_code=404, detail="Budget not found")
-    if data.monthly_limit is not None:
-        budget.monthly_limit = data.monthly_limit
-    return await repo.update(budget)
-
-
-@router.delete("/{budget_id}", status_code=204)
-async def delete_budget(budget_id: UUID, db: AsyncSession = Depends(get_db)) -> None:
-    repo = BudgetRepository(db)
-    budget = await repo.get(budget_id)
-    if not budget:
-        raise HTTPException(status_code=404, detail="Budget not found")
-    await repo.delete(budget)
-
-
 @router.get("/status")
 async def budget_status(
     year: int = Query(default=None),
@@ -161,3 +107,57 @@ async def budget_status(
             entry["ai_suggestion"] = f"Consider reducing {entry['category']} spend by reviewing recurring costs."
 
     return statuses
+
+
+@router.post("", response_model=BudgetResponse)
+async def create_or_update_budget(
+    data: BudgetCreate, db: AsyncSession = Depends(get_db)
+) -> Budget:
+    """Create a budget, or update the limit if one already exists for this category/month."""
+    repo = BudgetRepository(db)
+    existing = await repo.get_by_category_month(data.category, data.year, data.month)
+    if existing:
+        existing.monthly_limit = data.monthly_limit
+        return await repo.update(existing)
+    budget = Budget(
+        category=data.category,
+        monthly_limit=data.monthly_limit,
+        year=data.year,
+        month=data.month,
+    )
+    return await repo.create(budget)
+
+
+@router.get("", response_model=list[BudgetResponse])
+async def list_budgets(
+    year: int = Query(default=None),
+    month: int = Query(default=None),
+    db: AsyncSession = Depends(get_db),
+) -> list[Budget]:
+    repo = BudgetRepository(db)
+    today = date.today()
+    y = year or today.year
+    m = month or today.month
+    return await repo.list_by_month(y, m)
+
+
+@router.put("/{budget_id}", response_model=BudgetResponse)
+async def update_budget(
+    budget_id: UUID, data: BudgetUpdate, db: AsyncSession = Depends(get_db)
+) -> Budget:
+    repo = BudgetRepository(db)
+    budget = await repo.get(budget_id)
+    if not budget:
+        raise HTTPException(status_code=404, detail="Budget not found")
+    if data.monthly_limit is not None:
+        budget.monthly_limit = data.monthly_limit
+    return await repo.update(budget)
+
+
+@router.delete("/{budget_id}", status_code=204)
+async def delete_budget(budget_id: UUID, db: AsyncSession = Depends(get_db)) -> None:
+    repo = BudgetRepository(db)
+    budget = await repo.get(budget_id)
+    if not budget:
+        raise HTTPException(status_code=404, detail="Budget not found")
+    await repo.delete(budget)

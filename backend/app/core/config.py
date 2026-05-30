@@ -10,18 +10,25 @@ class Settings(BaseSettings):
     debug: bool = True
 
     database_url: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/dclaw_finance"
-    
+
     anthropic_api_key: str = ""
 
     ollama_url: str = "http://localhost:11434"
     ollama_model: str = "llama3.1"
     openrouter_api_key: str = ""
     openrouter_model: str = "meta-llama/llama-3.1-8b-instruct"
-    
+
     secret_key: str = "change-me-in-production"
     access_token_expire_minutes: int = 60
 
     enable_demo_mode: bool = False
+
+    testsprite_api_key: str = ""
+    testsprite_base_url: str = "https://api.testsprite.com"
+
+    # Logto auth — leave empty in dev to skip JWT validation
+    logto_endpoint: str = ""
+    logto_resource: str = ""
 
 
 @lru_cache()
