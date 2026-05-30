@@ -1,0 +1,52 @@
+[
+  {
+    "id": "TC001",
+    "title": "post api v1 invoices suggest items",
+    "description": "Verify that POST /api/v1/invoices/suggest-items returns a 200 response with a list of AI-suggested invoice line items. The request body must include client_name (string) and first_item (string). Use query param dry_run=true to avoid calling the external AI API."
+  },
+  {
+    "id": "TC002",
+    "title": "post api v1 invoices create new invoice",
+    "description": "Test creating a new invoice via POST /api/v1/invoices. Required fields: invoice_number (string), client_name (string), client_email (string), issue_date (date string YYYY-MM-DD), due_date (date string YYYY-MM-DD). Verify a 201 response with the created InvoiceResponse containing id, client_name, due_date, total (float), subtotal (float)."
+  },
+  {
+    "id": "TC003",
+    "title": "get api v1 invoices list all invoices",
+    "description": "Ensure GET /api/v1/invoices returns a 200 response with a list of all existing invoices."
+  },
+  {
+    "id": "TC004",
+    "title": "get api v1 invoices get invoice by id",
+    "description": "Check that GET /api/v1/invoices/{invoice_id} returns 200 with invoice details for an existing invoice and 404 for a non-existent invoice. When creating the invoice fixture use required fields: invoice_number, client_name, client_email, issue_date (YYYY-MM-DD), due_date (YYYY-MM-DD). Response contains id, client_name, due_date, total."
+  },
+  {
+    "id": "TC005",
+    "title": "put api v1 invoices update invoice",
+    "description": "Validate that PUT /api/v1/invoices/{invoice_id} updates an existing invoice and returns 200, or 404 if not found. Invoice fixture must include all required creation fields: invoice_number, client_name, client_email, issue_date (YYYY-MM-DD), due_date (YYYY-MM-DD). The update payload may include client_name and/or due_date. Response contains id, client_name, due_date."
+  },
+  {
+    "id": "TC006",
+    "title": "delete api v1 invoices delete invoice",
+    "description": "Confirm DELETE /api/v1/invoices/{invoice_id} deletes an existing invoice returning 204 No Content, or 404 if not found. Invoice fixture must include required fields: invoice_number, client_name, client_email, issue_date (YYYY-MM-DD), due_date (YYYY-MM-DD). Confirm deletion via subsequent GET returning 404."
+  },
+  {
+    "id": "TC007",
+    "title": "post api v1 invoices invoice id reminder draft",
+    "description": "Test POST /api/v1/invoices/{invoice_id}/reminder-draft generates an AI-drafted payment reminder text for invoices in sent or overdue status and returns 200 with the reminder string."
+  },
+  {
+    "id": "TC008",
+    "title": "post api v1 invoices invoice id items add line item",
+    "description": "Verify POST /api/v1/invoices/{invoice_id}/items adds a line item to the specified invoice and returns 201 with InvoiceItemResponse."
+  },
+  {
+    "id": "TC009",
+    "title": "put api v1 invoices invoice id items item id update line item",
+    "description": "Check that PUT /api/v1/invoices/{invoice_id}/items/{item_id} updates the specified invoice line item and returns 200 with updated InvoiceItemResponse."
+  },
+  {
+    "id": "TC010",
+    "title": "delete api v1 invoices invoice id items item id delete line item",
+    "description": "Ensure DELETE /api/v1/invoices/{invoice_id}/items/{item_id} deletes the specified invoice line item and returns 204 No Content. Invoice fixture must include required fields: invoice_number, client_name, client_email, issue_date (YYYY-MM-DD), due_date (YYYY-MM-DD). Line item fixture must include description, quantity (int), unit_price (float), amount (float)."
+  }
+]

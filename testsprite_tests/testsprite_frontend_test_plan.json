@@ -1,0 +1,1118 @@
+[
+  {
+    "id": "TC001",
+    "title": "Create and view an invoice",
+    "description": "Verifies that a finance user can create an invoice and open it to confirm the saved details are available.",
+    "category": "Invoice Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the invoice creation page"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the client name field with Acme Corp"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the amount field with a valid positive amount"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the due date field with a valid future date"
+      },
+      {
+        "type": "action",
+        "description": "Submit the invoice form"
+      },
+      {
+        "type": "action",
+        "description": "Open the newly created invoice"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the invoice details are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC002",
+    "title": "Scan a receipt and create an expense",
+    "description": "Verifies that a user can scan a receipt with OCR, review extracted fields, and create an expense from them.",
+    "category": "Expense Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the expense creation page"
+      },
+      {
+        "type": "action",
+        "description": "Upload a receipt image for OCR extraction"
+      },
+      {
+        "type": "action",
+        "description": "Review the extracted expense fields"
+      },
+      {
+        "type": "action",
+        "description": "Submit the expense form using the extracted fields"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the new expense is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC003",
+    "title": "Verify the service health check reports the app is live",
+    "description": "This test verifies that the health endpoint returns the expected live service status for operational monitoring.",
+    "category": "Health Check",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /health"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the service reports an ok status"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the finance service name is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC004",
+    "title": "Add and update an invoice line item",
+    "description": "Verifies that a user can add a line item to an invoice and then revise its quantity successfully.",
+    "category": "Invoice Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the invoice creation page"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the client name field with Acme Corp"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the amount field with a valid positive amount"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the due date field with a valid future date"
+      },
+      {
+        "type": "action",
+        "description": "Submit the invoice form"
+      },
+      {
+        "type": "action",
+        "description": "Open the invoice line item editor"
+      },
+      {
+        "type": "action",
+        "description": "Add a line item with a description, quantity, and unit price"
+      },
+      {
+        "type": "action",
+        "description": "Edit the added line item's quantity"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the updated line item is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC005",
+    "title": "View dashboard summary metrics",
+    "description": "This test verifies that a user can open the dashboard and see the current financial summary metrics.",
+    "category": "Dashboard API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify financial summary metrics are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify profit information is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC006",
+    "title": "Create and inspect a budget",
+    "description": "Verifies that a user can create a budget and view it in the budget list with status information available.",
+    "category": "Budget Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the budget creation page"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the category field with a valid spending category"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the monthly limit field with a valid positive amount"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the year field with a valid year"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the month field with a valid month"
+      },
+      {
+        "type": "action",
+        "description": "Submit the budget form"
+      },
+      {
+        "type": "action",
+        "description": "Open the budget list or status view"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the new budget is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify budget utilization information is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC007",
+    "title": "Update and delete an expense",
+    "description": "Verifies that a user can correct an expense and then delete it from the system.",
+    "category": "Expense Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the expense creation page"
+      },
+      {
+        "type": "action",
+        "description": "Fill in valid expense details"
+      },
+      {
+        "type": "action",
+        "description": "Submit the expense form"
+      },
+      {
+        "type": "action",
+        "description": "Open the saved expense"
+      },
+      {
+        "type": "action",
+        "description": "Edit the amount or vendor details"
+      },
+      {
+        "type": "action",
+        "description": "Save the updated expense"
+      },
+      {
+        "type": "action",
+        "description": "Delete the expense"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the expense is no longer available"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC008",
+    "title": "Review dashboard trend data",
+    "description": "This test verifies that a user can view the dashboard trend data and see time-based financial trends.",
+    "category": "Dashboard API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard"
+      },
+      {
+        "type": "action",
+        "description": "Click the trend data view"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify trend data is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify multiple time periods are represented"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC009",
+    "title": "Update budget limit and refresh utilization",
+    "description": "Verifies that a user can increase an existing budget limit and see updated budget status information.",
+    "category": "Budget Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the budget creation page"
+      },
+      {
+        "type": "action",
+        "description": "Create a budget for a category and month"
+      },
+      {
+        "type": "action",
+        "description": "Open the created budget"
+      },
+      {
+        "type": "action",
+        "description": "Edit the monthly limit to a higher value"
+      },
+      {
+        "type": "action",
+        "description": "Save the budget changes"
+      },
+      {
+        "type": "action",
+        "description": "Open the budget status view"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the updated budget is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify refreshed utilization information is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC010",
+    "title": "Accept suggested invoice items",
+    "description": "Verifies that a user can request invoice item suggestions and add accepted suggestions to the invoice.",
+    "category": "Invoice Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the invoice creation page"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the client name field with Acme Corp"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the amount field with a valid positive amount"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the due date field with a valid future date"
+      },
+      {
+        "type": "action",
+        "description": "Submit the invoice form"
+      },
+      {
+        "type": "action",
+        "description": "Open the invoice item suggestion flow"
+      },
+      {
+        "type": "action",
+        "description": "Request suggested line items"
+      },
+      {
+        "type": "action",
+        "description": "Accept one of the suggested line items"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the accepted line item is displayed in the invoice"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC011",
+    "title": "Get a financial forecast from the forecast endpoint",
+    "description": "This test verifies that a forecast can be retrieved and projected financial results are shown to the user.",
+    "category": "Forecast API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /api/v1/forecast"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify projected revenue is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify projected expenses and profit are displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC012",
+    "title": "Generate and delete an invoice reminder draft",
+    "description": "Verifies that a user can generate a reminder draft for a sent or overdue invoice and then delete that invoice.",
+    "category": "Invoice Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the invoice creation page"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the client name field with Acme Corp"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the amount field with a valid positive amount"
+      },
+      {
+        "type": "action",
+        "description": "Fill in the due date field with a valid future date"
+      },
+      {
+        "type": "action",
+        "description": "Submit the invoice form"
+      },
+      {
+        "type": "action",
+        "description": "Change the invoice status to sent or overdue"
+      },
+      {
+        "type": "action",
+        "description": "Request a payment reminder draft"
+      },
+      {
+        "type": "action",
+        "description": "Delete the invoice"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the invoice is no longer available"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC013",
+    "title": "Generate a monthly summary report",
+    "description": "This test verifies that a user can generate a monthly financial summary report for a selected period and see the report content.",
+    "category": "Reports API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /reports"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid month"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid year"
+      },
+      {
+        "type": "action",
+        "description": "Generate the monthly summary report"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a monthly summary report is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify executive summary content is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC014",
+    "title": "Send a financial question to the chat assistant and view the reply",
+    "description": "This test verifies that a user can submit a financial question and receive an assistant response in the conversation view.",
+    "category": "AI Chat API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /api/v1/chat"
+      },
+      {
+        "type": "action",
+        "description": "Fill in a financial question in the message field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the message"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an assistant response is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the conversation includes the sent message"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC015",
+    "title": "View persisted chat history after sending a message",
+    "description": "This test verifies that sent chat messages are saved and appear in the message history.",
+    "category": "AI Chat API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /api/v1/chat"
+      },
+      {
+        "type": "action",
+        "description": "Fill in a financial question in the message field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the message"
+      },
+      {
+        "type": "action",
+        "description": "Open the chat history view"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the recent conversation history is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the sent message appears in history"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC016",
+    "title": "Categorize and review an expense anomaly",
+    "description": "Verifies that a user can get a suggested category, save an expense with it, and open an anomalous expense for review.",
+    "category": "Expense Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the expense creation page"
+      },
+      {
+        "type": "action",
+        "description": "Enter an expense description and vendor details"
+      },
+      {
+        "type": "action",
+        "description": "Request a suggested category"
+      },
+      {
+        "type": "action",
+        "description": "Select the suggested category"
+      },
+      {
+        "type": "action",
+        "description": "Submit the expense form"
+      },
+      {
+        "type": "action",
+        "description": "Open the anomaly review page"
+      },
+      {
+        "type": "action",
+        "description": "Open an anomalous expense record"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the expense detail is displayed for review"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC017",
+    "title": "Compare forecast projections with current dashboard totals",
+    "description": "This test verifies that forecasted values can be viewed in relation to the current financial summary for comparison.",
+    "category": "Forecast API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /api/v1/forecast"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify forecasted financial values are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify dashboard comparison data is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC018",
+    "title": "View client profitability ranking",
+    "description": "This test verifies that a user can open client profitability analysis and see a ranked list of clients.",
+    "category": "Client Profitability API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /clients/profitability"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a ranked client profitability list is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify profitability metrics are displayed for clients"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC019",
+    "title": "Continue a chat with a follow-up question using existing history",
+    "description": "This test verifies that a follow-up message can be sent after prior conversation and the assistant responds with context preserved.",
+    "category": "AI Chat API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /api/v1/chat"
+      },
+      {
+        "type": "action",
+        "description": "Fill in an initial financial question in the message field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the message"
+      },
+      {
+        "type": "action",
+        "description": "Fill in a follow-up financial question in the message field"
+      },
+      {
+        "type": "action",
+        "description": "Submit the message"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify multiple messages are present in the conversation"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the follow-up assistant response is displayed"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC020",
+    "title": "See refreshed forecast after new financial data is added",
+    "description": "This test verifies that forecast projections update after recent invoice and expense activity is present.",
+    "category": "Forecast API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /api/v1/forecast"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify forecasted financial values are displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the projections reflect recent financial activity"
+      }
+    ],
+    "priority": "High"
+  },
+  {
+    "id": "TC021",
+    "title": "Refresh client rankings after new activity",
+    "description": "This test verifies that a user can see client profitability rankings update after recording new invoice activity in the same session.",
+    "category": "Client Profitability API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /clients/profitability"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a ranked client profitability list is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify dashboard financial summary metrics are displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC022",
+    "title": "Upsert an existing budget",
+    "description": "Verifies that creating a budget for an existing category and period updates the existing budget and refreshes status.",
+    "category": "Budget Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the budget creation page"
+      },
+      {
+        "type": "action",
+        "description": "Create a budget for a category and period"
+      },
+      {
+        "type": "action",
+        "description": "Create another budget for the same category and period with a different limit"
+      },
+      {
+        "type": "action",
+        "description": "Open the budget status view"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the budget reflects the latest limit"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the utilization information is refreshed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC023",
+    "title": "Handle an empty dashboard state",
+    "description": "This test verifies that a user can view the dashboard when there is no activity and see an empty or zeroed summary and trends.",
+    "category": "Dashboard API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /dashboard"
+      },
+      {
+        "type": "action",
+        "description": "Click the trend data view"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an empty or zeroed trend state is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify financial summary metrics are still displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC024",
+    "title": "Review a forecast when historical data is limited",
+    "description": "This test verifies that the forecast still renders with reduced-confidence projections when limited history is available.",
+    "category": "Forecast API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /api/v1/forecast"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a forecast response is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify reduced-confidence projection details are displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC025",
+    "title": "Delete a budget and confirm it is removed",
+    "description": "Verifies that a user can delete a budget and no longer find it in the budget list afterward.",
+    "category": "Budget Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the budget creation page"
+      },
+      {
+        "type": "action",
+        "description": "Create a budget for a category and period"
+      },
+      {
+        "type": "action",
+        "description": "Delete the budget"
+      },
+      {
+        "type": "action",
+        "description": "Open the budget list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the budget is no longer listed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC026",
+    "title": "Open a client from profitability analysis",
+    "description": "This test verifies that a user can select a client from the profitability ranking and inspect its follow-up analysis view.",
+    "category": "Client Profitability API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /clients/profitability"
+      },
+      {
+        "type": "action",
+        "description": "Select a client entry"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the selected client analysis is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify client profitability details are visible"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC027",
+    "title": "Handle missing invoice records",
+    "description": "Verifies that a user sees a not-found state when opening or editing an invoice that does not exist.",
+    "category": "Invoice Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the invoice lookup page"
+      },
+      {
+        "type": "action",
+        "description": "Open a non-existent invoice"
+      },
+      {
+        "type": "action",
+        "description": "Attempt to edit the same non-existent invoice"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a not-found message is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC028",
+    "title": "Handle missing expense records",
+    "description": "Verifies that a user sees a not-found state when opening or editing an expense that does not exist.",
+    "category": "Expense Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the expense lookup page"
+      },
+      {
+        "type": "action",
+        "description": "Open a non-existent expense"
+      },
+      {
+        "type": "action",
+        "description": "Attempt to edit the same non-existent expense"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a not-found message is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC029",
+    "title": "Handle an empty client profitability view",
+    "description": "This test verifies that a user sees an empty state when no client profitability data is available.",
+    "category": "Client Profitability API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /clients/profitability"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify an empty state message is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no client profitability records are displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC030",
+    "title": "Handle missing budget records",
+    "description": "Verifies that a user sees a not-found state when updating or deleting a budget that does not exist.",
+    "category": "Budget Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the budget lookup page"
+      },
+      {
+        "type": "action",
+        "description": "Open a non-existent budget"
+      },
+      {
+        "type": "action",
+        "description": "Attempt to update the same non-existent budget"
+      },
+      {
+        "type": "action",
+        "description": "Attempt to delete the same non-existent budget"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a not-found message is displayed"
+      }
+    ],
+    "priority": "Medium"
+  },
+  {
+    "id": "TC031",
+    "title": "Reject invalid invoice input",
+    "description": "Verifies that invalid invoice data is blocked and no invoice appears in the list afterward.",
+    "category": "Invoice Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the invoice creation page"
+      },
+      {
+        "type": "action",
+        "description": "Leave a required invoice field empty or enter an invalid value"
+      },
+      {
+        "type": "action",
+        "description": "Submit the invoice form"
+      },
+      {
+        "type": "action",
+        "description": "Open the invoice list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a validation error is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no invalid invoice is listed"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC032",
+    "title": "Reject invalid expense input",
+    "description": "Verifies that invalid expense data is blocked and only valid expenses remain available afterward.",
+    "category": "Expense Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the expense creation page"
+      },
+      {
+        "type": "action",
+        "description": "Enter an invalid category or malformed date"
+      },
+      {
+        "type": "action",
+        "description": "Submit the expense form"
+      },
+      {
+        "type": "action",
+        "description": "Open the expense list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a validation error is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify only valid expenses are listed"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC033",
+    "title": "Keep chat history unchanged after submitting an invalid empty message",
+    "description": "This test verifies that an empty chat submission is rejected and no new conversation entry is added.",
+    "category": "AI Chat API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /api/v1/chat"
+      },
+      {
+        "type": "action",
+        "description": "Open the chat history view"
+      },
+      {
+        "type": "action",
+        "description": "Submit an empty message"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a validation error is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the chat history remains unchanged"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC034",
+    "title": "Recover from an invalid report month",
+    "description": "This test verifies that a user sees validation feedback for an invalid report month and can successfully generate the report after correcting it.",
+    "category": "Reports API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /reports"
+      },
+      {
+        "type": "action",
+        "description": "Select an invalid month value"
+      },
+      {
+        "type": "action",
+        "description": "Generate the monthly summary report"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a month validation error is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid month"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid year"
+      },
+      {
+        "type": "action",
+        "description": "Generate the monthly summary report"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a monthly summary report is displayed"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC035",
+    "title": "Reject invalid budget input",
+    "description": "Verifies that invalid budget values are blocked and do not create a new budget entry.",
+    "category": "Budget Management API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to the budget creation page"
+      },
+      {
+        "type": "action",
+        "description": "Leave a required field empty or enter an invalid monthly limit"
+      },
+      {
+        "type": "action",
+        "description": "Submit the budget form"
+      },
+      {
+        "type": "action",
+        "description": "Open the budget list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a validation error is displayed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify no invalid budget is listed"
+      }
+    ],
+    "priority": "Low"
+  },
+  {
+    "id": "TC036",
+    "title": "Generate the same monthly summary more than once",
+    "description": "This test verifies that a user can generate a monthly summary report repeatedly for the same period and still receive a valid report each time.",
+    "category": "Reports API",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /reports"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid month"
+      },
+      {
+        "type": "action",
+        "description": "Select a valid year"
+      },
+      {
+        "type": "action",
+        "description": "Generate the monthly summary report"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a monthly summary report is displayed"
+      },
+      {
+        "type": "action",
+        "description": "Generate the monthly summary report again"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a monthly summary report is displayed"
+      }
+    ],
+    "priority": "Low"
+  }
+]

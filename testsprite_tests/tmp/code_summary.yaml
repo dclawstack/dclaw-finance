@@ -1,0 +1,276 @@
+version: "2"
+type: backend
+tech_stack:
+  - language: Python 3.11
+  - framework: FastAPI 0.100+
+  - database: PostgreSQL (asyncpg, SQLAlchemy async)
+  - other: Pydantic v2, Alembic, Anthropic Claude API, Docker
+features:
+  - name: Invoice Management API
+    description: CRUD operations for invoices and invoice line items, plus AI-assisted item suggestion and reminder drafting
+    files:
+      - backend/app/api/v1/invoices.py
+      - backend/app/models/invoice.py
+      - backend/app/models/invoice_item.py
+    endpoints:
+      - method: POST
+        path: /api/v1/invoices/suggest-items
+        description: AI-suggested line items for an invoice
+        auth_required: false
+        response_schema:
+          "200": list[InvoiceItem]
+      - method: POST
+        path: /api/v1/invoices
+        description: Create a new invoice
+        auth_required: false
+        request_schema:
+          body:
+            client_name: string
+            amount: number
+            due_date: string
+        response_schema:
+          "201": InvoiceResponse
+          "422": Validation error
+      - method: GET
+        path: /api/v1/invoices
+        description: List all invoices
+        auth_required: false
+        response_schema:
+          "200": list[InvoiceResponse]
+      - method: GET
+        path: /api/v1/invoices/{invoice_id}
+        description: Get a single invoice by ID
+        auth_required: false
+        response_schema:
+          "200": InvoiceResponse
+          "404": Not found
+      - method: PUT
+        path: /api/v1/invoices/{invoice_id}
+        description: Update an invoice
+        auth_required: false
+        response_schema:
+          "200": InvoiceResponse
+          "404": Not found
+      - method: DELETE
+        path: /api/v1/invoices/{invoice_id}
+        description: Delete an invoice
+        auth_required: false
+        response_schema:
+          "204": No content
+          "404": Not found
+      - method: POST
+        path: /api/v1/invoices/{invoice_id}/reminder-draft
+        description: AI-drafted payment reminder for an invoice
+        auth_required: false
+        response_schema:
+          "200": string
+      - method: POST
+        path: /api/v1/invoices/{invoice_id}/items
+        description: Add a line item to an invoice
+        auth_required: false
+        response_schema:
+          "201": InvoiceItemResponse
+      - method: PUT
+        path: /api/v1/invoices/{invoice_id}/items/{item_id}
+        description: Update an invoice line item
+        auth_required: false
+        response_schema:
+          "200": InvoiceItemResponse
+      - method: DELETE
+        path: /api/v1/invoices/{invoice_id}/items/{item_id}
+        description: Delete an invoice line item
+        auth_required: false
+        response_schema:
+          "204": No content
+
+  - name: Expense Management API
+    description: CRUD for expenses with AI-powered OCR receipt scanning and anomaly detection
+    files:
+      - backend/app/api/v1/expenses.py
+      - backend/app/models/expense.py
+    endpoints:
+      - method: POST
+        path: /api/v1/expenses/categorize
+        description: AI-categorize an expense
+        auth_required: false
+        response_schema:
+          "200": category string
+      - method: POST
+        path: /api/v1/expenses/ocr
+        description: Extract expense data from receipt image via OCR
+        auth_required: false
+        request_schema:
+          body:
+            file: binary (multipart)
+        response_schema:
+          "200": ExpenseOCRResult
+      - method: GET
+        path: /api/v1/expenses/anomalies
+        description: Detect anomalous expense entries
+        auth_required: false
+        response_schema:
+          "200": list[ExpenseResponse]
+      - method: POST
+        path: /api/v1/expenses
+        description: Create a new expense
+        auth_required: false
+        response_schema:
+          "201": ExpenseResponse
+      - method: GET
+        path: /api/v1/expenses
+        description: List all expenses
+        auth_required: false
+        response_schema:
+          "200": list[ExpenseResponse]
+      - method: GET
+        path: /api/v1/expenses/{expense_id}
+        description: Get a single expense
+        auth_required: false
+        response_schema:
+          "200": ExpenseResponse
+          "404": Not found
+      - method: PUT
+        path: /api/v1/expenses/{expense_id}
+        description: Update an expense
+        auth_required: false
+        response_schema:
+          "200": ExpenseResponse
+      - method: DELETE
+        path: /api/v1/expenses/{expense_id}
+        description: Delete an expense
+        auth_required: false
+        response_schema:
+          "204": No content
+
+  - name: Budget Management API
+    description: Create and track budgets with status monitoring
+    files:
+      - backend/app/api/v1/budgets.py
+      - backend/app/models/budget.py
+    endpoints:
+      - method: POST
+        path: /api/v1/budgets
+        description: Create a new budget
+        auth_required: false
+        response_schema:
+          "200": BudgetResponse
+      - method: GET
+        path: /api/v1/budgets
+        description: List all budgets
+        auth_required: false
+        response_schema:
+          "200": list[BudgetResponse]
+      - method: PUT
+        path: /api/v1/budgets/{budget_id}
+        description: Update a budget
+        auth_required: false
+        response_schema:
+          "200": BudgetResponse
+      - method: DELETE
+        path: /api/v1/budgets/{budget_id}
+        description: Delete a budget
+        auth_required: false
+        response_schema:
+          "204": No content
+      - method: GET
+        path: /api/v1/budgets/status
+        description: Get budget utilization status
+        auth_required: false
+        response_schema:
+          "200": BudgetStatus
+
+  - name: Dashboard API
+    description: Financial summary dashboard with trend analysis
+    files:
+      - backend/app/api/v1/dashboard.py
+    endpoints:
+      - method: GET
+        path: /api/v1/dashboard
+        description: Get dashboard summary (revenue, expenses, profit)
+        auth_required: false
+        response_schema:
+          "200": DashboardSummary
+      - method: GET
+        path: /api/v1/dashboard/trends
+        description: Get financial trend data over time
+        auth_required: false
+        response_schema:
+          "200": TrendData
+
+  - name: Reports API
+    description: AI-generated monthly financial summary reports
+    files:
+      - backend/app/api/v1/reports.py
+    endpoints:
+      - method: POST
+        path: /api/v1/reports/monthly-summary
+        description: Generate AI monthly financial summary report
+        auth_required: false
+        response_schema:
+          "200": ReportResponse
+
+  - name: Client Profitability API
+    description: Profitability analysis per client
+    files:
+      - backend/app/api/v1/clients.py
+    endpoints:
+      - method: GET
+        path: /api/v1/clients/profitability
+        description: Get profitability metrics per client
+        auth_required: false
+        response_schema:
+          "200": list[ClientProfitability]
+
+  - name: Forecast API
+    description: Financial forecasting and projections
+    files:
+      - backend/app/api/v1/finance.py
+    endpoints:
+      - method: GET
+        path: /api/v1/forecast
+        description: Get financial forecast
+        auth_required: false
+        response_schema:
+          "200": ForecastResponse
+
+  - name: AI Chat API
+    description: Conversational AI assistant for financial queries with history
+    files:
+      - backend/app/api/v1/chat.py
+      - backend/app/models/chat_message.py
+    endpoints:
+      - method: POST
+        path: /api/v1/chat
+        description: Send a message to the AI financial assistant
+        auth_required: false
+        request_schema:
+          body:
+            message: string
+        response_schema:
+          "200": ChatResponse
+      - method: GET
+        path: /api/v1/chat/history
+        description: Get chat message history
+        auth_required: false
+        response_schema:
+          "200": list[ChatMessage]
+
+  - name: Health Check
+    description: Service liveness probe
+    files:
+      - backend/app/api/routes/health.py
+    endpoints:
+      - method: GET
+        path: /health
+        description: Health check endpoint
+        auth_required: false
+        response_schema:
+          "200": '{"status": "ok", "service": "dclaw-finance"}'
+
+known_limitations:
+  - issue: No authentication/authorization on any endpoint
+    location: backend/app/api/v1/
+    impact: All API endpoints are publicly accessible without any auth token
+  - issue: AI endpoints (OCR, categorize, suggest-items) depend on external Anthropic API key
+    location: backend/app/core/config.py
+    impact: AI features fail silently if ANTHROPIC_API_KEY is not set
