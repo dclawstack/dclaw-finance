@@ -295,8 +295,8 @@ tbody tr:last-child td { border-bottom: none; }
     </p>
 
     <div style="margin-top:48px; display:flex; gap:16px; flex-wrap:wrap;">
-      <span class="tag dark">v1.2 · May 2026</span>
-      <span class="tag dark">11 AI Features</span>
+      <span class="tag dark">v1.4 · May 2026</span>
+      <span class="tag dark">11 AI Features · 13 Screens</span>
       <span class="tag dark">FastAPI · Next.js · PostgreSQL</span>
     </div>
   </div>
@@ -524,7 +524,7 @@ tbody tr:last-child td { border-bottom: none; }
 
   <div class="slide-body row" style="padding-top:28px; gap:40px;">
     <div style="flex:0 0 34%;">
-      <div class="eyebrow purple">AI feature set · v1.2</div>
+      <div class="eyebrow purple">AI feature set · v1.4</div>
       <h2 style="font-size:32px; margin-bottom:16px;">11 AI capabilities.<br/>All in production.</h2>
       <p style="font-size:14px;color:var(--ink-3);line-height:1.65;margin-bottom:20px;">
         Every AI endpoint accepts <span class="mono" style="background:var(--paper-cool);padding:1px 6px;border-radius:2px;">?dry_run=true</span> for safe
@@ -571,8 +571,8 @@ tbody tr:last-child td { border-bottom: none; }
       <div class="feature-row">
         <div class="feature-icon">📊</div>
         <div class="feature-text">
-          <h4>Cash flow forecast</h4>
-          <p>6-month exponential smoothing (α=0.3) → 3-month projection with confidence bands.</p>
+          <h4>Cash flow forecast + 13-week projection</h4>
+          <p>6-month exponential smoothing (α=0.3) → 3-month projection, 5 scenarios, 3-statement model. 13-week rolling weekly cash view with top-3 optimization levers.</p>
         </div>
         <span class="tag" style="flex-shrink:0;font-size:10px;background:var(--oc-purple-50);color:var(--oc-purple);border-color:var(--oc-purple-100);">P1</span>
       </div>
@@ -1076,8 +1076,8 @@ tbody tr:last-child td { border-bottom: none; }
   </div>
 
   <div class="slide-body" style="padding-top:28px;">
-    <div class="eyebrow purple">v1.2 delivered · what's next</div>
-    <h2 style="font-size:32px;margin-bottom:24px;">All 11 features shipped. Roadmap ahead.</h2>
+    <div class="eyebrow purple">v1.4 · what's next</div>
+    <h2 style="font-size:32px;margin-bottom:24px;">All 11 features shipped. Hardening → GST → Agentic.</h2>
 
     <div class="grid-2" style="flex:1;gap:24px;">
       <div>
@@ -1116,27 +1116,33 @@ tbody tr:last-child td { border-bottom: none; }
           <div style="display:flex;align-items:center;gap:8px;font-size:13px;padding:6px 0;">
             <span style="color:var(--success);font-weight:700;">✓</span> Client profitability scoring
           </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;padding:6px 0;border-bottom:1px solid var(--rule);">
+            <span style="color:var(--success);font-weight:700;">✓</span> 13-week cash flow + optimization levers
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;font-size:13px;padding:6px 0;">
+            <span style="color:var(--success);font-weight:700;">✓</span> 5-scenario forecast + 3-statement model
+          </div>
         </div>
       </div>
 
       <div>
-        <div class="caption" style="margin-bottom:12px;">V2.0 — CANDIDATE BACKLOG</div>
+        <div class="caption" style="margin-bottom:12px;">V1.4 NEXT → GST + AGENTIC</div>
         <div style="display:flex;flex-direction:column;gap:8px;">
           <div class="cell" style="display:flex;align-items:flex-start;gap:10px;padding:12px 14px;">
             <span style="color:var(--oc-purple);font-size:16px;margin-top:1px;">→</span>
-            <div><div style="font-size:13px;font-weight:600;margin-bottom:2px;">Streaming SSE chat</div><div style="font-size:12px;color:var(--ink-3);">Replace synchronous tool-use with server-sent events for real-time responses.</div></div>
+            <div><div style="font-size:13px;font-weight:600;margin-bottom:2px;">Bug Sprint + Security hardening</div><div style="font-size:12px;color:var(--ink-3);">6 product defects · auth rate limiting · Sentry observability · test coverage.</div></div>
           </div>
           <div class="cell" style="display:flex;align-items:flex-start;gap:10px;padding:12px 14px;">
             <span style="color:var(--oc-purple);font-size:16px;margin-top:1px;">→</span>
-            <div><div style="font-size:13px;font-weight:600;margin-bottom:2px;">Multi-currency support</div><div style="font-size:12px;color:var(--ink-3);">USD/EUR/INR with real-time FX rates and currency-aware P&amp;L.</div></div>
+            <div><div style="font-size:13px;font-weight:600;margin-bottom:2px;">Multi-tenancy + JWT auth</div><div style="font-size:12px;color:var(--ink-3);">Per-company data isolation. Login/register flows. Logto JWT integration.</div></div>
           </div>
           <div class="cell" style="display:flex;align-items:flex-start;gap:10px;padding:12px 14px;">
             <span style="color:var(--oc-purple);font-size:16px;margin-top:1px;">→</span>
-            <div><div style="font-size:13px;font-weight:600;margin-bottom:2px;">Tally / QuickBooks export</div><div style="font-size:12px;color:var(--ink-3);">One-click export to Indian and global accounting software.</div></div>
+            <div><div style="font-size:13px;font-weight:600;margin-bottom:2px;">GST compliance suite</div><div style="font-size:12px;color:var(--ink-3);">GSTR-1 generation · GSTR-2B reconciliation · IRN/e-invoice. Hair-on-fire for Indian SaaS.</div></div>
           </div>
           <div class="cell" style="display:flex;align-items:flex-start;gap:10px;padding:12px 14px;">
             <span style="color:var(--oc-purple);font-size:16px;margin-top:1px;">→</span>
-            <div><div style="font-size:13px;font-weight:600;margin-bottom:2px;">Investor-grade board pack</div><div style="font-size:12px;color:var(--ink-3);">Auto-generated monthly PDF board report with variance analysis.</div></div>
+            <div><div style="font-size:13px;font-weight:600;margin-bottom:2px;">Proactive cash flow agent</div><div style="font-size:12px;color:var(--ink-3);">Daily AI recommendations on overdue invoices, budget breaches, and GST deadlines.</div></div>
           </div>
         </div>
       </div>

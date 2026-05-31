@@ -1,0 +1,107 @@
+ {
+  "generationId": "gen_mpttmo0o",
+  "cluster": "mixed-top-severity",
+  "provider": {
+    "primary": "anthropic/claude-sonnet-4.6",
+    "fallback": "moonshotai/kimi-k2.6",
+    "base": "https://openrouter.ai/api/v1",
+    "local": false,
+    "byok": false
+  },
+  "generatedAt": "2026-05-31T13:34:14.040Z",
+  "durationMs": 35434,
+  "generationMs": 30654,
+  "runMs": 4780,
+  "requested": 3,
+  "processed": 3,
+  "results": [
+    {
+      "finding": {
+        "rule": "No observability stack detected",
+        "title": "No observability stack detected"
+      },
+      "file": {
+        "filename": "no-observability-stack-detected-src-l0.test.ts",
+        "content": "import { describe, it, expect } from \"vitest\";\n\n// Simulates a minimal package.json dependency map as it would be parsed at runtime\ntype DependencyMap = Record<string, string>;\n\ninterface PackageJson {\n  dependencies?: DependencyMap;\n  devDependencies?: DependencyMap;\n}\n\nconst APM_PACKAGES = [\n  \"@opentelemetry/api\",\n  \"@opentelemetry/sdk-node\",\n  \"dd-trace\",\n  \"newrelic\",\n  \"@honeycombio/opentelemetry-node\",\n];\n\nconst ERROR_TRACKING_PACKAGES = [\n  \"@sentry/node\",\n  \"@sentry/browser\",\n  \"@sentry/nextjs\",\n  \"rollbar\",\n  \"bugsnag\",\n  \"@bugsnag/js\",\n];\n\nfunction detectObservabilityStack(pkg: PackageJson): {\n  hasAPM: boolean;\n  hasErrorTracking: boolean;\n  missingObservability: boolean;\n} {\n  const allDeps = {\n    ...pkg.dependencies,\n    ...pkg.devDependencies,\n  };\n\n  const depNames = Object.keys(allDeps);\n\n  const hasAPM = APM_PACKAGES.some((p) => depNames.includes(p));\n  const hasErrorTracking = ERROR_TRACKING_PACKAGES.some((p) =>\n    depNames.includes(p)\n  );\n\n  return {\n    hasAPM,\n    hasErrorTracking,\n    missingObservability: !hasAPM && !hasErrorTracking,\n  };\n}\n\nfunction initErrorTracking(deps: DependencyMap): string[] {\n  const warnings: string[] = [];\n\n  const hasErrorTracking = ERROR_TRACKING_PACKAGES.some((p) =>\n    Object.keys(deps).includes(p)\n  );\n\n  if (!hasErrorTracking) {\n    warnings.push(\n      \"ERROR: No error tracking detected. Crashes will go unnoticed in production.\"\n    );\n    warnings.push(\n      \"FIX: Add @sentry/node and initialise Sentry.init() at application startup.\"\n    );\n  }\n\n  return warnings;\n}\n\nfunction initAPM(deps: DependencyMap): string[] {\n  const warnings: string[] = [];\n\n  const hasAPM = APM_PACKAGES.some((p) => Object.keys(deps).includes(p));\n\n  if (!hasAPM) {\n    warnings.push(\n      \"ERROR: No APM/tracing library detected. You cannot correlate latency with deployments.\"\n    );\n    warnings.push(\n      \"FIX: Add @opentelemetry/sdk-node and configure a trace exporter.\"\n    );\n  }\n\n  return warnings;\n}\n\ndescribe(\"Observability stack detection\", () => {\n  it(\"foot-gun: project with no observability deps produces warnings and flags missing stack\", () => {\n    const barePackageJson: PackageJson = {\n      dependencies: {\n        express: \"4.18.2\",\n        lodash: \"4.17.21\",\n        axios: \"1.6.0\",\n      },\n      devDependencies: {\n        typescript: \"5.0.0\",\n        vitest: \"1.0.0\",\n      },\n    };\n\n    const result = detectObservabilityStack(barePackageJson);\n\n    expect(result.hasAPM).toBe(false);\n    expect(result.hasErrorTracking).toBe(false);\n    expect(result.missingObservability).toBe(true);\n\n    const allDeps = {\n      ...barePackageJson.dependencies,\n      ...barePackageJson.devDependencies,\n    } as DependencyMap;\n\n    const errorWarnings = initErrorTracking(allDeps);\n    const apmWarnings = initAPM(allDeps);\n\n    expect(errorWarnings.length).toBeGreaterThan(0);\n    expect(errorWarnings[0]).toMatch(/No error tracking detected/);\n\n    expect(apmWarnings.length).toBeGreaterThan(0);\n    expect(apmWarnings[0]).toMatch(/No APM\\/tracing library detected/);\n  });\n\n  it(\"safe fix: project with Sentry + OpenTelemetry passes all observability checks\", () => {\n    const instrumentedPackageJson: PackageJson = {\n      dependencies: {\n        express: \"4.18.2\",\n        \"@sentry/node\": \"7.80.0\",\n        \"@opentelemetry/api\": \"1.7.0\",\n        \"@opentelemetry/sdk-node\": \"0.45.0\",\n      },\n      devDependencies: {\n        typescript: \"5.0.0\",\n        vitest: \"1.0.0\",\n      },\n    };\n\n    const result = detectObservabilityStack(instrumentedPackageJson);\n\n    expect(result.hasAPM).toBe(true);\n    expect(result.hasErrorTracking).toBe(true);\n    expect(result.missingObservability).toBe(false);\n\n    const allDeps = {\n      ...instrumentedPackageJson.dependencies,\n      ...instrumentedPackageJson.devDependencies,\n    } as DependencyMap;\n\n    const errorWarnings = initErrorTracking(allDeps);\n    const apmWarnings = initAPM(allDeps);\n\n    expect(errorWarnings).toHaveLength(0);\n    expect(apmWarnings).toHaveLength(0);\n  });\n\n  it(\"partial fix: only Sentry present still flags missing APM\", () => {\n    const partialPackageJson: PackageJson = {\n      dependencies: {\n        express: \"4.18.2\",\n        \"@sentry/node\": \"7.80.0\",\n      },\n    };\n\n    const result = detectObservabilityStack(partialPackageJson);\n\n    expect(result.hasAPM).toBe(false);\n    expect(result.hasErrorTracking).toBe(true);\n    expect(result.missingObservability).toBe(false); // at least one tool present\n\n    const allDeps = { ...partialPackageJson.dependencies } as DependencyMap;\n    const apmWarnings = initAPM(allDeps);\n\n    expect(apmWarnings.length).toBeGreaterThan(0);\n    expect(apmWarnings[0]).toMatch(/No APM\\/tracing library detected/);\n  });\n\n  it(\"partial fix: only OpenTelemetry present still flags missing error tracking\", () => {\n    const partialPackageJson: PackageJson = {\n      dependencies: {\n        express: \"4.18.2\",\n        \"@opentelemetry/api\": \"1.7.0\",\n        \"@opentelemetry/sdk-node\": \"0.45.0\",\n      },\n    };\n\n    const result = detectObservabilityStack(partialPackageJson);\n\n    expect(result.hasAPM).toBe(true);\n    expect(result.hasErrorTracking).toBe(false);\n    expect(result.missingObservability).toBe(false); // at least one tool present\n\n    const allDeps = { ...partialPackageJson.dependencies } as DependencyMap;\n    const errorWarnings = initErrorTracking(allDeps);\n\n    expect(errorWarnings.length).toBeGreaterThan(0);\n    expect(errorWarnings[0]).toMatch(/No error tracking detected/);\n  });\n});\n",
+        "reasoning": "Tests exercise a synthetic observability-stack detector that mirrors the real-world risk: a project with no APM or error-tracking dependencies cannot correlate production issues with code changes, and the tests assert both the failure mode (bare deps produce warnings) and the safe fix (Sentry + OpenTelemetry suppress all warnings).",
+        "language": "js"
+      },
+      "attempts": [
+        {
+          "model": "anthropic/claude-sonnet-4.6",
+          "ok": true,
+          "durationMs": 27199
+        }
+      ]
+    },
+    {
+      "finding": {
+        "rule": "No product analytics dependency",
+        "title": "No product analytics dependency"
+      },
+      "file": {
+        "filename": "no-product-analytics-dependency-src-l0.test.ts",
+        "content": "import { describe, it, expect } from \"vitest\";\n\n// Synthetic simulation of a minimal analytics abstraction.\n// We recreate the foot-gun (no telemetry = silent feature adoption)\n// and the safe fix (a lightweight event-tracking wrapper).\n\n// --- Foot-gun: no analytics instrumentation ---\nfunction signupUserWithoutTelemetry(username: string): { user: string; events: string[] } {\n  // User signs up but no event is tracked anywhere\n  return { user: username, events: [] };\n}\n\nfunction activateFeatureWithoutTelemetry(feature: string): { feature: string; events: string[] } {\n  // Feature is activated but adoption is invisible\n  return { feature, events: [] };\n}\n\n// --- Safe fix: lightweight analytics wrapper (PostHog-style interface) ---\ntype AnalyticsEvent = { event: string; properties: Record<string, unknown> };\n\nclass AnalyticsClient {\n  private captured: AnalyticsEvent[] = [];\n\n  capture(event: string, properties: Record<string, unknown> = {}): void {\n    this.captured.push({ event, properties });\n  }\n\n  getCaptured(): AnalyticsEvent[] {\n    return this.captured;\n  }\n\n  reset(): void {\n    this.captured = [];\n  }\n}\n\nconst analytics = new AnalyticsClient();\n\nfunction signupUserWithTelemetry(username: string): { user: string } {\n  analytics.capture(\"signup\", { username, timestamp: 0 });\n  return { user: username };\n}\n\nfunction activateFeatureWithTelemetry(feature: string, userId: string): { feature: string } {\n  analytics.capture(\"activation\", { feature, userId, timestamp: 0 });\n  return { feature };\n}\n\nfunction recordFirstValueMoment(userId: string, action: string): void {\n  analytics.capture(\"first_value_moment\", { userId, action, timestamp: 0 });\n}\n\nfunction recordChurnSignal(userId: string, reason: string): void {\n  analytics.capture(\"churn_signal\", { userId, reason, timestamp: 0 });\n}\n\ndescribe(\"Product analytics telemetry\", () => {\n  it(\"demonstrates the foot-gun: no events are captured without telemetry instrumentation\", () => {\n    const result = signupUserWithoutTelemetry(\"alice\");\n    expect(result.user).toBe(\"alice\");\n    // No events tracked — feature adoption is completely invisible\n    expect(result.events).toHaveLength(0);\n\n    const featureResult = activateFeatureWithoutTelemetry(\"dark-mode\");\n    expect(featureResult.feature).toBe(\"dark-mode\");\n    // Still no events — you cannot close the loop between code shipped and value delivered\n    expect(featureResult.events).toHaveLength(0);\n  });\n\n  it(\"safe fix: key lifecycle events are captured with a PostHog-style analytics client\", () => {\n    analytics.reset();\n\n    // Track the 5 key events recommended by the rule\n    signupUserWithTelemetry(\"bob\");\n    activateFeatureWithTelemetry(\"dark-mode\", \"bob\");\n    recordFirstValueMoment(\"bob\", \"created-first-project\");\n    // Simulate a retention event\n    analytics.capture(\"retention\", { userId: \"bob\", sessionCount: 3 });\n    recordChurnSignal(\"bob\", \"pricing\");\n\n    const events = analytics.getCaptured();\n\n    // All 5 key events are present\n    const eventNames = events.map((e) => e.event);\n    expect(eventNames).toContain(\"signup\");\n    expect(eventNames).toContain(\"activation\");\n    expect(eventNames).toContain(\"first_value_moment\");\n    expect(eventNames).toContain(\"retention\");\n    expect(eventNames).toContain(\"churn_signal\");\n    expect(events).toHaveLength(5);\n\n    // Verify properties are attached for context\n    const signupEvent = events.find((e) => e.event === \"signup\");\n    expect(signupEvent?.properties.username).toBe(\"bob\");\n\n    const activationEvent = events.find((e) => e.event === \"activation\");\n    expect(activationEvent?.properties.feature).toBe(\"dark-mode\");\n    expect(activationEvent?.properties.userId).toBe(\"bob\");\n\n    const churnEvent = events.find((e) => e.event === \"churn_signal\");\n    expect(churnEvent?.properties.reason).toBe(\"pricing\");\n  });\n\n  it(\"safe fix: analytics client accumulates events across multiple users\", () => {\n    analytics.reset();\n\n    signupUserWithTelemetry(\"carol\");\n    signupUserWithTelemetry(\"dave\");\n    activateFeatureWithTelemetry(\"export-csv\", \"carol\");\n\n    const events = analytics.getCaptured();\n    expect(events).toHaveLength(3);\n\n    const signups = events.filter((e) => e.event === \"signup\");\n    expect(signups).toHaveLength(2);\n    expect(signups.map((e) => e.properties.username)).toEqual([\"carol\", \"dave\"]);\n  });\n});\n",
+        "reasoning": "Tests demonstrate that omitting analytics instrumentation leaves event arrays empty (foot-gun) while a PostHog-style capture wrapper correctly records the five key lifecycle events—signup, activation, first-value-moment, retention, and churn-signal—with their associated properties.",
+        "language": "js"
+      },
+      "attempts": [
+        {
+          "model": "anthropic/claude-sonnet-4.6",
+          "ok": true,
+          "durationMs": 21744
+        }
+      ]
+    },
+    {
+      "finding": {
+        "rule": "Auth Endpoints Not Rate Limited",
+        "title": "Auth Endpoints Not Rate Limited"
+      },
+      "file": {
+        "filename": "auth-endpoints-not-rate-limited-src-l0.test.ts",
+        "content": "import { describe, it, expect } from \"vitest\";\n\n// Synthetic simulation of an auth endpoint handler with and without rate limiting\n\ninterface AuthRequest {\n  ip: string;\n  username: string;\n  password: string;\n}\n\ninterface AuthResponse {\n  success: boolean;\n  message: string;\n  statusCode: number;\n}\n\n// --- FOOT-GUN: Auth handler with NO rate limiting ---\nfunction unprotectedAuthHandler(\n  request: AuthRequest,\n  _attemptCount: number\n): AuthResponse {\n  // Simulates a real password check (always fails for wrong password)\n  const VALID_USER = \"admin\";\n  const VALID_PASS = \"supersecret\";\n\n  if (request.username === VALID_USER && request.password === VALID_PASS) {\n    return { success: true, message: \"Authenticated\", statusCode: 200 };\n  }\n  // No rate limiting: every attempt is processed regardless of how many have been made\n  return { success: false, message: \"Invalid credentials\", statusCode: 401 };\n}\n\n// --- SAFE FIX: Auth handler WITH rate limiting and account locking ---\ninterface RateLimitStore {\n  attempts: Map<string, number>;\n  lockedAccounts: Set<string>;\n}\n\nfunction createRateLimitStore(): RateLimitStore {\n  return {\n    attempts: new Map(),\n    lockedAccounts: new Set(),\n  };\n}\n\nconst RATE_LIMIT_PER_IP = 5;       // max attempts per IP per window\nconst ACCOUNT_LOCK_THRESHOLD = 10; // lock account after N failures\n\nfunction protectedAuthHandler(\n  request: AuthRequest,\n  store: RateLimitStore\n): AuthResponse {\n  const { ip, username, password } = request;\n\n  // Check account lock\n  if (store.lockedAccounts.has(username)) {\n    return { success: false, message: \"Account locked\", statusCode: 423 };\n  }\n\n  // Check IP rate limit\n  const ipAttempts = store.attempts.get(ip) ?? 0;\n  if (ipAttempts >= RATE_LIMIT_PER_IP) {\n    return { success: false, message: \"Too many requests\", statusCode: 429 };\n  }\n\n  // Record attempt\n  store.attempts.set(ip, ipAttempts + 1);\n\n  const VALID_USER = \"admin\";\n  const VALID_PASS = \"supersecret\";\n\n  if (username === VALID_USER && password === VALID_PASS) {\n    // Reset on success\n    store.attempts.delete(ip);\n    return { success: true, message: \"Authenticated\", statusCode: 200 };\n  }\n\n  // Track per-account failures for locking\n  const accountKey = `account:${username}`;\n  const accountFailures = (store.attempts.get(accountKey) ?? 0) + 1;\n  store.attempts.set(accountKey, accountFailures);\n  if (accountFailures >= ACCOUNT_LOCK_THRESHOLD) {\n    store.lockedAccounts.add(username);\n  }\n\n  return { success: false, message: \"Invalid credentials\", statusCode: 401 };\n}\n\ndescribe(\"Auth Endpoints Not Rate Limited\", () => {\n  it(\"demonstrates the foot-gun: unprotected handler allows unlimited brute-force attempts\", () => {\n    const passwords = [\n      \"password1\", \"password2\", \"password3\", \"letmein\", \"admin123\",\n      \"qwerty\", \"abc123\", \"monkey\", \"dragon\", \"master\",\n      \"sunshine\", \"princess\", \"welcome\", \"shadow\", \"superman\",\n      \"michael\", \"football\", \"baseball\", \"iloveyou\", \"trustno1\",\n    ];\n\n    const results: AuthResponse[] = [];\n\n    // Simulate an AI agent or attacker hammering the endpoint with no throttling\n    for (let i = 0; i < passwords.length; i++) {\n      const response = unprotectedAuthHandler(\n        { ip: \"1.2.3.4\", username: \"admin\", password: passwords[i] },\n        i + 1\n      );\n      results.push(response);\n    }\n\n    // All 20 attempts are processed — no 429, no lockout\n    const blockedResponses = results.filter(\n      (r) => r.statusCode === 429 || r.statusCode === 423\n    );\n    expect(blockedResponses.length).toBe(0); // DANGER: nothing is blocked\n\n    // Every failed attempt returns 401, meaning the attacker can keep trying forever\n    const unauthorizedResponses = results.filter((r) => r.statusCode === 401);\n    expect(unauthorizedResponses.length).toBe(passwords.length);\n  });\n\n  it(\"safe fix: rate limiter blocks IP after 5 attempts per window\", () => {\n    const store = createRateLimitStore();\n    const results: AuthResponse[] = [];\n\n    for (let i = 0; i < 10; i++) {\n      const response = protectedAuthHandler(\n        { ip: \"1.2.3.4\", username: \"admin\", password: `wrong${i}` },\n        store\n      );\n      results.push(response);\n    }\n\n    // First 5 attempts should return 401 (processed but failed)\n    const processedAttempts = results.slice(0, RATE_LIMIT_PER_IP);\n    processedAttempts.forEach((r) => {\n      expect(r.statusCode).toBe(401);\n    });\n\n    // Attempts 6-10 should be rate-limited with 429\n    const rateLimitedAttempts = results.slice(RATE_LIMIT_PER_IP);\n    rateLimitedAttempts.forEach((r) => {\n      expect(r.statusCode).toBe(429);\n      expect(r.message).toBe(\"Too many requests\");\n    });\n  });\n\n  it(\"safe fix: account is locked after 10 failed attempts from different IPs\", () => {\n    const store = createRateLimitStore();\n    const results: AuthResponse[] = [];\n\n    // Simulate 10 different IPs each making one failed attempt against the same account\n    for (let i = 0; i < ACCOUNT_LOCK_THRESHOLD; i++) {\n      const response = protectedAuthHandler(\n        { ip: `10.0.0.${i}`, username: \"victim\", password: `attempt${i}` },\n        store\n      );\n      results.push(response);\n    }\n\n    // After 10 failures the account should be locked\n    expect(store.lockedAccounts.has(\"victim\")).toBe(true);\n\n    // Any further attempt — even from a new IP — should be rejected with 423\n    const postLockResponse = protectedAuthHandler(\n      { ip: \"99.99.99.99\", username: \"victim\", password: \"anythingAtAll\" },\n      store\n    );\n    expect(postLockResponse.statusCode).toBe(423);\n    expect(postLockResponse.message).toBe(\"Account locked\");\n  });\n\n  it(\"safe fix: successful authentication resets the IP rate-limit counter\", () => {\n    const store = createRateLimitStore();\n\n    // Make 3 failed attempts\n    for (let i = 0; i < 3; i++) {\n      protectedAuthHandler(\n        { ip: \"5.5.5.5\", username: \"admin\", password: \"wrong\" },\n        store\n      );\n    }\n    expect(store.attempts.get(\"5.5.5.5\")).toBe(3);\n\n    // Successful login resets the counter\n    const successResponse = protectedAuthHandler(\n      { ip: \"5.5.5.5\", username: \"admin\", password: \"supersecret\" },\n      store\n    );\n    expect(successResponse.statusCode).toBe(200);\n    expect(successResponse.success).toBe(true);\n    expect(store.attempts.has(\"5.5.5.5\")).toBe(false);\n  });\n});\n",
+        "reasoning": "Tests verify that an unprotected auth handler allows unlimited brute-force attempts (foot-gun), while the safe implementation enforces per-IP rate limiting (429 after 5 attempts), account locking (423 after 10 failures), and counter reset on successful login.",
+        "language": "js"
+      },
+      "attempts": [
+        {
+          "model": "anthropic/claude-sonnet-4.6",
+          "ok": true,
+          "durationMs": 30649
+        }
+      ]
+    }
+  ],
+  "run": {
+    "runId": "run_mpttmkbw",
+    "success": true,
+    "numTotalTests": 11,
+    "numPassedTests": 11,
+    "numFailedTests": 0,
+    "durationMs": 4780,
+    "files": [
+      {
+        "filename": "auth-endpoints-not-rate-limited-src-l0.test.ts",
+        "status": "passed",
+        "numPassed": 4,
+        "numFailed": 0,
+        "failureMessages": []
+      },
+      {
+        "filename": "no-observability-stack-detected-src-l0.test.ts",
+        "status": "passed",
+        "numPassed": 4,
+        "numFailed": 0,
+        "failureMessages": []
+      },
+      {
+        "filename": "no-product-analytics-dependency-src-l0.test.ts",
+        "status": "passed",
+        "numPassed": 3,
+        "numFailed": 0,
+        "failureMessages": []
+      }
+    ]
+  }
+}
