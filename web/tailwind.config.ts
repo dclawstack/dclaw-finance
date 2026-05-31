@@ -10,9 +10,9 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans:    ["var(--font-sans)"],
-        mono:    ["var(--font-mono)"],
-        numeric: ["var(--font-numeric)"],
+        sans:    ["'Open Sans'", "ui-sans-serif", "system-ui", "sans-serif"],
+        heading: ["'Raleway'", "ui-sans-serif", "system-ui", "sans-serif"],
+        mono:    ["'JetBrains Mono'", "ui-monospace", "monospace"],
       },
       colors: {
         /* ── shadcn/ui core tokens ── */

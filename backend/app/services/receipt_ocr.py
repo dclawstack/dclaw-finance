@@ -1,7 +1,6 @@
 import json
 from app.services.llm_client import chat_vision, HAIKU
-
-CATEGORIES = ["office", "travel", "software", "marketing", "salary", "other"]
+from app.services.ai_categorizer import CATEGORIES
 
 
 async def extract_receipt(image_bytes: bytes, media_type: str) -> dict:

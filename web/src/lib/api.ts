@@ -1,7 +1,6 @@
-// All API calls go through Next.js rewrites (next.config.js).
-// The rewrite proxies /api/* → BACKEND_URL/api/* server-side,
-// so no CORS issues and no backend URL exposed to the browser.
-const API_BASE = "/api/v1";
+const API_BASE = process.env.NEXT_PUBLIC_API_URL
+  ? `${process.env.NEXT_PUBLIC_API_URL}/api/v1`
+  : "/api/v1";
 
 export interface InvoiceItem {
   id: string;
@@ -176,6 +175,7 @@ async function api<T>(path: string, options?: RequestInit): Promise<T> {
     const err = await res.text();
     throw new Error(`API error ${res.status}: ${err}`);
   }
+  if (res.status === 204 || res.headers.get("content-length") === "0") return undefined as T;
   return (await res.json()) as T;
 }
 
@@ -320,8 +320,118 @@ export async function getAnomalies(): Promise<AnomalyItem[]> {
 
 // ── Forecast ───────────────────────────────────────────────────────────────
 
-export async function getForecast(): Promise<ForecastResponse> {
-  return api<ForecastResponse>("/forecast");
+export async function getForecast(months = 12): Promise<ForecastResponse> {
+  return api<ForecastResponse>(`/forecast?months=${months}`);
+}
+
+export interface MapeResponse {
+  mape_revenue: number | null;
+  mape_expenses: number | null;
+  validation_months: string[];
+  actuals_revenue: number[];
+  predicted_revenue: number[];
+  actuals_expenses: number[];
+  predicted_expenses: number[];
+  note?: string;
+}
+
+export async function getForecastMape(): Promise<MapeResponse> {
+  return api<MapeResponse>("/forecast/mape");
+}
+
+export interface ScenarioMonth {
+  month: string;
+  revenue: number;
+  expenses: number;
+  profit: number;
+}
+
+export interface Scenario {
+  key: string;
+  label: string;
+  color: string;
+  assumptions: { revenue_multiplier: number; expense_multiplier: number };
+  monthly: ScenarioMonth[];
+  annual_summary: { revenue: number; expenses: number; profit: number };
+}
+
+export interface ScenariosResponse {
+  scenarios: Scenario[];
+  months: string[];
+}
+
+export async function getScenarios(): Promise<ScenariosResponse> {
+  return api<ScenariosResponse>("/forecast/scenarios");
+}
+
+export interface DriversResponse {
+  drivers: {
+    avg_contract_value_inr: number;
+    active_clients: number;
+    closed_deals_12m: number;
+    win_rate: number;
+    avg_monthly_revenue_inr: number;
+    avg_monthly_expenses_inr: number;
+    avg_revenue_per_client_inr: number;
+    net_margin: number;
+  };
+  expense_breakdown_12m: Record<string, number>;
+  trailing_months: number;
+}
+
+export async function getDrivers(): Promise<DriversResponse> {
+  return api<DriversResponse>("/forecast/drivers");
+}
+
+export interface SensitivityRow {
+  delta: string;
+  revenue?: number;
+  expenses?: number;
+  profit: number;
+  profit_change_pct: number;
+}
+
+export interface SensitivityResponse {
+  base: { annual_revenue: number; annual_expenses: number; annual_profit: number };
+  sensitivity: { revenue: SensitivityRow[]; expenses: SensitivityRow[] };
+  note: string;
+}
+
+export async function getSensitivity(): Promise<SensitivityResponse> {
+  return api<SensitivityResponse>("/forecast/sensitivity");
+}
+
+export interface ThreeStatementResponse {
+  year: number;
+  income_statement: {
+    revenue: number;
+    cogs: number;
+    gross_profit: number;
+    gross_margin_pct: number;
+    operating_expenses: number;
+    ebit: number;
+    tax_provision: number;
+    net_income: number;
+    net_margin_pct: number;
+    expense_detail: Record<string, number>;
+  };
+  cash_flow_statement: {
+    operating: { net_income: number; change_in_accounts_receivable: number; net_cash_from_operations: number };
+    investing: { net_cash_from_investing: number; note: string };
+    financing: { net_cash_from_financing: number; note: string };
+    net_change_in_cash: number;
+  };
+  balance_sheet: {
+    assets: { cash_and_equivalents: number; accounts_receivable: number; total_assets: number };
+    liabilities: { total_liabilities: number; note: string };
+    equity: { retained_earnings: number; total_equity: number };
+    note: string;
+  };
+}
+
+export async function getThreeStatement(year?: number): Promise<ThreeStatementResponse> {
+  const qs = year ? `?year=${year}` : "";
+  return api<ThreeStatementResponse>(`/forecast/three-statement${qs}`);
 }
 
 // ── Cash Flow ──────────────────────────────────────────────────────────────
@@ -417,4 +527,70 @@ export async function sendChatMessage(message: string): Promise<{ reply: string 
 
 export async function getChatHistory(): Promise<ChatMessage[]> {
   return api<ChatMessage[]>("/chat/history");
+}
+
+// ── TestSprite ─────────────────────────────────────────────────────────────
+
+export interface TestSpriteGenerateRequest {
+  url: string;
+  description: string;
+  framework?: string;
+}
+
+export interface TestSpriteGenerateResponse {
+  success: boolean;
+  data: Record<string, unknown>;
+}
+
+export interface TestSpriteRunRequest {
+  url: string;
+  test_ids?: string[];
+  configurations?: Record<string, unknown>[];
+}
+
+export interface TestSpriteRunResponse {
+  run_id: string;
+  status: string;
+  url: string;
+}
+
+export interface TestSpriteRunStatus {
+  run_id: string;
+  status: string;
+  results?: Record<string, unknown> | null;
+}
+
+export interface TestSpriteRunsList {
+  runs: Record<string, unknown>[];
+  total: number;
+}
+
+export async function generateTestspriteTests(
+  payload: TestSpriteGenerateRequest
+): Promise<TestSpriteGenerateResponse> {
+  return api<TestSpriteGenerateResponse>("/testsprite/generate", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function createTestspriteRun(
+  payload: TestSpriteRunRequest
+): Promise<TestSpriteRunResponse> {
+  return api<TestSpriteRunResponse>("/testsprite/run", {
+    method: "POST",
+    body: JSON.stringify(payload),
+  });
+}
+
+export async function getTestspriteRunStatus(runId: string): Promise<TestSpriteRunStatus> {
+  return api<TestSpriteRunStatus>(`/testsprite/status/${runId}`);
+}
+
+export async function listTestspriteRuns(limit = 20, offset = 0): Promise<TestSpriteRunsList> {
+  return api<TestSpriteRunsList>(`/testsprite/runs?limit=${limit}&offset=${offset}`);
+}
+
+export async function checkTestspriteHealth(): Promise<{ connected: boolean; detail: unknown }> {
+  return api<{ connected: boolean; detail: unknown }>("/testsprite/health");
 }

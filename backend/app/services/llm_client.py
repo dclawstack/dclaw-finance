@@ -1,8 +1,8 @@
 """
-Unified LLM client supporting both providers:
-  - OpenRouter (sk-or-v1-...)  via openai SDK  → Authorization: Bearer
-  - Anthropic direct (sk-ant-...) via anthropic SDK → x-api-key
-OPENROUTER_API_KEY takes priority when both are set.
+Unified LLM client — three tiers in priority order:
+  1. OpenRouter  (OPENROUTER_API_KEY set)   → via openai SDK
+  2. Anthropic   (ANTHROPIC_API_KEY set)    → via anthropic SDK
+  3. Ollama      (local fallback)           → via openai SDK at ollama_url/v1
 """
 import json
 import base64
@@ -20,8 +20,96 @@ _OR_MODELS = {
 def _use_or() -> bool:
     return bool(settings.openrouter_api_key)
 
+def _use_anthropic() -> bool:
+    return not _use_or() and bool(settings.anthropic_api_key)
+
+def _use_ollama() -> bool:
+    return not _use_or() and not _use_anthropic()
+
 def _m(name: str) -> str:
     return _OR_MODELS.get(name, f"anthropic/{name}") if _use_or() else name
+
+
+# ── Ollama helpers ────────────────────────────────────────────────────────────
+
+def _ollama_model() -> str:
+    return settings.ollama_model
+
+
+async def _ollama_chat(
+    messages: list[dict],
+    max_tokens: int = 512,
+) -> str:
+    from openai import AsyncOpenAI
+    c = AsyncOpenAI(
+        api_key="ollama",
+        base_url=f"{settings.ollama_url.rstrip('/')}/v1",
+    )
+    r = await c.chat.completions.create(
+        model=_ollama_model(),
+        messages=messages,
+        max_tokens=max_tokens,
+    )
+    return r.choices[0].message.content or ""
+
+
+async def _ollama_loop(
+    user_message: str,
+    tools: list[dict],
+    tool_executor: Callable[[str, dict], Awaitable[str]],
+    system: str | None,
+) -> str:
+    """Ollama tool-use loop via OpenAI-compatible API (requires a model that supports tool_choice)."""
+    from openai import AsyncOpenAI
+    c = AsyncOpenAI(
+        api_key="ollama",
+        base_url=f"{settings.ollama_url.rstrip('/')}/v1",
+    )
+    messages: list[dict] = []
+    if system:
+        messages.append({"role": "system", "content": system})
+    messages.append({"role": "user", "content": user_message})
+
+    for _ in range(8):
+        try:
+            r = await c.chat.completions.create(
+                model=_ollama_model(),
+                messages=messages,
+                tools=tools,
+                tool_choice="auto",
+                max_tokens=1024,
+            )
+        except Exception:
+            # Fallback: plain completion without tools
+            r = await c.chat.completions.create(
+                model=_ollama_model(),
+                messages=messages,
+                max_tokens=1024,
+            )
+            return r.choices[0].message.content or ""
+
+        choice = r.choices[0]
+        msg = choice.message
+        tool_calls = msg.tool_calls or []
+        messages.append({
+            "role": "assistant",
+            "content": msg.content,
+            "tool_calls": [
+                {"id": tc.id, "type": "function",
+                 "function": {"name": tc.function.name, "arguments": tc.function.arguments}}
+                for tc in tool_calls
+            ],
+        })
+
+        if choice.finish_reason != "tool_calls" or not tool_calls:
+            return msg.content or ""
+
+        for tc in tool_calls:
+            args = json.loads(tc.function.arguments)
+            result = await tool_executor(tc.function.name, args)
+            messages.append({"role": "tool", "tool_call_id": tc.id, "content": result})
+
+    return "I reached the maximum reasoning depth. Please try a simpler question."
 
 
 # ── Simple text completion ────────────────────────────────────────────────────
@@ -44,7 +132,7 @@ async def chat(
         except AuthenticationError:
             raise ValueError("OpenRouter API key is invalid or expired. Please update OPENROUTER_API_KEY in your .env file and restart the backend. Get a new key at https://openrouter.ai/keys")
         return r.choices[0].message.content or ""
-    else:
+    elif _use_anthropic():
         import anthropic
         c = anthropic.AsyncAnthropic(api_key=settings.anthropic_api_key)
         kw: dict[str, Any] = {"model": model, "max_tokens": max_tokens, "messages": [{"role": "user", "content": prompt}]}
@@ -52,6 +140,12 @@ async def chat(
             kw["system"] = system
         msg = await c.messages.create(**kw)
         return msg.content[0].text
+    else:
+        msgs = []
+        if system:
+            msgs.append({"role": "system", "content": system})
+        msgs.append({"role": "user", "content": prompt})
+        return await _ollama_chat(msgs, max_tokens=max_tokens)
 
 
 # ── Vision completion ─────────────────────────────────────────────────────────
@@ -76,7 +170,7 @@ async def chat_vision(
             max_tokens=max_tokens,
         )
         return r.choices[0].message.content or ""
-    else:
+    elif _use_anthropic():
         import anthropic
         c = anthropic.AsyncAnthropic(api_key=settings.anthropic_api_key)
         msg = await c.messages.create(
@@ -88,6 +182,14 @@ async def chat_vision(
             ]}],
         )
         return msg.content[0].text
+    else:
+        # Ollama: pass image as data URL in OpenAI vision format
+        return await _ollama_chat([
+            {"role": "user", "content": [
+                {"type": "image_url", "image_url": {"url": f"data:{media_type};base64,{b64}"}},
+                {"type": "text", "text": prompt},
+            ]}
+        ], max_tokens=max_tokens)
 
 
 # ── Agentic tool-use loop ─────────────────────────────────────────────────────
@@ -103,8 +205,10 @@ async def agentic_loop(
     """Run until the model stops calling tools. Returns final text response."""
     if _use_or():
         return await _or_loop(user_message, tools, tool_executor, model, system)
-    else:
+    elif _use_anthropic():
         return await _ant_loop(user_message, tools, tool_executor, model, system)
+    else:
+        return await _ollama_loop(user_message, tools, tool_executor, system)
 
 
 async def _or_loop(

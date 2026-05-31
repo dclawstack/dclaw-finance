@@ -1,7 +1,7 @@
 from uuid import UUID, uuid4
 from datetime import datetime
 from datetime import date as Date
-from sqlalchemy import String, Enum, Float, func
+from sqlalchemy import String, Float, func
 from sqlalchemy.orm import Mapped, mapped_column
 from app.models.base import Base
 
@@ -10,18 +10,7 @@ class Expense(Base):
     __tablename__ = "expenses"
 
     id: Mapped[UUID] = mapped_column(primary_key=True, default=uuid4)
-    category: Mapped[str] = mapped_column(
-        Enum(
-            "office",
-            "travel",
-            "software",
-            "marketing",
-            "salary",
-            "other",
-            name="expense_category",
-        ),
-        nullable=False,
-    )
+    category: Mapped[str] = mapped_column(String(100), nullable=False)
     description: Mapped[str] = mapped_column(String(500), nullable=False)
     amount: Mapped[float] = mapped_column(default=0.0)
     date: Mapped[Date] = mapped_column(nullable=False)

@@ -320,8 +320,118 @@ export async function getAnomalies(): Promise<AnomalyItem[]> {
 
 // ── Forecast ───────────────────────────────────────────────────────────────
 
-export async function getForecast(): Promise<ForecastResponse> {
-  return api<ForecastResponse>("/forecast");
+export async function getForecast(months = 12): Promise<ForecastResponse> {
+  return api<ForecastResponse>(`/forecast?months=${months}`);
+}
+
+export interface MapeResponse {
+  mape_revenue: number | null;
+  mape_expenses: number | null;
+  validation_months: string[];
+  actuals_revenue: number[];
+  predicted_revenue: number[];
+  actuals_expenses: number[];
+  predicted_expenses: number[];
+  note?: string;
+}
+
+export async function getForecastMape(): Promise<MapeResponse> {
+  return api<MapeResponse>("/forecast/mape");
+}
+
+export interface ScenarioMonth {
+  month: string;
+  revenue: number;
+  expenses: number;
+  profit: number;
+}
+
+export interface Scenario {
+  key: string;
+  label: string;
+  color: string;
+  assumptions: { revenue_multiplier: number; expense_multiplier: number };
+  monthly: ScenarioMonth[];
+  annual_summary: { revenue: number; expenses: number; profit: number };
+}
+
+export interface ScenariosResponse {
+  scenarios: Scenario[];
+  months: string[];
+}
+
+export async function getScenarios(): Promise<ScenariosResponse> {
+  return api<ScenariosResponse>("/forecast/scenarios");
+}
+
+export interface DriversResponse {
+  drivers: {
+    avg_contract_value_inr: number;
+    active_clients: number;
+    closed_deals_12m: number;
+    win_rate: number;
+    avg_monthly_revenue_inr: number;
+    avg_monthly_expenses_inr: number;
+    avg_revenue_per_client_inr: number;
+    net_margin: number;
+  };
+  expense_breakdown_12m: Record<string, number>;
+  trailing_months: number;
+}
+
+export async function getDrivers(): Promise<DriversResponse> {
+  return api<DriversResponse>("/forecast/drivers");
+}
+
+export interface SensitivityRow {
+  delta: string;
+  revenue?: number;
+  expenses?: number;
+  profit: number;
+  profit_change_pct: number;
+}
+
+export interface SensitivityResponse {
+  base: { annual_revenue: number; annual_expenses: number; annual_profit: number };
+  sensitivity: { revenue: SensitivityRow[]; expenses: SensitivityRow[] };
+  note: string;
+}
+
+export async function getSensitivity(): Promise<SensitivityResponse> {
+  return api<SensitivityResponse>("/forecast/sensitivity");
+}
+
+export interface ThreeStatementResponse {
+  year: number;
+  income_statement: {
+    revenue: number;
+    cogs: number;
+    gross_profit: number;
+    gross_margin_pct: number;
+    operating_expenses: number;
+    ebit: number;
+    tax_provision: number;
+    net_income: number;
+    net_margin_pct: number;
+    expense_detail: Record<string, number>;
+  };
+  cash_flow_statement: {
+    operating: { net_income: number; change_in_accounts_receivable: number; net_cash_from_operations: number };
+    investing: { net_cash_from_investing: number; note: string };
+    financing: { net_cash_from_financing: number; note: string };
+    net_change_in_cash: number;
+  };
+  balance_sheet: {
+    assets: { cash_and_equivalents: number; accounts_receivable: number; total_assets: number };
+    liabilities: { total_liabilities: number; note: string };
+    equity: { retained_earnings: number; total_equity: number };
+    note: string;
+  };
+}
+
+export async function getThreeStatement(year?: number): Promise<ThreeStatementResponse> {
+  const qs = year ? `?year=${year}` : "";
+  return api<ThreeStatementResponse>(`/forecast/three-statement${qs}`);
 }
 
 // ── Cash Flow ──────────────────────────────────────────────────────────────
