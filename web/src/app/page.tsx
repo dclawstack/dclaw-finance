@@ -551,6 +551,142 @@ export default function LandingPage() {
           </div>
         </section>
 
+        {/* ── ROADMAP ─────────────────────────────────────────────────── */}
+        <section className="py-32 px-6 bg-white relative overflow-hidden">
+          <div className="relative mx-auto max-w-7xl">
+            <FadeUp className="text-center mb-20">
+              <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#7030A0] bg-[#f3e8ff] px-4 py-2 rounded-full" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                Roadmap
+              </span>
+              <h2 className="text-5xl md:text-6xl font-black mt-6 mb-4" style={{ fontFamily: "'Raleway', sans-serif" }}>
+                What&apos;s shipped &amp;<br /><span className="shimmer-text">what&apos;s next.</span>
+              </h2>
+              <p className="text-[#666] text-lg max-w-2xl mx-auto" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                All v1.2 features are live. The next milestone targets reliability hardening,
+                GST compliance, and proactive agentic workflows.
+              </p>
+            </FadeUp>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+
+              {/* Live column */}
+              <FadeUp delay={0}>
+                <div className="rounded-2xl border border-[#ece6f5] bg-[#faf6ff] p-8">
+                  <div className="flex items-center gap-3 mb-8">
+                    <span className="relative flex h-2.5 w-2.5">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-400" />
+                    </span>
+                    <span className="text-xs font-bold tracking-[0.2em] uppercase text-emerald-600" style={{ fontFamily: "'Poppins', sans-serif" }}>Live</span>
+                  </div>
+                  <div className="space-y-0">
+                    {[
+                      ["🧾", "Invoice & Expense CRUD"],
+                      ["🏠", "Dashboard — KPI cards, 12-month trend chart"],
+                      ["🏷️", "AI Expense Auto-Categorisation"],
+                      ["📸", "Receipt OCR → Form Pre-fill"],
+                      ["✉️", "Invoice Payment Reminder Drafts"],
+                      ["💡", "Invoice Line-Item Suggestions"],
+                      ["🔍", "Anomaly Detection + LLM Explanation"],
+                      ["📊", "AI Monthly Executive Report"],
+                      ["⚠️", "Budget Guardrails + Breach Suggestions"],
+                      ["🏆", "Client Profitability Scoring"],
+                      ["💬", "Natural Language Q&A (tool-use)"],
+                      ["📈", "3-Month Cash Flow Forecast"],
+                      ["🏦", "13-Week Rolling Cash Flow + Optimisation Levers"],
+                      ["🎭", "5-Scenario + 3-Statement Forecast Model"],
+                      ["🤖", "Floating AI Copilot"],
+                    ].map(([icon, label]) => (
+                      <div key={label as string} className="flex items-center gap-3 py-2.5 border-b border-[#ece6f5] last:border-0">
+                        <svg className="w-4 h-4 text-emerald-500 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                        </svg>
+                        <span className="text-sm text-[#1a0a2e] font-medium" style={{ fontFamily: "'Poppins', sans-serif" }}>
+                          <span className="mr-1.5">{icon}</span>{label}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </FadeUp>
+
+              {/* Next column */}
+              <FadeUp delay={120}>
+                <div className="rounded-2xl border border-[#ece6f5] bg-white p-8">
+                  <div className="flex items-center gap-3 mb-8">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#7030A0] flex-shrink-0" />
+                    <span className="text-xs font-bold tracking-[0.2em] uppercase text-[#7030A0]" style={{ fontFamily: "'Poppins', sans-serif" }}>Next</span>
+                  </div>
+                  <div className="space-y-7">
+                    {[
+                      {
+                        phase: "Reliability",
+                        items: [
+                          "Fix 6 product-level bugs — delete ops, form guards, currency",
+                          "Auth rate limiting + JWKS TTL fix",
+                          "Sentry observability — backend + frontend",
+                          "Forecast endpoint test coverage",
+                        ],
+                      },
+                      {
+                        phase: "Foundation",
+                        items: [
+                          "Multi-tenancy — per-company data isolation",
+                          "JWT login / register + Logto integration",
+                          "Redis + ARQ async task queue",
+                        ],
+                      },
+                      {
+                        phase: "GST Compliance",
+                        items: [
+                          "GSTR-1 auto-generation (portal-ready JSON)",
+                          "GSTR-2B reconciliation with AI mismatch explanations",
+                          "IRN / e-invoice via NIC IRP API",
+                        ],
+                      },
+                      {
+                        phase: "Agentic",
+                        items: [
+                          "Proactive daily cash flow agent",
+                          "Bank statement reconciliation (Setu AA)",
+                          "Streaming NL chat (SSE)",
+                          "Role-based access control",
+                        ],
+                      },
+                    ].map((group) => (
+                      <div key={group.phase}>
+                        <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-[#9d6dc7] bg-[#f3e8ff] px-2.5 py-1 rounded-full font-mono">
+                          {group.phase}
+                        </span>
+                        <div className="mt-3 space-y-2 pl-1">
+                          {group.items.map(item => (
+                            <div key={item} className="flex items-start gap-2.5">
+                              <span className="text-[#c084fc] flex-shrink-0 text-sm mt-px">→</span>
+                              <span className="text-sm text-[#666] leading-relaxed" style={{ fontFamily: "'Poppins', sans-serif" }}>{item}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-8 pt-6 border-t border-[#ece6f5]">
+                    <a
+                      href="https://github.com/dclawstack/dclaw-finance/blob/main/PLAN-v1.4.md"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm text-[#7030A0] font-semibold hover:text-[#5a2080] transition-colors"
+                      style={{ fontFamily: "'Poppins', sans-serif" }}
+                    >
+                      Full roadmap in PLAN-v1.4.md →
+                    </a>
+                  </div>
+                </div>
+              </FadeUp>
+
+            </div>
+          </div>
+        </section>
+
         {/* ── OPEN SOURCE CTA ─────────────────────────────────────────── */}
         <section className="py-32 px-6 bg-[#0d0618] relative overflow-hidden">
           <div className="absolute inset-0 dot-grid opacity-40" />
