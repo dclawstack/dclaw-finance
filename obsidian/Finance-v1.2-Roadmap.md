@@ -1,8 +1,10 @@
 # DClaw Finance — v1.2 Roadmap
 
+> ⚠️ **Superseded by [[Finance-v1.4-Roadmap]]** — this note is a historical record of what shipped in v1.2.
+> Current planning: `dclaw-finance/PLAN-v1.4.md` · Current features: [[Finance-v1.4-Roadmap]]
 > Source of truth: `dclaw-finance/PLAN-v1.2.md`  
 > Architecture rules: `dclaw-finance/AGENTS.md`  
-> Last updated: May 2026 · **All 11 features shipped ✅**
+> Last updated: May 2026 · **All 11 features shipped ✅ · v1.4 continues from here**
 
 ---
 

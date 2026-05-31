@@ -2,6 +2,7 @@
 
 > Run date: 2026-05-23 · Tool: TestSprite MCP
 > Backend: 9/10 passed (90%) · Frontend: 20/36 passed (56%)
+> Analysis completed: 2026-05-28 · Findings incorporated into [[Finance-v1.4-Roadmap]] (B1–B6)
 
 ---
 
@@ -22,19 +23,19 @@ Dashboard: https://www.testsprite.com/dashboard/mcp/tests/fdecdcb8-dcdd-41ce-a39
 | TC009 | PUT /api/v1/invoices/{id}/items/{item_id} | ❌ Failed |
 | TC010 | DELETE /api/v1/invoices/{id}/items/{item_id} | ✅ Passed |
 
-**TC009 failure:** Test fixture omits required invoice creation fields — not an API bug. Fix: update TC009 description in `testsprite_backend_test_plan.json` to include `invoice_number`, `client_email`, `issue_date`, `due_date`.
+**TC009 failure:** Test fixture bug — sends rogue `amount` field not in `InvoiceCreate` schema. API endpoint is functional; fix the test description in `testsprite_backend_test_plan.json` only.
 
-**Key findings:**
-- `InvoiceCreate` requires: `invoice_number`, `client_name`, `client_email`, `issue_date` (YYYY-MM-DD), `due_date` (YYYY-MM-DD)
+**Key API contract findings:**
+- `InvoiceCreate` requires: `invoice_number`, `client_name`, `client_email`, `issue_date` (YYYY-MM-DD), `due_date`
 - `InvoiceResponse` uses `total`/`subtotal`/`tax_amount` — not `amount`
-- `SuggestItemsRequest` takes `client_name` + `first_item` — supports `dry_run=true`
-- AI endpoints (suggest-items, reminder-draft) only tested via dry_run; live path untested
+- `SuggestItemsRequest` takes `client_name` + `first_item`; supports `?dry_run=true`
+- AI endpoints only tested via `dry_run=true`; live path uncovered
 
-> [!warning] No authentication on any endpoint — critical gap before production.
+> [!warning] No authentication on any endpoint — critical gap. Tracked as S1–S2 in [[Finance-v1.4-Roadmap]].
 
 ---
 
-## Frontend Results (36 tests across 3 batches)
+## Frontend Results (36 tests)
 
 | Batch | Tests | Passed | Dashboard |
 |---|---|---|---|
@@ -44,45 +45,51 @@ Dashboard: https://www.testsprite.com/dashboard/mcp/tests/fdecdcb8-dcdd-41ce-a39
 
 ---
 
-## Confirmed Bugs (genuine app issues)
+## Confirmed Bugs (genuine app issues → B1–B6 in PLAN-v1.4)
 
-| # | Area | Bug |
+| ID | Area | Bug | Priority |
+|---|---|---|---|
+| B1 | All DELETEs | `api()` always calls `res.json()` on 204 — silent error, stale UI | CRITICAL |
+| B2 | Invoice creation | Empty line item description bypasses HTML validation → 422; `$` instead of `₹` | HIGH |
+| B3 | Reports | month=13 hits backend → 500 (no client-side guard, no Pydantic constraint) | MEDIUM |
+| B4 | Clients | `/clients/profitability` page missing in `web/` — Next.js 404 | HIGH |
+| B5 | Dashboard | Net Profit card missing MoM % change indicator | MEDIUM |
+| B6 | Expenses | Anomaly rows not clickable — AI explanation inaccessible | MEDIUM |
+
+---
+
+## Test Config Issues (not app bugs — update test descriptions only)
+
+| TC | Issue | Fix |
 |---|---|---|
-| 1 | Budgets | DELETE budget returns error — budget deletion broken |
-| 2 | Invoice creation | Form missing required `invoice_number` field — POST fails with 422 |
-| 3 | Clients | `/clients/profitability` page does not exist — returns 404 |
-| 4 | Analytics | Anomaly detection rows not clickable — no drill-down navigation |
-| 5 | Dashboard | Profit percentage metric missing from KPI cards |
-| 6 | Reports | Month input has `min=1 max=12` HTML constraint but invalid month triggers 500 instead of client-side validation message |
-| 7 | Forecast | Forecast page does not show comparison between current vs projected |
-| 8 | Dashboard | No empty state shown when there is no data |
-| 9 | Forecast | Forecast chart reactivity unverifiable without live data seeded |
+| TC003 | Health check hits frontend URL instead of backend | Change to `http://localhost:8096/health` |
+| TC012 | Fixture invoice not found (cascade from TC001 failure) | Each test must create + tear down its own fixture |
+| TC014, TC019, TC033 | Navigate to `/api/v1/chat` via GET | Change to `http://localhost:3007/chat` |
+| TC018, TC029 | Navigate to `/clients/profitability` → 404 | App fix (B4) or update test plan URL to `/clients` |
+| TC009 | Rogue `amount` field in fixture | Remove `amount` from InvoiceCreate payload in test |
 
 ---
 
-## Test Config Issues (not app bugs)
+## Systemic Patterns Identified
 
-1. Chat tests (TC014, TC019, TC033) navigated to `/api/v1/chat` via GET — should target `http://localhost:3007/chat`
-2. Health-check test used wrong host (frontend URL instead of backend)
-3. TC009 fixture lacks required invoice fields (see backend section)
+1. **`<Button onClick>` bypasses HTML form validation everywhere** — `reports/`, `budgets/`, `expenses/new/`. Add explicit guards in every handler + Pydantic `Field(ge=..., le=...)` on backend.
+2. **Async onClick handlers lack try/catch** — any async failure leaves UI stale. Audit every `async` event handler.
+3. **React Fragment missing `key` prop** — `clients/page.tsx:69`. Replace `<>` with `<Fragment key={...}>`.
+4. **Test isolation** — shared fixtures cause cascade failures. Every test must own its setup/teardown.
 
 ---
 
-## Recommendations
+## Full Analysis
 
-1. **Fix invoice creation form** — add `invoice_number` field (`frontend/src/app/invoices/new/page.tsx`)
-2. **Fix budget DELETE** — investigate `BudgetRepository.delete` or route handler
-3. **Add client-side month validation** — show error before hitting API for out-of-range month
-4. **Create `/clients/profitability` page** or remove profitability links from nav
-5. **Add authentication** — all `/api/v1/*` endpoints are open; add bearer token or session auth before production
-6. **Fix chat test plan descriptions** — specify `http://localhost:3007/chat` as target URL
-7. **Fix TC009 test plan** — add full invoice fixture fields to description
+See `testsprite_tests/failed_tests/FAILURE_ANALYSIS.md` for complete root-cause analysis, blast-radius tables, and code-level fix instructions.
 
 ---
 
 ## Links
 
 - [[Finance-Architecture]] — ports, stack, anti-patterns
-- [[Finance-v1.2-Roadmap]] — feature roadmap
+- [[Finance-v1.4-Roadmap]] — B1–B6 implementation plan
+- [[Finance-TestForge-2026-05-31]] — follow-up security audit (S1–S7)
 - Backend report: `testsprite_tests/testsprite-mcp-backend-report.md`
 - Frontend report: `testsprite_tests/testsprite-mcp-frontend-report.md`
+- Failure analysis: `testsprite_tests/failed_tests/FAILURE_ANALYSIS.md`
