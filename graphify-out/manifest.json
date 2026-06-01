@@ -19,6 +19,201 @@
     "ast_hash": "08d1c6992d4b4d4d879df9f8ff0928b6",
     "semantic_hash": "08d1c6992d4b4d4d879df9f8ff0928b6"
   },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/.vercel/project.json": {
+    "mtime": 1780127930.6141932,
+    "ast_hash": "a9fe7882747314f4d77f802001225883",
+    "semantic_hash": "a9fe7882747314f4d77f802001225883"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/next-env.d.ts": {
+    "mtime": 1780233808.8711932,
+    "ast_hash": "b5ed9dd8b4c5ba8e5ab8e6a379c15838",
+    "semantic_hash": "b5ed9dd8b4c5ba8e5ab8e6a379c15838"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/package.json": {
+    "mtime": 1779329180.624116,
+    "ast_hash": "024a4092b8d5445277fd435f0707d2d6",
+    "semantic_hash": "024a4092b8d5445277fd435f0707d2d6"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/tsconfig.json": {
+    "mtime": 1779329163.411841,
+    "ast_hash": "3bd7a3770c6b44dbcaab1d2f175db8bd",
+    "semantic_hash": "3bd7a3770c6b44dbcaab1d2f175db8bd"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/postcss.config.mjs": {
+    "mtime": 1779329163.411841,
+    "ast_hash": "c56b5f3c12f777a86e2513f45daab56a",
+    "semantic_hash": "c56b5f3c12f777a86e2513f45daab56a"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/components.json": {
+    "mtime": 1779329212.5746264,
+    "ast_hash": "2592641595af77d89e9e4cb2901ed2f7",
+    "semantic_hash": "2592641595af77d89e9e4cb2901ed2f7"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/tailwind.config.ts": {
+    "mtime": 1780233643.687836,
+    "ast_hash": "1f2cd3d0ed1072623f20c550ff1e2e37",
+    "semantic_hash": "1f2cd3d0ed1072623f20c550ff1e2e37"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/next.config.js": {
+    "mtime": 1779329185.4681933,
+    "ast_hash": "884eb9fe34be3e0ac6307ef0ad5d64d1",
+    "semantic_hash": "884eb9fe34be3e0ac6307ef0ad5d64d1"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/.vercel/project.json": {
+    "mtime": 1779329364.535054,
+    "ast_hash": "a9fe7882747314f4d77f802001225883",
+    "semantic_hash": "a9fe7882747314f4d77f802001225883"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/app/page.tsx": {
+    "mtime": 1780248171.106299,
+    "ast_hash": "697016564ffc3b2e39ffe7e2992b0f1c",
+    "semantic_hash": "697016564ffc3b2e39ffe7e2992b0f1c"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/app/layout.tsx": {
+    "mtime": 1780233651.6068995,
+    "ast_hash": "be946df0decab885a65b296e9f61ca21",
+    "semantic_hash": "be946df0decab885a65b296e9f61ca21"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/app/expenses/page.tsx": {
+    "mtime": 1780233658.361954,
+    "ast_hash": "142855996193505bcb0d4ab262f8c832",
+    "semantic_hash": "142855996193505bcb0d4ab262f8c832"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/app/expenses/new/page.tsx": {
+    "mtime": 1779329163.3998408,
+    "ast_hash": "124b7193611f794c04017e59ba822838",
+    "semantic_hash": "124b7193611f794c04017e59ba822838"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/app/forecast/page.tsx": {
+    "mtime": 1780233658.3569539,
+    "ast_hash": "7dd16ff179ff4f07488bc35bb8893109",
+    "semantic_hash": "7dd16ff179ff4f07488bc35bb8893109"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/app/budgets/page.tsx": {
+    "mtime": 1779329163.398841,
+    "ast_hash": "34f35b1885857d286229476fa5c81dd7",
+    "semantic_hash": "34f35b1885857d286229476fa5c81dd7"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/app/reports/page.tsx": {
+    "mtime": 1779329163.3998408,
+    "ast_hash": "456f778a328670a258d65ebda89f0ffc",
+    "semantic_hash": "456f778a328670a258d65ebda89f0ffc"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/app/chat/page.tsx": {
+    "mtime": 1779329163.398841,
+    "ast_hash": "74350b8782ca7f9815ce9bc339f48ee8",
+    "semantic_hash": "74350b8782ca7f9815ce9bc339f48ee8"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/app/cash-flow/page.tsx": {
+    "mtime": 1780125861.2022872,
+    "ast_hash": "81b4184c8b68a3a05ba07dee0c7dcfe4",
+    "semantic_hash": "81b4184c8b68a3a05ba07dee0c7dcfe4"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/app/invoices/page.tsx": {
+    "mtime": 1779329163.3998408,
+    "ast_hash": "d8258adb0b0194847dc4a4f629e81199",
+    "semantic_hash": "d8258adb0b0194847dc4a4f629e81199"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/app/invoices/[id]/page.tsx": {
+    "mtime": 1779329163.3998408,
+    "ast_hash": "0a19d51fcdd260e50f3cf2204864c87b",
+    "semantic_hash": "0a19d51fcdd260e50f3cf2204864c87b"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/app/invoices/new/page.tsx": {
+    "mtime": 1779329163.3998408,
+    "ast_hash": "cd878fff4e5e3aeb29871ff9ed8120f9",
+    "semantic_hash": "cd878fff4e5e3aeb29871ff9ed8120f9"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/app/clients/page.tsx": {
+    "mtime": 1779329163.398841,
+    "ast_hash": "f20f9b340d96f09d53c3dd471062ee2a",
+    "semantic_hash": "f20f9b340d96f09d53c3dd471062ee2a"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/app/dashboard/page.tsx": {
+    "mtime": 1779329163.398841,
+    "ast_hash": "3936713e4608e127160297c0f21cf6b3",
+    "semantic_hash": "3936713e4608e127160297c0f21cf6b3"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/app/testsprite/page.tsx": {
+    "mtime": 1780233658.377954,
+    "ast_hash": "129b729a241968489660fa3a55b54175",
+    "semantic_hash": "129b729a241968489660fa3a55b54175"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/lib/utils.ts": {
+    "mtime": 1779329163.407841,
+    "ast_hash": "2bdef2cf1c9922efd0a180be89b9388a",
+    "semantic_hash": "2bdef2cf1c9922efd0a180be89b9388a"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/lib/api.ts": {
+    "mtime": 1780233658.3509538,
+    "ast_hash": "8317363b3b8407f10e09c28a801ed533",
+    "semantic_hash": "8317363b3b8407f10e09c28a801ed533"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/components/DemoControls.tsx": {
+    "mtime": 1780233658.3669538,
+    "ast_hash": "49073afb6a54ecd2df2e5b2bc3ac3e8b",
+    "semantic_hash": "49073afb6a54ecd2df2e5b2bc3ac3e8b"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/components/FloatingCopilot.tsx": {
+    "mtime": 1780125861.2032874,
+    "ast_hash": "5ae5e18a440aa60d81ca692233abdf18",
+    "semantic_hash": "5ae5e18a440aa60d81ca692233abdf18"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/components/ui/label.tsx": {
+    "mtime": 1779329163.4038408,
+    "ast_hash": "37a773cbebc8fada0764086211eeba64",
+    "semantic_hash": "37a773cbebc8fada0764086211eeba64"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/components/ui/card.tsx": {
+    "mtime": 1779329163.4038408,
+    "ast_hash": "15c64d68d66e3943870d165f9134e083",
+    "semantic_hash": "15c64d68d66e3943870d165f9134e083"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/components/ui/button.tsx": {
+    "mtime": 1779329163.4038408,
+    "ast_hash": "135fd97d1f4aa261a464168983347c4a",
+    "semantic_hash": "135fd97d1f4aa261a464168983347c4a"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/components/ui/select.tsx": {
+    "mtime": 1779329163.4038408,
+    "ast_hash": "bced6cea8cd214b00db4c14692e3d564",
+    "semantic_hash": "bced6cea8cd214b00db4c14692e3d564"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/components/ui/table.tsx": {
+    "mtime": 1779329163.4038408,
+    "ast_hash": "a6c1d8f1e3acc8616d397683a575dfbd",
+    "semantic_hash": "a6c1d8f1e3acc8616d397683a575dfbd"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/components/ui/badge.tsx": {
+    "mtime": 1779329163.4038408,
+    "ast_hash": "f2a7b0bb10897a08bce4524a23e5ec8e",
+    "semantic_hash": "f2a7b0bb10897a08bce4524a23e5ec8e"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/components/ui/tabs.tsx": {
+    "mtime": 1779329163.4038408,
+    "ast_hash": "91e36068d9cf2f14c4da5cbb9850abf2",
+    "semantic_hash": "91e36068d9cf2f14c4da5cbb9850abf2"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/components/ui/dialog.tsx": {
+    "mtime": 1779329163.4038408,
+    "ast_hash": "f6c15942d799924fce5953ab2f1dda45",
+    "semantic_hash": "f6c15942d799924fce5953ab2f1dda45"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/src/components/ui/input.tsx": {
+    "mtime": 1779329163.4038408,
+    "ast_hash": "463f9a5bfc5a5ebfa14453687af30f1b",
+    "semantic_hash": "463f9a5bfc5a5ebfa14453687af30f1b"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testforge/testforge-dclaw-finance.json": {
+    "mtime": 1780234451.2106147,
+    "ast_hash": "eee3efb8f01b614afcdc58b2d3964d72",
+    "semantic_hash": "eee3efb8f01b614afcdc58b2d3964d72"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testforge/tier2.json": {
+    "mtime": 1780234589.202154,
+    "ast_hash": "31b08656bb8630df839df540d8ac09fc",
+    "semantic_hash": "31b08656bb8630df839df540d8ac09fc"
+  },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/tests/test_dashboard.py": {
     "mtime": 1778319699.195192,
     "ast_hash": "97bc21879bd4472b2b0036c64d9bcf76",
@@ -39,6 +234,11 @@
     "ast_hash": "d77c5ffff1e0fe87e978fd5b24a95607",
     "semantic_hash": "d77c5ffff1e0fe87e978fd5b24a95607"
   },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/tests/test_testsprite.py": {
+    "mtime": 1779521112.3161635,
+    "ast_hash": "1012589806a95242da7c6ea41bec4387",
+    "semantic_hash": "1012589806a95242da7c6ea41bec4387"
+  },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/__init__.py": {
     "mtime": 1778319699.1931922,
     "ast_hash": "d41d8cd98f00b204e9800998ecf8427e",
@@ -50,9 +250,9 @@
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/api/main.py": {
-    "mtime": 1778873478.8830206,
-    "ast_hash": "9d11ab29eb0fdbd5fbf408bd9b5e217b",
-    "semantic_hash": "9d11ab29eb0fdbd5fbf408bd9b5e217b"
+    "mtime": 1780125896.9328237,
+    "ast_hash": "5570a1cdbcb3b97a23268ca45ab17a21",
+    "semantic_hash": "5570a1cdbcb3b97a23268ca45ab17a21"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/api/routes/__init__.py": {
     "mtime": 1778319699.1941922,
@@ -65,19 +265,19 @@
     "semantic_hash": "9acde21791ad8214eb4222fc7f26049c"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/api/v1/__init__.py": {
-    "mtime": 1778873478.8830206,
-    "ast_hash": "568fec52a13e2cad6210d810b2cf5981",
-    "semantic_hash": "568fec52a13e2cad6210d810b2cf5981"
+    "mtime": 1780125877.4015267,
+    "ast_hash": "45f0dac6c217a33923f00923429cb9ee",
+    "semantic_hash": "45f0dac6c217a33923f00923429cb9ee"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/api/v1/finance.py": {
-    "mtime": 1778873478.8840208,
-    "ast_hash": "27d059d93811e17cd54497e681a5194a",
-    "semantic_hash": "27d059d93811e17cd54497e681a5194a"
+    "mtime": 1780232768.1047676,
+    "ast_hash": "e4f84a8cf4c783bbf1ac723e353ed469",
+    "semantic_hash": "e4f84a8cf4c783bbf1ac723e353ed469"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/api/v1/reports.py": {
-    "mtime": 1778873478.8850207,
-    "ast_hash": "136f9c97fe7889a255756ff91d8aa36b",
-    "semantic_hash": "136f9c97fe7889a255756ff91d8aa36b"
+    "mtime": 1779936967.1877844,
+    "ast_hash": "f73a1e69b6b50fe87ef5b96cdd296df0",
+    "semantic_hash": "f73a1e69b6b50fe87ef5b96cdd296df0"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/api/v1/dashboard.py": {
     "mtime": 1778873478.8840208,
@@ -85,9 +285,14 @@
     "semantic_hash": "4361e8b345ee1938b8e11e66e6b5e1c7"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/api/v1/budgets.py": {
-    "mtime": 1778873478.8840208,
-    "ast_hash": "752db84f0c4b658b6f9536f8b2fce56d",
-    "semantic_hash": "752db84f0c4b658b6f9536f8b2fce56d"
+    "mtime": 1780125861.1992872,
+    "ast_hash": "8c3b7d3ff1a86183b71681014dd4cfad",
+    "semantic_hash": "8c3b7d3ff1a86183b71681014dd4cfad"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/api/v1/testsprite.py": {
+    "mtime": 1779520738.453525,
+    "ast_hash": "d7ceca4f4ca6bf6beb002e2dacb395f1",
+    "semantic_hash": "d7ceca4f4ca6bf6beb002e2dacb395f1"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/api/v1/expenses.py": {
     "mtime": 1778873478.8840208,
@@ -104,10 +309,20 @@
     "ast_hash": "e71f7b2c2d902621cb2da7a55dc75ed7",
     "semantic_hash": "e71f7b2c2d902621cb2da7a55dc75ed7"
   },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/api/v1/cash_flow.py": {
+    "mtime": 1780125861.200287,
+    "ast_hash": "913d941c4f84a164c2b889dc644b8cc8",
+    "semantic_hash": "913d941c4f84a164c2b889dc644b8cc8"
+  },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/api/v1/invoices.py": {
     "mtime": 1778873478.8850207,
     "ast_hash": "f7c0ed2fa5e92e4a7bd768be8f5f0b89",
     "semantic_hash": "f7c0ed2fa5e92e4a7bd768be8f5f0b89"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/api/v1/demo.py": {
+    "mtime": 1780125861.189287,
+    "ast_hash": "f638a3f43542983c554d087ce39e64d9",
+    "semantic_hash": "f638a3f43542983c554d087ce39e64d9"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/core/__init__.py": {
     "mtime": 1778319699.1941922,
@@ -115,14 +330,19 @@
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/core/database.py": {
-    "mtime": 1778319699.1941922,
-    "ast_hash": "43a136de7ca65cc9daab450f4ce722a0",
-    "semantic_hash": "43a136de7ca65cc9daab450f4ce722a0"
+    "mtime": 1780125861.189287,
+    "ast_hash": "f5562e0e8ccfb9ed1391e14fefbb3c32",
+    "semantic_hash": "f5562e0e8ccfb9ed1391e14fefbb3c32"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/core/config.py": {
-    "mtime": 1778873478.8850207,
-    "ast_hash": "e79d335e14105caa89d663eb28d76af0",
-    "semantic_hash": "e79d335e14105caa89d663eb28d76af0"
+    "mtime": 1780125885.1926441,
+    "ast_hash": "e9580b02e12bfde9fd8ceb8421fcd67f",
+    "semantic_hash": "e9580b02e12bfde9fd8ceb8421fcd67f"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/core/auth.py": {
+    "mtime": 1780125861.200287,
+    "ast_hash": "7836a47387b481b1c6479888666fec1d",
+    "semantic_hash": "7836a47387b481b1c6479888666fec1d"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/services/__init__.py": {
     "mtime": 1778873478.886021,
@@ -130,9 +350,9 @@
     "semantic_hash": "d41d8cd98f00b204e9800998ecf8427e"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/services/llm_client.py": {
-    "mtime": 1778873478.886021,
-    "ast_hash": "646dd5e78a3082826af75fb3f0231be7",
-    "semantic_hash": "646dd5e78a3082826af75fb3f0231be7"
+    "mtime": 1780232695.3366709,
+    "ast_hash": "0e35ba3c4bc6bb8232faa86e56b2b246",
+    "semantic_hash": "0e35ba3c4bc6bb8232faa86e56b2b246"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/services/anomaly_detector.py": {
     "mtime": 1778873478.886021,
@@ -155,14 +375,24 @@
     "semantic_hash": "b15c000c18e57a1144e936d9f4a3abd3"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/services/ai_categorizer.py": {
-    "mtime": 1778873478.886021,
-    "ast_hash": "1c00519f3a6257dca7d050e3934ccd36",
-    "semantic_hash": "1c00519f3a6257dca7d050e3934ccd36"
+    "mtime": 1780232626.3546617,
+    "ast_hash": "01bc50bff867c7f9087178f6760feaf5",
+    "semantic_hash": "01bc50bff867c7f9087178f6760feaf5"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/services/testsprite_client.py": {
+    "mtime": 1779520687.752671,
+    "ast_hash": "0ba1103a08e30d27ec469e6dcae594a3",
+    "semantic_hash": "0ba1103a08e30d27ec469e6dcae594a3"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/services/receipt_ocr.py": {
-    "mtime": 1778873478.886021,
-    "ast_hash": "6e62020155df2d485c13724ca00e4937",
-    "semantic_hash": "6e62020155df2d485c13724ca00e4937"
+    "mtime": 1780232633.4826586,
+    "ast_hash": "9744c27123348dbc01d8ea8a46c8d4ec",
+    "semantic_hash": "9744c27123348dbc01d8ea8a46c8d4ec"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/services/demo.py": {
+    "mtime": 1780125861.189287,
+    "ast_hash": "155da3528391e44c3e496d7fd8aefb8c",
+    "semantic_hash": "155da3528391e44c3e496d7fd8aefb8c"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/models/chat_message.py": {
     "mtime": 1778873478.8850207,
@@ -190,9 +420,9 @@
     "semantic_hash": "dc115e1f211afba502f89d6d201fc03e"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/models/expense.py": {
-    "mtime": 1778873478.8850207,
-    "ast_hash": "3a2281e4da04edf91efb0f0c51e97261",
-    "semantic_hash": "3a2281e4da04edf91efb0f0c51e97261"
+    "mtime": 1780232614.9136686,
+    "ast_hash": "1a6f75790db13d40613dedfb59055e08",
+    "semantic_hash": "1a6f75790db13d40613dedfb59055e08"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/app/models/budget.py": {
     "mtime": 1778873478.8850207,
@@ -254,6 +484,11 @@
     "ast_hash": "76430d26c2e2ed3d125402ef6d526d85",
     "semantic_hash": "76430d26c2e2ed3d125402ef6d526d85"
   },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/alembic/versions/c3d5e7f9b2a4_expense_category_varchar.py": {
+    "mtime": 1780232599.758682,
+    "ast_hash": "7d71c0530e5a6331a2ab9ed0f0708877",
+    "semantic_hash": "7d71c0530e5a6331a2ab9ed0f0708877"
+  },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/alembic/versions/b2c4d6e8a1f3_v1_2_features.py": {
     "mtime": 1778873478.8830206,
     "ast_hash": "5f5eca8099a570aff21ab7bd5e224bab",
@@ -270,14 +505,529 @@
     "semantic_hash": "8435b2dd1dd818c491dd8b4a7386eba9"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/.claude/settings.local.json": {
-    "mtime": 1778916706.0019593,
-    "ast_hash": "7d6b3ae71b2e9c6ccf38b522b7046e18",
-    "semantic_hash": "7d6b3ae71b2e9c6ccf38b522b7046e18"
+    "mtime": 1780273859.692413,
+    "ast_hash": "57bd0a1ff5c9bcf51585203b848222bf",
+    "semantic_hash": "57bd0a1ff5c9bcf51585203b848222bf"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC018_View_client_profitability_ranking.py": {
+    "mtime": 1779529106.4283412,
+    "ast_hash": "51d4fb3c2977ab9a6595a1f169ae8b9a",
+    "semantic_hash": "51d4fb3c2977ab9a6595a1f169ae8b9a"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC022_Upsert_an_existing_budget.py": {
+    "mtime": 1779529106.4283412,
+    "ast_hash": "dbf8d1a24292d03f5281c49a727e2f79",
+    "semantic_hash": "dbf8d1a24292d03f5281c49a727e2f79"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC017_Compare_forecast_projections_with_current_dashboard_totals.py": {
+    "mtime": 1779529106.4283412,
+    "ast_hash": "1ac1f5189206c6121c3086382934960e",
+    "semantic_hash": "1ac1f5189206c6121c3086382934960e"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC033_Keep_chat_history_unchanged_after_submitting_an_invalid_empty_message.py": {
+    "mtime": 1779529881.0547304,
+    "ast_hash": "1f6360f9a3eb635ef85dc7e900e34ce0",
+    "semantic_hash": "1f6360f9a3eb635ef85dc7e900e34ce0"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC009_put_api_v1_invoices_invoice_id_items_item_id_update_line_item.py": {
+    "mtime": 1779526370.918175,
+    "ast_hash": "72e5dcc3aa02fc338a4a3e0dad1c95a3",
+    "semantic_hash": "72e5dcc3aa02fc338a4a3e0dad1c95a3"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC007_post_api_v1_invoices_invoice_id_reminder_draft.py": {
+    "mtime": 1779526370.918175,
+    "ast_hash": "a3a2ceecde34bd10742731c96ab0190a",
+    "semantic_hash": "a3a2ceecde34bd10742731c96ab0190a"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC026_Open_a_client_from_profitability_analysis.py": {
+    "mtime": 1779529106.429341,
+    "ast_hash": "8eb6eaf18468325d81a0cbf399c61b57",
+    "semantic_hash": "8eb6eaf18468325d81a0cbf399c61b57"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC008_Review_dashboard_trend_data.py": {
+    "mtime": 1779528219.1805956,
+    "ast_hash": "ac05c2306977f52c94d38e171270734e",
+    "semantic_hash": "ac05c2306977f52c94d38e171270734e"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC003_get_api_v1_invoices_list_all_invoices.py": {
+    "mtime": 1779526370.917175,
+    "ast_hash": "4548d5e61e9aa21807f37895f5594600",
+    "semantic_hash": "4548d5e61e9aa21807f37895f5594600"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC006_delete_api_v1_invoices_delete_invoice.py": {
+    "mtime": 1779526370.918175,
+    "ast_hash": "b3441bd76e4e5721c2ee93984767a99c",
+    "semantic_hash": "b3441bd76e4e5721c2ee93984767a99c"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC027_Handle_missing_invoice_records.py": {
+    "mtime": 1779529106.429341,
+    "ast_hash": "8da0206c3597aa41ab0bb353f86e8a85",
+    "semantic_hash": "8da0206c3597aa41ab0bb353f86e8a85"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC014_Send_a_financial_question_to_the_chat_assistant_and_view_the_reply.py": {
+    "mtime": 1779528219.1805956,
+    "ast_hash": "b257f3c72f8ecee7c0ad132873e9097c",
+    "semantic_hash": "b257f3c72f8ecee7c0ad132873e9097c"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC013_Generate_a_monthly_summary_report.py": {
+    "mtime": 1779528219.1805956,
+    "ast_hash": "5fe788bbc9a5f110605c3f726cc96325",
+    "semantic_hash": "5fe788bbc9a5f110605c3f726cc96325"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC002_Scan_a_receipt_and_create_an_expense.py": {
+    "mtime": 1779528219.1795957,
+    "ast_hash": "8f87f7ebede07d9e95a28ac3b23d2d35",
+    "semantic_hash": "8f87f7ebede07d9e95a28ac3b23d2d35"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC010_Accept_suggested_invoice_items.py": {
+    "mtime": 1779528219.1805956,
+    "ast_hash": "2c6d06aa8bf6d8959115df09644e16ac",
+    "semantic_hash": "2c6d06aa8bf6d8959115df09644e16ac"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC030_Handle_missing_budget_records.py": {
+    "mtime": 1779529106.429341,
+    "ast_hash": "7b7e5fbdf9d003c6122ced1c8502beee",
+    "semantic_hash": "7b7e5fbdf9d003c6122ced1c8502beee"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC001_Create_and_view_an_invoice.py": {
+    "mtime": 1779528219.1795957,
+    "ast_hash": "5fdd0c11e0f020d6568285de7b5e7c92",
+    "semantic_hash": "5fdd0c11e0f020d6568285de7b5e7c92"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC035_Reject_invalid_budget_input.py": {
+    "mtime": 1779529881.0547304,
+    "ast_hash": "57e3a2d235cb4c154cd0893ac51504cd",
+    "semantic_hash": "57e3a2d235cb4c154cd0893ac51504cd"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC036_Generate_the_same_monthly_summary_more_than_once.py": {
+    "mtime": 1779529881.0547304,
+    "ast_hash": "ba15a240c56157c05a51db55f1d60a54",
+    "semantic_hash": "ba15a240c56157c05a51db55f1d60a54"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC021_Refresh_client_rankings_after_new_activity.py": {
+    "mtime": 1779529106.4283412,
+    "ast_hash": "6c70839115f4bbff6424a84a206e2c2c",
+    "semantic_hash": "6c70839115f4bbff6424a84a206e2c2c"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC009_Update_budget_limit_and_refresh_utilization.py": {
+    "mtime": 1779528219.1805956,
+    "ast_hash": "f10e1f8a7ad61680debdeeaef3b84bde",
+    "semantic_hash": "f10e1f8a7ad61680debdeeaef3b84bde"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC029_Handle_an_empty_client_profitability_view.py": {
+    "mtime": 1779529106.429341,
+    "ast_hash": "fd51be0f36fa324a7ae07c3960abab21",
+    "semantic_hash": "fd51be0f36fa324a7ae07c3960abab21"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC005_View_dashboard_summary_metrics.py": {
+    "mtime": 1779528219.1805956,
+    "ast_hash": "76ce78dbef984b507a2cd4155ce784f2",
+    "semantic_hash": "76ce78dbef984b507a2cd4155ce784f2"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC031_Reject_invalid_invoice_input.py": {
+    "mtime": 1779529881.0537305,
+    "ast_hash": "dfd77c57b23cd49665f096e0dfa61694",
+    "semantic_hash": "dfd77c57b23cd49665f096e0dfa61694"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC007_Update_and_delete_an_expense.py": {
+    "mtime": 1779528219.1805956,
+    "ast_hash": "b08a747df5a31e47288bc0dc44af1b78",
+    "semantic_hash": "b08a747df5a31e47288bc0dc44af1b78"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC019_Continue_a_chat_with_a_follow_up_question_using_existing_history.py": {
+    "mtime": 1779529106.4283412,
+    "ast_hash": "bc7ff42b227b531dd77e0bab51afae5b",
+    "semantic_hash": "bc7ff42b227b531dd77e0bab51afae5b"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC024_Review_a_forecast_when_historical_data_is_limited.py": {
+    "mtime": 1779529106.429341,
+    "ast_hash": "6571ec9a1ea2fa71ff28e909fc589316",
+    "semantic_hash": "6571ec9a1ea2fa71ff28e909fc589316"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC011_Get_a_financial_forecast_from_the_forecast_endpoint.py": {
+    "mtime": 1779528219.1805956,
+    "ast_hash": "8b041674d9725437c40315b81c399a50",
+    "semantic_hash": "8b041674d9725437c40315b81c399a50"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/testsprite_backend_test_plan.json": {
+    "mtime": 1779526020.435661,
+    "ast_hash": "c11bad23d4c7a6d4b8c5e86b8d246a8b",
+    "semantic_hash": "c11bad23d4c7a6d4b8c5e86b8d246a8b"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC003_Verify_the_service_health_check_reports_the_app_is_live.py": {
+    "mtime": 1779528219.1795957,
+    "ast_hash": "b70c7ffa3d57af29e47cd01870402908",
+    "semantic_hash": "b70c7ffa3d57af29e47cd01870402908"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC012_Generate_and_delete_an_invoice_reminder_draft.py": {
+    "mtime": 1779528219.1805956,
+    "ast_hash": "a715be665c35ba3635feefc4369c5967",
+    "semantic_hash": "a715be665c35ba3635feefc4369c5967"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC032_Reject_invalid_expense_input.py": {
+    "mtime": 1779529881.0547304,
+    "ast_hash": "9e09566e8de9f4d772fe035218399a87",
+    "semantic_hash": "9e09566e8de9f4d772fe035218399a87"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC028_Handle_missing_expense_records.py": {
+    "mtime": 1779529106.429341,
+    "ast_hash": "2d1bb9cf3f56c01b9bc368162998bfd4",
+    "semantic_hash": "2d1bb9cf3f56c01b9bc368162998bfd4"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC001_post_api_v1_invoices_suggest_items.py": {
+    "mtime": 1779526370.916175,
+    "ast_hash": "7037ee8fea9dcab73905798f0c72ac99",
+    "semantic_hash": "7037ee8fea9dcab73905798f0c72ac99"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC010_delete_api_v1_invoices_invoice_id_items_item_id_delete_line_item.py": {
+    "mtime": 1779526370.9191751,
+    "ast_hash": "7f114bed6ff7ed121192cf98402431f2",
+    "semantic_hash": "7f114bed6ff7ed121192cf98402431f2"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC008_post_api_v1_invoices_invoice_id_items_add_line_item.py": {
+    "mtime": 1779526370.918175,
+    "ast_hash": "54e2423bcde2bb17d85b8ab321755985",
+    "semantic_hash": "54e2423bcde2bb17d85b8ab321755985"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC006_Create_and_inspect_a_budget.py": {
+    "mtime": 1779528219.1805956,
+    "ast_hash": "28db7d0ea4245feaff20ff8f2bfecd07",
+    "semantic_hash": "28db7d0ea4245feaff20ff8f2bfecd07"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC004_get_api_v1_invoices_get_invoice_by_id.py": {
+    "mtime": 1779526370.917175,
+    "ast_hash": "a94244f3a9e42d2387c418924a044a1d",
+    "semantic_hash": "a94244f3a9e42d2387c418924a044a1d"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC002_post_api_v1_invoices_create_new_invoice.py": {
+    "mtime": 1779526370.917175,
+    "ast_hash": "cd7e6891caee9490faa20398ca1ce24d",
+    "semantic_hash": "cd7e6891caee9490faa20398ca1ce24d"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC023_Handle_an_empty_dashboard_state.py": {
+    "mtime": 1779529106.4283412,
+    "ast_hash": "bbcab7296bf2c46f3b273da1dcaa8ffe",
+    "semantic_hash": "bbcab7296bf2c46f3b273da1dcaa8ffe"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/testsprite_frontend_test_plan.json": {
+    "mtime": 1779526293.0376987,
+    "ast_hash": "d3e003fbdbce9eddd9f105d63fec2653",
+    "semantic_hash": "d3e003fbdbce9eddd9f105d63fec2653"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/standard_prd.json": {
+    "mtime": 1779525579.7720459,
+    "ast_hash": "c4cfdd0d1d18ddaa3e6215191b3b9d39",
+    "semantic_hash": "c4cfdd0d1d18ddaa3e6215191b3b9d39"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC034_Recover_from_an_invalid_report_month.py": {
+    "mtime": 1779529881.0547304,
+    "ast_hash": "c09d4bfacc7f3fb637ff7abcbb7f07d5",
+    "semantic_hash": "c09d4bfacc7f3fb637ff7abcbb7f07d5"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC004_Add_and_update_an_invoice_line_item.py": {
+    "mtime": 1779528219.1795957,
+    "ast_hash": "c9e20d4b53c9d54db9067346784ba269",
+    "semantic_hash": "c9e20d4b53c9d54db9067346784ba269"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC025_Delete_a_budget_and_confirm_it_is_removed.py": {
+    "mtime": 1779529106.429341,
+    "ast_hash": "d408a867890be9bef9eac055573e55b9",
+    "semantic_hash": "d408a867890be9bef9eac055573e55b9"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC015_View_persisted_chat_history_after_sending_a_message.py": {
+    "mtime": 1779528219.1805956,
+    "ast_hash": "3bf2b5e72dff28dfc72666dd2951e420",
+    "semantic_hash": "3bf2b5e72dff28dfc72666dd2951e420"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC016_Categorize_and_review_an_expense_anomaly.py": {
+    "mtime": 1779529106.4283412,
+    "ast_hash": "8fc0bca16f9290eb722b115de43dd4f8",
+    "semantic_hash": "8fc0bca16f9290eb722b115de43dd4f8"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC020_See_refreshed_forecast_after_new_financial_data_is_added.py": {
+    "mtime": 1779529106.4283412,
+    "ast_hash": "44865d977bf029527b3e8ed1af785005",
+    "semantic_hash": "44865d977bf029527b3e8ed1af785005"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/TC005_put_api_v1_invoices_update_invoice.py": {
+    "mtime": 1779526370.917175,
+    "ast_hash": "1d6f2ec0a7bfde6032c1364f40e8e0e5",
+    "semantic_hash": "1d6f2ec0a7bfde6032c1364f40e8e0e5"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_results_batch3_raw.json": {
+    "mtime": 1779531433.44689,
+    "ast_hash": "3d3f6586467ad1985d802280116d567a",
+    "semantic_hash": "3d3f6586467ad1985d802280116d567a"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_results_batch1_raw.json": {
+    "mtime": 1779933737.5669978,
+    "ast_hash": "4e3a41d80731f1020724660e556022fa",
+    "semantic_hash": "4e3a41d80731f1020724660e556022fa"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_results_backend_raw.json": {
+    "mtime": 1779933708.5826285,
+    "ast_hash": "5d13fbf6ffe2140f9736390f75c05e82",
+    "semantic_hash": "5d13fbf6ffe2140f9736390f75c05e82"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_results_batch2_raw.json": {
+    "mtime": 1779933774.4254675,
+    "ast_hash": "d530590190795cc8b365eb132c18ad4e",
+    "semantic_hash": "d530590190795cc8b365eb132c18ad4e"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC018_View_client_profitability_ranking.py": {
+    "mtime": 1779531430.005896,
+    "ast_hash": "51d4fb3c2977ab9a6595a1f169ae8b9a",
+    "semantic_hash": "51d4fb3c2977ab9a6595a1f169ae8b9a"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC022_Upsert_an_existing_budget.py": {
+    "mtime": 1779533348.7736707,
+    "ast_hash": "dbf8d1a24292d03f5281c49a727e2f79",
+    "semantic_hash": "dbf8d1a24292d03f5281c49a727e2f79"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC017_Compare_forecast_projections_with_current_dashboard_totals.py": {
+    "mtime": 1779531429.9758961,
+    "ast_hash": "1ac1f5189206c6121c3086382934960e",
+    "semantic_hash": "1ac1f5189206c6121c3086382934960e"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC033_Keep_chat_history_unchanged_after_submitting_an_invalid_empty_message.py": {
+    "mtime": 1779531430.017896,
+    "ast_hash": "1f6360f9a3eb635ef85dc7e900e34ce0",
+    "semantic_hash": "1f6360f9a3eb635ef85dc7e900e34ce0"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC009_put_api_v1_invoices_invoice_id_items_item_id_update_line_item.py": {
+    "mtime": 1779531430.021896,
+    "ast_hash": "72e5dcc3aa02fc338a4a3e0dad1c95a3",
+    "semantic_hash": "72e5dcc3aa02fc338a4a3e0dad1c95a3"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC007_post_api_v1_invoices_invoice_id_reminder_draft.py": {
+    "mtime": 1779533348.6436684,
+    "ast_hash": "a3a2ceecde34bd10742731c96ab0190a",
+    "semantic_hash": "a3a2ceecde34bd10742731c96ab0190a"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC026_Open_a_client_from_profitability_analysis.py": {
+    "mtime": 1779533348.801671,
+    "ast_hash": "8eb6eaf18468325d81a0cbf399c61b57",
+    "semantic_hash": "8eb6eaf18468325d81a0cbf399c61b57"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC008_Review_dashboard_trend_data.py": {
+    "mtime": 1779533348.6706688,
+    "ast_hash": "ac05c2306977f52c94d38e171270734e",
+    "semantic_hash": "ac05c2306977f52c94d38e171270734e"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC003_get_api_v1_invoices_list_all_invoices.py": {
+    "mtime": 1779533348.5826676,
+    "ast_hash": "4548d5e61e9aa21807f37895f5594600",
+    "semantic_hash": "4548d5e61e9aa21807f37895f5594600"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC006_delete_api_v1_invoices_delete_invoice.py": {
+    "mtime": 1779533348.6346684,
+    "ast_hash": "b3441bd76e4e5721c2ee93984767a99c",
+    "semantic_hash": "b3441bd76e4e5721c2ee93984767a99c"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC027_Handle_missing_invoice_records.py": {
+    "mtime": 1779533348.810671,
+    "ast_hash": "8da0206c3597aa41ab0bb353f86e8a85",
+    "semantic_hash": "8da0206c3597aa41ab0bb353f86e8a85"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC014_Send_a_financial_question_to_the_chat_assistant_and_view_the_reply.py": {
+    "mtime": 1779531430.001896,
+    "ast_hash": "b257f3c72f8ecee7c0ad132873e9097c",
+    "semantic_hash": "b257f3c72f8ecee7c0ad132873e9097c"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC013_Generate_a_monthly_summary_report.py": {
+    "mtime": 1779533348.7236698,
+    "ast_hash": "5fe788bbc9a5f110605c3f726cc96325",
+    "semantic_hash": "5fe788bbc9a5f110605c3f726cc96325"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC002_Scan_a_receipt_and_create_an_expense.py": {
+    "mtime": 1779531429.964896,
+    "ast_hash": "8f87f7ebede07d9e95a28ac3b23d2d35",
+    "semantic_hash": "8f87f7ebede07d9e95a28ac3b23d2d35"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC010_Accept_suggested_invoice_items.py": {
+    "mtime": 1779533348.6916692,
+    "ast_hash": "2c6d06aa8bf6d8959115df09644e16ac",
+    "semantic_hash": "2c6d06aa8bf6d8959115df09644e16ac"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC030_Handle_missing_budget_records.py": {
+    "mtime": 1779533348.8326714,
+    "ast_hash": "7b7e5fbdf9d003c6122ced1c8502beee",
+    "semantic_hash": "7b7e5fbdf9d003c6122ced1c8502beee"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC001_Create_and_view_an_invoice.py": {
+    "mtime": 1779531429.9618962,
+    "ast_hash": "5fdd0c11e0f020d6568285de7b5e7c92",
+    "semantic_hash": "5fdd0c11e0f020d6568285de7b5e7c92"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC035_Reject_invalid_budget_input.py": {
+    "mtime": 1779533348.869672,
+    "ast_hash": "57e3a2d235cb4c154cd0893ac51504cd",
+    "semantic_hash": "57e3a2d235cb4c154cd0893ac51504cd"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC036_Generate_the_same_monthly_summary_more_than_once.py": {
+    "mtime": 1779533348.8776722,
+    "ast_hash": "ba15a240c56157c05a51db55f1d60a54",
+    "semantic_hash": "ba15a240c56157c05a51db55f1d60a54"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC021_Refresh_client_rankings_after_new_activity.py": {
+    "mtime": 1779533348.7656705,
+    "ast_hash": "6c70839115f4bbff6424a84a206e2c2c",
+    "semantic_hash": "6c70839115f4bbff6424a84a206e2c2c"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC009_Update_budget_limit_and_refresh_utilization.py": {
+    "mtime": 1779533348.683669,
+    "ast_hash": "f10e1f8a7ad61680debdeeaef3b84bde",
+    "semantic_hash": "f10e1f8a7ad61680debdeeaef3b84bde"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC029_Handle_an_empty_client_profitability_view.py": {
+    "mtime": 1779531430.013896,
+    "ast_hash": "fd51be0f36fa324a7ae07c3960abab21",
+    "semantic_hash": "fd51be0f36fa324a7ae07c3960abab21"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC005_View_dashboard_summary_metrics.py": {
+    "mtime": 1779531429.967896,
+    "ast_hash": "76ce78dbef984b507a2cd4155ce784f2",
+    "semantic_hash": "76ce78dbef984b507a2cd4155ce784f2"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC031_Reject_invalid_invoice_input.py": {
+    "mtime": 1779533348.8426716,
+    "ast_hash": "dfd77c57b23cd49665f096e0dfa61694",
+    "semantic_hash": "dfd77c57b23cd49665f096e0dfa61694"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC007_Update_and_delete_an_expense.py": {
+    "mtime": 1779533348.6526687,
+    "ast_hash": "b08a747df5a31e47288bc0dc44af1b78",
+    "semantic_hash": "b08a747df5a31e47288bc0dc44af1b78"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC019_Continue_a_chat_with_a_follow_up_question_using_existing_history.py": {
+    "mtime": 1779531430.009896,
+    "ast_hash": "bc7ff42b227b531dd77e0bab51afae5b",
+    "semantic_hash": "bc7ff42b227b531dd77e0bab51afae5b"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC024_Review_a_forecast_when_historical_data_is_limited.py": {
+    "mtime": 1779533348.7886708,
+    "ast_hash": "6571ec9a1ea2fa71ff28e909fc589316",
+    "semantic_hash": "6571ec9a1ea2fa71ff28e909fc589316"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC011_Get_a_financial_forecast_from_the_forecast_endpoint.py": {
+    "mtime": 1779533348.7106695,
+    "ast_hash": "8b041674d9725437c40315b81c399a50",
+    "semantic_hash": "8b041674d9725437c40315b81c399a50"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC003_Verify_the_service_health_check_reports_the_app_is_live.py": {
+    "mtime": 1779531429.994896,
+    "ast_hash": "b70c7ffa3d57af29e47cd01870402908",
+    "semantic_hash": "b70c7ffa3d57af29e47cd01870402908"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC012_Generate_and_delete_an_invoice_reminder_draft.py": {
+    "mtime": 1779531429.997896,
+    "ast_hash": "a715be665c35ba3635feefc4369c5967",
+    "semantic_hash": "a715be665c35ba3635feefc4369c5967"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC032_Reject_invalid_expense_input.py": {
+    "mtime": 1779533348.8526719,
+    "ast_hash": "9e09566e8de9f4d772fe035218399a87",
+    "semantic_hash": "9e09566e8de9f4d772fe035218399a87"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC028_Handle_missing_expense_records.py": {
+    "mtime": 1779533348.8196714,
+    "ast_hash": "2d1bb9cf3f56c01b9bc368162998bfd4",
+    "semantic_hash": "2d1bb9cf3f56c01b9bc368162998bfd4"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC001_post_api_v1_invoices_suggest_items.py": {
+    "mtime": 1779533348.555667,
+    "ast_hash": "7037ee8fea9dcab73905798f0c72ac99",
+    "semantic_hash": "7037ee8fea9dcab73905798f0c72ac99"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC010_delete_api_v1_invoices_invoice_id_items_item_id_delete_line_item.py": {
+    "mtime": 1779533348.7016695,
+    "ast_hash": "7f114bed6ff7ed121192cf98402431f2",
+    "semantic_hash": "7f114bed6ff7ed121192cf98402431f2"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC008_post_api_v1_invoices_invoice_id_items_add_line_item.py": {
+    "mtime": 1779533348.6616688,
+    "ast_hash": "54e2423bcde2bb17d85b8ab321755985",
+    "semantic_hash": "54e2423bcde2bb17d85b8ab321755985"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC006_Create_and_inspect_a_budget.py": {
+    "mtime": 1779533348.625668,
+    "ast_hash": "28db7d0ea4245feaff20ff8f2bfecd07",
+    "semantic_hash": "28db7d0ea4245feaff20ff8f2bfecd07"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC004_get_api_v1_invoices_get_invoice_by_id.py": {
+    "mtime": 1779533348.604668,
+    "ast_hash": "a94244f3a9e42d2387c418924a044a1d",
+    "semantic_hash": "a94244f3a9e42d2387c418924a044a1d"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC002_post_api_v1_invoices_create_new_invoice.py": {
+    "mtime": 1779533348.5686672,
+    "ast_hash": "cd7e6891caee9490faa20398ca1ce24d",
+    "semantic_hash": "cd7e6891caee9490faa20398ca1ce24d"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC023_Handle_an_empty_dashboard_state.py": {
+    "mtime": 1779531429.980896,
+    "ast_hash": "bbcab7296bf2c46f3b273da1dcaa8ffe",
+    "semantic_hash": "bbcab7296bf2c46f3b273da1dcaa8ffe"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC034_Recover_from_an_invalid_report_month.py": {
+    "mtime": 1779531429.989896,
+    "ast_hash": "c09d4bfacc7f3fb637ff7abcbb7f07d5",
+    "semantic_hash": "c09d4bfacc7f3fb637ff7abcbb7f07d5"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC004_Add_and_update_an_invoice_line_item.py": {
+    "mtime": 1779533348.5966678,
+    "ast_hash": "c9e20d4b53c9d54db9067346784ba269",
+    "semantic_hash": "c9e20d4b53c9d54db9067346784ba269"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC025_Delete_a_budget_and_confirm_it_is_removed.py": {
+    "mtime": 1779531429.984896,
+    "ast_hash": "d408a867890be9bef9eac055573e55b9",
+    "semantic_hash": "d408a867890be9bef9eac055573e55b9"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC015_View_persisted_chat_history_after_sending_a_message.py": {
+    "mtime": 1779533348.73667,
+    "ast_hash": "3bf2b5e72dff28dfc72666dd2951e420",
+    "semantic_hash": "3bf2b5e72dff28dfc72666dd2951e420"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC016_Categorize_and_review_an_expense_anomaly.py": {
+    "mtime": 1779531429.970896,
+    "ast_hash": "8fc0bca16f9290eb722b115de43dd4f8",
+    "semantic_hash": "8fc0bca16f9290eb722b115de43dd4f8"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC020_See_refreshed_forecast_after_new_financial_data_is_added.py": {
+    "mtime": 1779531429.976896,
+    "ast_hash": "44865d977bf029527b3e8ed1af785005",
+    "semantic_hash": "44865d977bf029527b3e8ed1af785005"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/test_files/TC005_put_api_v1_invoices_update_invoice.py": {
+    "mtime": 1779533348.613668,
+    "ast_hash": "1d6f2ec0a7bfde6032c1364f40e8e0e5",
+    "semantic_hash": "1d6f2ec0a7bfde6032c1364f40e8e0e5"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/tmp/config.json": {
+    "mtime": 1779529167.5322418,
+    "ast_hash": "30bdfda19976d7ba65e84b5ac605f912",
+    "semantic_hash": "30bdfda19976d7ba65e84b5ac605f912"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/tmp/test_results.json": {
+    "mtime": 1779529881.0527306,
+    "ast_hash": "3d3f6586467ad1985d802280116d567a",
+    "semantic_hash": "3d3f6586467ad1985d802280116d567a"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/scripts/seed_data.py": {
     "mtime": 1778873478.8940213,
     "ast_hash": "287ad089a5db4efe35c9374aeb980267",
     "semantic_hash": "287ad089a5db4efe35c9374aeb980267"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/helm/registry-entry.json": {
+    "mtime": 1780125861.190287,
+    "ast_hash": "3b6b0eab18c79d92391e208c08d0f529",
+    "semantic_hash": "3b6b0eab18c79d92391e208c08d0f529"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/next-env.d.ts": {
+    "mtime": 1779527406.7238941,
+    "ast_hash": "b5ed9dd8b4c5ba8e5ab8e6a379c15838",
+    "semantic_hash": "b5ed9dd8b4c5ba8e5ab8e6a379c15838"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/package.json": {
     "mtime": 1778319699.199192,
@@ -305,49 +1055,64 @@
     "semantic_hash": "7725c375f5706c9a95591931f59b45b3"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/next.config.js": {
-    "mtime": 1778319699.1971922,
-    "ast_hash": "fcf548dafb87e468ef942e2896f96296",
-    "semantic_hash": "fcf548dafb87e468ef942e2896f96296"
+    "mtime": 1780125861.189287,
+    "ast_hash": "7cc9bb5a1bb5cdf08488ceb42366094c",
+    "semantic_hash": "7cc9bb5a1bb5cdf08488ceb42366094c"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/.vercel/project.json": {
+    "mtime": 1778930670.761065,
+    "ast_hash": "fed2e08f14e1f92bfb64ba0f3bc4a658",
+    "semantic_hash": "fed2e08f14e1f92bfb64ba0f3bc4a658"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/public/dclaw-manifest.json": {
+    "mtime": 1780125861.200287,
+    "ast_hash": "9a7fc00d64d781ac76d58ceb3d4e25f5",
+    "semantic_hash": "9a7fc00d64d781ac76d58ceb3d4e25f5"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/src/app/page.tsx": {
-    "mtime": 1778873478.888021,
-    "ast_hash": "3936713e4608e127160297c0f21cf6b3",
-    "semantic_hash": "3936713e4608e127160297c0f21cf6b3"
+    "mtime": 1780125861.190287,
+    "ast_hash": "1adb0c9e55ca0d149b025a65b2431489",
+    "semantic_hash": "1adb0c9e55ca0d149b025a65b2431489"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/src/app/layout.tsx": {
-    "mtime": 1778873478.888021,
-    "ast_hash": "42c2be119635ea3210d7fb94d36e9613",
-    "semantic_hash": "42c2be119635ea3210d7fb94d36e9613"
+    "mtime": 1780125861.2012873,
+    "ast_hash": "7c6a75b7d46912e4d8560a43943ce3df",
+    "semantic_hash": "7c6a75b7d46912e4d8560a43943ce3df"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/src/app/expenses/page.tsx": {
-    "mtime": 1778873478.8870208,
-    "ast_hash": "80eccfcfb24093689ebd883437f82e2a",
-    "semantic_hash": "80eccfcfb24093689ebd883437f82e2a"
+    "mtime": 1779935757.1212807,
+    "ast_hash": "142855996193505bcb0d4ab262f8c832",
+    "semantic_hash": "142855996193505bcb0d4ab262f8c832"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/src/app/expenses/new/page.tsx": {
-    "mtime": 1778873478.8870208,
-    "ast_hash": "124b7193611f794c04017e59ba822838",
-    "semantic_hash": "124b7193611f794c04017e59ba822838"
+    "mtime": 1779936972.0457082,
+    "ast_hash": "70ec1eb425db9aefa6451bc312bf0af9",
+    "semantic_hash": "70ec1eb425db9aefa6451bc312bf0af9"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/src/app/forecast/page.tsx": {
-    "mtime": 1778873478.8870208,
-    "ast_hash": "545759c0f1ef2f2a913bec422e6579b2",
-    "semantic_hash": "545759c0f1ef2f2a913bec422e6579b2"
+    "mtime": 1780232972.8284233,
+    "ast_hash": "7dd16ff179ff4f07488bc35bb8893109",
+    "semantic_hash": "7dd16ff179ff4f07488bc35bb8893109"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/src/app/budgets/page.tsx": {
-    "mtime": 1778873478.8870208,
-    "ast_hash": "34f35b1885857d286229476fa5c81dd7",
-    "semantic_hash": "34f35b1885857d286229476fa5c81dd7"
+    "mtime": 1779935659.661791,
+    "ast_hash": "b98075be08171d5e6c6fcc8898c6fb6b",
+    "semantic_hash": "b98075be08171d5e6c6fcc8898c6fb6b"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/src/app/reports/page.tsx": {
-    "mtime": 1778873478.888021,
-    "ast_hash": "456f778a328670a258d65ebda89f0ffc",
-    "semantic_hash": "456f778a328670a258d65ebda89f0ffc"
+    "mtime": 1779936963.5440807,
+    "ast_hash": "545d8edb1ce6fd79f7a26fe085f4d946",
+    "semantic_hash": "545d8edb1ce6fd79f7a26fe085f4d946"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/src/app/chat/page.tsx": {
     "mtime": 1778873478.8870208,
     "ast_hash": "74350b8782ca7f9815ce9bc339f48ee8",
     "semantic_hash": "74350b8782ca7f9815ce9bc339f48ee8"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/src/app/cash-flow/page.tsx": {
+    "mtime": 1780125861.2012873,
+    "ast_hash": "81b4184c8b68a3a05ba07dee0c7dcfe4",
+    "semantic_hash": "81b4184c8b68a3a05ba07dee0c7dcfe4"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/src/app/invoices/page.tsx": {
     "mtime": 1778873478.888021,
@@ -360,14 +1125,29 @@
     "semantic_hash": "0a19d51fcdd260e50f3cf2204864c87b"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/src/app/invoices/new/page.tsx": {
-    "mtime": 1778873478.888021,
-    "ast_hash": "cd878fff4e5e3aeb29871ff9ed8120f9",
-    "semantic_hash": "cd878fff4e5e3aeb29871ff9ed8120f9"
+    "mtime": 1779935678.13478,
+    "ast_hash": "2e96805e30ee80991f669aa498e1c386",
+    "semantic_hash": "2e96805e30ee80991f669aa498e1c386"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/src/app/clients/page.tsx": {
-    "mtime": 1778873478.8870208,
-    "ast_hash": "f20f9b340d96f09d53c3dd471062ee2a",
-    "semantic_hash": "f20f9b340d96f09d53c3dd471062ee2a"
+    "mtime": 1779936959.1882272,
+    "ast_hash": "0b43c2a43e37fb004d5d686c3369ede6",
+    "semantic_hash": "0b43c2a43e37fb004d5d686c3369ede6"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/src/app/clients/profitability/page.tsx": {
+    "mtime": 1779935697.654718,
+    "ast_hash": "50a13e84a2f343281a415b908ec5a639",
+    "semantic_hash": "50a13e84a2f343281a415b908ec5a639"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/src/app/dashboard/page.tsx": {
+    "mtime": 1780125861.2012873,
+    "ast_hash": "e427846499642cc6f5adf1308924c7f5",
+    "semantic_hash": "e427846499642cc6f5adf1308924c7f5"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/src/app/testsprite/page.tsx": {
+    "mtime": 1779520947.2021697,
+    "ast_hash": "129b729a241968489660fa3a55b54175",
+    "semantic_hash": "129b729a241968489660fa3a55b54175"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/src/lib/utils.ts": {
     "mtime": 1778873478.889021,
@@ -375,9 +1155,19 @@
     "semantic_hash": "2bdef2cf1c9922efd0a180be89b9388a"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/src/lib/api.ts": {
-    "mtime": 1778873478.889021,
-    "ast_hash": "04ae7396ff4cc1a11309d1afc25e6267",
-    "semantic_hash": "04ae7396ff4cc1a11309d1afc25e6267"
+    "mtime": 1780232789.893812,
+    "ast_hash": "8317363b3b8407f10e09c28a801ed533",
+    "semantic_hash": "8317363b3b8407f10e09c28a801ed533"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/src/components/DemoControls.tsx": {
+    "mtime": 1780125861.190287,
+    "ast_hash": "49073afb6a54ecd2df2e5b2bc3ac3e8b",
+    "semantic_hash": "49073afb6a54ecd2df2e5b2bc3ac3e8b"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/src/components/FloatingCopilot.tsx": {
+    "mtime": 1780125861.2012873,
+    "ast_hash": "5ae5e18a440aa60d81ca692233abdf18",
+    "semantic_hash": "5ae5e18a440aa60d81ca692233abdf18"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/src/components/ui/label.tsx": {
     "mtime": 1778319699.199192,
@@ -460,9 +1250,9 @@
     "semantic_hash": "e1f52e56213ad21360e080db83b22638"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/PRODUCT-SPEC.md": {
-    "mtime": 1778873478.8830206,
-    "ast_hash": "315c5da9fb4d543377c1e7583d8d6fc5",
-    "semantic_hash": "315c5da9fb4d543377c1e7583d8d6fc5"
+    "mtime": 1780245177.8681889,
+    "ast_hash": "672b57fa1be52a3c9078efacf45c2d78",
+    "semantic_hash": "672b57fa1be52a3c9078efacf45c2d78"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/docker-compose.yml": {
     "mtime": 1778903716.2746196,
@@ -475,14 +1265,19 @@
     "semantic_hash": "991733c05665246cf2093b4e5727a8f8"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/RUN.md": {
-    "mtime": 1778902585.063332,
-    "ast_hash": "8063d305836c6d41670712006bb5bdb1",
-    "semantic_hash": "8063d305836c6d41670712006bb5bdb1"
+    "mtime": 1779330039.0050156,
+    "ast_hash": "ac64403671f43c1e4cab2b6005b759af",
+    "semantic_hash": "ac64403671f43c1e4cab2b6005b759af"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/PLAN-v1.2.md": {
-    "mtime": 1778873478.8830206,
-    "ast_hash": "121606cfd15dfa07f5f25551974cfd0c",
-    "semantic_hash": "121606cfd15dfa07f5f25551974cfd0c"
+    "mtime": 1779328477.5898848,
+    "ast_hash": "23317fdd49d491eba35df4cc765569da",
+    "semantic_hash": "23317fdd49d491eba35df4cc765569da"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/PLAN-v1.3.md": {
+    "mtime": 1779328477.595885,
+    "ast_hash": "efe759cf7dae4f16e67772d659400aea",
+    "semantic_hash": "efe759cf7dae4f16e67772d659400aea"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/reel-ai-tool-brief.md": {
     "mtime": 1778912584.2416337,
@@ -499,6 +1294,16 @@
     "ast_hash": "dd9bfe98d096644aec551013606fb132",
     "semantic_hash": "dd9bfe98d096644aec551013606fb132"
   },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/PLAN-v1.4.md": {
+    "mtime": 1780244770.2809668,
+    "ast_hash": "264d1796eb900a66bf509a8fc14a182e",
+    "semantic_hash": "264d1796eb900a66bf509a8fc14a182e"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/REVISED-PRD.md": {
+    "mtime": 1779328477.590885,
+    "ast_hash": "0832fe22886732f18a22c0ad55ec6094",
+    "semantic_hash": "0832fe22886732f18a22c0ad55ec6094"
+  },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/AGENTS.md": {
     "mtime": 1778319699.1931922,
     "ast_hash": "26e76e10e3aafd5a06ee782fc6271971",
@@ -514,6 +1319,11 @@
     "ast_hash": "e2bc4aa3d584ea3c6121404607b2fac1",
     "semantic_hash": "e2bc4aa3d584ea3c6121404607b2fac1"
   },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testforge-report-dclaw-finance.md": {
+    "mtime": 1780140858.6632838,
+    "ast_hash": "f683b4332f1c820a798b177cae5ee727",
+    "semantic_hash": "f683b4332f1c820a798b177cae5ee727"
+  },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/PATCH-2026-05-15-shared-hub-postgres.md": {
     "mtime": 1778873445.069414,
     "ast_hash": "9ca6f76d54df4d000849af7a3fcb54eb",
@@ -525,9 +1335,24 @@
     "semantic_hash": "c9770e6523856079cb38ed3d5c77eed0"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/README.md": {
-    "mtime": 1778873483.6642435,
-    "ast_hash": "cdb909b39817ba8b1523169968a771e8",
-    "semantic_hash": "cdb909b39817ba8b1523169968a771e8"
+    "mtime": 1780245231.1088378,
+    "ast_hash": "10681bf151c513ac17b64f983b4e7b5f",
+    "semantic_hash": "10681bf151c513ac17b64f983b4e7b5f"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/web/.vercel/README.txt": {
+    "mtime": 1779329270.0055437,
+    "ast_hash": "2b13c79d37d6ed82a3255b83b6815034",
+    "semantic_hash": "2b13c79d37d6ed82a3255b83b6815034"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testforge/testforge-dclaw-finance.md": {
+    "mtime": 1780234450.4815774,
+    "ast_hash": "93f661e9a8c02e1f858404e6ac2783c8",
+    "semantic_hash": "93f661e9a8c02e1f858404e6ac2783c8"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testforge/test_analysis/testforge-analysis.md": {
+    "mtime": 1780243254.266092,
+    "ast_hash": "7d4ce515a6bf993996c39949e2ac9849",
+    "semantic_hash": "7d4ce515a6bf993996c39949e2ac9849"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/.github/workflows/ci.yml": {
     "mtime": 1778873445.068414,
@@ -539,20 +1364,40 @@
     "ast_hash": "5079400de856707524c884e89e366799",
     "semantic_hash": "5079400de856707524c884e89e366799"
   },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/.github/workflows/build-frontend.yml": {
+    "mtime": 1780125861.1992872,
+    "ast_hash": "8e1755271d804d278bc96f70889d3014",
+    "semantic_hash": "8e1755271d804d278bc96f70889d3014"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/.github/workflows/build-backend.yml": {
+    "mtime": 1780125861.1992872,
+    "ast_hash": "203b0cc449a323cf82ffecdd074f7a40",
+    "semantic_hash": "203b0cc449a323cf82ffecdd074f7a40"
+  },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/.github/workflows/claude.yml": {
     "mtime": 1778873445.068414,
     "ast_hash": "995b9db52dace3af043903f678a61551",
     "semantic_hash": "995b9db52dace3af043903f678a61551"
   },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/.github/workflows/deploy.yml": {
+    "mtime": 1780125861.1992872,
+    "ast_hash": "12cd52879395b2ce5a247dc60fe71ffc",
+    "semantic_hash": "12cd52879395b2ce5a247dc60fe71ffc"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/slides/deck-content.md": {
+    "mtime": 1780245325.5228527,
+    "ast_hash": "438d82a8929d39b491e5faba851a359f",
+    "semantic_hash": "438d82a8929d39b491e5faba851a359f"
+  },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/slides/dclaw-finance-deck.html": {
-    "mtime": 1778873478.8970213,
-    "ast_hash": "01599c1ec4c269a2239b2fe94c17ade4",
-    "semantic_hash": "01599c1ec4c269a2239b2fe94c17ade4"
+    "mtime": 1780245414.858791,
+    "ast_hash": "21334ffba90b8bcf1525283bb64f9b28",
+    "semantic_hash": "21334ffba90b8bcf1525283bb64f9b28"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/backend/requirements.txt": {
-    "mtime": 1778873478.886021,
-    "ast_hash": "afff3ee77a23af861d9a1f42fab993e0",
-    "semantic_hash": "afff3ee77a23af861d9a1f42fab993e0"
+    "mtime": 1780125861.200287,
+    "ast_hash": "2dff7e35c249777bf7b901be338ae9d1",
+    "semantic_hash": "2dff7e35c249777bf7b901be338ae9d1"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/docs/README.md": {
     "mtime": 1778319699.1961923,
@@ -644,60 +1489,120 @@
     "ast_hash": "a11329b83aad4772a89ca1f5db094e0f",
     "semantic_hash": "a11329b83aad4772a89ca1f5db094e0f"
   },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/testsprite-mcp-frontend-report.md": {
+    "mtime": 1779529974.333424,
+    "ast_hash": "cbb1acbeb8ede1224e0b25a2e594142a",
+    "semantic_hash": "cbb1acbeb8ede1224e0b25a2e594142a"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/testsprite-mcp-backend-report.md": {
+    "mtime": 1779528511.8334246,
+    "ast_hash": "44d11ad9f4efda8f2f2f3154ed802482",
+    "semantic_hash": "44d11ad9f4efda8f2f2f3154ed802482"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/terminal_errors.md": {
+    "mtime": 1779531515.5617633,
+    "ast_hash": "ab37aff212b2858dc0b8a3c4339cfc78",
+    "semantic_hash": "ab37aff212b2858dc0b8a3c4339cfc78"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/FAILURE_ANALYSIS.md": {
+    "mtime": 1779934877.0891259,
+    "ast_hash": "1cfb7167479ce52ac803d023f2f91df0",
+    "semantic_hash": "1cfb7167479ce52ac803d023f2f91df0"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/failed_tests/README.md": {
+    "mtime": 1779533371.7190394,
+    "ast_hash": "1cdc1bdc81cb3adf1d743fc156706351",
+    "semantic_hash": "1cdc1bdc81cb3adf1d743fc156706351"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/tmp/code_summary.yaml": {
+    "mtime": 1779525549.3020532,
+    "ast_hash": "70f1921b5ce8acae19f3f9edaa88faba",
+    "semantic_hash": "70f1921b5ce8acae19f3f9edaa88faba"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/tmp/raw_report.md": {
+    "mtime": 1779529881.0727296,
+    "ast_hash": "fb3a05a4e09cb5bb83a67b4572e934e2",
+    "semantic_hash": "fb3a05a4e09cb5bb83a67b4572e934e2"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/tmp/prd_files/PRODUCT-SPEC.md": {
+    "mtime": 1779525562.017744,
+    "ast_hash": "315c5da9fb4d543377c1e7583d8d6fc5",
+    "semantic_hash": "315c5da9fb4d543377c1e7583d8d6fc5"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testsprite_tests/tmp/prd_files/REVISED-PRD.md": {
+    "mtime": 1779525562.0137434,
+    "ast_hash": "0832fe22886732f18a22c0ad55ec6094",
+    "semantic_hash": "0832fe22886732f18a22c0ad55ec6094"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/obsidian/Finance-TestForge-2026-05-31.md": {
+    "mtime": 1780249204.005325,
+    "ast_hash": "8294108a0469c182c5e4e3678564786c",
+    "semantic_hash": "8294108a0469c182c5e4e3678564786c"
+  },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/obsidian/Finance-v1.2-Roadmap.md": {
-    "mtime": 1778873478.893021,
-    "ast_hash": "fcc81709bcb9ceea4fe7820e0719c784",
-    "semantic_hash": "fcc81709bcb9ceea4fe7820e0719c784"
+    "mtime": 1780249312.5249844,
+    "ast_hash": "3a541abe059deff0e893b03e55cb914d",
+    "semantic_hash": "3a541abe059deff0e893b03e55cb914d"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/obsidian/Finance-Design-System.md": {
-    "mtime": 1778873478.893021,
-    "ast_hash": "65b3cdfc36823ed5cd1dc9a2d783ae33",
-    "semantic_hash": "65b3cdfc36823ed5cd1dc9a2d783ae33"
+    "mtime": 1780249304.0287764,
+    "ast_hash": "fa7dca7d6898711c54fc651e4efa0bb7",
+    "semantic_hash": "fa7dca7d6898711c54fc651e4efa0bb7"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/obsidian/Finance-v1.4-Roadmap.md": {
+    "mtime": 1780249160.9702687,
+    "ast_hash": "ecb6204b3fba7f2309c17845e896bf1e",
+    "semantic_hash": "ecb6204b3fba7f2309c17845e896bf1e"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/obsidian/Finance-Architecture.md": {
-    "mtime": 1778873478.893021,
-    "ast_hash": "15df5519e1aa53056354921fefc425e8",
-    "semantic_hash": "15df5519e1aa53056354921fefc425e8"
+    "mtime": 1780249089.7455177,
+    "ast_hash": "e49dca39f15208715c76ed59310fb9e5",
+    "semantic_hash": "e49dca39f15208715c76ed59310fb9e5"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/obsidian/Finance-TestSprite-2026-05-23.md": {
+    "mtime": 1780249238.416169,
+    "ast_hash": "4032f86d02dffcd995d7c70dff401c98",
+    "semantic_hash": "4032f86d02dffcd995d7c70dff401c98"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/helm/Chart.yaml": {
     "mtime": 1778319699.2001922,
     "ast_hash": "b5e20ab6bba5b7a54a420deab7fea7c2",
     "semantic_hash": "b5e20ab6bba5b7a54a420deab7fea7c2"
   },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/helm/values-prod.yaml": {
+    "mtime": 1780125861.190287,
+    "ast_hash": "b00f3a4b6940edd44fce54e235e500aa",
+    "semantic_hash": "b00f3a4b6940edd44fce54e235e500aa"
+  },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/helm/values.yaml": {
-    "mtime": 1778319699.2001922,
-    "ast_hash": "701d866b730a95044d9fec1dce533f6a",
-    "semantic_hash": "701d866b730a95044d9fec1dce533f6a"
+    "mtime": 1780125861.190287,
+    "ast_hash": "a49bedd3cb28743ee2fe93167d774756",
+    "semantic_hash": "a49bedd3cb28743ee2fe93167d774756"
   },
-  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/helm/dclaw-finance/Chart.yaml": {
-    "mtime": 1778319699.2001922,
-    "ast_hash": "94f20fa44c892e9593f5218c3d4971c6",
-    "semantic_hash": "94f20fa44c892e9593f5218c3d4971c6"
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/helm/templates/NOTES.txt": {
+    "mtime": 1780125861.190287,
+    "ast_hash": "0d8c686e4a08a665267d3d8fe03707c9",
+    "semantic_hash": "0d8c686e4a08a665267d3d8fe03707c9"
   },
-  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/helm/dclaw-finance/values.yaml": {
-    "mtime": 1778319699.2001922,
-    "ast_hash": "2fa43ffac226eaa92283e3413c10f460",
-    "semantic_hash": "2fa43ffac226eaa92283e3413c10f460"
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/helm/templates/ingress.yaml": {
+    "mtime": 1780125861.190287,
+    "ast_hash": "d05f4cf520bc23e15275bc6792624498",
+    "semantic_hash": "d05f4cf520bc23e15275bc6792624498"
   },
-  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/helm/dclaw-finance/templates/serviceaccount.yaml": {
-    "mtime": 1778319699.2001922,
-    "ast_hash": "6059126141fff2ba28ac4eb571fcaf31",
-    "semantic_hash": "6059126141fff2ba28ac4eb571fcaf31"
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/helm/templates/service.yaml": {
+    "mtime": 1780125861.190287,
+    "ast_hash": "4f9b3e791a875c2d869df1f9bae87dfa",
+    "semantic_hash": "4f9b3e791a875c2d869df1f9bae87dfa"
   },
-  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/helm/dclaw-finance/templates/ingress.yaml": {
-    "mtime": 1778319699.2001922,
-    "ast_hash": "be55e8fcf6052051dbf525ce8ba02594",
-    "semantic_hash": "be55e8fcf6052051dbf525ce8ba02594"
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/helm/templates/deployment.yaml": {
+    "mtime": 1780125861.190287,
+    "ast_hash": "f2776fecb2c47c95b2533611c84ba09b",
+    "semantic_hash": "f2776fecb2c47c95b2533611c84ba09b"
   },
-  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/helm/dclaw-finance/templates/service.yaml": {
-    "mtime": 1778319699.2001922,
-    "ast_hash": "d236e89b9344389a35a4210e01b85ce5",
-    "semantic_hash": "d236e89b9344389a35a4210e01b85ce5"
-  },
-  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/helm/dclaw-finance/templates/deployment.yaml": {
-    "mtime": 1778319699.2001922,
-    "ast_hash": "0a7650a6fb5cdc17208707741bb1b044",
-    "semantic_hash": "0a7650a6fb5cdc17208707741bb1b044"
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/frontend/.vercel/README.txt": {
+    "mtime": 1778930670.7620652,
+    "ast_hash": "2b13c79d37d6ed82a3255b83b6815034",
+    "semantic_hash": "2b13c79d37d6ed82a3255b83b6815034"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/OC_dkube_design_system/Brand Guidelines.html": {
     "mtime": 1778873478.8720202,
@@ -819,10 +1724,25 @@
     "ast_hash": "d649976b7e23592230a5c25e8380bcc9",
     "semantic_hash": "d649976b7e23592230a5c25e8380bcc9"
   },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/infographics/architecture-diagram.md": {
+    "mtime": 1780245273.3965578,
+    "ast_hash": "b71840caa81e4692e8723d27b17925f0",
+    "semantic_hash": "b71840caa81e4692e8723d27b17925f0"
+  },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/infographics/dclaw-finance-infograph.html": {
-    "mtime": 1778873478.8920212,
-    "ast_hash": "e8bafb412c9e81ed3c85d8ed75a8bedd",
-    "semantic_hash": "e8bafb412c9e81ed3c85d8ed75a8bedd"
+    "mtime": 1780245370.6465905,
+    "ast_hash": "612a4a38249c5f552f2b0fe4265f171b",
+    "semantic_hash": "612a4a38249c5f552f2b0fe4265f171b"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/TestForgeReportDclawFinance.pdf": {
+    "mtime": 1780140877.4635484,
+    "ast_hash": "b0eed707d432a8be3e210e0461a7cfd9",
+    "semantic_hash": "b0eed707d432a8be3e210e0461a7cfd9"
+  },
+  "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/testforge/TestForge MCP \u2014 Local Analysis.pdf": {
+    "mtime": 1780234461.9501598,
+    "ast_hash": "b062aca39058edcf650b3b13449fc202",
+    "semantic_hash": "b062aca39058edcf650b3b13449fc202"
   },
   "/home/chandraja/AI_white_noise/dclaw/dclaw-finance/slides/DClaw-Finance-Deck.pdf": {
     "mtime": 1778873478.8970213,
